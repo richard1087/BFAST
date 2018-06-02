@@ -4651,6 +4651,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Asset\ImgUpload\Image\" />
+    <Folder Include="Views\Asset\ImgUpload\Qrcode\" />
     <Folder Include="Views\WebLogin\" />
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,7 @@ using iTextSharp.text.pdf.qrcode;
 using System.IO;
 using System.Drawing;
 using iTextSharp.text.pdf;
+using System.Web.Helpers;
 
 namespace CORE.JGC.Controllers
 {
@@ -254,12 +255,11 @@ namespace CORE.JGC.Controllers
         }
         private string GenerateQrCode(string assettagid)
         {
-            string base64;
             //iTextSharp.text.Document doc = new iTextSharp.text.Document(new iTextSharp.text.Rectangle(4.5f, 5.5f), 0.5f, 0.5f, 0, 0);
-            //string filepathimg = Path.Combine(Server.MapPath("~/Views/QrCode/"), assettagid + ".jpg");
+            string filepathimg = Path.Combine(Server.MapPath("/ImgUpload/Qrcode"), assettagid + ".jpg");
 
             ByteMatrix btm;
-            MemoryStream ms = null;
+            FileStream fs = null;
             Bitmap bmp = null;
             try
             {
@@ -286,36 +286,46 @@ namespace CORE.JGC.Controllers
                     }
                 }
                 Response.ContentType = "image/jpeg";
-                //fs = new FileStream(filepathimg, FileMode.Create);
-                ms = new MemoryStream();
-                bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                byte[] byteImg = ms.ToArray();
-                base64 = Convert.ToBase64String(byteImg);
+                //ms = new MemoryStream();
+                bmp.Save(filepathimg, System.Drawing.Imaging.ImageFormat.Jpeg);
+                //byte[] byteImg = fs.ToArray();
+                //base64 = Convert.ToBase64String(byteImg);
                 
             }
             catch (Exception ex)
             {
-                base64 = "";
+                //base64 = "";
                 string msg = ex.Message;
             }
             bmp.Dispose();
-            ms.Close();
-            return base64;
+            fs.Close();
+            return filepathimg;
         }
-        private string GeneratePhoto(string filePath)
-        {
-            string base64 = string.Empty;
-            FileStream stream = new FileStream(
-                filePath, FileMode.Open, FileAccess.Read);
-            BinaryReader reader = new BinaryReader(stream);
-
-            byte[] photo = reader.ReadBytes((int)stream.Length);
-            base64 = Convert.ToBase64String(photo);
-            reader.Close();
-            stream.Close();
-
-            return base64;
-        }
+        //private void UploadPhoto()
+        //{
+        //    string path = string.Empty; 
+        //    if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+        //    {
+        //        var pic = System.Web.HttpContext.Current.Request.Files["Assetpic"];
+        //        if (pic.ContentLength > 0)
+        //        {
+        //            string filename = Path.GetFileName(pic.FileName);
+        //            var ext = Path.GetExtension(pic.FileName);
+        //            //imgName = Guid.NewGuid().ToString();
+        //            path = Server.MapPath("/ImgUpload/Image") + filename + ext;
+        //            filename = filename + DateTime.Now.ToString("HHmmss") + ext;
+        //            //var filepath = path;
+        //            pic.SaveAs(path);
+        //            MemoryStream stream = new MemoryStream();
+        //            WebImage webimg = new WebImage(path);
+        //            if (webimg.Width > 200)
+        //            {
+        //                webimg.Resize(200, 200);
+        //                webimg.Save(path);
+        //            }
+        //        }
+        //    }
+        //}
         public ActionResult Index()
         {
             Ms_Asset[] msasset = null;
@@ -347,7 +357,7 @@ namespace CORE.JGC.Controllers
         [HttpPost]
         public ActionResult InputData(string site, string category, string location, string departement, string assetname, string supplier, string purchaseno,
             string brand, string purchasedateid, string model, string price, string serialno, string type,string company, string currency, string floor, string warranty, 
-            string cap, string active)
+            string cap, string active, string photo)
         {
             string userid = "system";
             //string Photo = GeneratePhoto(path);
@@ -356,7 +366,7 @@ namespace CORE.JGC.Controllers
             dc = new DCAssetDataContext();
             try
             {
-                var query = dc.MsAsset_IUD(assetname, brand, model, category, serialno, type, Convert.ToInt32(active), Convert.ToInt32(cap), "", site, location, Convert.ToInt32(floor),
+                var query = dc.MsAsset_IUD(assetname, brand, model, category, serialno, type, Convert.ToInt32(active), Convert.ToInt32(cap), photo, site, location, Convert.ToInt32(floor),
                     purchaseno, currency, Convert.ToDecimal(price), Convert.ToDateTime(purchasedateid), supplier, company, departement, Convert.ToInt32(warranty), userid, 1);
                 foreach(var res in query)
                 {

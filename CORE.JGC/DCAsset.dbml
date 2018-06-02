@@ -71,6 +71,47 @@
       <Column Name="Iby" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.MsAsset_IUD" Method="MsAsset_IUD">
+    <Parameter Name="AssetName" Parameter="assetName" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="AssetBrandCode" Parameter="assetBrandCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AssetModelCode" Parameter="assetModelCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AssetCategoryCode" Parameter="assetCategoryCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="AssetSerialNo" Parameter="assetSerialNo" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="AssetTypeCode" Parameter="assetTypeCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="bActive" Type="System.Int32" DbType="Int" />
+    <Parameter Name="bCapitalized" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Photo" Parameter="photo" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="SiteCode" Parameter="siteCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="LocationCode" Parameter="locationCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Floor" Parameter="floor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PurchaseNo" Parameter="purchaseNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CurrencyCode" Parameter="currencyCode" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="PurchasePrice" Parameter="purchasePrice" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="PurchaseDate" Parameter="purchaseDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="SupplierCode" Parameter="supplierCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="CompanyID" Parameter="companyID" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="DeptCode" Parameter="deptCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="WarrantyMonth" Parameter="warrantyMonth" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
+    <ElementType Name="MsAsset_IUDResult">
+      <Column Name="Status" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.MsAsset_View" Method="MsAsset_View">
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
+    <ElementType Name="MsAsset_ViewResult">
+      <Column Name="AssetPhoto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AssetTagID" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetBrand" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CurrencyCode" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.MsAssetBrand_IUD" Method="MsAssetBrand_IUD">
     <Parameter Name="BrandCode" Parameter="brandCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="BrandName" Parameter="brandName" Type="System.String" DbType="VarChar(100)" />
@@ -321,6 +362,15 @@
       <Column Name="LocationName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Iby" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.MsQrCode_IUD" Method="MsQrCode_IUD">
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Qrcode" Parameter="qrcode" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
+    <ElementType Name="MsQrCode_IUDResult">
+      <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.MsSite_IUD" Method="MsSite_IUD">
@@ -802,56 +852,6 @@
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="UtilUser_IUDResult">
       <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.MsQrCode_IUD" Method="MsQrCode_IUD">
-    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
-    <Parameter Name="Qrcode" Parameter="qrcode" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
-    <ElementType Name="MsQrCode_IUDResult">
-      <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.MsAsset_IUD" Method="MsAsset_IUD">
-    <Parameter Name="AssetName" Parameter="assetName" Type="System.String" DbType="VarChar(200)" />
-    <Parameter Name="AssetBrandCode" Parameter="assetBrandCode" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="AssetModelCode" Parameter="assetModelCode" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="AssetCategoryCode" Parameter="assetCategoryCode" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="AssetSerialNo" Parameter="assetSerialNo" Type="System.String" DbType="VarChar(100)" />
-    <Parameter Name="AssetTypeCode" Parameter="assetTypeCode" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="bActive" Type="System.Int32" DbType="Int" />
-    <Parameter Name="bCapitalized" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Photo" Parameter="photo" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="SiteCode" Parameter="siteCode" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="LocationCode" Parameter="locationCode" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Floor" Parameter="floor" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PurchaseNo" Parameter="purchaseNo" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="CurrencyCode" Parameter="currencyCode" Type="System.String" DbType="VarChar(5)" />
-    <Parameter Name="PurchasePrice" Parameter="purchasePrice" Type="System.Decimal" DbType="Decimal(18,0)" />
-    <Parameter Name="PurchaseDate" Parameter="purchaseDate" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="SupplierCode" Parameter="supplierCode" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="CompanyID" Parameter="companyID" Type="System.String" DbType="VarChar(5)" />
-    <Parameter Name="DeptCode" Parameter="deptCode" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="WarrantyMonth" Parameter="warrantyMonth" Type="System.Int32" DbType="Int" />
-    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
-    <ElementType Name="MsAsset_IUDResult">
-      <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.MsAsset_View" Method="MsAsset_View">
-    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
-    <ElementType Name="MsAsset_ViewResult">
-      <Column Name="AssetPhoto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="AssetTagID" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="AssetName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="AssetBrand" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="PurchasePrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CurrencyCode" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

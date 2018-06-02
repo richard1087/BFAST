@@ -212,7 +212,7 @@
                                 <div class="col-md-5 col-sm-5 col-xs-12">
                                     <div class="checkbox">
                                         <label style="padding-left:0 !important">
-                                            <input id="ActiveId" type="checkbox" class="flat" value=""> Yes
+                                            <input id="ActiveId" type="checkbox" class="flat"> Yes
                                         </label>
                                     </div>
                                 </div>
@@ -228,7 +228,7 @@
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <div class="checkbox">
                                         <label style="padding-left:0 !important">
-                                            <input id="CapitalizedId" type="checkbox" class="flat" value=""> Yes
+                                            <input id="CapitalizedId" type="checkbox" class="flat"> Yes
                                         </label>
                                     </div>
                                 </div>
@@ -237,16 +237,15 @@
                             <div class="form-group">
                                 <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Asset Photo</h3>
                             </div>
-
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload Image</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
                                     
-                                    <input type="file" name="file" id="file" class="btn btn-success btn-cust inputfile" />
-                                    <label for="file" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
+                                    <input type="file" name="file" id="fileupload" class="btn btn-success btn-cust inputfile" />
+                                    <label for="fileupload" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
                                 </div>
                             </div>
-
+                            
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
@@ -255,6 +254,7 @@
                                 </div>
                                 
                             </div>
+                            
                         </form>
                     </div>
                 </div>
@@ -303,6 +303,22 @@
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Postal Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="PostalCodeId" type="text" class="form-control" placeholder="Postal Code">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Phone</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="PhoneId" type="tel" class="form-control" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Active</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <div class="checkbox">
+                                <label style="padding-left:0 !important">
+                                    <input id="ActiveSite" type="checkbox" class="flat"> Yes
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="ln_solid"></div>
@@ -391,6 +407,16 @@
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Location Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="LocationName" type="text" class="form-control" placeholder="Location Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Active</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <div class="checkbox">
+                                <label style="padding-left:0 !important">
+                                    <input id="ActiveLocation" type="checkbox" class="flat"> Yes
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="ln_solid"></div>
@@ -513,10 +539,11 @@
         var CurrencyId = document.getElementById("CurrencyId").value;
         var FloorId = document.getElementById("FloorId").value;
         var WarrantyId = document.getElementById("WarrantyId").value;
-        var ActiveId = document.getElementById("ActiveId").value;
-        var CapitalizedId = document.getElementById("CapitalizedId").value;
+        var ActiveId = document.getElementById("ActiveId");
+        var CapitalizedId = document.getElementById("CapitalizedId");
+        var file = document.getElementById("fileupload").files[0];
         //var Photo = document.getElementById("file").value;
-        var ActiveId = document.getElementById("ActiveId").value;
+        //var ActiveId = document.getElementById("ActiveId").value;
 
         if (SiteId == "") {
             $(".modal-body #peringatan3").text("Site harus diisi");
@@ -572,7 +599,7 @@
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        }else if (ModelId == "") {
+        } else if (ModelId == "") {
             $(".modal-body #peringatan3").text("Model harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
@@ -621,8 +648,7 @@
             })
             $("#Alert3").modal();
         }
-        else
-        {
+        else {
             if (ActiveId.checked == true) {
                 ActiveId = "1";
             }
@@ -630,59 +656,69 @@
             if (CapitalizedId.checked == true) {
                 CapitalizedId = "1";
             }
-            else { CapitalizedId = "0";}
-            $.ajax({
-                url: '@Url.Action("InputData", "Asset")',
-                type: 'post',
-                cache: false,
-                async: true,
-                data: {
-                    site: SiteId,
-                    category: CategoryId,
-                    location: LocationId,
-                    departement: DepartmentId,
-                    assetname: AssetNameId,
-                    supplier: SupplierId,
-                    purchaseno: PurchaseNoId,
-                    brand: BrandId,
-                    purchasedateid: PurchaseDate,
-                    model: ModelId,
-                    price: PriceId,
-                    serialno: SerialNoId,
-                    type: TypeId,
-                    company: CompanyId,
-                    currency: CurrencyId,
-                    floor: FloorId,
-                    warranty: WarrantyId,
-                    cap: CapitalizedId,
-                    active: ActiveId
-                },
-                success: function (response) {
-                    if (response.success) {
-                        $(".modal-body #peringatan2").text("Successfully Inserted " +response.responseText);
-                        $('#btnok').click(function (e) {
-                            window.location.href = "@Url.Action("Index", "Asset")";
-                        })
-                        $("#Alert2").modal();
+            else { CapitalizedId = "0"; }
 
-                    } else {
-                        $(".modal-body #peringatan3").text(response.responseText);
-                        $('#btnerror').click(function (e) {
+            var fileName = file.name;
+            var fd = new FormData();
+            fd.append("Assetpic", file);
+            
+                $.ajax({
+                    url: '@Url.Action("InputData", "Asset")',
+                    type: 'post',
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    async: true,
+                    data: {
+                        site: SiteId,
+                        category: CategoryId,
+                        location: LocationId,
+                        departement: DepartmentId,
+                        assetname: AssetNameId,
+                        supplier: SupplierId,
+                        purchaseno: PurchaseNoId,
+                        brand: BrandId,
+                        purchasedateid: PurchaseDate,
+                        model: ModelId,
+                        price: PriceId,
+                        serialno: SerialNoId,
+                        type: TypeId,
+                        company: CompanyId,
+                        currency: CurrencyId,
+                        floor: FloorId,
+                        warranty: WarrantyId,
+                        cap: CapitalizedId,
+                        active: ActiveId,
+                        photo: Photo
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Index", "Asset")";
+                            })
+                            $("#Alert2").modal();
+
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (response) {
+                        $(".modal-body #peringatan3").text(textStatus.responseText);
+                        $('#btncaution').click(function (e) {
                             $('#Alert3').modal('hide');
                         })
                         $("#Alert3").modal();
                     }
-                },
-                error: function (response) {
-                    $(".modal-body #peringatan3").text(textStatus.responseText);
-                    $('#btncaution').click(function (e) {
-                        $('#Alert3').modal('hide');
-                    })
-                    $("#Alert3").modal();
-                }
-            });
+                });
         }
     }
+            
+    
 
     function InputDataSite() {
         var SiteId = document.getElementById("SiteId").value;
