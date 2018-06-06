@@ -1,4 +1,4 @@
-﻿
+﻿@model CORE.JGC.Models.MsBarcode[]
 @{
     ViewBag.Title = "Barcode";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,48 +21,31 @@
                     </div>
                     <div class="x_content">
 
-                        <!--<p class="headcontent">
-                            Add departments that own or house the particular assets.
-                            Make them as broad or as specific as you want. Departments can be 'Accounting', 'Marketing', or 'Executive'.
-                            Customize to your particular need.
-                        </p>-->
-
                         <div class="col-md-12 col-sm-12 col-xs-12 text-muted font-13 m-b-30 no-padding">
-                            <div class="mgbtm20">
-                                <!--<a href="#" id="tambahautonumber" class="btn btn-success btn-cust">Add New Auto Number</a>-->
+                            <div class="mgbtm20">                                
                             </div>
                         </div>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
-                                    <th width="9%">Barcode</th>
-                                    <th>Size</th>
-                                    <th>Title</th>
+                                    <th style="width:9% !important;">@Html.Label("Barcode")</th>
+                                    <th style="width:9% !important;">@Html.Label("Size")</th>
+                                    <th style="width:9% !important;">@Html.Label("Title")</th>
                                     <th style="width:5%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach(var item in Model)
+                                { 
                                 <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">A</a></td>
-                                    <td><a href="#">30x30</a></td>
-                                    <td><a href="#">A</a></td>
-                                    <td class="txtcenter">
-                                        
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <td>@Html.DisplayFor(modelItem => item.BarcodeCode)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.SizeBarcode)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.TitleBarcode)</td>
+                                    <td style="width:5% !important;text-align:center;">
+                                        <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick=""><span class="glyphicon glyphicon-edit"></span></button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">A</a></td>
-                                    <td><a href="#">30x30</a></td>
-                                    <td><a href="#">A</a></td>
-                                    <td class="txtcenter">
-                                        
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
+                                }
                             </tbody>
                         </table>
                     </div>

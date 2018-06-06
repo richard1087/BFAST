@@ -326,6 +326,8 @@
     <Content Include="Content\res\images\visa.png" />
     <Content Include="Content\res\js\datepicker\daterangepicker.js" />
     <Content Include="Content\res\js\moment\moment.min.js" />
+    <Content Include="Content\res\tree\Common.css" />
+    <Content Include="Content\res\tree\TreeMenuStyle.css" />
     <Content Include="Content\res\vendors\animate.css\animate.css" />
     <Content Include="Content\res\vendors\animate.css\animate.min.css" />
     <Content Include="Content\res\vendors\animate.css\gulpfile.js" />
@@ -4495,6 +4497,22 @@
     <Content Include="Content\res\vendors\validator\.bower.json" />
     <Content Include="Content\res\vendors\validator\README.md" />
     <Content Include="Content\res\vendors\validator\validator.jquery.json" />
+    <Content Include="js\Common.js" />
+    <Content Include="js\CommonAjax.js" />
+    <Content Include="js\DatatablesGrid.js" />
+    <Content Include="js\Encrypt.js" />
+    <Content Include="js\excanvas.min.js" />
+    <Content Include="js\FilterBoxData.js" />
+    <Content Include="js\fullcalendar.min.js" />
+    <Content Include="js\GetInput.js" />
+    <Content Include="js\InquiryAjax.js" />
+    <Content Include="js\InUpDel.js" />
+    <Content Include="js\JqxgridPopup.js" />
+    <Content Include="js\KeyPressText.js" />
+    <Content Include="js\masked.js" />
+    <Content Include="js\Required.js" />
+    <Content Include="js\select2.min.js" />
+    <Content Include="js\UrlParameter.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -4542,6 +4560,10 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Asset\ImgUpload\Qrcode\AST1806000016.jpg" />
+    <Content Include="Views\Asset\ImgUpload\Qrcode\AST1806000017.jpg" />
+    <Content Include="Views\Asset\ImgUpload\Qrcode\AST1806000018.jpg" />
+    <Content Include="Views\Asset\ImgUpload\Qrcode\AST1806000019.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -4578,7 +4600,7 @@
     <Content Include="Views\Setup\Departments.cshtml" />
     <Content Include="Views\Advanced\Persons.cshtml" />
     <Content Include="Views\Advanced\Customers.cshtml" />
-    <Content Include="Views\Setup\Users.cshtml" />
+    <Content Include="Views\Utilization\Users.cshtml" />
     <Content Include="Views\Advanced\Securitygroups.cshtml" />
     <Content Include="Views\Advanced\Createusers.cshtml" />
     <Content Include="Views\Reports\Customreports.cshtml" />
@@ -4642,17 +4664,24 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Setup\Createusers.cshtml" />
+    <Content Include="Views\Utilization\Createusers.cshtml" />
     <Content Include="Views\Setup\Createcompany.cshtml" />
     <Content Include="Views\Shared\WarningModal.cshtml" />
     <Content Include="Views\Asset\Createmaintenance.cshtml" />
     <Content Include="Views\Reports\Assetmaintenancedue.cshtml" />
     <Content Include="Views\Asset\Update.cshtml" />
+    <Content Include="Views\Shared\PopupModal.cshtml" />
+    <Content Include="Views\Utilization\Menu.cshtml" />
+    <Content Include="Views\Utilization\Role.cshtml" />
+    <Content Include="Views\Utilization\Createmenu.cshtml" />
+    <Content Include="Views\Utilization\Updatemenu.cshtml" />
+    <Content Include="Views\Utilization\Createrole.cshtml" />
+    <Content Include="Views\Utilization\Updaterole.cshtml" />
+    <Content Include="Views\Utilization\Access.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Asset\ImgUpload\Image\" />
-    <Folder Include="Views\Asset\ImgUpload\Qrcode\" />
     <Folder Include="Views\WebLogin\" />
   </ItemGroup>
   <ItemGroup>

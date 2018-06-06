@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Create Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- PAGE CONTENT START -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Utilization •
+                            <a href="/utilization/menu">Menu</a> •
+                            <a href="/utilization/createmenu" class="activemenu">Create</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>Configuration Utilization Menu</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content utlisasimenutable">
+                        <form class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Kode Menu</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Kode Menu" id="MenuID" name="MenuID" required="" maxlength="20">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Menu Subtitle</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Menu Subtitle" id="NamaMenu" name="NamaMenu" required="" maxlength="100">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Path</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Path" id="MenuPath" name="MenuPath" required="" maxlength="100">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Tipe</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <div class="input-group">
+                                        <input class="form-control readonly" id="TipeMenu" name="TipeMenu" value="" type="hidden" data-id="i" required />
+                                        <input class="form-control readonly" id="NamaTipeMenu" name="NamaTipeMenu" value="" type="text" required />
+                                        <span class="input-group-btn">
+                                            <a class="btn btn-info" onclick="Menu()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                                <i class="fa fa-search fa-fw"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Level / Parent</label>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <select class="form-control" id="LevelMenu" name="LevelMenu" required="">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <div class="input-group">
+                                        <input type="hidden" class="form-control readonly" placeholder="Parent" id="ParentMenuID" name="ParentMenuID" required="" maxlength="50">
+                                        <input type="text" class="form-control readonly" placeholder="Parent" id="NamaParentMenu" name="NamaParentMenu" required="" maxlength="50">
+                                        <span class="input-group-btn">
+                                            <a class="btn btn-info" onclick="Parent()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                                <i class="fa fa-search fa-fw"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12"></label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <div class="checkbox">
+                                        <label class="checkpadd0">
+                                            <input type="checkbox" class="flat" id="bVisible" name="bVisible" checked="checked"> Visible
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12"></label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <div class="checkbox">
+                                        <label class="checkpadd0">
+                                            <input type="checkbox" class="flat" id="bSeparator" name="bSeparator" checked="checked"> Separator
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ln_solid ln_solidform"></div>
+                            <div class="form-group">
+                                <div class="col-md-11 col-sm-11 col-xs-12 col-md-offset-1">
+                                    <button type="submit" class="btn btn-success" onclick="Create()">Simpan</button>
+                                </div>
+                            </div>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT END -->
+
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")

@@ -1,4 +1,4 @@
-﻿
+﻿@model CORE.JGC.Models.MsSite[]
 @{
     ViewBag.Title = "Sites";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,43 +13,90 @@
         var CityId = document.getElementById("CityId").value;
         var PostalCodeId = document.getElementById("PostalCodeId").value;
         var TelephoneId = document.getElementById("TelephoneId").value;
+        var Aktif = document.getElementById("ActiveId").value;
+
+        if (document.getElementById("ActiveId").checked) {
+            var Aktif = "1";
+        }
+        else {
+            var Aktif = "0";
+        }
 
         if (SiteCodeId == "") {
-            $(".modal-body #peringatan3").text("Site Code harus diisi");
+            $(".modal-body #peringatan3").text("Site Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (SiteNameId == "") {
-            $(".modal-body #peringatan3").text("Site Name harus diisi");
+            $(".modal-body #peringatan3").text("Site Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (AddressId == "") {
-            $(".modal-body #peringatan3").text("Address harus diisi");
+            $(".modal-body #peringatan3").text("Address must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (CityId == "") {
-            $(".modal-body #peringatan3").text("City harus diisi");
+            $(".modal-body #peringatan3").text("City must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (PostalCodeId == "") {
-            $(".modal-body #peringatan3").text("Postal Code harus diisi");
+            $(".modal-body #peringatan3").text("Postal Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (TelephoneId == "") {
-            $(".modal-body #peringatan3").text("Telephone harus diisi");
+            $(".modal-body #peringatan3").text("Telephone must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
+        }
+        else {
+            $.ajax({
+                url: '@Url.Action("InsertSite", "Setup")',
+                type: 'post',
+                cache: false,
+                async: true,
+                data: {
+                    SiteCodeId: SiteCodeId,
+                    SiteNameId: SiteNameId,
+                    AddressId: AddressId,
+                    CityId: CityId,
+                    PostalCodeId: PostalCodeId,
+                    TelephoneId: TelephoneId,
+                    ActiveId : Aktif
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Sites","Setup")";
+                        })
+                        $("#Alert2").modal();
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Please Wait...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
         }
     }
 
@@ -60,44 +107,120 @@
         var EditCityId = document.getElementById("EditCityId").value;
         var EditPostalCodeId = document.getElementById("EditPostalCodeId").value;
         var EditTelephoneId = document.getElementById("EditTelephoneId").value;
+        var Aktif = document.getElementById("EditActiveId").value;
+
+        if (document.getElementById("EditActiveId").checked) {
+            var Aktif = "1";
+        }
+        else {
+            var Aktif = "0";
+        }
 
         if (EditSiteCodeId == "") {
-            $(".modal-body #peringatan3").text("Site Code harus diisi");
+            $(".modal-body #peringatan3").text("Site Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditSiteNameId == "") {
-            $(".modal-body #peringatan3").text("Site Name harus diisi");
+            $(".modal-body #peringatan3").text("Site Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditAddressId == "") {
-            $(".modal-body #peringatan3").text("Address harus diisi");
+            $(".modal-body #peringatan3").text("Address must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditCityId == "") {
-            $(".modal-body #peringatan3").text("City harus diisi");
+            $(".modal-body #peringatan3").text("City must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditPostalCodeId == "") {
-            $(".modal-body #peringatan3").text("Postal Code harus diisi");
+            $(".modal-body #peringatan3").text("Postal Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditTelephoneId == "") {
-            $(".modal-body #peringatan3").text("Telephone harus diisi");
+            $(".modal-body #peringatan3").text("Telephone must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Update Data: " + EditSiteCodeId + ' ( ' + EditSiteNameId + " ) ? ");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+
+
+                $.ajax({
+                    url: '@Url.Action("UpdateSite", "Setup")',
+                    type: 'post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        EditSiteCodeId: EditSiteCodeId,
+                        EditSiteNameId: EditSiteNameId,
+                        EditAddressId: EditAddressId,
+                        EditCityId: EditCityId,
+                        EditPostalCodeId: EditPostalCodeId,
+                        EditTelephoneId: EditTelephoneId,
+                        ActiveId: Aktif
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Sites","Setup")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please  Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            });
+            $('#btnno').click(function (e) {
+                $('#Alert4').modal('hide');
+            });
+            $("#Alert4").modal();
+        }
+    }
+
+    function UpdateSiteS(NoID, SiteCodeId, SiteNameId, AddressId, CityId, PostalCodeId, TelephoneId, Aktif) {
+        if (Aktif == "Y") {
+            $(".icheckbox_flat-green").addClass('checked');
+        }
+
+        $(".modal-body #EditSiteCodeId").val(SiteCodeId);
+        $(".modal-body #EditSiteNameId").val(SiteNameId);
+
+        $(".modal-body #EditAddressId").val(AddressId);
+        $(".modal-body #EditCityId").val(CityId);
+        $(".modal-body #EditPostalCodeId").val(PostalCodeId);
+        $(".modal-body #EditTelephoneId").val(TelephoneId);
+
+        $(".modal-body #NoID").val(NoID);
+
+        $("#editModal").modal();
+
     }
 
 </script>
@@ -119,17 +242,14 @@
                     </div>
                     <div class="x_content">
 
-                        <p class="headcontent">AssetTiger allows you to enter multiple Sites. For example, the Site may be a building or address. This means that you can better track each asset that is assigned to a given Site. A detailed Site makes it easy to find and count each asset.</p>
-
                         <p class="text-muted font-13 m-b-30">
                             <div class="mgbtm20">
                                 <a href="#" id="tambahsite" class="btn btn-success btn-cust">Add New Site</a>
                             </div>
                         </p>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
                                     <th width="9%">Site Code</th>
                                     <th>Site Name</th>
                                     <th>Address</th>
@@ -141,20 +261,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                               @foreach (var item in Model)
+                               {
                                 <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">BKS-UTR</a></td>
-                                    <td><a href="#">Bekasi Utara</a></td>
-                                    <td><a href="#">Bekasi Utara</a></td>
-                                    <td><a href="#">Bekasi</a></td>
-                                    <td><a href="#">17125</a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#">Yes</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.SiteCode)</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.SiteName)</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.Address)</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.City)</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.PostalCode)</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.Telephone)</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.bActive)</a></td>
                                     <td class="txtcenter">
-                                        <a href="#" id="editsite" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <button id="editlocationbutton" name="editsitebutton" type="button" class="btn btn-success" onclick="UpdateSiteS('@Html.DisplayFor(modelItem => item.Id)','@Html.DisplayFor(modelItem => item.SiteCode)','@Html.DisplayFor(modelItem => item.SiteName)','@Html.DisplayFor(modelItem => item.Address)','@Html.DisplayFor(modelItem => item.City)','@Html.DisplayFor(modelItem => item.PostalCode)','@Html.DisplayFor(modelItem => item.Telephone)','@Html.DisplayFor(modelItem => item.Aktif)')"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
                                     </td>
                                 </tr>
+                               }
                             </tbody>
                         </table>
                     </div>
@@ -266,7 +387,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Site Code</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditSiteCodeId" type="text" name="SiteCode" class="form-control col-md-10" value="Site Code" placeholder="Site Code" />
+                            <input id="NoId" type="hidden" name="NoId" value="" />
+                            <input id="EditSiteCodeId" type="text" name="SiteCode" class="form-control col-md-10" value="Site Code" placeholder="Site Code" readonly />
                         </div>
                     </div>
 

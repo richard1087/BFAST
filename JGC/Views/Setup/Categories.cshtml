@@ -1,4 +1,4 @@
-﻿
+﻿@model CORE.JGC.Models.MsAssetCategory[]
 @{
     ViewBag.Title = "Asset Categories";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,27 +7,133 @@
 <script type="text/javascript">
 
     function InputCategories() {
-        var CategoryId = document.getElementById("CategoryId").value;
+        var CategoryCode = document.getElementById("CategoryCode").value;
+        var CategoryName = document.getElementById("CategoryName").value;
 
-        if (CategoryId == "") {
-            $(".modal-body #peringatan3").text("Category harus diisi");
+        if (CategoryCode == "") {
+            $(".modal-body #peringatan3").text("Category Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         }
+        else if (CategoryName == "") {
+            $(".modal-body #peringatan3").text("Category Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            $.ajax({
+                url: '@Url.Action("InsertAssetCategory", "Setup")',
+                type: 'post',
+                cache: false,
+                async: true,
+                data: {
+                    AssetCategoryCodeId: CategoryCode,
+                    AssetCategoryNameId: CategoryName
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Categories","Setup")";
+                        })
+                        $("#Alert2").modal();
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Please Wait...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
+        }
+
     }
 
     function InputEditCategories() {
-        var EditCategoryId = document.getElementById("EditCategoryId").value;
+        var EditCategoryCode = document.getElementById("EditCategoryCode").value;
+        var EditCategoryName = document.getElementById("EditCategoryName").value;
 
-        if (EditCategoryId == "") {
-            $(".modal-body #peringatan3").text("Category harus diisi");
+        if (EditCategoryCode == "") {
+            $(".modal-body #peringatan3").text("Category Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         }
+        else if (EditCategoryName == "") {
+            $(".modal-body #peringatan3").text("Category Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Update Data: " + EditCategoryCode + ' ( ' + EditCategoryName + " ) ? ");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+
+
+                $.ajax({
+                    url: '@Url.Action("UpdateAssetCategory", "Setup")',
+                    type: 'post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        EditAssetCategoryCodeId: EditCategoryCode,
+                        EditAssetCategoryNameId: EditCategoryName
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Categories","Setup")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            });
+            $('#btnno').click(function (e) {
+                $('#Alert4').modal('hide');
+            });
+            $("#Alert4").modal();
+        }
+    }
+
+    function UpdateAssetCategoryS(NoID,CategoryCodeId, CategoryNameId) {
+      
+        $(".modal-body #EditCategoryCode").val(CategoryCodeId);
+        $(".modal-body #EditCategoryName").val(CategoryNameId);
+
+        $(".modal-body #NoID").val(NoID);
+
+        $("#editModal").modal();
+
     }
 
 </script>
@@ -49,54 +155,30 @@
                     </div>
                     <div class="x_content">
 
-                        <p class="headcontent">
-                            Add the type of groups of assets. To start with, commonly used categories have already been created for you. 
-                            Make them as broad or as specific as you want. 
-                            Categories can be 'laptops and printers', 'equipment', or 'chairs'. Customize to your particular need.
-                        </p>
-
                         <div class="col-md-12 col-sm-12 col-xs-12 text-muted font-13 m-b-30 no-padding">
                             <div class="mgbtm20">
                                 <a href="#" id="tambahcategory" class="btn btn-success btn-cust">Add New Asset Category</a>
                             </div>
                         </div>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
                                     <th width="11%">Category Code</th>
                                     <th>Category Name</th>
                                     <th style="width:9%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach (var item in Model)
+                            {
                                 <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">CAT0001</a></td>
-                                    <td><a href="#">Building improvements</a></td>
+                                    <td>@Html.DisplayFor(modelItem => item.AssetCategoryCode)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.AssetCategoryName)</td>
                                     <td class="txtcenter">
-                                        <a href="#" id="EditCategory" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <button id="editAssetCategorybutton" name="editAssetCategorybutton" type="button" class="btn btn-success" onclick="UpdateAssetCategoryS('@Html.DisplayFor(modelItem => item.Id)','@Html.DisplayFor(modelItem => item.AssetCategoryCode)','@Html.DisplayFor(modelItem => item.AssetCategoryName)')"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">CAT0002</a></td>
-                                    <td><a href="#">Building</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" id="EditCategory" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">CAT0003</a></td>
-                                    <td><a href="#">Computer equipment</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" id="EditCategory" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
+                            }
                             </tbody>
                         </table>
                     </div>
@@ -117,17 +199,17 @@
 
                 <form class="form-horizontal form-label-left">
 
-                    <div class="form-group mgb25">
-                        <label class="control-label col-md-12 col-sm-12 col-xs-12">
-                            If you want to add a new category of assets, you’re in the right spot. 
-                            Add a category for computer equipment, wireless keyboards, or any assets you’re working with.
-                        </label>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category Code</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" id="CategoryCode" name="CategoryCode" class="form-control col-md-10" value="" placeholder="Category Code"/>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category Name</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" id="CategoryId" name="Category" class="form-control col-md-10" value="Category" />
+                            <input type="text" id="CategoryName" name="CategoryName" class="form-control col-md-10" value="" placeholder="Category Name" />
                         </div>
                     </div>
 
@@ -166,16 +248,23 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category Code</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" id="EditCategoryId" name="Category" class="form-control col-md-10" value="Category" placeholder="Category" />
+                            <input id="NoId" type="hidden" name="NoId" value="" />
+                            <input type="text" id="EditCategoryCode" name="EditCategoryCode" class="form-control col-md-10" value="" placeholder="Category Code" readonly />
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category Name</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" id="EditCategoryName" name="EditCategoryName" class="form-control col-md-10" value="" placeholder="Category Name" />
+                        </div>
+                    </div>
                     <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
                         <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
-                            <button id="EditCategoryId" type="button" class="btn btn-primary" onclick="InputEditCategories(); return false;">Add</button>
+                            <button id="EditCategoryId" type="button" class="btn btn-primary" onclick="InputEditCategories(); return false;">Edit</button>
                             <button id="CancelCategoryId" type="button" class="btn btn-default">Cancel</button>
                         </div>
                     </div>

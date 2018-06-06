@@ -1,4 +1,4 @@
-﻿
+﻿@model CORE.JGC.Models.MsDepartment[]
 @{
     ViewBag.Title = "Departments";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,17 +11,51 @@
         var DepartmentNameId = document.getElementById("DepartmentNameId").value;
 
         if (DepartmentCodeId == "") {
-            $(".modal-body #peringatan3").text("Department Code harus diisi");
+            $(".modal-body #peringatan3").text("Department Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (DepartmentNameId == "") {
-            $(".modal-body #peringatan3").text("Department Name harus diisi");
+            $(".modal-body #peringatan3").text("Department Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
+        }
+        else {
+            $.ajax({
+                url: '@Url.Action("InsertDepartment", "Setup")',
+                type: 'post',
+                cache: false,
+                async: true,
+                data: {
+                    DepartmentCodeId: DepartmentCodeId,
+                    DepartmentNameId: DepartmentNameId
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Departments","Setup")";
+                        })
+                        $("#Alert2").modal();
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Please Wait...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
         }
     }
 
@@ -30,18 +64,69 @@
         var EditDepartmentNameId = document.getElementById("EditDepartmentNameId").value;
 
         if (EditDepartmentCodeId == "") {
-            $(".modal-body #peringatan3").text("Department Code harus diisi");
+            $(".modal-body #peringatan3").text("Department Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditDepartmentNameId == "") {
-            $(".modal-body #peringatan3").text("Department Name harus diisi");
+            $(".modal-body #peringatan3").text("Department Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Update Data: " + EditDepartmentCodeId + ' ( ' + EditDepartmentNameId + " ) ? ");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+
+
+                $.ajax({
+                    url: '@Url.Action("UpdateDepartment", "Setup")',
+                    type: 'post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        EditDepartmentCodeId: EditDepartmentCodeId,
+                        EditDepartmentNameId: EditDepartmentNameId
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Departments","Setup")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            });
+            $('#btnno').click(function (e) {
+                $('#Alert4').modal('hide');
+            });
+            $("#Alert4").modal();
+        }
+    }
+
+    function UpdateDepartmentS(NoID, DepartmentCodeId, DepartmentNameId) {
+        $(".modal-body #EditDepartmentCodeId").val(DepartmentCodeId);
+        $(".modal-body #EditDepartmentNameId").val(DepartmentNameId);
+        $(".modal-body #NoID").val(NoID);
+        $("#editModal").modal();
     }
 
 </script>
@@ -63,54 +148,30 @@
                     </div>
                     <div class="x_content">
 
-                        <p class="headcontent">
-                            Add departments that own or house the particular assets. 
-                            Make them as broad or as specific as you want. Departments can be 'Accounting', 'Marketing', or 'Executive'. 
-                            Customize to your particular need.
-                        </p>
-
                         <div class="col-md-12 col-sm-12 col-xs-12 text-muted font-13 m-b-30 no-padding">
                             <div class="mgbtm20">
                                 <a href="#" id="tambahdepartment" class="btn btn-success btn-cust">Add New Department</a>
                             </div>
                         </div>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
                                     <th width="11%">Department Code</th>
                                     <th>Department Name</th>
                                     <th style="width:9%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (var item in Model)
+                                {
                                 <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">DIV_ACCT</a></td>
-                                    <td><a href="#">DIVISI ACCOUNTING</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.DeptCode)</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.DeptName)</a></td>
                                     <td class="txtcenter">
-                                        <a href="#" id="editdepartment" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <button id="editlocationbutton" name="editsitebutton" type="button" class="btn btn-success" onclick="UpdateDepartmentS('@Html.DisplayFor(modelItem => item.Id)','@Html.DisplayFor(modelItem => item.DeptCode)','@Html.DisplayFor(modelItem => item.DeptName)');"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">DIV_FIN</a></td>
-                                    <td><a href="#">DIVISI FINANCE</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">DIV_HRD</a></td>
-                                    <td><a href="#">DIVISI HRD</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -189,7 +250,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Department Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="EditDepartmentCodeId" type="text" name="DepartmentCode" class="form-control col-md-10" value="Department Code" placeholder="Department Code" />
+                            <input id="NoId" type="hidden" name="NoId" value="" />
+                            <input id="EditDepartmentCodeId" type="text" name="DepartmentCode" class="form-control col-md-10" value="Department Code" placeholder="Department Code" readonly />
                         </div>
                     </div>
 

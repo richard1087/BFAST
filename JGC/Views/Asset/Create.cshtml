@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> 
-  
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -24,7 +24,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form class="form-horizontal form-label-left">
+                        <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Site Location, Category, and Departments</h3>
@@ -47,7 +47,7 @@
 
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Category</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <input list="Category" id="CategoryId" name="Category" class="form-control" placeholder="Select Category">
+                                    <input list="Category" id="AssetCategoryCode" name="Category" class="form-control" placeholder="Select Category">
                                     <datalist id="Category">
                                         @for (int i = 0; i < ViewBag.Category.Length; i++)
                                         {
@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <input list="location" id="LocationId" name="location" class="form-control" placeholder="Select a Location">
+                                    <input list="location" id="LocationCode" name="location" class="form-control" placeholder="Select a Location">
                                     <datalist id="location">
                                         @for (int i = 0; i < ViewBag.Location.Length; i++)
                                         {
@@ -77,7 +77,7 @@
 
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Department</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <input list="department" id="DepartmentId" name="department" class="form-control" placeholder="Select a Department">
+                                    <input list="department" id="DeptCode" name="department" class="form-control" placeholder="Select a Department">
                                     <datalist id="department">
                                         @for (int i = 0; i < ViewBag.Dept.Length; i++)
                                         {
@@ -99,17 +99,17 @@
                                 <div class="col-md-11 col-sm-11 col-xs-12">
                                     <input type="text" name="AssetTagID" class="form-control col-md-10" placeholder="Auto Generated" readonly />
                                 </div>
-                                
+
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Asset Name</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="text" id="AssetNameId" name="Asset Name" class="form-control col-md-10" placeholder="Asset Name" />
+                                    <input type="text" id="AssetName" name="Asset Name" class="form-control col-md-10" placeholder="Asset Name" />
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Supplier Name</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Supplier" id="SupplierId" name="SupplierName" class="form-control col-md-10" placeholder="Select Supplier Name">
+                                    <input list="Supplier" id="SupplierCode" name="SupplierName" class="form-control col-md-10" placeholder="Select Supplier Name">
                                     <datalist id="Supplier">
                                         @for (int i = 0; i < ViewBag.Suppliername.Length; i++)
                                         {
@@ -122,15 +122,15 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Purchase No</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="text" id="PurchaseNoId" name="PurchaseNo" class="form-control col-md-10" placeholder="Purchase No" />
+                                    <input type="text" id="PurchaseNo" name="PurchaseNo" class="form-control col-md-10" placeholder="Purchase No" />
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Brand</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Brand" id="BrandId" name="Brand" class="form-control col-md-10" placeholder="Select Brand">
+                                    <input list="Brand" id="AssetBrandCode" name="Brand" class="form-control col-md-10" placeholder="Select Brand">
                                     <datalist id="Brand">
                                         @for (int i = 0; i < ViewBag.BrandName.Length; i++)
                                         {
-                                            <option label='@ViewBag.BrandName[i].BrandName' value='@ViewBag.BrandName[i].BrancCode'></option>
+                                            <option label='@ViewBag.BrandName[i].BrandName' value='@ViewBag.BrandName[i].BrandCode'></option>
                                         }
                                     </datalist>
                                 </div>
@@ -145,7 +145,7 @@
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Model</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Model" id="ModelId" name="Model" class="form-control col-md-10" placeholder="Select Model">
+                                    <input list="Model" id="AssetModelCode" name="Model" class="form-control col-md-10" placeholder="Select Model">
                                     <datalist id="Model">
                                         @for (int i = 0; i < ViewBag.ModelName.Length; i++)
                                         {
@@ -158,18 +158,18 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Purchase Price</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="number" id="PriceId" name="Purchase Price" class="form-control col-md-10" placeholder="Purchase Price" />
+                                    <input type="number" id="PurchasePrice" name="Purchase Price" class="form-control col-md-10" placeholder="Purchase Price" />
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial No</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="text" id="SerialNoId" name="SerialNo" class="form-control col-md-10" placeholder="Serial No" />
+                                    <input type="text" id="AssetSerialNo" name="SerialNo" class="form-control col-md-10" placeholder="Serial No" />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Type" id="TypeId" name="Type" class="form-control" placeholder="Select Type">
+                                    <input list="Type" id="AssetTypeCode" name="Type" class="form-control" placeholder="Select Type">
                                     <datalist id="Type">
                                         @for (int i = 0; i < ViewBag.AssetType.Length; i++)
                                         {
@@ -179,7 +179,7 @@
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Currency</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Currency" id="CurrencyId" name="Currency" class="form-control col-md-10" placeholder="Select Currency">
+                                    <input list="Currency" id="CurrencyCode" name="Currency" class="form-control col-md-10" placeholder="Select Currency">
                                     <datalist id="Currency">
                                         @for (int i = 0; i < ViewBag.Currencyname.Length; i++)
                                         {
@@ -202,9 +202,9 @@
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Floor</label>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
-                                    <input type="number" id="FloorId" name="Floor" class="form-control col-md-10" placeholder="Floor" />
+                                    <input type="number" id="Floor" name="Floor" class="form-control col-md-10" placeholder="Floor" />
                                 </div>
-                                
+
                             </div>
 
                             <div class="form-group">
@@ -212,13 +212,13 @@
                                 <div class="col-md-5 col-sm-5 col-xs-12">
                                     <div class="checkbox">
                                         <label style="padding-left:0 !important">
-                                            <input id="ActiveId" type="checkbox" class="flat"> Yes
+                                            <input id="bActive" type="checkbox" class="flat"> Yes
                                         </label>
                                     </div>
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Warranty</label>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
-                                    <input type="number" id="WarrantyId" name="Warranty" class="form-control col-md-10" placeholder="Warranty" />
+                                    <input type="number" id="Warranty" name="Warranty" class="form-control col-md-10" placeholder="Warranty" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12" style="padding:0;"><label style="margin-top:7px;font-size:15px !important;">/ Month</label></div>
                             </div>
@@ -228,11 +228,11 @@
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <div class="checkbox">
                                         <label style="padding-left:0 !important">
-                                            <input id="CapitalizedId" type="checkbox" class="flat"> Yes
+                                            <input id="bCap" type="checkbox" class="flat"> Yes
                                         </label>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
 
                             <div class="form-group">
                                 <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Asset Photo</h3>
@@ -240,21 +240,21 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload Image</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    
+
                                     <input type="file" name="file" id="fileupload" class="btn btn-success btn-cust inputfile" />
                                     <label for="fileupload" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
                                 </div>
                             </div>
-                            
+
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
                                     <button class="btn btn-default" type="button">Cancel</button>
-                                    <button type="submit" class="btn btn-success" onclick="InputData(); return false;" >Submit</button>
+                                    <button type="submit" class="btn btn-success" onclick="InputData(); return false;">Submit</button>
                                 </div>
-                                
+
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>
@@ -334,7 +334,6 @@
     </div>
 </div>
 <!-- MODAL1 END -->
-
 <!-- MODAL2 START -->
 <div class="modal fade" id="categoryModal" role="dialog">
     <div class="modal-dialog">
@@ -350,7 +349,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Category</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="CategoryId" type="text" class="form-control" placeholder="Category">
+                            <input id="AssetCategoryCode" type="text" class="form-control" placeholder="Category">
                         </div>
                     </div>
                     <div class="form-group">
@@ -363,7 +362,7 @@
                     <div class="form-group">
                         <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
                             <button id="CategoryCancelId" type="button" class="btn btn-primary">Cancel</button>
-                            <button id="CategorySubmitId" type="submit" class="btn btn-success" onclick="InputDataCategory(); return false;" >Submit</button>
+                            <button id="CategorySubmitId" type="submit" class="btn btn-success" onclick="InputDataCategory(); return false;">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -372,7 +371,6 @@
     </div>
 </div>
 <!-- MODAL2 END -->
-
 <!-- MODAL3 START -->
 <div class="modal fade" id="locationModal" role="dialog">
     <div class="modal-dialog">
@@ -400,7 +398,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Location</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="LocationId" type="text" class="form-control" placeholder="Location">
+                            <input id="LocationCode" type="text" class="form-control" placeholder="Location">
                         </div>
                     </div>
                     <div class="form-group">
@@ -423,7 +421,7 @@
                     <div class="form-group">
                         <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
                             <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
-                            <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataLocation(); return false;" >Submit</button>
+                            <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataLocation(); return false;">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -432,7 +430,6 @@
     </div>
 </div>
 <!-- MODAL3 END -->
-
 <!-- MODAL4 START -->
 <div class="modal fade" id="departmentModal" role="dialog">
     <div class="modal-dialog">
@@ -461,7 +458,7 @@
                     <div class="form-group">
                         <div class="col-md-9 col-sm-10 col-xs-12 col-md-offset-3">
                             <button id="DepartmentCancelId" type="button" class="btn btn-primary">Cancel</button>
-                            <button id="DepartmentSubmitId" type="submit" class="btn btn-success" onclick="InputDataDepartment(); return false;" >Submit</button>
+                            <button id="DepartmentSubmitId" type="submit" class="btn btn-success" onclick="InputDataDepartment(); return false;">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -522,72 +519,95 @@
 </script>
 <script type="text/javascript">
     function InputData() {
-        var SiteId = document.getElementById("Sitecode").value;
-        var CategoryId = document.getElementById("CategoryId").value;
-        var LocationId = document.getElementById("LocationId").value;
-        var DepartmentId = document.getElementById("DepartmentId").value;
-        var AssetNameId = document.getElementById("AssetNameId").value;
-        var SupplierId = document.getElementById("SupplierId").value;
-        var PurchaseNoId = document.getElementById("PurchaseNoId").value;
-        var BrandId = document.getElementById("BrandId").value;
-        var PurchaseDate = document.getElementById("single_cal2").value;
-        var ModelId = document.getElementById("ModelId").value;
-        var PriceId = document.getElementById("PriceId").value;
-        var SerialNoId = document.getElementById("SerialNoId").value;
-        var TypeId = document.getElementById("TypeId").value;
-        var CompanyId = document.getElementById("CompanyId").value;
-        var CurrencyId = document.getElementById("CurrencyId").value;
-        var FloorId = document.getElementById("FloorId").value;
-        var WarrantyId = document.getElementById("WarrantyId").value;
-        var ActiveId = document.getElementById("ActiveId");
-        var CapitalizedId = document.getElementById("CapitalizedId");
-        var file = document.getElementById("fileupload").files[0];
-        //var Photo = document.getElementById("file").value;
-        //var ActiveId = document.getElementById("ActiveId").value;
+        var form = new FormData();
 
-        if (SiteId == "") {
+
+        var SiteCode = document.getElementById("Sitecode").value;
+        var AssetCategoryCode = document.getElementById("AssetCategoryCode").value;
+        var LocationCode = document.getElementById("LocationCode").value;
+        var DeptCode = document.getElementById("DeptCode").value;
+        var AssetName = document.getElementById("AssetName").value;
+        var SupplierCode = document.getElementById("SupplierCode").value;
+        var PurchaseNo = document.getElementById("PurchaseNo").value;
+        var AssetBrandCode = document.getElementById("AssetBrandCode").value;
+        var PurchaseDate = document.getElementById("single_cal2").value;
+        var AssetModelCode = document.getElementById("AssetModelCode").value;
+        var PurchasePrice = document.getElementById("PurchasePrice").value;
+        var AssetSerialNo = document.getElementById("AssetSerialNo").value;
+        var AssetTypeCode = document.getElementById("AssetTypeCode").value;
+        var CompanyID = document.getElementById("CompanyId").value;
+        var CurrencyCode = document.getElementById("CurrencyCode").value;
+        var Floor = document.getElementById("Floor").value;
+        var Warranty = document.getElementById("Warranty").value;
+        var bActive = document.getElementById("bActive");
+        var bCap = document.getElementById("bCap");
+        var file = document.getElementById("fileupload").files[0];
+        //var SiteId = document.getElementById("Sitecode").value;
+        //var AssetCategoryCode = document.getElementById("AssetCategoryCode").value;
+        //var LocationCode = document.getElementById("LocationCode").value;
+        //var DeptCode = document.getElementById("DeptCode").value;
+        //var AssetName = document.getElementById("AssetName").value;
+        //var SupplierCode = document.getElementById("SupplierCode").value;
+        //var PurchaseNo = document.getElementById("PurchaseNo").value;
+        //var AssetBrandCode = document.getElementById("AssetBrandCode").value;
+        //var PurchaseDate = document.getElementById("PurchaseDate").value;
+        //var AssetModelCode = document.getElementById("AssetModelCode").value;
+        //var PurchasePrice = document.getElementById("PurchasePrice").value;
+        //var AssetSerialNo = document.getElementById("AssetSerialNo").value;
+        //var AssetTypeCode = document.getElementById("AssetTypeCode").value;
+        //var CompanyId = document.getElementById("CompanyId").value;
+        //var CurrencyCode = document.getElementById("CurrencyCode").value;
+        //var Floor = document.getElementById("Floor").value;
+        //var Warranty = document.getElementById("Warranty").value;
+        //var bActive = document.getElementById("bActive");
+        //var bCap = document.getElementById("bCap");
+        //var file = document.getElementById("fileupload").files[0];
+        //var Photo = document.getElementById("file").value;
+        //var bActive = document.getElementById("bActive").value;
+
+        if (SiteCode == "") {
             $(".modal-body #peringatan3").text("Site harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (CategoryId == "") {
+        } else if (AssetCategoryCode == "") {
             $(".modal-body #peringatan3").text("Category harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (LocationId == "") {
+        } else if (LocationCode == "") {
             $(".modal-body #peringatan3").text("Location harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (DepartmentId == "") {
+        } else if (DeptCode == "") {
             $(".modal-body #peringatan3").text("Deoartment harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (AssetNameId == "") {
+        } else if (AssetName == "") {
             $(".modal-body #peringatan3").text("Asset Name harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (SupplierId == "") {
+        } else if (SupplierCode == "") {
             $(".modal-body #peringatan3").text("Supplier harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (PurchaseNoId == "") {
+        } else if (PurchaseNo == "") {
             $(".modal-body #peringatan3").text("Purchase No harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (BrandId == "") {
+        } else if (AssetBrandCode == "") {
             $(".modal-body #peringatan3").text("Brand harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
@@ -599,49 +619,49 @@
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (ModelId == "") {
+        } else if (AssetModelCode == "") {
             $(".modal-body #peringatan3").text("Model harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (PriceId == "") {
+        } else if (PurchasePrice == "") {
             $(".modal-body #peringatan3").text("Price harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (SerialNoId == "") {
+        } else if (AssetSerialNo == "") {
             $(".modal-body #peringatan3").text("Serial No harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (TypeId == "") {
+        } else if (AssetTypeCode == "") {
             $(".modal-body #peringatan3").text("Type harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (CompanyId == "") {
+        } else if (CompanyID == "") {
             $(".modal-body #peringatan3").text("Company harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (CurrencyId == "") {
+        } else if (CurrencyCode == "") {
             $(".modal-body #peringatan3").text("Currency harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (FloorId == "") {
+        } else if (Floor == "") {
             $(".modal-body #peringatan3").text("Floor harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (WarrantyId == "") {
+        } else if (Warranty == "") {
             $(".modal-body #peringatan3").text("Warranty harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
@@ -649,48 +669,72 @@
             $("#Alert3").modal();
         }
         else {
-            if (ActiveId.checked == true) {
-                ActiveId = "1";
+            if (bActive.checked == true) {
+                bActive = "1";
             }
-            else { ActiveId = "0"; }
-            if (CapitalizedId.checked == true) {
-                CapitalizedId = "1";
+            else { bActive = "0"; }
+            if (bCap.checked == true) {
+                bCap = "1";
             }
-            else { CapitalizedId = "0"; }
+            else { bCap = "0"; }
 
-            var fileName = file.name;
-            var fd = new FormData();
-            fd.append("Assetpic", file);
-            
+            //if (file == undefined) {
+            //    alert("Browser not supported!");
+            //}
+            //else {
+            //    var fd = new FormData();
+            //    fd.append("fileupload", file);
+            //}
+            form.append("AssetName", AssetName);
+            form.append("AssetModelCode", AssetModelCode);
+            form.append("AssetCategoryCode", AssetCategoryCode);
+            form.append("AssetSerialNo", AssetSerialNo);
+            form.append("AssetTypeCode", AssetTypeCode);
+            form.append("AssetBrandCode", AssetBrandCode);
+            form.append("bActive", bActive);
+            form.append("bCap", bCap);
+            form.append("Floor", Floor);
+            form.append("Warranty", Warranty);
+            form.append("Sitecode", SiteCode);
+            form.append("LocationCode", LocationCode);
+            form.append("PurchaseNo", PurchaseNo);
+            form.append("CurrencyCode", CurrencyCode);
+            form.append("PurchasePrice", PurchasePrice);
+            form.append("PurchaseDate", PurchaseDate);
+            form.append("SupplierCode", SupplierCode);
+            form.append("CompanyId", CompanyID);
+            form.append("DeptCode", DeptCode);
+            form.append("fileupload", file);
                 $.ajax({
                     url: '@Url.Action("InputData", "Asset")',
-                    type: 'post',
+                    type: 'POST',
                     contentType: false,
                     processData: false,
                     cache: false,
                     async: true,
-                    data: {
-                        site: SiteId,
-                        category: CategoryId,
-                        location: LocationId,
-                        departement: DepartmentId,
-                        assetname: AssetNameId,
-                        supplier: SupplierId,
-                        purchaseno: PurchaseNoId,
-                        brand: BrandId,
-                        purchasedateid: PurchaseDate,
-                        model: ModelId,
-                        price: PriceId,
-                        serialno: SerialNoId,
-                        type: TypeId,
-                        company: CompanyId,
-                        currency: CurrencyId,
-                        floor: FloorId,
-                        warranty: WarrantyId,
-                        cap: CapitalizedId,
-                        active: ActiveId,
-                        photo: Photo
-                    },
+                    data:form,
+                    //    {
+                    //    site: SiteId,
+                    //    category: AssetCategoryCode,
+                    //    location: LocationCode,
+                    //    departement: DeptCode,
+                    //    assetname: AssetName,
+                    //    supplier: SupplierCode,
+                    //    purchaseno: PurchaseNo,
+                    //    brand: AssetBrandCode,
+                    //    purchasedateid: PurchaseDate,
+                    //    model: AssetModelCode,
+                    //    price: PurchasePrice,
+                    //    serialno: AssetSerialNo,
+                    //    type: AssetTypeCode,
+                    //    company: CompanyId,
+                    //    currency: CurrencyCode,
+                    //    floor: Floor,
+                    //    warranty: Warranty,
+                    //    cap: bCap,
+                    //    active: bActive,
+                        
+                    //},
                     success: function (response) {
                         if (response.success) {
                             $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
@@ -717,8 +761,8 @@
                 });
         }
     }
-            
-    
+
+
 
     function InputDataSite() {
         var SiteId = document.getElementById("SiteId").value;
@@ -788,7 +832,7 @@
 
     function InputDataLocation() {
         var SiteId = document.getElementById("SiteId").value;
-        var LocationId = document.getElementById("LocationId").value;
+        var LocationCode = document.getElementById("LocationCode").value;
 
         if (SiteId == "") {
             $(".modal-body #peringatan3").text("Site harus diisi");
@@ -796,7 +840,7 @@
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (LocationId == "") {
+        } else if (LocationCode == "") {
             $(".modal-body #peringatan3").text("Location harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');

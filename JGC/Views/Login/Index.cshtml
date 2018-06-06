@@ -13,27 +13,56 @@
             </div>
             <!-- LOGO JGC END -->
             <!-- FORM LOGIN START -->
-            <form>
+            @using (Html.BeginForm())
+            {
+            @*<form>*@
                 <!-- <h1>Login JGC Asset</h1> -->
                 <div>
-                    <input type="text" class="form-control" placeholder="Username" required="" />
+                    <input id="Username" name="UserName" type="text" class="form-control" placeholder="Username" required="" />
                 </div>
                 <div>
-                    <input type="password" class="form-control" placeholder="Password" required="" />
+                    <input id="Password" name="Password" type="password" class="form-control" placeholder="Password" required="" />
                 </div>
                 <div>
-                    <a class="btn btn-default btn-block btn-logincustom submit" href="index.html">Login</a>
+                    <button id="loginbtn" name="loginbtn" type="submit" class="btn btn-default btn-block btn-logincustom submit">Login</button>
                     <a class="resetcustom" href="#">Lost your password?</a>
                 </div>
-                <div class="clearfix"></div>
-
+                
+                if (ViewBag.Error == "0")
+                {
+                <!-- ALERT START -->
                 <div class="alert alert-warning alert-dismissible" role="alert" id="alertlogin">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    Username or password is wrong
+                    UserName or Password wrong !!
                 </div>
-            </form>
+                <!-- ALERT END -->
+                }
+                else if (ViewBag.Error == "1")
+                {
+                <!-- ALERT START -->
+                <div class="alert alert-warning alert-dismissible" role="alert" id="alertlogin">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    Account is not Exists !!
+                </div>
+                <!-- ALERT END -->
+                }
+                else if (ViewBag.Error != null)
+                {
+                <!-- ALERT START -->
+                <div class="alert alert-warning alert-dismissible" role="alert" id="alertlogin">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    @ViewBag.Error
+                </div>
+                <!-- ALERT END -->
+                }
+            @*</form>*@
+            }
             <!-- FORM LOGIN END -->
         </section>
     </div>

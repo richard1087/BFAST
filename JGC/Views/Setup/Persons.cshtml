@@ -1,10 +1,104 @@
-﻿
+﻿@model CORE.JGC.Models.MsEmployee[]
 @{
     ViewBag.Title = "Persons";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <script type="text/javascript">
+    function Sites(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Site Code", "data": "0" },
+                    { "title": "Site Name", "data": "1" },
+                    { "title": "Address", "data": "2" },
+                    { "title": "City", "data": "3" },
+                    { "title": "Postal Code", "data": "4" },
+                    { "title": "Telephone", "data": "5" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupSite","Setup")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#SiteCode").val(d[0]);
+                $("#SiteName").val(d[1]);
+            }
+            else {
+                $("#EditSiteCode").val(d[0]);
+                $("#EditSiteName").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+
+    function Departement(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Dept Code", "data": "0" },
+                    { "title": "Dept Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupDepartement", "Setup")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#DepartementCode").val(d[0]);
+                $("#DepartementName").val(d[1]);
+            }
+            else {
+                $("#EditDepartementCode").val(d[0]);
+                $("#EditDepartementName").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+
+    function Location(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Location Code", "data": "0" },
+                    { "title": "Location Name", "data": "1" },
+                    { "title": "Site", "data": "2" },
+                    { "title": "Floor", "data": "3" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupLocation", "Setup")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#LocationCode").val(d[0]);
+                $("#LocationName").val(d[1]);
+            }
+            else {
+                $("#EditLocationCode").val(d[0]);
+                $("#EditLocationName").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+
+    function Sites(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Site Code", "data": "0" },
+                    { "title": "Site Name", "data": "1" },
+                    { "title": "Address", "data": "2" },
+                    { "title": "City", "data": "3" },
+                    { "title": "Postal Code", "data": "4" },
+                    { "title": "Telephone", "data": "5" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupSite","Setup")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#SiteCode").val(d[0]);
+                $("#SiteName").val(d[1]);
+            }
+            else {
+                $("#EditSiteCode").val(d[0]);
+                $("#EditSiteName").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+
 
     function InputPerson() {
         var FullnameId = document.getElementById("FullnameId").value;
@@ -12,58 +106,117 @@
         var TitleId = document.getElementById("TitleId").value;
         var PhoneId = document.getElementById("PhoneId").value;
         var EmailId = document.getElementById("EmailId").value;
-        var SiteId = document.getElementById("SiteId").value;
-        var LocationId = document.getElementById("LocationId").value;
-        var DepartmentId = document.getElementById("DepartmentId").value;
+        var NotesId = document.getElementById("NotesId").value;
+        var SiteCode = document.getElementById("SiteCode").value;
+        var LocationCode = document.getElementById("LocationCode").value;
+        var DepartmentCode = document.getElementById("DepartmentCode").value;
+        var Aktif = document.getElementById("ActiveId").value;
+
+        if (document.getElementById("ActiveId").checked) {
+            var Aktif = "1";
+        }
+        else {
+            var Aktif = "0";
+        }
 
         if (FullnameId == "") {
-            $(".modal-body #peringatan3").text("Full Name harus diisi");
+            $(".modal-body #peringatan3").text("Full Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EmployeeId == "") {
-            $(".modal-body #peringatan3").text("Employee harus diisi");
+            $(".modal-body #peringatan3").text("Employee must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (TitleId == "") {
-            $(".modal-body #peringatan3").text("Title harus diisi");
+            $(".modal-body #peringatan3").text("Title must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (NotesId == "") {
+            $(".modal-body #peringatan3").text("Notes must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (PhoneId == "") {
-            $(".modal-body #peringatan3").text("Phone harus diisi");
+            $(".modal-body #peringatan3").text("Phone must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EmailId == "") {
-            $(".modal-body #peringatan3").text("Email harus diisi");
+            $(".modal-body #peringatan3").text("Email must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (SiteId == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
+        } else if (SiteCode == "") {
+            $(".modal-body #peringatan3").text("Site must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (LocationId == "") {
-            $(".modal-body #peringatan3").text("Location harus diisi");
+        } else if (LocationCode == "") {
+            $(".modal-body #peringatan3").text("Location must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (DepartmentId == "") {
-            $(".modal-body #peringatan3").text("Department harus diisi");
+        } else if (DepartmentCode == "") {
+            $(".modal-body #peringatan3").text("Department must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
+        }
+        else {
+            $.ajax({
+                url: '@Url.Action("InsertEmployee", "Setup")',
+                type: 'post',
+                cache: false,
+                async: true,
+                data: {
+                    EmployeeId: EmployeeId,
+                    FullName: FullName,
+                    Title: TitleId,
+                    Phone: PhoneId,
+
+                    Email: EmailId,
+                    SiteCode: SiteCode,
+                    LocationCode: LocationCode,
+                    DeptCode: DeptCode,
+
+                    Notes: NotesId,
+                    DeptCode: DeptCode
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Locations","Setup")";
+                        })
+                        $("#Alert2").modal();
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Please Wait...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
         }
     }
 
@@ -73,58 +226,113 @@
         var EditTitleId = document.getElementById("EditTitleId").value;
         var EditPhoneId = document.getElementById("EditPhoneId").value;
         var EditEmailId = document.getElementById("EditEmailId").value;
-        var EditSiteId = document.getElementById("EditSiteId").value;
-        var EditLocationId = document.getElementById("EditLocationId").value;
-        var EditDepartmentId = document.getElementById("EditDepartmentId").value;
+        var NotesId = document.getElementById("EditNotesId").value;
+        var EditSiteCode = document.getElementById("EditSiteCode").value;
+        var EditLocationCode = document.getElementById("EditLocationCode").value;
+        var EditDepartmentCode = document.getElementById("EditDepartmentCode").value;
+        var EditAktif = document.getElementById("EditActiveId").value;
+
+        if (document.getElementById("EditActiveId").checked) {
+            var EditAktif = "1";
+        }
+        else {
+            var EditAktif = "0";
+        }
 
         if (EditFullnameId == "") {
-            $(".modal-body #peringatan3").text("Full Name harus diisi");
+            $(".modal-body #peringatan3").text("Full Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditEmployeeId == "") {
-            $(".modal-body #peringatan3").text("Employee harus diisi");
+            $(".modal-body #peringatan3").text("Employee must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditTitleId == "") {
-            $(".modal-body #peringatan3").text("Title harus diisi");
+            $(".modal-body #peringatan3").text("Title must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditPhoneId == "") {
-            $(".modal-body #peringatan3").text("Phone harus diisi");
+            $(".modal-body #peringatan3").text("Phone must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditEmailId == "") {
-            $(".modal-body #peringatan3").text("Email harus diisi");
+            $(".modal-body #peringatan3").text("Email must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (EditSiteId == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
+        } else if (EditSiteCode == "") {
+            $(".modal-body #peringatan3").text("Site must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (EditLocationId == "") {
-            $(".modal-body #peringatan3").text("Location harus diisi");
+        } else if (EditLocationCode == "") {
+            $(".modal-body #peringatan3").text("Location must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (EditDepartmentId == "") {
-            $(".modal-body #peringatan3").text("Department harus diisi");
+        } else if (EditDepartmentCode == "") {
+            $(".modal-body #peringatan3").text("Department must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
+        }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Update Data: " + EditFullnameId + ' ( ' + EditEmployeeId + " ) ? ");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+
+                $.ajax({
+                    url: '@Url.Action("UpdateEmployee", "Setup")',
+                    type: 'post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        EditLocationCodeId: EditLocationCodeId,
+                        EditLocationNameId: EditLocationNameId,
+                        EditSiteCode: EditSiteCode,
+                        EditFloorId: EditFloorId,
+                        EditActiveId: EditAktif
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Employee","Setup")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            });
+            $('#btnno').click(function (e) {
+                $('#Alert4').modal('hide');
+            });
+            $("#Alert4").modal();
         }
     }
 
@@ -147,68 +355,40 @@
                     </div>
                     <div class="x_content">
 
-                        <p class="headcontent">
-                            Manage the persons/employees you want in the database.
-                            After you add persons/employees, you can review reports and check assets in and out.
-                        </p>
-
                         <div class="col-md-12 col-sm-12 col-xs-12 text-muted font-13 m-b-30 no-padding">
                             <div class="mgbtm20">
                                 <a href="#" id="tambahperson" class="btn btn-success btn-cust">Add New Person / Employee</a>
                             </div>
                         </div>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
-                                    <th>Name</th>
-                                    <th>Employee ID</th>
-                                    <th>Job Title</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Site</th>
-                                    <th>Location</th>
-                                    <th>Department</th>
-                                    <th>Notes</th>
-                                    <th>Active</th>
+                                    <th style="width:9% !important;">@Html.Label("Employee ID")</th>
+                                    <th style="width:12% !important;">@Html.Label("Name")</th>
+                                    <th style="width:10% !important;">@Html.Label("Email")</th>
+                                    <th style="width:8% !important;">@Html.Label("Phone")</th>
+                                    <th style="width:10% !important;">@Html.Label("Site")</th>
+                                    <th style="width:10% !important;">@Html.Label("Location")</th>
+                                    <th style="width:12% !important;">@Html.Label("Dept")</th>
                                     <th style="width:9%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach (var item in Model)
+                            {
                                 <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">Erwin</a></td>
-                                    <td><a href="#">8912032</a></td>
-                                    <td><a href="#">Developer</a></td>
-                                    <td><a href="#">erwins@gmail.com</a></td>
-                                    <td><a href="#">082828923748</a></td>
-                                    <td><a href="#">Jakarta</a></td>
-                                    <td><a href="#">Jakarta 1</a></td>
-                                    <td><a href="#">IT</a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#">Yes</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" id="editperson" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <td>@Html.DisplayFor(modelItem => item.EmployeeId)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.SiteName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.LocationName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.DeptName)</td>
+                                    <td style="width:5% !important;text-align:center;">
+                                        <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick=""><span class="glyphicon glyphicon-edit"></span></button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">Hans</a></td>
-                                    <td><a href="#">8912033</a></td>
-                                    <td><a href="#">Developer</a></td>
-                                    <td><a href="#">hanss@gmail.com</a></td>
-                                    <td><a href="#">082828922829</a></td>
-                                    <td><a href="#">Jakarta</a></td>
-                                    <td><a href="#">Jakarta 1</a></td>
-                                    <td><a href="#">IT</a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#">Yes</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" id="editperson" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
+                            }
                             </tbody>
                         </table>
                     </div>
@@ -228,81 +408,84 @@
             <div class="modal-body col-md-12 col-sm-12 col-xs-12">
 
                 <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Employee ID</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input id="EmployeeId" type="text" name="EmployeeId" class="form-control col-md-10" placeholder="Employee ID" />
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Full Name</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="FullnameId" type="text" name="Full Name" class="form-control col-md-10" placeholder="Full Name" />
+                            <input id="FullnameId" type="text" name="FullnameId" class="form-control col-md-10" placeholder="Full Name" />
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Employee ID</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EmployeeId" type="text" name="Employee ID" class="form-control col-md-10" placeholder="Employee ID" />
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Title</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="TitleId" type="text" name="Title" class="form-control col-md-10" placeholder="Title" />
+                            <input id="TitleId" type="text" name="TitleId" class="form-control col-md-10" placeholder="Title" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Phone</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="PhoneId" type="number" name="Phone" class="form-control col-md-10" placeholder="Phone" />
+                            <input id="PhoneId" type="number" name="PhoneId" class="form-control col-md-10" placeholder="Phone" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Email</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EmailId" type="email" name="Email" class="form-control col-md-10" placeholder="Email" />
+                            <input id="EmailId" type="email" name="EmailId" class="form-control col-md-10" placeholder="Email" />
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Site</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="SiteId" list="Site" name="Site" class="form-control" placeholder="Select Site">
-                            <datalist id="Site">
-                                <option value="Site 1">
-                                <option value="Site 2">
-                                <option value="Site 3">
-                                <option value="Site 4">
-                                <option value="Site 5">
-                            </datalist>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="input-group">
+                                <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Location</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="LocationId" list="Location" name="Location" class="form-control" placeholder="Select Location">
-                            <datalist id="Location">
-                                <option value="Location 1">
-                                <option value="Location 2">
-                                <option value="Location 3">
-                                <option value="Location 4">
-                                <option value="Location 5">
-                            </datalist>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="input-group">
+                                <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Location('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Department</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="DepartmentId" list="Department" name="Department" class="form-control" placeholder="Select Department">
-                            <datalist id="Department">
-                                <option value="Department 1">
-                                <option value="Department 2">
-                                <option value="Department 3">
-                                <option value="Department 4">
-                                <option value="Department 5">
-                            </datalist>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Departement</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="input-group">
+                                <input class="form-control readonly" id="DepartementCode" name="DepartementCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="DepartementName" name="DepartementName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Departement('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
@@ -318,7 +501,7 @@
                         <div class="col-md-10 col-sm-10 col-xs-12">
                             <div class="checkbox">
                                 <label style="padding-left:0 !important">
-                                    <input id="ActiveId" type="checkbox" class="flat" value=""> Yes
+                                    <input id="ActiveId" name="ActiveId" type="checkbox" class="flat" value=""> Yes
                                 </label>
                             </div>
                         </div>
@@ -354,14 +537,14 @@
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Full Name</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditFullnameId" type="text" name="Full Name" class="form-control col-md-10" value="FullName" />
+                            <input id="EditFullnameId" type="text" name="EditFullnameId" class="form-control col-md-10" value="FullName" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Employee ID</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditEmployeeId" type="text" name="Employee ID" class="form-control col-md-10" value="Employee ID" placeholder="Employee ID" />
+                            <input id="EditEmployeeId" type="text" name="EditEmployeeId" class="form-control col-md-10" value="Employee ID" placeholder="Employee ID" />
                         </div>
                     </div>
 
@@ -382,56 +565,59 @@
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Email</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditEmailId" type="email" name="Email" class="form-control col-md-10" value="Email" placeholder="Email" />
+                            <input id="EditEmailId" type="email" name="EditEmailId" class="form-control col-md-10" value="Email" placeholder="Email" />
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Site</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditSiteId" list="Site" name="Site" class="form-control" placeholder="Select Site">
-                            <datalist id="Site">
-                                <option value="Site 1">
-                                <option value="Site 2">
-                                <option value="Site 3">
-                                <option value="Site 4">
-                                <option value="Site 5">
-                            </datalist>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="input-group">
+                                <input class="form-control readonly" id="EditSiteCode" name="EditSiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="EditSiteName" name="EditSiteName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Sites('2')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Location</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditLocationId" list="Location" name="Location" class="form-control" placeholder="Select Location">
-                            <datalist id="Location">
-                                <option value="Location 1">
-                                <option value="Location 2">
-                                <option value="Location 3">
-                                <option value="Location 4">
-                                <option value="Location 5">
-                            </datalist>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="input-group">
+                                <input class="form-control readonly" id="EditLocationCode" name="EditLocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="EditLocationName" name="EditLocationName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Location('2')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Department</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditDepartmentId" list="Department" name="Department" class="form-control" placeholder="Select Department">
-                            <datalist id="Department">
-                                <option value="Department 1">
-                                <option value="Department 2">
-                                <option value="Department 3">
-                                <option value="Department 4">
-                                <option value="Department 5">
-                            </datalist>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Departement</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="input-group">
+                                <input class="form-control readonly" id="EditDepartementCode" name="EditDepartementCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="EditDepartementName" name="EditDepartementName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Departement('2')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Notes</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <textarea id="EditNotesId" class="form-control" rows="3" placeholder="Notes"></textarea>
+                            <textarea id="EditNotesId" name="EditNotesId" class="form-control" rows="3" placeholder="Notes"></textarea>
                         </div>
                     </div>
 
@@ -440,7 +626,7 @@
                         <div class="col-md-10 col-sm-10 col-xs-12">
                             <div class="checkbox">
                                 <label style="padding-left:0 !important">
-                                    <input id="EditActiveId" type="checkbox" class="flat" value=""> Yes
+                                    <input id="EditActiveId" name="EditActiveId" type="checkbox" class="flat" value=""> Yes
                                 </label>
                             </div>
                         </div>
@@ -462,6 +648,7 @@
 </div>
 <!-- MODAL2 END -->
 
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")
 @Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
 

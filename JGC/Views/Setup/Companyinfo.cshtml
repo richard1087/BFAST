@@ -1,4 +1,4 @@
-﻿
+﻿@model CORE.JGC.Models.MsCompany[]
 @{
     ViewBag.Title = "List Company";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,46 +21,40 @@
                     </div>
                     <div class="x_content">
 
-                        <!--<p class="headcontent">
-                            Add departments that own or house the particular assets.
-                            Make them as broad or as specific as you want. Departments can be 'Accounting', 'Marketing', or 'Executive'.
-                            Customize to your particular need.
-                        </p>-->
-
                         <div class="col-md-12 col-sm-12 col-xs-12 text-muted font-13 m-b-30 no-padding">
                             <div class="mgbtm20">
                                 <a href="/setup/createcompany" class="btn btn-success btn-cust">Add New Company</a>
                             </div>
                         </div>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
-                                    <th width="9%">Company Code</th>
-                                    <th>Company Name</th>
-                                    <th>Address</th>
-                                    <th>City</th>
-                                    <th>Province</th>
-                                    <th>Postal Code</th>
-                                    <th>Telephone</th>
+                                    <th style="width:9% !important;">@Html.Label("Company Code")</th>
+                                    <th style="width:15% !important;">@Html.Label("Company Name")</th>
+                                    <th style="width:20% !important;">@Html.Label("Address")</th>
+                                    <th style="width:9% !important;">@Html.Label("City")</th>
+                                    <th style="width:10% !important;">@Html.Label("Province")</th>
+                                    <th style="width:5% !important;">@Html.Label("Postal Code")</th>
+                                    <th style="width:10% !important;">@Html.Label("Telephone")</th>
                                     <th style="width:9%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach (var item in Model)
+                            {
                                 <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">JGC</a></td>
-                                    <td><a href="#">PT. JGC INDONESIA</a></td>
-                                    <td><a href="#">Jl. TB Simatupang 7-B, RT.1/RW.2, Cilandak Barat, Cilandak, RT.1/RW.2, Cilandak Bar, Cilandak</a></td>
-                                    <td><a href="#">Jakarta</a></td>
-                                    <td><a href="#">DKI Jakarta</a></td>
-                                    <td><a href="#">12430 </a></td>
-                                    <td><a href="#">(021) 7514429</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <td>@Html.DisplayFor(modelItem => item.CompanyCode)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.CompanyName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.City)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Province)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.PostalCode)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Telephone)</td>
+                                    <td style="width:5% !important;text-align:center;">
+                                        <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick=""><span class="glyphicon glyphicon-edit"></span></button>
                                     </td>
                                 </tr>
+                            }
                             </tbody>
                         </table>
                     </div>

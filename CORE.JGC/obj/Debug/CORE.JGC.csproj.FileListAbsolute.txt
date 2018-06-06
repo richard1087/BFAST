@@ -1,66 +1,154 @@
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\CORE.JGC.dll.config
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\CORE.JGC.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\CORE.JGC.pdb
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\EntityFramework.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\EntityFramework.SqlServer.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\Newtonsoft.Json.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\Owin.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.Helpers.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.Mvc.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.Razor.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\EntityFramework.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\EntityFramework.SqlServer.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\Newtonsoft.Json.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.Helpers.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.Mvc.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.Razor.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\obj\Debug\CORE.JGC.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\CORE.JGC\obj\Debug\CORE.JGC.pdb
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\CORE.JGC.dll.config
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\CORE.JGC.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\CORE.JGC.pdb
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\EntityFramework.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\EntityFramework.SqlServer.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\Newtonsoft.Json.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\Owin.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.Helpers.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.Mvc.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.Razor.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\EntityFramework.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\EntityFramework.SqlServer.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\Newtonsoft.Json.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.Helpers.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.Mvc.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.Razor.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\obj\Debug\CORE.JGC.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\obj\Debug\CORE.JGC.pdb
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\itextsharp.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\UnityEngine.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\CORE.JGC\bin\Debug\itextsharp.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.dll.config
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.pdb
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.SqlServer.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.Web.Infrastructure.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Newtonsoft.Json.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Owin.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Helpers.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Mvc.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Razor.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.SqlServer.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Newtonsoft.Json.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Helpers.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Mvc.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Razor.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.dll
+F:\Hans\JGC-3-master\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.pdb
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.dll.config
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.pdb
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.SqlServer.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Newtonsoft.Json.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Owin.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Helpers.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Mvc.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Razor.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.SqlServer.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\Newtonsoft.Json.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Helpers.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Mvc.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Razor.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.dll
+D:\TEST\JGC_VER_2_REV_3\JGC Dataku\JGC-3-master\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.pdb
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.dll.config
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.pdb
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.SqlServer.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\Newtonsoft.Json.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\Owin.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Helpers.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Mvc.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Razor.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.SqlServer.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\Newtonsoft.Json.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Helpers.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Mvc.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Razor.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.pdb
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_9\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.dll.config
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.pdb
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.SqlServer.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\Newtonsoft.Json.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\Owin.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Helpers.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Mvc.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Razor.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.SqlServer.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\Newtonsoft.Json.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Helpers.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Mvc.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Razor.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.dll
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.pdb
+D:\Fandy\Fandy PC\PROJEK\CompanyProject\JGC\JGC_3_REV_10\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\obj\Debug\CORE.JGC.pdb
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.dll.config
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\CORE.JGC.pdb
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.SqlServer.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\itextsharp.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\Newtonsoft.Json.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\Owin.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Helpers.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Mvc.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Razor.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\EntityFramework.SqlServer.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\itextsharp.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\Newtonsoft.Json.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Helpers.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Mvc.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.Razor.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Project\JGC\JGC_3_REV_11\JGC-3-master\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
 D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\CORE.JGC.dll.config
 D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\CORE.JGC.dll
 D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\CORE.JGC.pdb
@@ -78,7 +166,6 @@ D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\System.Web.Razor.dll
 D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.dll
 D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.dll
 D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\UnityEngine.dll
 D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\EntityFramework.xml
 D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\EntityFramework.SqlServer.xml
 D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\itextsharp.xml

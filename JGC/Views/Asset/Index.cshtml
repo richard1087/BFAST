@@ -1,5 +1,5 @@
 ﻿
-@model CORE.JGC.Models.Ms_Asset[]
+@model CORE.JGC.Models.MsAsset[]
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -53,10 +53,9 @@
                                 </div>-->
                             </div>
                         </p>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
                                     <th>Asset Photo</th>
                                     <th>Asset Tag ID</th>
                                     <th>Asset Name</th>
@@ -71,7 +70,6 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td><input type="checkbox" class="checks"></td>
                                         <td align="center"><img src='data:image/jpeg;base64,@Html.DisplayFor(modelItem => item.Photo)' /></td>
                                         <td><a href="#" id="assetmodel">@Html.DisplayFor(modelItem => item.AssetCode)</a></td>
                                         <td><a href="#">@Html.DisplayFor(modelItem => item.AssetName)</a></td>

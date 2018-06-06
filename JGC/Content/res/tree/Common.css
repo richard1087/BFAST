@@ -1,0 +1,9 @@
+﻿.Error {
+    border: 1px solid #f00 !important;
+}
+.ErrorText {
+    color:red;
+}
+.InputGroupError {
+    margin-bottom:0px !important;
+}

@@ -1,0 +1,73 @@
+﻿@model CORE.JGC.Models.MsUsers[]
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Advanced •
+                            <a href="/setup/users" class="activemenu">Users</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>User List</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-muted font-13 m-b-30 no-padding">
+                            <div class="mgbtm20">
+                                <a href="/setup/createusers" class="btn btn-success btn-cust">Add New</a>
+                            </div>
+                        </div>
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
+                            <thead>
+                                <tr>
+                                    <th style="width:10% !important;">@Html.Label("UserName")</th>
+                                    <th style="width:13% !important;">@Html.Label("Name")</th>
+                                    <th style="width:15% !important;">@Html.Label("Email")</th>
+                                    <th style="width:15% !important;">@Html.Label("Address")</th>
+                                    <th style="width:9% !important;">@Html.Label("Dept")</th>
+                                    <th style="width:10% !important;">@Html.Label("Location")</th>                                    
+                                    <th style="width:9%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                { 
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.DeptName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.LocationName)</td>
+                                    <td style="width:5% !important;text-align:center;">
+                                        <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick=""><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
+
+<script type="text/javascript">
+    $("#check-all").click(function () {
+        $(".checks").prop('checked', $(this).prop('checked'));
+    });
+</script>

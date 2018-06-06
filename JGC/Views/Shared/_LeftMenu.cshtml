@@ -19,165 +19,71 @@
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
                         <ul class="nav side-menu">
+                            <li>
+                                <a><i class="fa fa-cog"></i> Utilization<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li id="Menu" class="Rmv"><a href="/utilization/menu">Menu</a></li>
+                                    <li id="Role" class="Rmv"><a href="/utilization/role">Role</a></li>
+                                    <li id="Access" class="Rmv"><a href="/utilization/access">Access</a></li>
+                                    <li id="Users" class="Rmv"><a href="/utilization/users">Users</a></li>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                        <ul class="nav-util"></ul>
+                        <ul class="nav side-menu">
                             <li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
-                            <!--<li> 
-                               <a><i class="fa fa-flag"></i> Alerts <span class="fa fa-chevron-down"></span></a>
-                               <ul class="nav child_menu">
-                                   <li><a href="/alerts/assetpastdue">Assets Past Due <span class="badge bg-blue-sky pull-right">5</span></a></li>
-                                   <li><a href="/alerts/leasesexpiring">Leases Expiring <span class="badge bg-blue-sky pull-right">7</span></a></li>
-                                   <li><a href="/alerts/maintenancedue">Maintenance Due <span class="badge bg-blue-sky pull-right">8</span></a></li>
-                                   <li><a href="/alerts/warrantiesexpiring">Warranties Expiring <span class="badge bg-blue-sky pull-right">9</span></a></li>
-                               </ul>
-                            </li>-->
                             <li>
                                 <a><i class="fa fa-barcode"></i> Assets <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/asset">List of Assets</a></li>
-                                    <li><a href="/asset/checkout">Check Out</a></li>
-                                    <li><a href="/asset/checkin">Check In</a></li>
-                                    <!--<li><a href="/asset/lease">Lease</a></li>
-                                    <li><a href="/asset/leasereturn">Lease Return</a></li>-->
-                                    <li><a href="/asset/dispose">Dispose</a></li>
-                                    <li><a href="/asset/move">Asset Transfer</a></li>
-                                    <li><a href="/asset/assetpastdue">Assets Past Due</a></li>
-                                    <li><a href="/asset/maintenancedue">Maintenance</a></li>
-                                    <li><a href="/asset/warrantiesexpiring">Warranties Expiring</a></li>
+                                    <li id="MasterAsset" class="Rmv"><a href="/asset">List of Assets</a></li>
+                                    <li id="TranCheckOut" class="Rmv"><a href="/asset/checkout">Check Out</a></li>
+                                    <li id="TranCheckIn" class="Rmv"><a href="/asset/checkin">Check In</a></li>
+                                    <li id="TranAssetDispose" class="Rmv"><a href="/asset/dispose">Dispose</a></li>
+                                    <li id="TranAssetTransfer" class="Rmv"><a href="/asset/move">Asset Transfer</a></li>
+                                    <li id="TransAssetMaintenance" class="Rmv"><a href="/asset/maintenancedue">Asset Maintenance</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/reports/customreports">Annual Activity</a></li>
-                                    <li><a href="/reports/customreports">Depreciation Summary</a></li>
-                                    <li><a href="/reports/customreports">Fixed Asset Summary/Register</a></li>
-                                    <li><a href="/reports/customreports">Annual Projection</a></li>
-                                    <li><a href="/reports/customreports">Property Tax-Summary & Detail Report</a></li>
-                                    <!--<li><a href="/reports/customreports">Custom Reports</a></li>
-                                    <li>
-                                        <a>Assets Reports<span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="/reports/assettag">by Asset Tag</a></li>
-                                            <li><a href="/reports/assettagpict">by Tag with Pictures</a></li>
-                                            <li><a href="/reports/assetcategory">by Category</a></li>
-                                            <li><a href="/reports/assetsite">by Site / Location</a></li>
-                                            <li><a href="/reports/assetdepartment">by Department</a></li>
-                                            <li><a href="/reports/assetwarranty">by Warranty Info</a></li>
-                                            <li><a href="/reports/assetlinked">by Linked Assets</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a>Audit Reports<span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="/reports/auditasset">by Asset Tag</a></li>
-                                            <li><a href="/reports/auditdate">by Audit Date</a></li>
-                                            <li><a href="/reports/auditsite">by Site / Location</a></li>
-                                            <li><a href="/reports/nonauditasset">Non-Audited Assets</a></li>
-                                            <li><a href="/reports/locationdiscrepancy">Location Discrepancy</a></li>
-                                            <li><a href="/reports/auditfunding">by Funding</a></li>
-                                            <li><a href="/reports/nonauditfunding">Non-Audited Funding</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a>Check-out Reports<span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="/reports/checkoutperson">by Person / Employee</a></li>
-                                            <li><a href="/reports/checkouttag">by Asset Tag</a></li>
-                                            <li><a href="/reports/checkoutduedate">by Due Date</a></li>
-                                            <li><a href="/reports/checkoutpastdue">by Past Due</a></li>
-                                            <li><a href="/reports/checkoutsite">by Site / Location</a></li>
-                                            <li><a href="/reports/checkoutintime">in a Time Frame</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a>Leased Asset Reports<span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="/reports/leasedcustomer">by Customer</a></li>
-                                            <li><a href="/reports/leasedtag">by Asset Tag</a></li>
-                                            <li><a href="/reports/leasedduedate">by Due Date</a></li>
-                                            <li><a href="/reports/leasedpastdue">by Past Due</a></li>
-                                            <li><a href="/reports/leasedintime">in a Time Frame</a></li>
-                                        </ul>
-                                    </li>-->
-                                    <!--<li>
-                                        <a>Maintenance Reports<span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="/reports/maintenancetag">by Asset Tag</a></li>
-                                            <li><a href="/reports/maintenanceperson">by Assigned Person</a></li>
-                                            <li><a href="/reports/maintenancehistorytag">History by Asset Tag</a></li>
-                                            <li><a href="/reports/maintenancehistorydate">History by Date</a></li>
-                                            <li><a href="/reports/maintenancepastdue">Past Due</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a>Status Reports<span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="/reports/statusunderrepair">Asset Under Repair</a></li>
-                                            <li><a href="/reports/statusbroken">Broken Assets</a></li>
-                                            <li><a href="/reports/statusdisposed">Disposed Assets</a></li>
-                                            <li><a href="/reports/statusdonated">Donated Assets</a></li>
-                                            <li><a href="/reports/statusleased">Leased Assets</a></li>
-                                            <li><a href="/reports/statuslost">Lost / Missing Assets</a></li>
-                                            <li><a href="/reports/statussold">Sold Assets</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a>Other Reports<span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="/reports/othercustomer">Customer List</a></li>
-                                            <li><a href="/reports/othercategory">Category List</a></li>
-                                            <li><a href="/reports/otherdepartment">Department List</a></li>
-                                            <li><a href="/reports/otheremployee">Person / Employee List</a></li>
-                                            <li><a href="/reports/othersite">Site / Location List</a></li>
-                                        </ul>
-                                    </li>-->
+                                    <li id="RptAssetPastDue" class="Rmv"><a href="/asset/assetpastdue">Assets Past Due</a></li>
+                                    <li id="RptWarrantiesExpiring" class="Rmv"><a href="/asset/warrantiesexpiring">Warranties Expiring</a></li>
+                                    <li id="RptAnnualActivity" class="Rmv"><a href="/reports/customreports">Annual Activity</a></li>
+                                    <li id="RptDepreciationSummary" class="Rmv"><a href="/reports/customreports">Depreciation Summary</a></li>
+                                    <li id="RptFixAssetSummary" class="Rmv"><a href="/reports/customreports">Fixed Asset Summary/Register</a></li>
+                                    <li id="RptAnnualProjection" class="Rmv"><a href="/reports/customreports">Annual Projection</a></li>
+                                    <li id="RptPropertyTax" class="Rmv"><a href="/reports/customreports">Property Tax-Summary & Detail Report</a></li>
+                                    
                                 </ul>
                             </li>
                             <li>
                                 <a><i class="fa fa-wrench"></i> Tools <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/tools/import">Import</a></li>
-                                    <li><a href="/tools/export">Export</a></li>
-                                    <!--<li><a href="/tools/documentsgallery">Documents Gallery</a></li>
-                                    <li><a href="/tools/imagegallery">Image Gallery</a></li>-->
-                                    <li><a href="/tools/audit">Audit</a></li>
+                                    <li id="Import" class="Rmv"><a href="/tools/import">Import</a></li>
+                                    <li id="Export" class="Rmv"><a href="/tools/export">Export</a></li>
+                                    <li id="Audit" class="Rmv"><a href="/tools/audit">Audit</a></li>
                                 </ul>
                             </li>
-                            @*<li>
-                                <a><i class="fa fa-briefcase"></i> Advanced <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <!--<li><a href="/advanced/persons">Persons/Employees</a></li>-->
-                                    <!--<li><a href="/advanced/customers">Customers</a></li>-->
-                                    <li><a href="/advanced/users">Users</a></li>
-                                    <!--<li><a href="/advanced/securitygroups">Security Groups</a></li>-->
-                                </ul>
-                            </li>*@
                             <li>
                                 <a><i class="fa fa-gear"></i> Setup <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/setup/companyinfo">Company Info</a></li>
-                                    <li><a href="/setup/persons">Persons/Employees</a></li>
-                                    <li><a href="/setup/sites">Sites</a></li>
-                                    <li><a href="/setup/suppliers">Suppliers</a></li>
-                                    <li><a href="/setup/locations">Locations</a></li>
-                                    <li><a href="/setup/assetbrand">Asset Brands</a></li>
-                                    <li><a href="/setup/categories">Asset Categories</a></li>
-                                    <li><a href="/setup/assetmodel">Asset Model</a></li>
-                                    <li><a href="/setup/assettypes">Asset Types</a></li>
-                                    <li><a href="/setup/assetstatus">Asset Status</a></li>
-                                    <li><a href="/setup/departments">Departments</a></li>
-                                    <li><a href="/setup/exchangerate">Exchange Rate</a></li>
-                                    <li><a href="/setup/currencies">Currencies</a></li>
-                                    <li><a href="/setup/types">Types</a></li>
-                                    <li><a href="/setup/status">Status</a></li>
-                                    <li><a href="/setup/Autonumber">Auto Number</a></li>
-                                    <li><a href="/setup/barcode">Barcode</a></li>
-                                    <li><a href="/setup/users">Users</a></li>
-                                    <!--<li><a href="/setup/database">Database</a></li>
-                                    <li><a href="/setup/tableoptions">Table Options</a></li>
-                                    <li><a href="/setup/options">Options</a></li>-->
+                                    <li id="MasterCompany" class="Rmv"><a href="/setup/companyinfo">Company Info</a></li>
+                                    <li id="MasterEmployee" class="Rmv"><a href="/setup/persons">Persons/Employees</a></li>
+                                    <li id="MasterSite" class="Rmv"><a href="/setup/sites">Sites</a></li>
+                                    <li id="MasterSupplier" class="Rmv"><a href="/setup/suppliers">Suppliers</a></li>
+                                    <li id="MasterLocation" class="Rmv"><a href="/setup/locations">Locations</a></li>
+                                    <li id="MasterBrand" class="Rmv"><a href="/setup/assetbrand">Asset Brand</a></li>
+                                    <li id="MasterCategories" class="Rmv"><a href="/setup/categories">Asset Categories</a></li>
+                                    <li id="MasterModel" class="Rmv"><a href="/setup/assetmodel">Asset Model</a></li>
+                                    <li id="MasterAssetType" class="Rmv"><a href="/setup/assettypes">Asset Types</a></li>
+                                    <li id="MasterAssetStatus" class="Rmv"><a href="/setup/assetstatus">Asset Status</a></li>
+                                    <li id="MasterDepartment" class="Rmv"><a href="/setup/departments">Departments</a></li>
+                                    <li id="MasterExchangeRate" class="Rmv"><a href="/setup/exchangerate">Exchange Rate</a></li>
+                                    <li id="MasterCurrency" class="Rmv"><a href="/setup/currencies">Currencies</a></li>
+                                    <li id="MasterBarcode" class="Rmv"><a href="/setup/barcode">Barcode</a></li>
                                 </ul>
                             </li>
-                            <!--<li><a href="#"><i class="fa fa-tags"></i> My Asset Tags</a></li>-->
                         </ul>
                     </div>
                 </div>
@@ -201,3 +107,21 @@
             </div>
         </div>
         <!-- LEFT END -->
+        <script type="text/javascript">
+            $.ajax({
+                url: '@Url.Action("Master", "Menu")',
+                type: 'post',
+                cache: false,
+                async: true,
+                success: function (response) {
+                    $.each(response, function (k, v)
+                    {
+                        $("#sidebar-menu").find("#" + v.MenuID).removeClass("Rmv");
+                    })
+                    $(".Rmv").remove();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("Mohon Tunggu...");
+                }
+            });
+        </script>

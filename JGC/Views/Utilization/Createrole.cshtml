@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Create Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- PAGE CONTENT START -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Utilization •
+                            <a href="/utilization/role">Role</a> •
+                            <a href="/utilization/createrole" class="activemenu">Create</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>Konfigurasi Utilisasi Roles</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content utlisasimenutable">
+                        <form class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Kode Roles</label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Kode Roles" id="RoleID" name="RoleID" maxlength="30">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Nama Roles</label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Nama Roles" id="RoleName" name="RoleName" maxlength="100">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12"></label>
+                                <div class="col-md-11 col-sm-11 col-xs-12">
+                                    <div class="checkbox">
+                                        <label class="checkpadd0" style="padding:0 !important">
+                                            <input type="checkbox" class="flat" id="bAktif" name="bAktif"> Aktif
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ln_solid ln_solidform"></div>
+                            <div class="form-group">
+                                <div class="col-md-11 col-sm-11 col-xs-12 col-md-offset-1">
+                                    <button type="submit" class="btn btn-success" onclick="Create()">Simpan</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT END -->
+
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")

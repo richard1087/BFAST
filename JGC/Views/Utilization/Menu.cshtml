@@ -1,0 +1,63 @@
+﻿@model CORE.JGC.Models.UtilMenu[]
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Utilization •
+                            <a href="/utilization/menu" class="activemenu">Menu</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>Configuration Utilization Menu</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <p class="text-muted font-13 m-b-30">
+                            <div class="mgbtm20">
+                                <a href="/utilization/createmenu" id="tambahsite" class="btn btn-success btn-cust">Add New Menu</a>
+                            </div>
+                        </p>
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
+                            <thead>
+                                <tr>
+                                    <th style="width:10% !important;">@Html.Label("Menu Code")</th>
+                                    <th style="width:14% !important;">@Html.Label("Name")</th>
+                                    <th style="width:16% !important;">@Html.Label("Path")</th>
+                                    <th style="width:5% !important;">@Html.Label("Level Menu")</th>
+                                    <th style="width:10% !important;">@Html.Label("Parent Menu")</th>                                    
+                                    <th style="width:5%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model)
+                                { 
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.MenuCode)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MenuName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MenuPath)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.LevelMenu)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ParentMenu)</td>
+                                        <td style="width:5% !important;text-align:center;">
+                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick=""><span class="glyphicon glyphicon-edit"></span></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
