@@ -2,51 +2,217 @@
     ViewBag.Title = "Create Maintenance";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <script type="text/javascript">
+    function Asset() {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Asset Code", "data": "0" },
+                    { "title": "Asset Name", "data": "1" },
+                    { "title": "Serial No", "data": "2" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupAssetMaintenance", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            $("#AssetCode").val(d[0]);
+            $("#AssetName").val(d[1]);
+            $("#AssetSerialNo").val(d[2]);
+            $('#Lookup').modal('hide');
+        });
+    }
 
-        function InputMaintenance() {
-            var StatusId = document.getElementById("StatusId").value;
-            var TypeId = document.getElementById("TypeId").value;
-            var AssignToId = document.getElementById("AssignToId").value;
-            var DamageId = document.getElementById("DamageId").value;
-            var CostId = document.getElementById("CostId").value;
+    function AddAsset() {
+        var AssetCode = document.getElementById("AssetCode").value;
+        var AssetName = document.getElementById("AssetName").value;
+        var AssetSerialNo = document.getElementById("AssetSerialNo").value;
 
-            if (StatusId == "") {
-                $(".modal-body #peringatan3").text("Status harus diisi");
-                $('#btnerror').click(function (e) {
-                    $('#Alert3').modal('hide');
-                })
-                $("#Alert3").modal();
-            } else if (TypeId == "") {
-                $(".modal-body #peringatan3").text("Type harus diisi");
-                $('#btnerror').click(function (e) {
-                    $('#Alert3').modal('hide');
-                })
-                $("#Alert3").modal();
-            } else if (AssignToId == "") {
-                $(".modal-body #peringatan3").text("Assign To harus diisi");
-                $('#btnerror').click(function (e) {
-                    $('#Alert3').modal('hide');
-                })
-                $("#Alert3").modal();
-            } else if (DamageId == "") {
-                $(".modal-body #peringatan3").text("Damage harus diisi");
-                $('#btnerror').click(function (e) {
-                    $('#Alert3').modal('hide');
-                })
-                $("#Alert3").modal();
-            } else if (CostId == "") {
-                $(".modal-body #peringatan3").text("Cost harus diisi");
-                $('#btnerror').click(function (e) {
-                    $('#Alert3').modal('hide');
-                })
-                $("#Alert3").modal();
-            }
+        if (AssetCode == "") {
+            $(".modal-body #peringatan3").text("Asset Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetName == "") {
+            $(".modal-body #peringatan3").text("Asset Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetSerialNo == "") {
+            $(".modal-body #peringatan3").text("Serial No must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
         }
+        else {
+            $.ajax({
+                url: '@Url.Action("AddAssetMaintenance", "Asset")',
+                type: 'Post',
+                cache: false,
+                async: true,
+                data: {
+                    AssetCode: AssetCode,
+                    AssetName: AssetName,
+                    AssetSerialNo: AssetSerialNo
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Createmaintenance","Asset")";
+                        })
+                        $("#Alert2").modal();
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Please Wait...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
+        }
+    }
+    function DeleteAsset(AssetCode) {
+
+        $(".modal-body #peringatan4").text("Anda You Sure Delete Asset Code " + AssetCode  + " ?");
+        $('#btnyes').click(function (e) {
+            $('#Alert4').modal('hide');
+            $.ajax({
+                url: '@Url.Action("DeleteAssetMaintenance", "Asset")',
+                type: 'Post',
+                cache: false,
+                async: true,
+                data: {
+                    AssetCode: AssetCode
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Createmaintenance", "Asset")";
+                        })
+                        $("#Alert2").modal();
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Mohon Tunggu...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
+        })
+        $('#btnno').click(function (e) {
+            $('#Alert4').modal('hide');
+        })
+        $("#Alert4").modal();
+    }
+
+
+    function Maintenance() {
+
+        var MaintenanceNo = document.getElementById("MaintenanceNo").value;
+        var Type = document.getElementById("Type").value;
+        var ScheduleDate = document.getElementById("single_cal2").value;
+        var CompleteDate = document.getElementById("single_cal5").value;
+        var AssignTo = document.getElementById("AssignTo").value;
+        var Damage = document.getElementById("Damage").value;
+        var Notes = document.getElementById("Notes").value;
+        var Cost = document.getElementById("Cost").value;
+
+        if (Type == "") {
+            $(".modal-body #peringatan3").text("Type To must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ScheduleDate == "") {
+            $(".modal-body #peringatan3").text("Schedule Date must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CompleteDate == "") {
+            $(".modal-body #peringatan3").text("Complete Date must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssignTo == "") {
+            $(".modal-body #peringatan3").text("AssignTo must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Maintenance Asset ?");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+                $.ajax({
+                    
+                    url: '@Url.Action("SaveMaintenance")',
+                    type: 'Post',
+                    cache: false,
+                    async: true,
+                    data: {
+
+                        MaintenanceNo:MaintenanceNo,
+                        Type: Type,
+                        ScheduleDate: ScheduleDate,
+                        CompleteDate: CompleteDate,
+                        AssignTo: AssignTo,
+                        Damage: Damage,
+                        Notes: Notes,
+                        Cost: Cost
+                    },
+                    success: function (response) {
+                        @*if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Maintenancedue","Asset")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })*@
+                        alert("tes");// $("#Alert3").modal();
+                        //}
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            })
+        }
+        $('#btnno').click(function (e) {
+            $('#Alert4').modal('hide');
+        })
+        $("#Alert4").modal();
+    }
 
 </script>
-
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -64,83 +230,96 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
+                        <div class="text-muted font-13 m-b-30">
+                            <div class="mgbtm20">
+                                <button id="selectasset" type="button" class="btn btn-success">Select Asset</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Assets Pending Maintenance</h3>
+                        </div>
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
+                            <thead>
+                                <tr>
+                                    <th width="12%">Asset Code</th>
+                                    <th>Asset Name</th>
+                                    <th width="9%">Serial No</th>
+                                    <th style="width:9%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (CORE.JGC.Models.TrMaintenanceAssetLine item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetCode)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetSerialNo)</td>
+                                        <td style="width:5% !important;text-align:center;">
+                                            <button id="delete" name="delete" type="button" data-toggle="tooltip" title="Delete" class="btn btn-success" onclick="return DeleteAsset('@Html.DisplayFor(modelItem => item.AssetCode)');"><span class="glyphicon glyphicon-erase"></span></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="ln_solid"></div>
                         <form class="form-horizontal form-label-left">
-
                             <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Maintenance Asset No</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="MaintenanceAssetNoId" type="text" name="MaintenanceAssetNo" class="form-control col-md-10" placeholder="Maintenance Asset No" readonly />
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Maintenance No</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" id="MaintenanceNo" name="MaintenanceNo" value="auto-generate" type="text" data-id="i" autocomplete="off" required="" readonly/>
                                 </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Status</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="StatusId" type="text" name="Status" class="form-control col-md-10" placeholder="Status" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="TypeId" type="text" name="Type" class="form-control col-md-10" placeholder="Type" />
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <select class="form-control" id="Type" name="Type" required="">
+                                        <option value="MNT">Maintenance</option>
+                                        <option value="REP">Repair</option>
+                                        <option value="UPG">Upgrade</option>
+                                    </select>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Schedule Date</label>
-                                <div class="col-md-5 col-sm-5 xdisplay_inputx form-group has-feedback" style="margin-bottom: 0 !important;">
-                                    <input type="text" class="form-control has-feedback-left" id="single_cal2" placeholder="Schedule Date" aria-describedby="scheduleDate">
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input type="text" class="form-control has-feedback-left" id="single_cal2" name="ScheduleDate" placeholder="Schedule Date" data-id="i" aria-describedby="scheduleDate">
                                     <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     <span id="scheduleDate" class="sr-only">(success)</span>
                                 </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Complete Date</label>
-                                <div class="col-md-5 col-sm-5 xdisplay_inputx form-group has-feedback" style="margin-bottom: 0 !important;">
-                                    <input type="text" class="form-control has-feedback-left" id="single_cal5" placeholder="Complete Date" aria-describedby="completeDate">
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input type="text" class="form-control has-feedback-left" id="single_cal5" name="CompleteDate" placeholder="Complete Date" data-id="i" aria-describedby="completeDate">
                                     <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     <span id="completeDate" class="sr-only">(success)</span>
                                 </div>
+                                
                             </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Assign To</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="AssignToId" type="text" name="Assignto" class="form-control col-md-10" placeholder="Assign To" />
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Damage</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="DamageId" type="text" name="Damage" class="form-control col-md-10" placeholder="Damage" />
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" id="Damage" name="Damage" value="" type="text" data-id="i" autocomplete="off" required="" />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Assign To</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" id="AssignTo" name="AssignTo" value="" type="text" data-id="i" autocomplete="off" required="" />
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Notes</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea id="NotesId" class="form-control" rows="3" placeholder="Notes"></textarea>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <textarea id="Notes" name="Notes" class="form-control" rows="3" placeholder="Notes" data-id="i"></textarea>
                                 </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Cost</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="CostId" type="number" name="Cost" class="form-control col-md-10" placeholder="Cost" />
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" class="form-control angka isnumeric" placeholder="Cost" id="Cost" name="Cost" value="0" autocomplete="off" name="Cost" required="required" maxlength="12">
                                 </div>
                             </div>
-
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
-                                    <button class="btn btn-default" type="button">Cancel</button>
-                                    <button type="submit" class="btn btn-success" onclick="InputMaintenance(); return false;">Submit</button>
+                                    <button type="button" class="btn btn-success" onclick="Maintenance(); return false;">Dispose</button>
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -148,7 +327,62 @@
     </div>
 </div>
 
+<!-- MODAL1 START -->
+<div class="modal fade" id="addModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content col-md-12 col-sm-12 col-xs-12 pdlr1">
+            <div class="modal-header">
+                <h4 class="modal-title ">Add Asset</h4>
+            </div>
+            <div class="modal-body col-md-12 col-sm-12 col-xs-12">
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="input-group">
+                                <input class="form-control readonly" id="AssetCode" name="AssetCode" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Asset('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="AssetName" type="text" name="AssetName" class="form-control col-md-10" placeholder="Asset Name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial No</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="AssetSerialNo" type="text" name="AssetSerialNo" class="form-control col-md-10" placeholder="Serial No" />
+                        </div>
+                    </div>
+                    <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
+                        <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button id="AddAssetBtn" type="button" class="btn btn-primary" onclick="AddAsset(); return false;">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL1 END -->
 @Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")
 
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("#selectasset").click(function () {
+                $("#addModal").modal();
+            });
+        });
 
+</script>
