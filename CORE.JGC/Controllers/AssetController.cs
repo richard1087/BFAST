@@ -1329,6 +1329,7 @@ namespace CORE.JGC.Controllers
                     maintenance.AssetCode = res.AssetCode;
                     maintenance.AssetName = res.AssetName;
                     maintenance.Type = res.Type;
+                    maintenance.Status = res.NamaStatus;
                     maintenance.ScheduleDate = res.ScheduleDate;
                     maintenance.CompleteDate = res.CompleteDate;
                     maintenance.Cost = res.Cost;

@@ -133,7 +133,8 @@
         var AssignTo = document.getElementById("AssignTo").value;
         var Damage = document.getElementById("Damage").value;
         var Notes = document.getElementById("Notes").value;
-        var Cost = document.getElementById("Cost").value;
+        var Cost = document.getElementById("Cost").value.toString().replace(",", "");
+
 
         if (Type == "") {
             $(".modal-body #peringatan3").text("Type To must be filled");
@@ -166,7 +167,7 @@
                 $('#Alert4').modal('hide');
                 $.ajax({
                     
-                    url: '@Url.Action("SaveMaintenance")',
+                    url: '@Url.Action("SaveMaintenance", "Asset")',
                     type: 'Post',
                     cache: false,
                     async: true,
@@ -182,7 +183,7 @@
                         Cost: Cost
                     },
                     success: function (response) {
-                        @*if (response.success == true) {
+                        if (response.success == true) {
                             $(".modal-body #peringatan2").text(response.responseText);
                             $('#btnok').click(function (e) {
                                 window.location.href = "@Url.Action("Maintenancedue","Asset")";
@@ -192,9 +193,9 @@
                             $(".modal-body #peringatan3").text(response.responseText);
                             $('#btnerror').click(function (e) {
                                 $('#Alert3').modal('hide');
-                            })*@
-                        alert("tes");// $("#Alert3").modal();
-                        //}
+                            })
+                            $("#Alert3").modal();
+                        }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         $(".modal-body #peringatan1").text("Please Wait...");
