@@ -258,7 +258,8 @@ namespace CORE.JGC.Controllers
         private string GenerateQrCode(string assettagid)
         {
             //iTextSharp.text.Document doc = new iTextSharp.text.Document(new iTextSharp.text.Rectangle(4.5f, 5.5f), 0.5f, 0.5f, 0, 0);
-            string filepathimg = Path.Combine(Server.MapPath("/Views/Asset/ImgUpload/Qrcode"), assettagid + ".jpg");
+            string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
+            string filepathimg = Server.MapPath(pathdb);
 
             ByteMatrix btm;
             //FileStream fs = null;
@@ -301,7 +302,7 @@ namespace CORE.JGC.Controllers
             }
             bmp.Dispose();
             //fs.Close();
-            return filepathimg;
+            return pathdb;
         }
         private void UploadPhoto()
         {
@@ -314,8 +315,8 @@ namespace CORE.JGC.Controllers
                     string filename = Path.GetFileName(pic.FileName);
                     var ext = Path.GetExtension(pic.FileName);
                     //imgName = Guid.NewGuid().ToString();
-                    path = Server.MapPath("/ImgUpload/Image") + filename + ext;
                     filename = filename + DateTime.Now.ToString("HHmmss") + ext;
+                    path = "/Content/res/build/images/Assets/" + filename + ext;
                     //var filepath = path;
                     pic.SaveAs(path);
                     MemoryStream stream = new MemoryStream();
@@ -355,15 +356,13 @@ namespace CORE.JGC.Controllers
             return View();
         }
         [HttpPost]
-        //public ActionResult InputData(string site, string category, string location, string departement, string assetname, string supplier, string purchaseno,
-        //    string brand, string purchasedateid, string model, string price, string serialno, string type, string company, string currency, string floor, string warranty,
-        //    string cap, string active)
         public ActionResult InputData(MsAsset asset)
         {
-            string userid = "system";
+            string UserID = Session["UserName"].ToString().Trim();
             //string Photo = GeneratePhoto(path);
             string hasil = string.Empty;
             string path = string.Empty;
+            string pathdb = string.Empty;
             dc = new BFASTDataContext();
 
             try
@@ -378,22 +377,22 @@ namespace CORE.JGC.Controllers
                         string filename = Path.GetFileNameWithoutExtension(pic.FileName);
                         string ext = Path.GetExtension(pic.FileName);
                         filename = filename + DateTime.Now.ToString("HHmmss");
-                        path = Server.MapPath("/Views/Asset/ImgUpload/Image/") + filename + ext;
-                        
+                        pathdb = "/Content/res/build/images/Assets/" + filename + ext;
+                        path = Server.MapPath(pathdb);
                         pic.SaveAs(path);
                         MemoryStream stream = new MemoryStream();
                         WebImage webimg = new WebImage(path);
-                        if (webimg.Width > 200)
+                        if (webimg.Width > 150)
                         {
-                            webimg.Resize(200, 200);
+                            webimg.Resize(150, 150);
                             webimg.Save(path);
                         }
                     }
                 }
                 var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
-                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), path, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-                    Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty), 
-                    userid, 1);
+                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+                    Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),
+                    UserID, 1);
                 foreach (var res in query)
                 {
                     if (res.AssetTag == "Err This Data Already Exists")
@@ -403,7 +402,7 @@ namespace CORE.JGC.Controllers
                     else
                     {
                         string qrcode = GenerateQrCode(res.AssetTag);
-                        var qr = dc.MsBarcode_IUD(res.AssetTag, qrcode, "", "", userid, 1);
+                        var qr = dc.MsBarcode_IUD(res.AssetTag, qrcode, "", "", UserID, 1);
                         hasil = res.AssetTag;
                     }
                 }

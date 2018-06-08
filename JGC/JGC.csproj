@@ -301,6 +301,8 @@
     <Content Include="Content\res\build\images\logo_new_jgc_2.png" />
     <Content Include="Content\res\build\images\logo_new_jgc_3.png" />
     <Content Include="Content\res\build\images\qr-nb001-2.png" />
+    <Content Include="Content\res\build\images\Qrcode\AST1806000001.jpg" />
+    <Content Include="Content\res\build\images\Qrcode\AST1806000006.jpg" />
     <Content Include="Content\res\build\js\custom-jgc.js" />
     <Content Include="Content\res\build\js\custom.js" />
     <Content Include="Content\res\build\js\custom.min.js" />
@@ -4560,6 +4562,9 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Content\res\build\images\Assets\images163642.jpg" />
+    <Content Include="Content\res\build\images\Assets\images163826.jpg" />
+    <Content Include="Content\res\build\images\Assets\images164837.jpg" />
     <Content Include="Views\Asset\ImgUpload\Qrcode\AST1806000016.jpg" />
     <Content Include="Views\Asset\ImgUpload\Qrcode\AST1806000017.jpg" />
     <Content Include="Views\Asset\ImgUpload\Qrcode\AST1806000018.jpg" />
