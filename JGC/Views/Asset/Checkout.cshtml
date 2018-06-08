@@ -3,7 +3,6 @@
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <script type="text/javascript">
     function Asset() {
         var Column = [
@@ -63,7 +62,7 @@
                     { "title": "Site Name", "data": "SiteName" },
                     { "title": "Floor", "data": "Floor" }
         ]
-        DTable("datatablepopup", '@Url.Action("GetPopupLocation", "Asset")', Column, '{}');
+        DTable("datatablepopup", '@Url.Action("GetPopupLocation", "Asset")', Column, function (d) { d.SiteCode = $('#SiteCode').val() });
         $('#datatablepopup tbody').on('click', 'tr', function () {
             var d = table.row(this).data();
             $("#LocationCode").val(d["LocationCode"]);
@@ -132,16 +131,59 @@
             });
         }
     }
+    function DeleteAsset(AssetCode) {
+
+        $(".modal-body #peringatan4").text("Are You Sure Delete Asset Code " + AssetCode  + " ?");
+        $('#btnyes').click(function (e) {
+            $('#Alert4').modal('hide');
+            $.ajax({
+                url: '@Url.Action("DeleteAssetCheckOut", "Asset")',
+                type: 'Post',
+                cache: false,
+                async: true,
+                data: {
+                    AssetCode: AssetCode
+                },
+                success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Checkout","Asset")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Mohon Tunggu...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
+        })
+        $('#btnno').click(function (e) {
+            $('#Alert4').modal('hide');
+        })
+        $("#Alert4").modal();
+    }
 
     function CheckOut() {
 
         var EmployeeId = document.getElementById("EmployeeId").value;
         var Email = document.getElementById("Email").value;
+        var SiteCode = document.getElementById("SiteCode").value;
+        var LocationCode = document.getElementById("LocationCode").value;
+        var Floor = document.getElementById("Floor").value;
         var CheckOutDate = document.getElementById("single_cal2").value;
         var Notes = document.getElementById("Notes").value;
         var checkbox = document.getElementById("DueDatePersonId");
-        var site = document.getElementById("").value;
-        var location = document.getElementById("").value;
 
         if (checkbox.checked == false) {
             $("#single_cal5").val("");
@@ -168,58 +210,56 @@
             $("#Alert3").modal();
         }
         else {
-            $.ajax({
-                url: '@Url.Action("SaveCheckOut", "Asset")',
-                type: 'Post',
-                cache: false,
-                async: true,
-                data: {
-                    EmployeeId: EmployeeId,
-                    Email: Email,
-                    CheckOutDate: CheckOutDate,
-                    CheckOutDueDate: CheckOutDueDate,
-                    Notes: Notes
-                },
-                success: function (response) {
-                    if (response.success == true) {
-                        $(".modal-body #peringatan2").text(response.responseText);
-                        $('#btnok').click(function (e) {
-                            window.location.href = "@Url.Action("Checkout","Asset")";
+            $(".modal-body #peringatan4").text("Are You Sure Check Out Asset ?");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+                $.ajax({
+                    url: '@Url.Action("SaveCheckOut", "Asset")',
+                    type: 'Post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        EmployeeId: EmployeeId,
+                        Email: Email,
+                        SiteCode: SiteCode,
+                        LocationCode: LocationCode,
+                        Floor: Floor,
+                        CheckOutDate: CheckOutDate,
+                        CheckOutDueDate: CheckOutDueDate,
+                        Notes: Notes
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Checkout","Asset")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
                         })
-                        $("#Alert2").modal();
-                    } else {
-                        $(".modal-body #peringatan3").text(response.responseText);
-                        $('#btnerror').click(function (e) {
-                            $('#Alert3').modal('hide');
-                        })
-                        $("#Alert3").modal();
+                        $("#Alert1").modal();
                     }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    $(".modal-body #peringatan1").text("Please Wait...");
-                    $('#btncaution').click(function (e) {
-                        $('#Alert1').modal('hide');
-                    })
-                    $("#Alert1").modal();
-                }
-            });
+                });
+            })
         }
-    }
-
-</script>
-<script type="text/javascript">
-    function SaveCheckOutLine() {
-        $(".modal-body #peringatan4").text("Are You Sure Adding Asset ? ");
-        $('#btnyes').attr("onclick", "SaveCheckOutLines()");
+        $('#btnno').click(function (e) {
+            $('#Alert4').modal('hide');
+        })
         $("#Alert4").modal();
-    };
-    function SaveCheckOutLines() {
-        $('#Alert4').modal('hide');
-        InUpTrans('@Url.Action("SaveRealisasiCreate")', 'LoadCheckOutLine("0"); $("#LookupAsset").modal("hide");', 'r');
     }
-    
-
 </script>
+
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -262,7 +302,7 @@
                                         <td>@Html.DisplayFor(modelItem => item.AssetName)</td>
                                         <td>@Html.DisplayFor(modelItem => item.AssetSerialNo)</td>
                                         <td style="width:5% !important;text-align:center;">
-                                            <button id="delete" name="delete" type="button" data-toggle="tooltip" title="Delete" class="btn btn-success" onclick=""><span class="glyphicon glyphicon-erase"></span></button>
+                                            <button id="delete" name="delete" type="button" data-toggle="tooltip" title="Delete" class="btn btn-success" onclick="return DeleteAsset('@Html.DisplayFor(modelItem => item.AssetCode)');"><span class="glyphicon glyphicon-erase"></span></button>
                                         </td>
                                     </tr>
                                 }
@@ -270,7 +310,7 @@
                         </table>
 
                         <div class="ln_solid"></div>
-`                       <form class="form-horizontal form-label-left">
+                        `<form class="form-horizontal form-label-left">
                             <div id="persons_check">
                                 <div class="form-group">
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Person</label>
@@ -285,29 +325,57 @@
                                             </span>
                                         </div>
                                     </div>
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="input-group">
+                                            <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                            <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                            <span class="input-group-btn">
+                                                <a class="btn btn-info" onclick="Site()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                                    <i class="fa fa-search fa-fw"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Email</label>
                                     <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
                                         <input class="form-control readonly" id="Email" name="Email" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
                                     </div>
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="input-group">
+                                            <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                            <input class="form-control readonly" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                            <span class="input-group-btn">
+                                                <a class="btn btn-info" onclick="Location()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                                    <i class="fa fa-search fa-fw"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Check Out Date</label>
                                     <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                        <input type="text" class="form-control has-feedback-left" id="single_cal2" name ="CheckOutDate" placeholder="Check Out Date" data-id="i" aria-describedby="checkoutDate">
+                                        <input type="text" class="form-control has-feedback-left" id="single_cal2" name="CheckOutDate" placeholder="Check Out Date" data-id="i" aria-describedby="checkoutDate">
                                         <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                         <span id="checkoutDate" class="sr-only">(success)</span>
                                     </div>
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Floor</label>
+                                    <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                        <input class="form-control readonly" id="Floor" name="Floor" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                    </div>
 
                                     <div class="col-md-11 col-sm-11 col-xs-11 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                                        <input id="DueDatePersonId" name="chkbox" type="checkbox"  class="checks"> Due Date
+                                        <input id="DueDatePersonId" name="chkbox" type="checkbox" class="checks"> Due Date
                                     </div>
                                 </div>
                                 <div class="form-group" id="duedate" style="display:none;">
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Due Date</label>
                                     <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                        <input type="text" class="form-control has-feedback-left" id="single_cal5"  name ="CheckOutDueDate" data-id="i" placeholder="Due Date" aria-describedby="dueDate">
+                                        <input type="text" class="form-control has-feedback-left" id="single_cal5" name="CheckOutDueDate" data-id="i" placeholder="Due Date" aria-describedby="dueDate">
                                         <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                         <span id="dueDate" class="sr-only">(success)</span>
                                     </div>
@@ -317,7 +385,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Notes</label>
                                     <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <textarea id="Notes" name="Notes" class="form-control" rows="3" placeholder="Notes" data-id="i" ></textarea>
+                                        <textarea id="Notes" name="Notes" class="form-control" rows="3" placeholder="Notes" data-id="i"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -331,7 +399,7 @@
 
                         </form>
 
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -350,7 +418,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">                                
+                            <div class="input-group">
                                 <input class="form-control readonly" id="AssetCode" name="AssetCode" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
                                 <span class="input-group-btn">
                                     <a class="btn btn-info" onclick="Asset('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
@@ -376,7 +444,7 @@
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
                         <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button id="AddAssetBtn" type="button" class="btn btn-primary" onclick="AddAsset(); return false;">Add</button>                            
+                            <button id="AddAssetBtn" type="button" class="btn btn-primary" onclick="AddAsset(); return false;">Add</button>
                         </div>
                     </div>
                 </form>

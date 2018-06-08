@@ -2,7 +2,6 @@
     ViewBag.Title = "Maintenances";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -23,14 +22,10 @@
                             <div class="mgbtm20">
                                 <a href="/asset/createmaintenance" class="btn btn-success btn-cust">Create New</a>
                                 <div class="btn-group top-2">
-                                    <button data-toggle="dropdown" class="btn btn-success btn-cust dropdown-toggle" type="button" aria-expanded="false">
-                                        List of Maintenances
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul role="menu" class="dropdown-menu">
-                                        <li><a href="#">All Maintenances</a></li>
-                                        <li><a href="#">Due maintenances</a></li>
-                                    </ul>
+                                    @*<ul role="menu" class="dropdown-menu">
+                                            <li><a href="#">All Maintenances</a></li>
+                                            <li><a href="#">Due maintenances</a></li>
+                                        </ul>*@
                                 </div>
                                 <!--<div class="floatright mgl25">
                                     <button type="submit" class="btn btn-success btn-cust floatright top-2">Go</button>
@@ -48,61 +43,34 @@
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th width="13%">Maintenance Asset No</th>
-                                    <th>Status</th>
-                                    <th>Type</th>
-                                    <th>Schedule Date</th>
-                                    <th>Complete Date</th>
-                                    <th>Assign to</th>
-                                    <th>Damage</th>
-                                    <th>Notes</th>
-                                    <th>Cost</th>
+                                    <th width="13%">@Html.Label("Maintenance No")</th>
+                                    <th width="8%">@Html.Label("Status")</th>
+                                    <th width="10%">@Html.Label("Asset Code")</th>
+                                    <th width="15%">@Html.Label("Asset Name")</th>
+                                    <th width="8%">@Html.Label("Type")</th>
+                                    <th width="10%">@Html.Label("Schedule Date")</th>
+                                    <th width="10%">@Html.Label("Complete Date")</th>
+                                    <th width="10%">@Html.Label("Cost")</th>
                                     <th width="4%"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><a id="assetmodel" href="#">0001</a></td>
-                                    <td><a href="#">Scheduled</a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#">29/04/2018</a></td>
-                                    <td><a href="#">30/04/2018</a></td>
-                                    <td><a href="#">Erwin</a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#">700,0000</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" class="btn btn-info" id="lihatmaintenance"><i class="fa fa-eye"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a id="assetmodel" href="#">0001</a></td>
-                                    <td><a href="#">Scheduled</a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#">29/04/2018</a></td>
-                                    <td><a href="#">30/04/2018</a></td>
-                                    <td><a href="#">Erwin</a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#">700,0000</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" class="btn btn-info" id="lihatmaintenance"><i class="fa fa-eye"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a id="assetmodel" href="#">0001</a></td>
-                                    <td><a href="#">Scheduled</a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#">29/04/2018</a></td>
-                                    <td><a href="#">30/04/2018</a></td>
-                                    <td><a href="#">Erwin</a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#"></a></td>
-                                    <td><a href="#">700,0000</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" class="btn btn-info" id="lihatmaintenance"><i class="fa fa-eye"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach (CORE.JGC.Models.TrMaintenanceAsset item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.MaintenanceNo)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetCode)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ScheduleDate)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CompleteDate)</td>
+                                        <td style="text-align:right;">@Html.DisplayFor(modelItem => item.Cost)</td>
+                                        <td style="width:5% !important;text-align:center;">
+                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return DeleteAsset('@Html.DisplayFor(modelItem => item.AssetCode)');"><span class="glyphicon glyphicon-edit"></span></button>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -111,7 +79,6 @@
         </div>
     </div>
 </div>
-
 <!-- MODAL1 START -->
 <div class="modal fade" id="assetModal" role="dialog">
     <div class="modal-dialog" style="width:70%;">
@@ -120,11 +87,9 @@
                 <h4 class="modal-title ">ASST000001</h4>
             </div>
             <div class="modal-body col-md-12 col-sm-12 col-xs-12">
-
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <img src="~/Content/res/images/laptop.jpg" alt="..." class="img-responsive" style="width:100%;">
                 </div>
-
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <form class="form-horizontal form-label-left">
                         <table class="table table-striped table-bordered">
@@ -153,7 +118,6 @@
                         </table>
                     </form>
                 </div>
-
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <form class="form-horizontal form-label-left">
                         <table class="table table-striped table-bordered">
@@ -190,7 +154,6 @@
                         </table>
                     </form>
                 </div>
-
                 <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
                 <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
                     <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
@@ -198,7 +161,6 @@
                         <a href="/asset/details" class="btn btn-success">More Details</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -212,23 +174,19 @@
                 <h4 class="modal-title ">Asset Maintenance</h4>
             </div>
             <div class="modal-body col-md-12 col-sm-12 col-xs-12">
-
                 <form class="form-horizontal form-label-left">
-
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Title</label>
                         <div class="col-md-7 col-sm-7 col-xs-12">
                             <input type="text" name="Title" class="form-control col-md-10" placeholder="Title" />
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Details</label>
                         <div class="col-md-7 col-sm-7 col-xs-12">
                             <textarea class="form-control" rows="3" placeholder="Details"></textarea>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Due Date</label>
                         <div class="col-md-7 col-sm-7 xdisplay_inputx form-group has-feedback" style="margin-bottom: 0 !important;">
@@ -237,14 +195,12 @@
                             <span id="dueDate" class="sr-only">(success)</span>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Maintenance By</label>
                         <div class="col-md-7 col-sm-7 col-xs-12">
                             <input type="text" name="Maintenance By" class="form-control col-md-10" placeholder="Maintenance By" />
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Maintenance Status</label>
                         <div class="col-md-7 col-sm-7 col-xs-12">
@@ -258,7 +214,6 @@
                             </datalist>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Completed</label>
                         <div class="col-md-7 col-sm-7 xdisplay_inputx form-group has-feedback" style="margin-bottom: 0 !important;">
@@ -267,14 +222,12 @@
                             <span id="dateCompleted" class="sr-only">(success)</span>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Cost of Repairs</label>
                         <div class="col-md-7 col-sm-7 col-xs-12">
                             <input type="number" name="Cost of Repairs" class="form-control col-md-10" placeholder="Cost of Repairs" />
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Repeating</label>
                         <div class="col-md-7 col-sm-7 col-xs-12">
@@ -282,7 +235,6 @@
                             <input type="radio" name="checkrepeating" class="flat" id="repeatno" value="checkrepeatingno" /> No
                         </div>
                     </div>
-
                     <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                         <div class="col-md-12 col-sm-12 col-xs-6" style="text-align:right;">
@@ -290,16 +242,13 @@
                             <button id="MaintenanceCancelId" type="button" class="btn btn-default">Cancel</button>
                         </div>
                     </div>
-
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 <!-- MODAL2 END -->
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
-
 <script type="text/javascript">
       $(document).ready(function(){
           $("#assetmodel").click(function () {

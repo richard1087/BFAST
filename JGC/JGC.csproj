@@ -4593,10 +4593,7 @@
     <Content Include="Views\Asset\Create.cshtml" />
     <Content Include="Views\Asset\Checkout.cshtml" />
     <Content Include="Views\Asset\Checkin.cshtml" />
-    <Content Include="Views\Asset\Lease.cshtml" />
-    <Content Include="Views\Asset\Leasereturn.cshtml" />
     <Content Include="Views\Asset\Dispose.cshtml" />
-    <Content Include="Views\Asset\Move.cshtml" />
     <Content Include="Views\Asset\Details.cshtml" />
     <Content Include="Views\Setup\Companyinfo.cshtml" />
     <Content Include="Views\Setup\Sites.cshtml" />
@@ -4727,7 +4724,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61640</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:61640/</IISUrl>
+          <IISUrl>http://localhost:1234/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

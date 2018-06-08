@@ -413,9 +413,11 @@ namespace CORE.JGC.Controllers
             }
             return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Createmaintenance()
+        public ActionResult Maintenancedue()
         {
-            return View();
+            TrMaintenanceAsset[] trMaintenance = null;
+            trMaintenance = GridMaintenance();
+            return View(trMaintenance);
         }
 
         public ActionResult Checkout()
@@ -432,32 +434,20 @@ namespace CORE.JGC.Controllers
             return View(trCheckInLine);
         }
 
-        public ActionResult Lease()
-        {
-            return View();
-        }
-
-        public ActionResult Leasereturn()
-        {
-            return View();
-        }
-    
         public ActionResult Dispose()
         {
-            return View();
+            TrDisposeAssetLine[] trDisposeAssetLine = null;
+            trDisposeAssetLine = GridDisposeAssetLine();
+            return View(trDisposeAssetLine);
         }
-
-        public ActionResult Move()
+        public ActionResult Createmaintenance()
         {
-            return View();
+            TrMaintenanceAssetLine[] trMaintenanceLine = null;
+            trMaintenanceLine = GridMaintenanceAssetLine();
+            return View(trMaintenanceLine);
         }
 
         public ActionResult Assetpastdue()
-        {
-            return View();
-        }
-
-        public ActionResult Maintenancedue()
         {
             return View();
         }
@@ -477,7 +467,156 @@ namespace CORE.JGC.Controllers
                 try
                 {
                     string UserID = Session["UserName"].ToString().Trim();
-                    var query = dc.TrxCheckOutLine_IUD(AssetCode,UserID, 1);
+                    var query = dc.TrxCheckOutLine_IUD(AssetCode, UserID, 1);
+
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpPost]
+        public ActionResult DeleteAssetCheckOut(string AssetCode)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+                    string UserID = Session["UserName"].ToString().Trim();
+                    var query = dc.TrxCheckOutLine_IUD(AssetCode, UserID, 3);
+
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAssetDispose(string AssetCode)
+        {
+            try
+            {
+                dc = new BFASTDataContext();
+                try
+                {
+                    string UserID = Session["UserName"].ToString().Trim();
+                    var query = dc.TrxDisposeAssetLine_IUD(AssetCode, UserID, 3);
+
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpPost]
+        public ActionResult DeleteAssetCheckIn(string AssetCode)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+                    string UserID = Session["UserName"].ToString().Trim();
+                    var query = dc.TrxCheckInLine_IUD(AssetCode, UserID, 3);
+
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAssetMaintenance(string AssetCode)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+                    string UserID = Session["UserName"].ToString().Trim();
+                    var query = dc.TrxMaintenanceAssetLine_IUD(AssetCode, UserID, 3);
 
                     string status = "";
                     foreach (var res in query)
@@ -654,7 +793,7 @@ namespace CORE.JGC.Controllers
             }
         }
         [HttpPost]
-        public ActionResult SaveCheckOut(string CheckOutDate, string CheckOutDueDate, string EmployeeId, string Email, string Notes)
+        public ActionResult SaveCheckOut(string CheckOutDate, string CheckOutDueDate, string EmployeeId, string Email, string SiteCode, string LocationCode, int Floor, string Notes)
         {
             try
             {
@@ -664,7 +803,7 @@ namespace CORE.JGC.Controllers
                 {
                     string CheckOutNo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime CheckOutDateC = DateTime.ParseExact(CheckOutDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime CheckOutDateC = DateTime.ParseExact(CheckOutDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
                     DateTime? CheckOutDueDateC;
                     if (CheckOutDueDate == "")
@@ -672,10 +811,10 @@ namespace CORE.JGC.Controllers
                         CheckOutDueDateC = null;
                     }
                     else
-                    { 
-                       CheckOutDueDateC = DateTime.ParseExact(CheckOutDueDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    {
+                        CheckOutDueDateC = DateTime.ParseExact(CheckOutDueDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
                     }
-                    var query = dc.TrxCheckOut_IUD(CheckOutNo, CheckOutDateC, CheckOutDueDateC, EmployeeId, Email, "", "", 1, Notes, UserID, 1);
+                    var query = dc.TrxCheckOut_IUD(CheckOutNo, CheckOutDateC, CheckOutDueDateC, EmployeeId, Email, SiteCode, LocationCode, Floor, Notes, UserID, 1);
 
                     string status = "";
                     foreach (var res in query)
@@ -714,9 +853,9 @@ namespace CORE.JGC.Controllers
                 {
                     string CheckInNo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime ReturnDateC = DateTime.ParseExact(ReturnDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime ReturnDateC = DateTime.ParseExact(ReturnDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
-                    var query = dc.TrxCheckIn_IUD(CheckInNo, ReturnDateC,  Notes, UserID, 1);
+                    var query = dc.TrxCheckIn_IUD(CheckInNo, ReturnDateC, Notes, UserID, 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -744,7 +883,7 @@ namespace CORE.JGC.Controllers
             }
         }
         [HttpPost]
-        public ActionResult SaveDispose(string DisposeDate, string DisposeTo, string Reason)
+        public ActionResult SaveDispose(string DisposeDate, string DisposeTo, string DisposeReason)
         {
             try
             {
@@ -754,9 +893,9 @@ namespace CORE.JGC.Controllers
                 {
                     string DisposeNo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime DisposeDateC = DateTime.ParseExact(DisposeDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime DisposeDateC = DateTime.ParseExact(DisposeDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
-                    var query = dc.TrxDisposeAsset_IUD(DisposeNo, DisposeDateC,DisposeTo, Reason, UserID, 1);
+                    var query = dc.TrxDisposeAsset_IUD(DisposeNo, DisposeDateC, DisposeTo, DisposeReason, UserID, 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -785,7 +924,7 @@ namespace CORE.JGC.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveMaintenance(string ScheduleDate,string CompleteDate,string Type, string AssignTo, string Damage, string Notes, decimal Cost)
+        public ActionResult SaveMaintenance(string ScheduleDate, string CompleteDate, string Type, string AssignTo, string Damage, string Notes, decimal Cost)
         {
             try
             {
@@ -795,10 +934,10 @@ namespace CORE.JGC.Controllers
                 {
                     string MaintenanceTo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime ScheduleDateC = DateTime.ParseExact(ScheduleDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    DateTime CompleteDateC = DateTime.ParseExact(CompleteDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime ScheduleDateC = DateTime.ParseExact(ScheduleDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    DateTime CompleteDateC = DateTime.ParseExact(CompleteDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
-                    var query = dc.TrxMaintenanceAsset_IUD(MaintenanceTo,Type, ScheduleDateC, CompleteDateC,AssignTo,Damage, Notes,Cost, UserID, 1);
+                    var query = dc.TrxMaintenanceAsset_IUD(MaintenanceTo, Type, ScheduleDateC, CompleteDateC, AssignTo, Damage, Notes, Cost, UserID, 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -839,7 +978,7 @@ namespace CORE.JGC.Controllers
                     string UserID = Session["UserName"].ToString().Trim();
                     DateTime TransferDateC = DateTime.ParseExact(TransferDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-                    var query = dc.TrxTransferAsset_IUD(TransferNo, Type, TransferDateC, TransferAssetNoRef, SiteCode, LocationCode, Floor,Notes, UserID, 1);
+                    var query = dc.TrxTransferAsset_IUD(TransferNo, Type, TransferDateC, TransferAssetNoRef, SiteCode, LocationCode, Floor, Notes, UserID, 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -993,7 +1132,7 @@ namespace CORE.JGC.Controllers
             List<MsEmployee> msEmployee = new List<MsEmployee>();
             try
             {
-                var query = dc.MsEmployee_View("","P");
+                var query = dc.MsEmployee_View("", "P");
                 foreach (var res in query)
                 {
                     MsEmployee employee = new MsEmployee();
@@ -1040,13 +1179,13 @@ namespace CORE.JGC.Controllers
             }
             return msSite.ToArray();
         }
-        public MsLocation[] GridPopupLocation()
+        public MsLocation[] GridPopupLocation(string SiteCode)
         {
             dc = new BFASTDataContext();
             List<MsLocation> msLocation = new List<MsLocation>();
             try
             {
-                var query = dc.MsLocation_View("","", "P");
+                var query = dc.MsLocation_View("", SiteCode, "P");
                 foreach (var res in query)
                 {
                     MsLocation location = new MsLocation();
@@ -1102,12 +1241,12 @@ namespace CORE.JGC.Controllers
             List<TrCheckOutLine> trCheckOutLine = new List<TrCheckOutLine>();
             try
             {
-                var query = dc.TrxCheckOutLine_View("","", "K");
+                var query = dc.TrxCheckOutLine_View("", "", "K");
                 foreach (var res in query)
                 {
                     TrCheckOutLine checkoutLine = new TrCheckOutLine();
 
-                    
+
                     checkoutLine.AssetCode = res.AssetCode;
                     checkoutLine.AssetName = res.AssetName;
                     checkoutLine.AssetSerialNo = res.AssetSerialNo;
@@ -1147,7 +1286,89 @@ namespace CORE.JGC.Controllers
             }
             return trCheckInLine.ToArray();
         }
-        
+
+        public TrDisposeAssetLine[] GridDisposeAssetLine()
+        {
+            dc = new BFASTDataContext();
+            List<TrDisposeAssetLine> trDisposeLine = new List<TrDisposeAssetLine>();
+            try
+            {
+                var query = dc.TrxDisposeAssetLine_View("", "", "K");
+                foreach (var res in query)
+                {
+                    TrDisposeAssetLine disposeLine = new TrDisposeAssetLine();
+
+
+                    disposeLine.AssetCode = res.AssetCode;
+                    disposeLine.AssetName = res.AssetName;
+                    disposeLine.AssetSerialNo = res.AssetSerialNo;
+
+                    trDisposeLine.Add(disposeLine);
+                }
+            }
+            catch
+            {
+                trDisposeLine = null;
+            }
+            return trDisposeLine.ToArray();
+        }
+
+        public TrMaintenanceAsset[] GridMaintenance()
+        {
+            dc = new BFASTDataContext();
+            List<TrMaintenanceAsset> trMaintenance = new List<TrMaintenanceAsset>();
+            try
+            {
+                var query = dc.TrxMaintenanceAsset_View("", "G");
+                foreach (var res in query)
+                {
+                    TrMaintenanceAsset maintenance = new TrMaintenanceAsset();
+
+                    maintenance.MaintenanceNo = res.MaintenanceAssetNo;
+                    maintenance.AssetCode = res.AssetCode;
+                    maintenance.AssetName = res.AssetName;
+                    maintenance.Type = res.Type;
+                    maintenance.Status = res.NamaStatus;
+                    maintenance.ScheduleDate = res.ScheduleDate;
+                    maintenance.CompleteDate = res.CompleteDate;
+                    maintenance.Cost = res.Cost;
+                    maintenance.Notes = res.Notes;
+
+                    trMaintenance.Add(maintenance);
+                }
+            }
+            catch
+            {
+                trMaintenance = null;
+            }
+            return trMaintenance.ToArray();
+        }
+        public TrMaintenanceAssetLine[] GridMaintenanceAssetLine()
+        {
+            dc = new BFASTDataContext();
+            List<TrMaintenanceAssetLine> trMaintenanceLine = new List<TrMaintenanceAssetLine>();
+            try
+            {
+                var query = dc.TrxMaintenanceAssetLine_View("", "", "K");
+                foreach (var res in query)
+                {
+                    TrMaintenanceAssetLine mainLine = new TrMaintenanceAssetLine();
+
+
+                    mainLine.AssetCode = res.AssetCode;
+                    mainLine.AssetName = res.AssetName;
+                    mainLine.AssetSerialNo = res.AssetSerialNo;
+
+                    trMaintenanceLine.Add(mainLine);
+                }
+            }
+            catch
+            {
+                trMaintenanceLine = null;
+            }
+            return trMaintenanceLine.ToArray();
+        }
+
         [HttpPost]
         public JsonResult GetPopupAssetCheckOut()
         {
@@ -1235,10 +1456,10 @@ namespace CORE.JGC.Controllers
 
         //PopUp Location
         [HttpPost]
-        public JsonResult GetPopupLocation()
+        public JsonResult GetPopupLocation(string SiteCode)
         {
             MsLocation[] msLocation = null;
-            msLocation = GridPopupLocation();
+            msLocation = GridPopupLocation(SiteCode);
 
             return Json(new
             {
