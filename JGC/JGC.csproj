@@ -239,6 +239,7 @@
     <Content Include="Content\res\build\images\back_disabled.png" />
     <Content Include="Content\res\build\images\back_enabled.png" />
     <Content Include="Content\res\build\images\back_enabled_hover.png" />
+    <Content Include="Content\res\build\images\bg_login.jpg" />
     <Content Include="Content\res\build\images\favicon2\android-icon-144x144.png" />
     <Content Include="Content\res\build\images\favicon2\android-icon-192x192.png" />
     <Content Include="Content\res\build\images\favicon2\android-icon-36x36.png" />
@@ -4675,6 +4676,7 @@
     <Content Include="Views\Utilization\Createrole.cshtml" />
     <Content Include="Views\Utilization\Updaterole.cshtml" />
     <Content Include="Views\Utilization\Access.cshtml" />
+    <Content Include="Views\Asset\Move.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

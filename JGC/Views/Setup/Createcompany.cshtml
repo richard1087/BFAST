@@ -7,15 +7,22 @@
 <script type="text/javascript">
 
     function InputCompany() {
-        var CompanyId = document.getElementById("CompanyId").value;
+        var CompanyId = document.getElementById("CompanyCode").value;
+        var CompanyName = document.getElementById("CompanyName").value;
         var AddressId = document.getElementById("AddressId").value;
         var CityId = document.getElementById("CityId").value;
         var ProvinceId = document.getElementById("ProvinceId").value;
         var PostalCodeId = document.getElementById("PostalCodeId").value;
         var TelephoneId = document.getElementById("TelephoneId").value;
 
-        if (CompanyId == "") {
-            $(".modal-body #peringatan3").text("Company harus diisi");
+        if (CompanyCode == "") {
+            $(".modal-body #peringatan3").text("Company Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CompanyName == "") {
+            $(".modal-body #peringatan3").text("Company Name harus diisi");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
@@ -83,9 +90,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Company</label>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Company Code</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="CompanyId" type="text" name="Company" class="form-control col-md-10" placeholder="Company" />
+                                    <input id="CompanyCode" type="text" name="CompanyCode" class="form-control col-md-10" placeholder="Company Code" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Company Name</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="CompanyName" type="text" name="CompanyName" class="form-control col-md-10" placeholder="Company Name" />
                                 </div>
                             </div>
 
@@ -270,10 +284,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload your Photo</label>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload Logo</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="file" name="file" id="file" class="btn btn-success btn-cust inputfile" />
+                                    <input type="file" name="file" id="file" class="btn btn-success btn-cust inputfile" onchange='$("#upload-file-info").html($(this).val());' />
                                     <label for="file" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
+                                    <span class='label label-info label-create' id="upload-file-info"></span>
                                 </div>
                             </div>
 
