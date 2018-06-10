@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Transfer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Transfer Asset •
+                            <a href="/asset/transfer" class="activemenu">Transfer</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>List of Transfer Asset</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <p class="text-muted font-13 m-b-30">
+                            <div class="mgbtm20">
+                                <a href="/asset/createtransfer" class="btn btn-success btn-cust">Create New</a>
+                            </div>
+                        </p>
+                        <table id="datatable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th width="13%">@Html.Label("Transfer No")</th>
+                                    <th width="8%">@Html.Label("Date")</th>
+                                    <th width="10%">@Html.Label("Status")</th>
+                                    <th width="15%">@Html.Label("Type")</th>
+                                    <th width="8%">@Html.Label("Site")</th>
+                                    <th width="10%">@Html.Label("Location")</th>
+                                    <th width="10%">@Html.Label("Floor")</th>
+                                    <th width="4%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (CORE.JGC.Models.TrTransferAsset item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.TransferAssetNo)</td>
+                                        <td>@Convert.ToDateTime(item.TransferDate).ToString("dd/MM/yyyy")</td>
+                                        <td>@Html.DisplayFor(modelItem => item.NamaStatus)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.NamaType)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.SiteName)</td> 
+                                        <td>@Html.DisplayFor(modelItem => item.LocationName)</td> 
+                                        <td>@Html.DisplayFor(modelItem => item.Floor)</td> 
+                                        <td style="width:5% !important;text-align:center;">
+                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return DeleteAsset('@Html.DisplayFor(modelItem => item.TransferAssetNo)');"><span class="glyphicon glyphicon-edit"></span></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+<script type="text/javascript">
+      $(document).ready(function(){
+          $("#assetmodel").click(function () {
+              $("#assetModal").modal();
+          });
+          $("#AssetCloseId").click(function () {
+              $("#assetModal").modal('toggle');
+          });
+
+          $("#lihatmaintenance").click(function () {
+              $("#assetMaintenance").modal();
+          });
+          $("#MaintenanceLinkId").click(function () {
+              $("#assetMaintenance").modal('toggle');
+          });
+          $("#MaintenanceCancelId").click(function () {
+              $("#assetMaintenance").modal('toggle');
+          });
+      });
+
+</script>
