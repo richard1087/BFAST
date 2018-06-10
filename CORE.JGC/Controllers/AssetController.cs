@@ -22,13 +22,14 @@ namespace CORE.JGC.Controllers
         {
             dc = new BFASTDataContext();
             List<MsAsset> msasset = new List<MsAsset>();
+            string url = "http://" + Request.Url.Authority;
             try
             {
                 var query = dc.MsAsset_View("", "G");
                 foreach (var res in query)
                 {
                     MsAsset asset = new MsAsset();
-                    asset.Photo = res.AssetPhoto;
+                    asset.Photo = url + res.AssetPhoto;
                     asset.AssetCode = res.AssetTagID;
                     asset.AssetName = res.AssetName;
                     asset.AssetBrandCode = res.AssetBrand;
@@ -257,12 +258,10 @@ namespace CORE.JGC.Controllers
         }
         private string GenerateQrCode(string assettagid)
         {
-            //iTextSharp.text.Document doc = new iTextSharp.text.Document(new iTextSharp.text.Rectangle(4.5f, 5.5f), 0.5f, 0.5f, 0, 0);
             string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
             string filepathimg = Server.MapPath(pathdb);
 
             ByteMatrix btm;
-            //FileStream fs = null;
             Bitmap bmp = null;
             try
             {
@@ -304,31 +303,6 @@ namespace CORE.JGC.Controllers
             //fs.Close();
             return pathdb;
         }
-        private void UploadPhoto()
-        {
-            string path = string.Empty;
-            if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
-            {
-                var pic = System.Web.HttpContext.Current.Request.Files["Assetpic"];
-                if (pic.ContentLength > 0)
-                {
-                    string filename = Path.GetFileName(pic.FileName);
-                    var ext = Path.GetExtension(pic.FileName);
-                    //imgName = Guid.NewGuid().ToString();
-                    filename = filename + DateTime.Now.ToString("HHmmss") + ext;
-                    path = "/Content/res/build/images/Assets/" + filename + ext;
-                    //var filepath = path;
-                    pic.SaveAs(path);
-                    MemoryStream stream = new MemoryStream();
-                    WebImage webimg = new WebImage(path);
-                    if (webimg.Width > 200)
-                    {
-                        webimg.Resize(200, 200);
-                        webimg.Save(path);
-                    }
-                }
-            }
-        }
         public ActionResult Index()
         {
             MsAsset[] msasset = null;
@@ -364,7 +338,7 @@ namespace CORE.JGC.Controllers
             string path = string.Empty;
             string pathdb = string.Empty;
             dc = new BFASTDataContext();
-
+            
             try
             {
                 
@@ -382,9 +356,9 @@ namespace CORE.JGC.Controllers
                         pic.SaveAs(path);
                         MemoryStream stream = new MemoryStream();
                         WebImage webimg = new WebImage(path);
-                        if (webimg.Width > 150)
+                        if (webimg.Width > 100)
                         {
-                            webimg.Resize(150, 150);
+                            webimg.Resize(100, 100);
                             webimg.Save(path);
                         }
                     }
@@ -395,15 +369,15 @@ namespace CORE.JGC.Controllers
                     UserID, 1);
                 foreach (var res in query)
                 {
-                    if (res.AssetTag == "Err This Data Already Exists")
+                    if (res.Status == "Err This Data Already Exists")
                     {
                         hasil = "Data Already Exists";
                     }
                     else
                     {
-                        string qrcode = GenerateQrCode(res.AssetTag);
-                        var qr = dc.MsBarcode_IUD(res.AssetTag, qrcode, "", "", UserID, 1);
-                        hasil = res.AssetTag;
+                        string qrcode = GenerateQrCode(res.Status);
+                        var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
+                        hasil = res.Status;
                     }
                 }
             }

@@ -4,7 +4,42 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+        function fnExcelReport() {
+            var tab_text = "<table border='2px'><tr bgcolor='#87AFC6'>";
+            var textRange; var j = 0;
+            var dt = new Date();
+            var day = dt.getDate();
+            var month = dt.getMonth() + 1;
+            var year = dt.getFullYear();
+            var hour = dt.getHours();
+            var mins = dt.getMinutes();
+            var postfix = day + "." + month + "." + year + "_" + hour + "." + mins;
+            tab = document.getElementById('datatable'); // id of table
 
+            for (j = 0 ; j < tab.rows.length ; j++) {
+                tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
+            }
+
+            tab_text = tab_text + "</table>";
+            tab_text = tab_text.replace(/<a[^>]*>|<\/a>/g, "");
+            tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, "");
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+
+            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+            {
+                txtArea1.document.open("txt/html", "replace");
+                txtArea1.document.write(tab_text);
+                txtArea1.document.close();
+                txtArea1.focus();
+                sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+            }
+            else                 //other browser not tested on IE 11
+                sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+            return (sa);
+        }
+</script>
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -24,7 +59,8 @@
                         <p class="text-muted font-13 m-b-30">
                             <div class="mgbtm20">
                                 <a href="/asset/create" class="btn btn-success btn-cust">Create New</a>
-                                <button type="button" class="btn btn-success btn-cust"><i class="fa fa-download icon-white"></i> Export to Excel</button>
+                                <button type="button" class="btn btn-success btn-cust" onclick="fnExcelReport();"><i class="fa fa-download icon-white"></i> Export to Excel</button>
+                                <iframe id="txtArea1" style="display:none"></iframe>
                                 <!--
                                 <div class="btn-group top-2">
                                     <button data-toggle="dropdown" class="btn btn-success btn-cust dropdown-toggle" type="button" aria-expanded="false">
