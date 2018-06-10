@@ -11,7 +11,9 @@ namespace CORE.JGC.Models
         public int Id { get; set; }
         public string TransferAssetNo { get; set; }
         public string Status { get; set; }
+        public string NamaStatus { get; set; }
         public string Type { get; set; }
+        public string NamaType { get; set; }
         public DateTime TransferDate { get; set; }
         public string TransferAssetNoRef { get; set; }
         public string SiteCode { get; set; }

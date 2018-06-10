@@ -497,25 +497,11 @@ namespace CORE.JGC
 			return ((ISingleResult<TrxTransferAsset_IUDResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxTransferAsset_View")]
-		public ISingleResult<TrxTransferAsset_ViewResult> TrxTransferAsset_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransferAssetNo", DbType="VarChar(20)")] string transferAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), transferAssetNo, tipe);
-			return ((ISingleResult<TrxTransferAsset_ViewResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxTransferAssetLine_IUD")]
 		public ISingleResult<TrxTransferAssetLine_IUDResult> TrxTransferAssetLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, userID, no);
 			return ((ISingleResult<TrxTransferAssetLine_IUDResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxTransferAssetLine_View")]
-		public ISingleResult<TrxTransferAssetLine_ViewResult> TrxTransferAssetLine_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransferAssetNo", DbType="VarChar(20)")] string transferAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(10)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), transferAssetNo, assetCode, tipe);
-			return ((ISingleResult<TrxTransferAssetLine_ViewResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UtilGroupMenu_IUD")]
@@ -579,6 +565,20 @@ namespace CORE.JGC
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maintenanceAssetNo, tipe);
 			return ((ISingleResult<TrxMaintenanceAsset_ViewResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxTransferAsset_View")]
+		public ISingleResult<TrxTransferAsset_ViewResult> TrxTransferAsset_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransferAssetNo", DbType="VarChar(20)")] string transferAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), transferAssetNo, tipe);
+			return ((ISingleResult<TrxTransferAsset_ViewResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxTransferAssetLine_View")]
+		public ISingleResult<TrxTransferAssetLine_ViewResult> TrxTransferAssetLine_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransferAssetNo", DbType="VarChar(20)")] string transferAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(10)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), transferAssetNo, assetCode, tipe);
+			return ((ISingleResult<TrxTransferAssetLine_ViewResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -7282,194 +7282,6 @@ namespace CORE.JGC
 		}
 	}
 	
-	public partial class TrxTransferAsset_ViewResult
-	{
-		
-		private string _TransferAssetNo;
-		
-		private string _NamaStatus;
-		
-		private string _NamaType;
-		
-		private System.DateTime _TransferDate;
-		
-		private string _TransferAssetNoRef;
-		
-		private string _SiteCode;
-		
-		private string _SiteName;
-		
-		private string _LocationCode;
-		
-		private string _LocationName;
-		
-		private System.Nullable<int> _Floor;
-		
-		public TrxTransferAsset_ViewResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferAssetNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string TransferAssetNo
-		{
-			get
-			{
-				return this._TransferAssetNo;
-			}
-			set
-			{
-				if ((this._TransferAssetNo != value))
-				{
-					this._TransferAssetNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaStatus", DbType="VarChar(50)")]
-		public string NamaStatus
-		{
-			get
-			{
-				return this._NamaStatus;
-			}
-			set
-			{
-				if ((this._NamaStatus != value))
-				{
-					this._NamaStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaType", DbType="VarChar(50)")]
-		public string NamaType
-		{
-			get
-			{
-				return this._NamaType;
-			}
-			set
-			{
-				if ((this._NamaType != value))
-				{
-					this._NamaType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferDate", DbType="DateTime NOT NULL")]
-		public System.DateTime TransferDate
-		{
-			get
-			{
-				return this._TransferDate;
-			}
-			set
-			{
-				if ((this._TransferDate != value))
-				{
-					this._TransferDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferAssetNoRef", DbType="VarChar(20)")]
-		public string TransferAssetNoRef
-		{
-			get
-			{
-				return this._TransferAssetNoRef;
-			}
-			set
-			{
-				if ((this._TransferAssetNoRef != value))
-				{
-					this._TransferAssetNoRef = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7)")]
-		public string SiteCode
-		{
-			get
-			{
-				return this._SiteCode;
-			}
-			set
-			{
-				if ((this._SiteCode != value))
-				{
-					this._SiteCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
-		public string SiteName
-		{
-			get
-			{
-				return this._SiteName;
-			}
-			set
-			{
-				if ((this._SiteName != value))
-				{
-					this._SiteName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(10)")]
-		public string LocationCode
-		{
-			get
-			{
-				return this._LocationCode;
-			}
-			set
-			{
-				if ((this._LocationCode != value))
-				{
-					this._LocationCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
-		public string LocationName
-		{
-			get
-			{
-				return this._LocationName;
-			}
-			set
-			{
-				if ((this._LocationName != value))
-				{
-					this._LocationName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
-		public System.Nullable<int> Floor
-		{
-			get
-			{
-				return this._Floor;
-			}
-			set
-			{
-				if ((this._Floor != value))
-				{
-					this._Floor = value;
-				}
-			}
-		}
-	}
-	
 	public partial class TrxTransferAssetLine_IUDResult
 	{
 		
@@ -7491,212 +7303,6 @@ namespace CORE.JGC
 				if ((this._Status != value))
 				{
 					this._Status = value;
-				}
-			}
-		}
-	}
-	
-	public partial class TrxTransferAssetLine_ViewResult
-	{
-		
-		private string _TransferAssetNo;
-		
-		private string _AssetCode;
-		
-		private string _AssetName;
-		
-		private string _AssetSerialNo;
-		
-		private string _SiteCode;
-		
-		private string _SiteName;
-		
-		private string _LocationCode;
-		
-		private string _LocationName;
-		
-		private System.Nullable<int> _Floor;
-		
-		private string _Iby;
-		
-		private System.Nullable<System.DateTime> _Ion;
-		
-		public TrxTransferAssetLine_ViewResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferAssetNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string TransferAssetNo
-		{
-			get
-			{
-				return this._TransferAssetNo;
-			}
-			set
-			{
-				if ((this._TransferAssetNo != value))
-				{
-					this._TransferAssetNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string AssetCode
-		{
-			get
-			{
-				return this._AssetCode;
-			}
-			set
-			{
-				if ((this._AssetCode != value))
-				{
-					this._AssetCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetName", DbType="VarChar(500)")]
-		public string AssetName
-		{
-			get
-			{
-				return this._AssetName;
-			}
-			set
-			{
-				if ((this._AssetName != value))
-				{
-					this._AssetName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetSerialNo", DbType="VarChar(50)")]
-		public string AssetSerialNo
-		{
-			get
-			{
-				return this._AssetSerialNo;
-			}
-			set
-			{
-				if ((this._AssetSerialNo != value))
-				{
-					this._AssetSerialNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7)")]
-		public string SiteCode
-		{
-			get
-			{
-				return this._SiteCode;
-			}
-			set
-			{
-				if ((this._SiteCode != value))
-				{
-					this._SiteCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
-		public string SiteName
-		{
-			get
-			{
-				return this._SiteName;
-			}
-			set
-			{
-				if ((this._SiteName != value))
-				{
-					this._SiteName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(10)")]
-		public string LocationCode
-		{
-			get
-			{
-				return this._LocationCode;
-			}
-			set
-			{
-				if ((this._LocationCode != value))
-				{
-					this._LocationCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
-		public string LocationName
-		{
-			get
-			{
-				return this._LocationName;
-			}
-			set
-			{
-				if ((this._LocationName != value))
-				{
-					this._LocationName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
-		public System.Nullable<int> Floor
-		{
-			get
-			{
-				return this._Floor;
-			}
-			set
-			{
-				if ((this._Floor != value))
-				{
-					this._Floor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
-		public string Iby
-		{
-			get
-			{
-				return this._Iby;
-			}
-			set
-			{
-				if ((this._Iby != value))
-				{
-					this._Iby = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Ion
-		{
-			get
-			{
-				return this._Ion;
-			}
-			set
-			{
-				if ((this._Ion != value))
-				{
-					this._Ion = value;
 				}
 			}
 		}
@@ -8525,6 +8131,454 @@ namespace CORE.JGC
 				if ((this._Cost != value))
 				{
 					this._Cost = value;
+				}
+			}
+		}
+	}
+	
+	public partial class TrxTransferAsset_ViewResult
+	{
+		
+		private string _TransferAssetNo;
+		
+		private string _Status;
+		
+		private string _NamaStatus;
+		
+		private string _Type;
+		
+		private string _NamaType;
+		
+		private System.DateTime _TransferDate;
+		
+		private string _TransferAssetNoRef;
+		
+		private string _SiteCode;
+		
+		private string _SiteName;
+		
+		private string _LocationCode;
+		
+		private string _LocationName;
+		
+		private System.Nullable<int> _Floor;
+		
+		private string _Notes;
+		
+		public TrxTransferAsset_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferAssetNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string TransferAssetNo
+		{
+			get
+			{
+				return this._TransferAssetNo;
+			}
+			set
+			{
+				if ((this._TransferAssetNo != value))
+				{
+					this._TransferAssetNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(5)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaStatus", DbType="VarChar(50)")]
+		public string NamaStatus
+		{
+			get
+			{
+				return this._NamaStatus;
+			}
+			set
+			{
+				if ((this._NamaStatus != value))
+				{
+					this._NamaStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaType", DbType="VarChar(50)")]
+		public string NamaType
+		{
+			get
+			{
+				return this._NamaType;
+			}
+			set
+			{
+				if ((this._NamaType != value))
+				{
+					this._NamaType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferDate", DbType="DateTime NOT NULL")]
+		public System.DateTime TransferDate
+		{
+			get
+			{
+				return this._TransferDate;
+			}
+			set
+			{
+				if ((this._TransferDate != value))
+				{
+					this._TransferDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferAssetNoRef", DbType="VarChar(20)")]
+		public string TransferAssetNoRef
+		{
+			get
+			{
+				return this._TransferAssetNoRef;
+			}
+			set
+			{
+				if ((this._TransferAssetNoRef != value))
+				{
+					this._TransferAssetNoRef = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7)")]
+		public string SiteCode
+		{
+			get
+			{
+				return this._SiteCode;
+			}
+			set
+			{
+				if ((this._SiteCode != value))
+				{
+					this._SiteCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
+		public string SiteName
+		{
+			get
+			{
+				return this._SiteName;
+			}
+			set
+			{
+				if ((this._SiteName != value))
+				{
+					this._SiteName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(10)")]
+		public string LocationCode
+		{
+			get
+			{
+				return this._LocationCode;
+			}
+			set
+			{
+				if ((this._LocationCode != value))
+				{
+					this._LocationCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
+		public string LocationName
+		{
+			get
+			{
+				return this._LocationName;
+			}
+			set
+			{
+				if ((this._LocationName != value))
+				{
+					this._LocationName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
+		public System.Nullable<int> Floor
+		{
+			get
+			{
+				return this._Floor;
+			}
+			set
+			{
+				if ((this._Floor != value))
+				{
+					this._Floor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(500)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this._Notes = value;
+				}
+			}
+		}
+	}
+	
+	public partial class TrxTransferAssetLine_ViewResult
+	{
+		
+		private string _TransferAssetNo;
+		
+		private string _AssetCode;
+		
+		private string _AssetName;
+		
+		private string _AssetSerialNo;
+		
+		private string _SiteCode;
+		
+		private string _SiteName;
+		
+		private string _LocationCode;
+		
+		private string _LocationName;
+		
+		private System.Nullable<int> _Floor;
+		
+		private string _Iby;
+		
+		private System.Nullable<System.DateTime> _Ion;
+		
+		public TrxTransferAssetLine_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferAssetNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string TransferAssetNo
+		{
+			get
+			{
+				return this._TransferAssetNo;
+			}
+			set
+			{
+				if ((this._TransferAssetNo != value))
+				{
+					this._TransferAssetNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string AssetCode
+		{
+			get
+			{
+				return this._AssetCode;
+			}
+			set
+			{
+				if ((this._AssetCode != value))
+				{
+					this._AssetCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetName", DbType="VarChar(500)")]
+		public string AssetName
+		{
+			get
+			{
+				return this._AssetName;
+			}
+			set
+			{
+				if ((this._AssetName != value))
+				{
+					this._AssetName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetSerialNo", DbType="VarChar(50)")]
+		public string AssetSerialNo
+		{
+			get
+			{
+				return this._AssetSerialNo;
+			}
+			set
+			{
+				if ((this._AssetSerialNo != value))
+				{
+					this._AssetSerialNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7)")]
+		public string SiteCode
+		{
+			get
+			{
+				return this._SiteCode;
+			}
+			set
+			{
+				if ((this._SiteCode != value))
+				{
+					this._SiteCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
+		public string SiteName
+		{
+			get
+			{
+				return this._SiteName;
+			}
+			set
+			{
+				if ((this._SiteName != value))
+				{
+					this._SiteName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(10)")]
+		public string LocationCode
+		{
+			get
+			{
+				return this._LocationCode;
+			}
+			set
+			{
+				if ((this._LocationCode != value))
+				{
+					this._LocationCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
+		public string LocationName
+		{
+			get
+			{
+				return this._LocationName;
+			}
+			set
+			{
+				if ((this._LocationName != value))
+				{
+					this._LocationName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
+		public System.Nullable<int> Floor
+		{
+			get
+			{
+				return this._Floor;
+			}
+			set
+			{
+				if ((this._Floor != value))
+				{
+					this._Floor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
+		public string Iby
+		{
+			get
+			{
+				return this._Iby;
+			}
+			set
+			{
+				if ((this._Iby != value))
+				{
+					this._Iby = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ion
+		{
+			get
+			{
+				return this._Ion;
+			}
+			set
+			{
+				if ((this._Ion != value))
+				{
+					this._Ion = value;
 				}
 			}
 		}

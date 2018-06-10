@@ -802,46 +802,12 @@
       <Column Name="Exception" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.TrxTransferAsset_View" Method="TrxTransferAsset_View">
-    <Parameter Name="TransferAssetNo" Parameter="transferAssetNo" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
-    <ElementType Name="TrxTransferAsset_ViewResult">
-      <Column Name="TransferAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TransferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="TransferAssetNoRef" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
-      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.TrxTransferAssetLine_IUD" Method="TrxTransferAssetLine_IUD">
     <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
     <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="TrxTransferAssetLine_IUDResult">
       <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.TrxTransferAssetLine_View" Method="TrxTransferAssetLine_View">
-    <Parameter Name="TransferAssetNo" Parameter="transferAssetNo" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
-    <ElementType Name="TrxTransferAssetLine_ViewResult">
-      <Column Name="TransferAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
-      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Iby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.UtilGroupMenu_IUD" Method="UtilGroupMenu_IUD">
@@ -967,6 +933,43 @@
       <Column Name="Iby" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Ion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="Cost" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TrxTransferAsset_View" Method="TrxTransferAsset_View">
+    <Parameter Name="TransferAssetNo" Parameter="transferAssetNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
+    <ElementType Name="TrxTransferAsset_ViewResult">
+      <Column Name="TransferAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TransferAssetNoRef" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TrxTransferAssetLine_View" Method="TrxTransferAssetLine_View">
+    <Parameter Name="TransferAssetNo" Parameter="transferAssetNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
+    <ElementType Name="TrxTransferAssetLine_ViewResult">
+      <Column Name="TransferAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Iby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
