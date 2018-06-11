@@ -501,6 +501,13 @@ namespace CORE.JGC.Controllers
             return View(trTransfer);
         }
 
+        public ActionResult CreateTransfer()
+        {
+            TrTransferAssetLine[] trTransferLine = null;
+            trTransferLine = GridTransferLine();
+            return View(trTransferLine);
+        }
+
         public ActionResult Assetpastdue()
         {
             return View();
@@ -671,6 +678,44 @@ namespace CORE.JGC.Controllers
                 {
                     string UserID = Session["UserName"].ToString().Trim();
                     var query = dc.TrxMaintenanceAssetLine_IUD(AssetCode, UserID, 3);
+
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAssetTransfer(string AssetCode)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+                    string UserID = Session["UserName"].ToString().Trim();
+                    var query = dc.TrxTransferAssetLine_IUD(AssetCode, UserID, 3);
 
                     string status = "";
                     foreach (var res in query)
@@ -1030,7 +1075,7 @@ namespace CORE.JGC.Controllers
                 {
                     string TransferNo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime TransferDateC = DateTime.ParseExact(TransferDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime TransferDateC = DateTime.ParseExact(TransferDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
                     var query = dc.TrxTransferAsset_IUD(TransferNo, Type, TransferDateC, TransferAssetNoRef, SiteCode, LocationCode, Floor, Notes, UserID, 1);
                     string status = "";
@@ -1425,6 +1470,29 @@ namespace CORE.JGC.Controllers
             }
             return msCategory.ToArray();
         }
+        public MsType[] GridPopupTypeTransfer()
+        {
+            dc = new BFASTDataContext();
+            List<MsType> msType = new List<MsType>();
+            try
+            {
+                var query = dc.Pop_AssetTransferType();
+                foreach (var res in query)
+                {
+                    MsType type = new MsType();
+
+                    type.TypeCode = res.Type ;
+                    type.TypeName = res.NamaType;
+
+                    msType.Add(type);
+                }
+            }
+            catch
+            {
+                msType = null;
+            }
+            return msType.ToArray();
+        }
 
         public MsLocation[] GridPopupLocation(string SiteCode)
         {
@@ -1451,7 +1519,36 @@ namespace CORE.JGC.Controllers
             }
             return msLocation.ToArray();
         }
-        
+        public TrTransferAsset[] GridPopupTransferNoRef()
+        {
+            dc = new BFASTDataContext();
+            List<TrTransferAsset> trx = new List<TrTransferAsset>();
+            try
+            {
+                var query = dc.TrxTransferAsset_View("", "S");
+                foreach (var res in query)
+                {
+                    TrTransferAsset transfer = new TrTransferAsset();
+
+                    transfer.TransferAssetNo = res.TransferAssetNo;
+                    transfer.NamaStatus = res.NamaStatus;
+                    transfer.NamaType = res.NamaType;
+                    transfer.SiteCode = res.SiteCode;
+                    transfer.SiteName = res.SiteName;
+                    transfer.LocationCode = res.LocationCode;
+                    transfer.LocationName = res.LocationName;
+                    transfer.Floor = res.Floor;
+
+                    trx.Add(transfer);
+                }
+            }
+            catch
+            {
+                trx = null;
+            }
+            return trx.ToArray();
+        }
+
         public TrCheckOut[] GridCheckOut()
         {
             dc = new BFASTDataContext();
@@ -1635,8 +1732,36 @@ namespace CORE.JGC.Controllers
                     transfer.TransferAssetNoRef = res.TransferAssetNoRef;
                     transfer.SiteCode = res.SiteCode;
                     transfer.SiteName = res.SiteName;
+                    transfer.LocationCode = res.LocationCode;
+                    transfer.LocationName = res.LocationName;
+                    transfer.Floor = res.Floor;
                     transfer.Notes = res.Notes;
 
+                    trTransfer.Add(transfer);
+                }
+            }
+            catch
+            {
+                trTransfer = null;
+            }
+            return trTransfer.ToArray();
+        }
+        public TrTransferAssetLine[] GridTransferLine()
+        {
+            dc = new BFASTDataContext();
+            List<TrTransferAssetLine> trTransfer = new List<TrTransferAssetLine>();
+            try
+            {
+                var query = dc.TrxTransferAssetLine_View("","", "K");
+                foreach (var res in query)
+                {
+                    TrTransferAssetLine transfer = new TrTransferAssetLine();
+
+                    transfer.TransferAssetNo = res.TransferAssetNo;
+                    transfer.AssetCode = res.AssetCode;
+                    transfer.AssetName = res.AssetName;
+                    transfer.AssetSerialNo = res.AssetSerialNo;
+                   
                     trTransfer.Add(transfer);
                 }
             }
@@ -1846,6 +1971,28 @@ namespace CORE.JGC.Controllers
             return Json(new
             {
                 data = msCompany.Select(x => new[] { x.CompanyCode, x.CompanyName})
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetPopupTypeTransfer()
+        {
+            MsType[] msType = null;
+            msType = GridPopupTypeTransfer();
+
+            return Json(new
+            {
+                data = msType.Select(x => new[] { x.TypeCode, x.TypeName })
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetPopupTransferNoRef()
+        {
+            TrTransferAsset[] trTransferAsset = null;
+            trTransferAsset = GridPopupTransferNoRef();
+
+            return Json(new
+            {
+                data = trTransferAsset
             }, JsonRequestBehavior.AllowGet);
         }
 
