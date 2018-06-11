@@ -239,6 +239,7 @@
     <Content Include="Content\res\build\images\back_disabled.png" />
     <Content Include="Content\res\build\images\back_enabled.png" />
     <Content Include="Content\res\build\images\back_enabled_hover.png" />
+    <Content Include="Content\res\build\images\bg_login.jpg" />
     <Content Include="Content\res\build\images\favicon2\android-icon-144x144.png" />
     <Content Include="Content\res\build\images\favicon2\android-icon-192x192.png" />
     <Content Include="Content\res\build\images\favicon2\android-icon-36x36.png" />
@@ -4680,8 +4681,12 @@
     <Content Include="Views\Utilization\Createrole.cshtml" />
     <Content Include="Views\Utilization\Updaterole.cshtml" />
     <Content Include="Views\Utilization\Access.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Asset\Transfer.cshtml" />
     <Content Include="Views\Asset\Createtransfer.cshtml" />
+=======
+    <Content Include="Views\Asset\Move.cshtml" />
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

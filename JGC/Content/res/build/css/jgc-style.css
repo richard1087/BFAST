@@ -4,7 +4,8 @@ html{
 
 /* LOGIN CSS START */
 .login{
-  background: #fff !important;
+  background: #fff url("../images/bg_login.jpg") no-repeat center center fixed !important;
+  background-size:cover !important;
 }
 
 .login_content form input[type=text], .login_content form input[type=email], .login_content form input[type=password],
@@ -485,6 +486,13 @@ textarea {
 
 .login_content{
     text-shadow:none;
+    background: #fff;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 10px;
+    box-shadow: 6px 9px 16px #231b19;
+    padding-bottom: 4%;
+    padding-top: 10%;
 }
 
 .displaynone{
@@ -503,6 +511,25 @@ textarea {
 
 .nav-md ul.nav.child_menu li::after {
     border-left: 1px solid #484848 !important;
+}
+
+.label-create{
+    background: transparent;
+    color: #777573;
+    font-size: 14px;
+}
+
+table.dataTable{
+    width:100% !important;
+}
+
+.sharepop>.dataTables_wrapper>.row>.col-sm-6 {
+    width: 47.5% !important;
+    margin-bottom: 15px;
+}
+
+.btn-success{
+    margin:0 !important;
 }
 
 /* CONTENT CSS END */

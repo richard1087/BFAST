@@ -112,7 +112,7 @@
                         $('#btnok').click(function (e) {
                             window.location.href = "@Url.Action("Checkout","Asset")";
                         })
-                        $("#Alert2").modal();
+                        //$("#Alert2").modal();
                     } else {
                         $(".modal-body #peringatan3").text(response.responseText);
                         $('#btnerror').click(function (e) {
@@ -315,27 +315,13 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Person</label>
                                     <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <div class="input-group">
-                                            <input class="form-control readonly" id="EmployeeId" name="EmployeeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                            <input class="form-control readonly" id="FullName" name="FullName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                            <span class="input-group-btn">
-                                                <a class="btn btn-info" onclick="Employee()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                                    <i class="fa fa-search fa-fw"></i>
-                                                </a>
-                                            </span>
-                                        </div>
+                                        <input class="form-control readonly" id="EmployeeId" name="EmployeeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                        <input class="form-control readonly" id="FullName" name="FullName" value="" type="text" data-id="i" autocomplete="off" onclick="Employee()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                                     </div>
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
                                     <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <div class="input-group">
-                                            <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                            <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                            <span class="input-group-btn">
-                                                <a class="btn btn-info" onclick="Site()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                                    <i class="fa fa-search fa-fw"></i>
-                                                </a>
-                                            </span>
-                                        </div>
+                                        <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                        <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Site()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -345,15 +331,8 @@
                                     </div>
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
                                     <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <div class="input-group">
-                                            <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                            <input class="form-control readonly" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                            <span class="input-group-btn">
-                                                <a class="btn btn-info" onclick="Location()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                                    <i class="fa fa-search fa-fw"></i>
-                                                </a>
-                                            </span>
-                                        </div>
+                                        <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                        <input class="form-control readonly" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" onclick="Location()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -418,14 +397,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">
-                                <input class="form-control readonly" id="AssetCode" name="AssetCode" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                <span class="input-group-btn">
-                                    <a class="btn btn-info" onclick="Asset('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                        <i class="fa fa-search fa-fw"></i>
-                                    </a>
-                                </span>
-                            </div>
+                            <input class="form-control readonly" id="AssetCode" name="AssetCode" value="" type="text" data-id="i" autocomplete="off" onclick="Asset('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                         </div>
                     </div>
                     <div class="form-group">

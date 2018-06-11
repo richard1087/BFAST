@@ -22,6 +22,7 @@ namespace CORE.JGC.Controllers
         {
             dc = new BFASTDataContext();
             List<MsAsset> msasset = new List<MsAsset>();
+            //string url = "http://" + Request.Url.Authority;
             try
             {
                 var query = dc.MsAsset_View("", "G");
@@ -257,13 +258,20 @@ namespace CORE.JGC.Controllers
         }
         private string GenerateQrCode(string assettagid)
         {
+<<<<<<< HEAD
             //iTextSharp.text.Document doc = new iTextSharp.text.Document(new iTextSharp.text.Rectangle(4.5f, 5.5f), 0.5f, 0.5f, 0, 0);
             string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
             string filepathimg = Server.MapPath(pathdb);
+=======
+            string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
+            string filepathimg = Server.MapPath(pathdb);
+            //string filepathimg = Path.Combine(Server.MapPath("~/Content/res/build/images/Qrcode/"), assettagid + ".jpg");
+            string base64 = string.Empty;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 
             ByteMatrix btm;
-            //FileStream fs = null;
             Bitmap bmp = null;
+            MemoryStream ms = null;
             try
             {
                 BarcodeQRCode qrcode = new BarcodeQRCode(assettagid, 200, 200, null);
@@ -288,19 +296,21 @@ namespace CORE.JGC.Controllers
                         }
                     }
                 }
-                Response.ContentType = "image/jpeg";
-                //ms = new MemoryStream();
-                bmp.Save(filepathimg, System.Drawing.Imaging.ImageFormat.Jpeg);
-                //byte[] byteImg = fs.ToArray();
-                //base64 = Convert.ToBase64String(byteImg);
-
+                using (ms = new MemoryStream())
+                {
+                    Response.ContentType = "image/jpeg";
+                    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] byteImg = ms.ToArray();
+                    base64 = Convert.ToBase64String(byteImg);
+                }
             }
             catch (Exception ex)
             {
-                //base64 = "";
+                base64 = "";
                 string msg = ex.Message;
             }
             bmp.Dispose();
+<<<<<<< HEAD
             //fs.Close();
             return pathdb;
         }
@@ -328,6 +338,11 @@ namespace CORE.JGC.Controllers
                     }
                 }
             }
+=======
+            ms.Close();
+            //return pathdb;
+            return base64;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
         }
         public ActionResult Index()
         {
@@ -335,7 +350,10 @@ namespace CORE.JGC.Controllers
             msasset = GridAsset();
             return View(msasset);
         }
+        private void UploadImage(HttpPostedFileBase file)
+        {
 
+        }
         public ActionResult Details()
         {
             return View();
@@ -359,12 +377,17 @@ namespace CORE.JGC.Controllers
         public ActionResult InputData(MsAsset asset)
         {
             string UserID = Session["UserName"].ToString().Trim();
+<<<<<<< HEAD
             //string Photo = GeneratePhoto(path);
+=======
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
             string hasil = string.Empty;
             string path = string.Empty;
             string pathdb = string.Empty;
             dc = new BFASTDataContext();
-
+            MemoryStream ms = null;
+            Bitmap bmp   = null;
+            string base64 = string.Empty;
             try
             {
                 
@@ -372,6 +395,7 @@ namespace CORE.JGC.Controllers
                 {
                     var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
                     HttpPostedFileBase filebase = new HttpPostedFileWrapper(pic);
+                    
                     if (pic.ContentLength > 0)
                     {
                         string filename = Path.GetFileNameWithoutExtension(pic.FileName);
@@ -380,35 +404,63 @@ namespace CORE.JGC.Controllers
                         pathdb = "/Content/res/build/images/Assets/" + filename + ext;
                         path = Server.MapPath(pathdb);
                         pic.SaveAs(path);
-                        MemoryStream stream = new MemoryStream();
                         WebImage webimg = new WebImage(path);
+<<<<<<< HEAD
                         if (webimg.Width > 150)
                         {
                             webimg.Resize(150, 150);
+=======
+                        if (webimg.Width > 100)
+                        {
+                            webimg.Resize(100, 100);
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
                             webimg.Save(path);
                         }
+                        bmp = new Bitmap(path);
+                        
+                        using (ms = new MemoryStream())
+                        {
+                            Response.ContentType = "image/jpeg";
+                            bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            byte[] byteImg = ms.ToArray();
+                            base64 = Convert.ToBase64String(byteImg);
+                        }
+                        bmp.Dispose();
+                        ms.Close();
                     }
                 }
                 var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
+<<<<<<< HEAD
                     Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+=======
+                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
                     Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),
                     UserID, 1);
                 foreach (var res in query)
                 {
-                    if (res.AssetTag == "Err This Data Already Exists")
+                    if (res.Status == "Err This Data Already Exists")
                     {
                         hasil = "Data Already Exists";
                     }
                     else
                     {
+<<<<<<< HEAD
                         string qrcode = GenerateQrCode(res.AssetTag);
                         var qr = dc.MsBarcode_IUD(res.AssetTag, qrcode, "", "", UserID, 1);
                         hasil = res.AssetTag;
+=======
+                        string qrcode = GenerateQrCode(res.Status);
+                        var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
+                        hasil = res.Status;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
                     }
                 }
             }
             catch (Exception ex)
             {
+                bmp.Dispose();
+                ms.Close();
                 return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
             }
             return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
@@ -1185,6 +1237,199 @@ namespace CORE.JGC.Controllers
             }
             return msSite.ToArray();
         }
+
+        public MsDepartment[] GridPopupDepartment()
+        {
+            dc = new BFASTDataContext();
+            List<MsDepartment> msDepartment = new List<MsDepartment>();
+            try
+            {
+                var query = dc.MsDepartment_View("", "P");
+                foreach (var res in query)
+                {
+                    MsDepartment department = new MsDepartment();
+
+                    department.DeptCode = res.DeptCode;
+                    department.DeptName = res.DeptName;
+
+                    msDepartment.Add(department);
+                }
+            }
+            catch
+            {
+                msDepartment = null;
+            }
+            return msDepartment.ToArray();
+        }
+
+        public MsSupplier[] GridPopupSupplier()
+        {
+            dc = new BFASTDataContext();
+            List<MsSupplier> msSupplier = new List<MsSupplier>();
+            try
+            {
+                var query = dc.MsSupplier_View("", "P");
+                foreach (var res in query)
+                {
+                    MsSupplier supplier = new MsSupplier();
+
+                    supplier.SupplierCode = res.SupplierCode;
+                    supplier.SupplierName = res.SupplierName;
+
+                    msSupplier.Add(supplier);
+                }
+            }
+            catch
+            {
+                msSupplier = null;
+            }
+            return msSupplier.ToArray();
+        }
+
+        public MsAssetBrand[] GridPopupBrand()
+        {
+            dc = new BFASTDataContext();
+            List<MsAssetBrand> msBrand = new List<MsAssetBrand>();
+            try
+            {
+                var query = dc.MsAssetBrand_View("", "P");
+                foreach (var res in query)
+                {
+                    MsAssetBrand brand = new MsAssetBrand();
+
+                    brand.BrandCode = res.BrandCode;
+                    brand.BrandName = res.BrandName;
+
+                    msBrand.Add(brand);
+                }
+            }
+            catch
+            {
+                msBrand = null;
+            }
+            return msBrand.ToArray();
+        }
+
+        public MsAssetModel[] GridPopupModel()
+        {
+            dc = new BFASTDataContext();
+            List<MsAssetModel> msModel = new List<MsAssetModel>();
+            try
+            {
+                var query = dc.MsAssetModel_View("", "P");
+                foreach (var res in query)
+                {
+                    MsAssetModel model = new MsAssetModel();
+
+                    model.ModelCode = res.ModelCode;
+                    model.ModelName = res.ModelName;
+
+                    msModel.Add(model);
+                }
+            }
+            catch
+            {
+                msModel = null;
+            }
+            return msModel.ToArray();
+        }
+
+        public MsAssetType[] GridPopupType()
+        {
+            dc = new BFASTDataContext();
+            List<MsAssetType> msType= new List<MsAssetType>();
+            try
+            {
+                var query = dc.MsAssetType_View("", "P");
+                foreach (var res in query)
+                {
+                    MsAssetType type = new MsAssetType();
+
+                    type.AssetTypeCode = res.AssetTypeCode;
+                    type.AssetTypeName = res.AssetTypeName;
+
+                    msType.Add(type);
+                }
+            }
+            catch
+            {
+                msType = null;
+            }
+            return msType.ToArray();
+        }
+
+        public MsCurrency[] GridPopupCurrency()
+        {
+            dc = new BFASTDataContext();
+            List<MsCurrency> msCurrency = new List<MsCurrency>();
+            try
+            {
+                var query = dc.MsCurrency_View("", "P");
+                foreach (var res in query)
+                {
+                    MsCurrency currency = new MsCurrency();
+
+                    currency.CurrencyCode = res.CurrencyCode;
+                    currency.CurrencyName = res.CurrencyName;
+
+                    msCurrency.Add(currency);
+                }
+            }
+            catch
+            {
+                msCurrency = null;
+            }
+            return msCurrency.ToArray();
+        }
+
+        public MsCompany[] GridPopupCompany()
+        {
+            dc = new BFASTDataContext();
+            List<MsCompany> msCompany = new List<MsCompany>();
+            try
+            {
+                var query = dc.MsCompany_View("", "P");
+                foreach (var res in query)
+                {
+                    MsCompany company = new MsCompany();
+
+                    company.CompanyCode = res.CompanyCode;
+                    company.CompanyName = res.CompanyName;
+
+                    msCompany.Add(company);
+                }
+            }
+            catch
+            {
+                msCompany = null;
+            }
+            return msCompany.ToArray();
+        }
+
+        public MsAssetCategory[] GridPopupCategory()
+        {
+            dc = new BFASTDataContext();
+            List<MsAssetCategory> msCategory = new List<MsAssetCategory>();
+            try
+            {
+                var query = dc.MsAssetCategory_View("", "P");
+                foreach (var res in query)
+                {
+                    MsAssetCategory category = new MsAssetCategory();
+
+                    category.AssetCategoryCode = res.AssetCategoryCode;
+                    category.AssetCategoryName = res.AssetCategoryName;
+
+                    msCategory.Add(category);
+                }
+            }
+            catch
+            {
+                msCategory = null;
+            }
+            return msCategory.ToArray();
+        }
+
         public MsLocation[] GridPopupLocation(string SiteCode)
         {
             dc = new BFASTDataContext();
@@ -1210,7 +1455,7 @@ namespace CORE.JGC.Controllers
             }
             return msLocation.ToArray();
         }
-
+        
         public TrCheckOut[] GridCheckOut()
         {
             dc = new BFASTDataContext();
@@ -1491,6 +1736,19 @@ namespace CORE.JGC.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        //PopUp Category
+        [HttpPost]
+        public JsonResult GetPopupCategory()
+        {
+            MsAssetCategory[] msCategory = null;
+            msCategory = GridPopupCategory();
+
+            return Json(new
+            {
+                data = msCategory.Select(x => new[] { x.AssetCategoryCode, x.AssetCategoryName })
+            }, JsonRequestBehavior.AllowGet);
+        }
+
         //PopUp Location
         [HttpPost]
         public JsonResult GetPopupLocation(string SiteCode)
@@ -1501,6 +1759,97 @@ namespace CORE.JGC.Controllers
             return Json(new
             {
                 data = msLocation
+            }, JsonRequestBehavior.AllowGet);
+        }
+        
+        //PopUp Department
+        [HttpPost]
+        public JsonResult GetPopupDepartment()
+        {
+            MsDepartment[] msDepartment = null;
+            msDepartment = GridPopupDepartment();
+
+            return Json(new
+            {
+                data = msDepartment.Select(x => new[] { x.DeptCode, x.DeptName })
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //PopUp Supplier
+        [HttpPost]
+        public JsonResult GetPopupSupplier()
+        {
+            MsSupplier[] msSupplier = null;
+            msSupplier = GridPopupSupplier();
+
+            return Json(new
+            {
+                data = msSupplier.Select(x => new[] { x.SupplierCode, x.SupplierName})
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //PopUp Brand
+        [HttpPost]
+        public JsonResult GetPopupBrand()
+        {
+            MsAssetBrand[] msBrand = null;
+            msBrand = GridPopupBrand();
+
+            return Json(new
+            {
+                data = msBrand.Select(x => new[] { x.BrandCode, x.BrandName})
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //PopUp Model
+        [HttpPost]
+        public JsonResult GetPopupModel()
+        {
+            MsAssetModel[] msModel = null;
+            msModel = GridPopupModel();
+
+            return Json(new
+            {
+                data = msModel.Select(x => new[] { x.ModelCode, x.ModelName })
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //PopUp Type
+        [HttpPost]
+        public JsonResult GetPopupType()
+        {
+            MsAssetType[] msType = null;
+            msType = GridPopupType();
+
+            return Json(new
+            {
+                data = msType.Select(x => new[] { x.AssetTypeCode, x.AssetTypeName})
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //PopUp Currency
+        [HttpPost]
+        public JsonResult GetPopupCurrency()
+        {
+            MsCurrency[] msCurrency = null;
+            msCurrency = GridPopupCurrency();
+
+            return Json(new
+            {
+                data = msCurrency.Select(x => new[] { x.CurrencyCode, x.CurrencyName})
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //PopUp Company
+        [HttpPost]
+        public JsonResult GetPopupCompany()
+        {
+            MsCompany[] msCompany = null;
+            msCompany = GridPopupCompany();
+
+            return Json(new
+            {
+                data = msCompany.Select(x => new[] { x.CompanyCode, x.CompanyName})
             }, JsonRequestBehavior.AllowGet);
         }
 

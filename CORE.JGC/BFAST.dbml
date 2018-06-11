@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DbAssetJGC" Class="BFASTDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\LOCALSQL;Initial Catalog=DbAssetJGC;User ID=sa" SettingsObjectName="CORE.JGC.Properties.Settings" SettingsPropertyName="DbAssetJGCConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=DbAssetJGC;User ID=sa" SettingsObjectName="CORE.JGC.Properties.Settings" SettingsPropertyName="DbAssetJGCConnectionString" Provider="System.Data.SqlClient" />
   <Function Name="dbo.Get_Login" Method="Get_Login">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(50)" />
@@ -101,7 +101,7 @@
     <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="MsAsset_IUDResult">
-      <Column Name="AssetTag" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.MsAsset_View" Method="MsAsset_View">
@@ -625,6 +625,14 @@
       <Column Name="LastId" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.TagAssetMobile_IUD" Method="TagAssetMobile_IUD">
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="IBy" Parameter="iBy" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="IOn" Parameter="iOn" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="TagAssetMobile_IUDResult">
+      <Column Name="Status" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.TrxCheckIn_IUD" Method="TrxCheckIn_IUD">
     <Parameter Name="CheckInNo" Parameter="checkInNo" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="ReturnDate" Parameter="returnDate" Type="System.DateTime" DbType="DateTime" />
@@ -787,6 +795,68 @@
       <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.TrxMaintenanceAsset_IUD" Method="TrxMaintenanceAsset_IUD">
+    <Parameter Name="MaintenanceAssetNo" Parameter="maintenanceAssetNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="ScheduleDate" Parameter="scheduleDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CompleteDate" Parameter="completeDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="AssignTo" Parameter="assignTo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Damage" Parameter="damage" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="Cost" Parameter="cost" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TrxMaintenanceAsset_IUDResult">
+      <Column Name="Exception" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TrxMaintenanceAsset_View" Method="TrxMaintenanceAsset_View">
+    <Parameter Name="MaintenanceAssetNo" Parameter="maintenanceAssetNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
+    <ElementType Name="TrxMaintenanceAsset_ViewResult">
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="MaintenanceAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ScheduleDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CompleteDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AssignTo" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Damage" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="iPrint" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Iby" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Ion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TrxMaintenanceAssetLine_IUD" Method="TrxMaintenanceAssetLine_IUD">
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TrxMaintenanceAssetLine_IUDResult">
+      <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TrxMaintenanceAssetLine_View" Method="TrxMaintenanceAssetLine_View">
+    <Parameter Name="MaintenanceAssetNo" Parameter="maintenanceAssetNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
+    <ElementType Name="TrxMaintenanceAssetLine_ViewResult">
+      <Column Name="MaintenanceAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Iby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.TrxTransferAsset_IUD" Method="TrxTransferAsset_IUD">
     <Parameter Name="TransferAssetNo" Parameter="transferAssetNo" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(5)" />
@@ -873,6 +943,7 @@
       <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+<<<<<<< HEAD
   <Function Name="dbo.TrxMaintenanceAsset_IUD" Method="TrxMaintenanceAsset_IUD">
     <Parameter Name="MaintenanceAssetNo" Parameter="maintenanceAssetNo" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(5)" />
@@ -972,4 +1043,6 @@
       <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
+=======
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 </Database>

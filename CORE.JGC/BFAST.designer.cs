@@ -406,6 +406,13 @@ namespace CORE.JGC
 			return ((ISingleResult<SyncronAssetResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TagAssetMobile_IUD")]
+		public ISingleResult<TagAssetMobile_IUDResult> TagAssetMobile_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(50)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IBy", DbType="VarChar(100)")] string iBy, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IOn", DbType="DateTime")] System.Nullable<System.DateTime> iOn)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, iBy, iOn);
+			return ((ISingleResult<TagAssetMobile_IUDResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxCheckIn_IUD")]
 		public ISingleResult<TrxCheckIn_IUDResult> TrxCheckIn_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckInNo", DbType="VarChar(20)")] string checkInNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReturnDate", DbType="DateTime")] System.Nullable<System.DateTime> returnDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="VarChar(200)")] string notes, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
@@ -490,6 +497,34 @@ namespace CORE.JGC
 			return ((ISingleResult<TrxDisposeAssetLine_ViewResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxMaintenanceAsset_IUD")]
+		public ISingleResult<TrxMaintenanceAsset_IUDResult> TrxMaintenanceAsset_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaintenanceAssetNo", DbType="VarChar(20)")] string maintenanceAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Type", DbType="VarChar(5)")] string type, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ScheduleDate", DbType="DateTime")] System.Nullable<System.DateTime> scheduleDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompleteDate", DbType="DateTime")] System.Nullable<System.DateTime> completeDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssignTo", DbType="VarChar(50)")] string assignTo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Damage", DbType="VarChar(100)")] string damage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="VarChar(500)")] string notes, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cost", DbType="Decimal(18,0)")] System.Nullable<decimal> cost, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maintenanceAssetNo, type, scheduleDate, completeDate, assignTo, damage, notes, cost, userID, no);
+			return ((ISingleResult<TrxMaintenanceAsset_IUDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxMaintenanceAsset_View")]
+		public ISingleResult<TrxMaintenanceAsset_ViewResult> TrxMaintenanceAsset_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaintenanceAssetNo", DbType="VarChar(20)")] string maintenanceAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maintenanceAssetNo, tipe);
+			return ((ISingleResult<TrxMaintenanceAsset_ViewResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxMaintenanceAssetLine_IUD")]
+		public ISingleResult<TrxMaintenanceAssetLine_IUDResult> TrxMaintenanceAssetLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, userID, no);
+			return ((ISingleResult<TrxMaintenanceAssetLine_IUDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxMaintenanceAssetLine_View")]
+		public ISingleResult<TrxMaintenanceAssetLine_ViewResult> TrxMaintenanceAssetLine_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaintenanceAssetNo", DbType="VarChar(20)")] string maintenanceAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(10)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maintenanceAssetNo, assetCode, tipe);
+			return ((ISingleResult<TrxMaintenanceAssetLine_ViewResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxTransferAsset_IUD")]
 		public ISingleResult<TrxTransferAsset_IUDResult> TrxTransferAsset_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransferAssetNo", DbType="VarChar(20)")] string transferAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Type", DbType="VarChar(5)")] string type, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransferDate", DbType="DateTime")] System.Nullable<System.DateTime> transferDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransferAssetNoRef", DbType="VarChar(20)")] string transferAssetNoRef, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SiteCode", DbType="VarChar(20)")] string siteCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationCode", DbType="VarChar(50)")] string locationCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Floor", DbType="Int")] System.Nullable<int> floor, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="VarChar(500)")] string notes, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
@@ -538,6 +573,7 @@ namespace CORE.JGC
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, password, name, email, address, phone, companyID, deptCode, locationCode, groupAccessCode, bActive, bManager, userID, no);
 			return ((ISingleResult<UtilUser_IUDResult>)(result.ReturnValue));
 		}
+<<<<<<< HEAD
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxMaintenanceAsset_IUD")]
 		public ISingleResult<TrxMaintenanceAsset_IUDResult> TrxMaintenanceAsset_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaintenanceAssetNo", DbType="VarChar(20)")] string maintenanceAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Type", DbType="VarChar(5)")] string type, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ScheduleDate", DbType="DateTime")] System.Nullable<System.DateTime> scheduleDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompleteDate", DbType="DateTime")] System.Nullable<System.DateTime> completeDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssignTo", DbType="VarChar(50)")] string assignTo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Damage", DbType="VarChar(100)")] string damage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="VarChar(500)")] string notes, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cost", DbType="Decimal(18,0)")] System.Nullable<decimal> cost, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
@@ -580,6 +616,8 @@ namespace CORE.JGC
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), transferAssetNo, assetCode, tipe);
 			return ((ISingleResult<TrxTransferAssetLine_ViewResult>)(result.ReturnValue));
 		}
+=======
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 	}
 	
 	public partial class Get_LoginResult
@@ -1607,24 +1645,24 @@ namespace CORE.JGC
 	public partial class MsAsset_IUDResult
 	{
 		
-		private string _AssetTag;
+		private string _Status;
 		
 		public MsAsset_IUDResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTag", DbType="VarChar(15)")]
-		public string AssetTag
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(15)")]
+		public string Status
 		{
 			get
 			{
-				return this._AssetTag;
+				return this._Status;
 			}
 			set
 			{
-				if ((this._AssetTag != value))
+				if ((this._Status != value))
 				{
-					this._AssetTag = value;
+					this._Status = value;
 				}
 			}
 		}
@@ -5936,6 +5974,32 @@ namespace CORE.JGC
 		}
 	}
 	
+	public partial class TagAssetMobile_IUDResult
+	{
+		
+		private string _Status;
+		
+		public TagAssetMobile_IUDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(1) NOT NULL", CanBeNull=false)]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
 	public partial class TrxCheckIn_IUDResult
 	{
 		
@@ -7256,12 +7320,12 @@ namespace CORE.JGC
 		}
 	}
 	
-	public partial class TrxTransferAsset_IUDResult
+	public partial class TrxMaintenanceAsset_IUDResult
 	{
 		
 		private string _Exception;
 		
-		public TrxTransferAsset_IUDResult()
+		public TrxMaintenanceAsset_IUDResult()
 		{
 		}
 		
@@ -7282,6 +7346,7 @@ namespace CORE.JGC
 		}
 	}
 	
+<<<<<<< HEAD
 	public partial class TrxTransferAssetLine_IUDResult
 	{
 		
@@ -7303,6 +7368,59 @@ namespace CORE.JGC
 				if ((this._Status != value))
 				{
 					this._Status = value;
+=======
+	public partial class TrxMaintenanceAsset_ViewResult
+	{
+		
+		private string _AssetCode;
+		
+		private string _AssetName;
+		
+		private string _MaintenanceAssetNo;
+		
+		private string _Status;
+		
+		private string _NamaStatus;
+		
+		private string _Type;
+		
+		private string _NamaType;
+		
+		private System.Nullable<System.DateTime> _ScheduleDate;
+		
+		private System.DateTime _CompleteDate;
+		
+		private string _AssignTo;
+		
+		private string _Damage;
+		
+		private string _Notes;
+		
+		private System.Nullable<int> _iPrint;
+		
+		private string _Iby;
+		
+		private System.DateTime _Ion;
+		
+		private System.Nullable<decimal> _Cost;
+		
+		public TrxMaintenanceAsset_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15)")]
+		public string AssetCode
+		{
+			get
+			{
+				return this._AssetCode;
+			}
+			set
+			{
+				if ((this._AssetCode != value))
+				{
+					this._AssetCode = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
@@ -7311,6 +7429,7 @@ namespace CORE.JGC
 	public partial class UtilGroupMenu_IUDResult
 	{
 		
+<<<<<<< HEAD
 		private string _Status;
 		
 		public UtilGroupMenu_IUDResult()
@@ -7318,6 +7437,41 @@ namespace CORE.JGC
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetName", DbType="VarChar(500)")]
+		public string AssetName
+		{
+			get
+			{
+				return this._AssetName;
+			}
+			set
+			{
+				if ((this._AssetName != value))
+				{
+					this._AssetName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaintenanceAssetNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string MaintenanceAssetNo
+		{
+			get
+			{
+				return this._MaintenanceAssetNo;
+			}
+			set
+			{
+				if ((this._MaintenanceAssetNo != value))
+				{
+					this._MaintenanceAssetNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		public string Status
 		{
 			get
@@ -7337,6 +7491,7 @@ namespace CORE.JGC
 	public partial class UtilGroupMenu_ViewResult
 	{
 		
+<<<<<<< HEAD
 		private string _GroupMenuCode;
 		
 		private string _GroupMenuName;
@@ -7361,10 +7516,57 @@ namespace CORE.JGC
 				if ((this._GroupMenuCode != value))
 				{
 					this._GroupMenuCode = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaStatus", DbType="VarChar(50)")]
+		public string NamaStatus
+		{
+			get
+			{
+				return this._NamaStatus;
+			}
+			set
+			{
+				if ((this._NamaStatus != value))
+				{
+					this._NamaStatus = value;
 				}
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaType", DbType="VarChar(50)")]
+		public string NamaType
+		{
+			get
+			{
+				return this._NamaType;
+			}
+			set
+			{
+				if ((this._NamaType != value))
+				{
+					this._NamaType = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
+				}
+			}
+		}
+		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupMenuName", DbType="VarChar(50)")]
 		public string GroupMenuName
 		{
@@ -7377,10 +7579,25 @@ namespace CORE.JGC
 				if ((this._GroupMenuName != value))
 				{
 					this._GroupMenuName = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ScheduleDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ScheduleDate
+		{
+			get
+			{
+				return this._ScheduleDate;
+			}
+			set
+			{
+				if ((this._ScheduleDate != value))
+				{
+					this._ScheduleDate = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
 		public string Iby
 		{
@@ -7393,10 +7610,25 @@ namespace CORE.JGC
 				if ((this._Iby != value))
 				{
 					this._Iby = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompleteDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CompleteDate
+		{
+			get
+			{
+				return this._CompleteDate;
+			}
+			set
+			{
+				if ((this._CompleteDate != value))
+				{
+					this._CompleteDate = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime")]
 		public System.Nullable<System.DateTime> Ion
 		{
@@ -7420,6 +7652,135 @@ namespace CORE.JGC
 		private string _Status;
 		
 		public UtilMenu_IUDResult()
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssignTo", DbType="VarChar(10)")]
+		public string AssignTo
+		{
+			get
+			{
+				return this._AssignTo;
+			}
+			set
+			{
+				if ((this._AssignTo != value))
+				{
+					this._AssignTo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Damage", DbType="VarChar(100)")]
+		public string Damage
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
+		{
+			get
+			{
+				return this._Damage;
+			}
+			set
+			{
+				if ((this._Damage != value))
+				{
+					this._Damage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(500)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this._Notes = value;
+				}
+			}
+		}
+<<<<<<< HEAD
+	}
+	
+	public partial class UtilMenu_ViewResult
+	{
+		
+		private string _MenuCode;
+=======
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_iPrint", DbType="Int")]
+		public System.Nullable<int> iPrint
+		{
+			get
+			{
+				return this._iPrint;
+			}
+			set
+			{
+				if ((this._iPrint != value))
+				{
+					this._iPrint = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Iby
+		{
+			get
+			{
+				return this._Iby;
+			}
+			set
+			{
+				if ((this._Iby != value))
+				{
+					this._Iby = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime NOT NULL")]
+		public System.DateTime Ion
+		{
+			get
+			{
+				return this._Ion;
+			}
+			set
+			{
+				if ((this._Ion != value))
+				{
+					this._Ion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cost", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Cost
+		{
+			get
+			{
+				return this._Cost;
+			}
+			set
+			{
+				if ((this._Cost != value))
+				{
+					this._Cost = value;
+				}
+			}
+		}
+	}
+	
+	public partial class TrxMaintenanceAssetLine_IUDResult
+	{
+		
+		private string _Status;
+		
+		public TrxMaintenanceAssetLine_IUDResult()
 		{
 		}
 		
@@ -7440,10 +7801,19 @@ namespace CORE.JGC
 		}
 	}
 	
-	public partial class UtilMenu_ViewResult
+	public partial class TrxMaintenanceAssetLine_ViewResult
 	{
 		
-		private string _MenuCode;
+		private string _MaintenanceAssetNo;
+		
+		private string _AssetCode;
+		
+		private string _AssetName;
+		
+		private string _AssetSerialNo;
+		
+		private string _SiteCode;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		
 		private string _MenuName;
 		
@@ -7451,12 +7821,16 @@ namespace CORE.JGC
 		
 		private System.Nullable<int> _LevelMenu;
 		
+<<<<<<< HEAD
 		private string _ParentMenu;
 		
+=======
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		private string _Iby;
 		
 		private System.Nullable<System.DateTime> _Ion;
 		
+<<<<<<< HEAD
 		public UtilMenu_ViewResult()
 		{
 		}
@@ -7473,12 +7847,35 @@ namespace CORE.JGC
 				if ((this._MenuCode != value))
 				{
 					this._MenuCode = value;
+=======
+		public TrxMaintenanceAssetLine_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaintenanceAssetNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string MaintenanceAssetNo
+		{
+			get
+			{
+				return this._MaintenanceAssetNo;
+			}
+			set
+			{
+				if ((this._MaintenanceAssetNo != value))
+				{
+					this._MaintenanceAssetNo = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuName", DbType="VarChar(50)")]
 		public string MenuName
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string AssetCode
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		{
 			get
 			{
@@ -7583,6 +7980,7 @@ namespace CORE.JGC
 		{
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
 		public string Status
 		{
@@ -7606,6 +8004,10 @@ namespace CORE.JGC
 		private string _Exception;
 		
 		public TrxMaintenanceAsset_IUDResult()
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
+		public string Iby
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		{
 		}
 		
@@ -7626,32 +8028,41 @@ namespace CORE.JGC
 		}
 	}
 	
+<<<<<<< HEAD
 	public partial class TrxMaintenanceAssetLine_IUDResult
+=======
+	public partial class TrxTransferAsset_IUDResult
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 	{
 		
-		private string _Status;
+		private string _Exception;
 		
+<<<<<<< HEAD
 		public TrxMaintenanceAssetLine_IUDResult()
+=======
+		public TrxTransferAsset_IUDResult()
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
-		public string Status
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Exception", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
+		public string Exception
 		{
 			get
 			{
-				return this._Status;
+				return this._Exception;
 			}
 			set
 			{
-				if ((this._Status != value))
+				if ((this._Exception != value))
 				{
-					this._Status = value;
+					this._Exception = value;
 				}
 			}
 		}
 	}
 	
+<<<<<<< HEAD
 	public partial class TrxMaintenanceAssetLine_ViewResult
 	{
 		
@@ -7723,10 +8134,52 @@ namespace CORE.JGC
 				if ((this._AssetName != value))
 				{
 					this._AssetName = value;
+=======
+	public partial class TrxTransferAsset_ViewResult
+	{
+		
+		private string _TransferAssetNo;
+		
+		private string _NamaStatus;
+		
+		private string _NamaType;
+		
+		private System.DateTime _TransferDate;
+		
+		private string _TransferAssetNoRef;
+		
+		private string _SiteCode;
+		
+		private string _SiteName;
+		
+		private string _LocationCode;
+		
+		private string _LocationName;
+		
+		private System.Nullable<int> _Floor;
+		
+		public TrxTransferAsset_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferAssetNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string TransferAssetNo
+		{
+			get
+			{
+				return this._TransferAssetNo;
+			}
+			set
+			{
+				if ((this._TransferAssetNo != value))
+				{
+					this._TransferAssetNo = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetSerialNo", DbType="VarChar(50)")]
 		public string AssetSerialNo
 		{
@@ -7739,10 +8192,25 @@ namespace CORE.JGC
 				if ((this._AssetSerialNo != value))
 				{
 					this._AssetSerialNo = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaStatus", DbType="VarChar(50)")]
+		public string NamaStatus
+		{
+			get
+			{
+				return this._NamaStatus;
+			}
+			set
+			{
+				if ((this._NamaStatus != value))
+				{
+					this._NamaStatus = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7)")]
 		public string SiteCode
 		{
@@ -7755,6 +8223,113 @@ namespace CORE.JGC
 				if ((this._SiteCode != value))
 				{
 					this._SiteCode = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaType", DbType="VarChar(50)")]
+		public string NamaType
+		{
+			get
+			{
+				return this._NamaType;
+			}
+			set
+			{
+				if ((this._NamaType != value))
+				{
+					this._NamaType = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
+				}
+			}
+		}
+		
+<<<<<<< HEAD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
+		public string SiteName
+		{
+			get
+			{
+				return this._SiteName;
+			}
+			set
+			{
+				if ((this._SiteName != value))
+				{
+					this._SiteName = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferDate", DbType="DateTime NOT NULL")]
+		public System.DateTime TransferDate
+		{
+			get
+			{
+				return this._TransferDate;
+			}
+			set
+			{
+				if ((this._TransferDate != value))
+				{
+					this._TransferDate = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
+				}
+			}
+		}
+		
+<<<<<<< HEAD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(10)")]
+		public string LocationCode
+		{
+			get
+			{
+				return this._LocationCode;
+			}
+			set
+			{
+				if ((this._LocationCode != value))
+				{
+					this._LocationCode = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferAssetNoRef", DbType="VarChar(20)")]
+		public string TransferAssetNoRef
+		{
+			get
+			{
+				return this._TransferAssetNoRef;
+			}
+			set
+			{
+				if ((this._TransferAssetNoRef != value))
+				{
+					this._TransferAssetNoRef = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
+				}
+			}
+		}
+		
+<<<<<<< HEAD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
+		public string LocationName
+		{
+			get
+			{
+				return this._LocationName;
+			}
+			set
+			{
+				if ((this._LocationName != value))
+				{
+					this._LocationName = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7)")]
+		public string SiteCode
+		{
+			get
+			{
+				return this._SiteCode;
+			}
+			set
+			{
+				if ((this._SiteCode != value))
+				{
+					this._SiteCode = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
@@ -7790,54 +8365,7 @@ namespace CORE.JGC
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
-		public string LocationName
-		{
-			get
-			{
-				return this._LocationName;
-			}
-			set
-			{
-				if ((this._LocationName != value))
-				{
-					this._LocationName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
-		public string Iby
-		{
-			get
-			{
-				return this._Iby;
-			}
-			set
-			{
-				if ((this._Iby != value))
-				{
-					this._Iby = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Ion
-		{
-			get
-			{
-				return this._Ion;
-			}
-			set
-			{
-				if ((this._Ion != value))
-				{
-					this._Ion = value;
-				}
-			}
-		}
+<<<<<<< HEAD
 	}
 	
 	public partial class TrxMaintenanceAsset_ViewResult
@@ -7929,19 +8457,25 @@ namespace CORE.JGC
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
 		public string Status
+=======
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
+		public string LocationName
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		{
 			get
 			{
-				return this._Status;
+				return this._LocationName;
 			}
 			set
 			{
-				if ((this._Status != value))
+				if ((this._LocationName != value))
 				{
-					this._Status = value;
+					this._LocationName = value;
 				}
 			}
 		}
+<<<<<<< HEAD
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaStatus", DbType="VarChar(50)")]
 		public string NamaStatus
@@ -7990,6 +8524,28 @@ namespace CORE.JGC
 				}
 			}
 		}
+=======
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
+		public System.Nullable<int> Floor
+		{
+			get
+			{
+				return this._Floor;
+			}
+			set
+			{
+				if ((this._Floor != value))
+				{
+					this._Floor = value;
+				}
+			}
+		}
+	}
+	
+	public partial class TrxTransferAssetLine_IUDResult
+	{
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ScheduleDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> ScheduleDate
@@ -8007,8 +8563,12 @@ namespace CORE.JGC
 			}
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompleteDate", DbType="DateTime NOT NULL")]
 		public System.DateTime CompleteDate
+=======
+		public TrxTransferAssetLine_IUDResult()
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		{
 			get
 			{
@@ -8136,7 +8696,11 @@ namespace CORE.JGC
 		}
 	}
 	
+<<<<<<< HEAD
 	public partial class TrxTransferAsset_ViewResult
+=======
+	public partial class TrxTransferAssetLine_ViewResult
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 	{
 		
 		private string _TransferAssetNo;
@@ -8162,10 +8726,19 @@ namespace CORE.JGC
 		private string _LocationName;
 		
 		private System.Nullable<int> _Floor;
+<<<<<<< HEAD
+=======
+		
+		private string _Iby;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		
 		private string _Notes;
 		
+<<<<<<< HEAD
 		public TrxTransferAsset_ViewResult()
+=======
+		public TrxTransferAssetLine_ViewResult()
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		{
 		}
 		
@@ -8347,6 +8920,25 @@ namespace CORE.JGC
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
 		public System.Nullable<int> Floor
+<<<<<<< HEAD
+=======
+		{
+			get
+			{
+				return this._Floor;
+			}
+			set
+			{
+				if ((this._Floor != value))
+				{
+					this._Floor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
+		public string Iby
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		{
 			get
 			{
@@ -8378,6 +8970,7 @@ namespace CORE.JGC
 		}
 	}
 	
+<<<<<<< HEAD
 	public partial class TrxTransferAssetLine_ViewResult
 	{
 		
@@ -8398,10 +8991,45 @@ namespace CORE.JGC
 		private string _LocationName;
 		
 		private System.Nullable<int> _Floor;
+=======
+	public partial class UtilGroupMenu_IUDResult
+	{
+		
+		private string _Status;
+		
+		public UtilGroupMenu_IUDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class UtilGroupMenu_ViewResult
+	{
+		
+		private string _GroupMenuCode;
+		
+		private string _GroupMenuName;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 		
 		private string _Iby;
 		
 		private System.Nullable<System.DateTime> _Ion;
+<<<<<<< HEAD
 		
 		public TrxTransferAssetLine_ViewResult()
 		{
@@ -8419,10 +9047,62 @@ namespace CORE.JGC
 				if ((this._TransferAssetNo != value))
 				{
 					this._TransferAssetNo = value;
+=======
+		
+		public UtilGroupMenu_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupMenuCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string GroupMenuCode
+		{
+			get
+			{
+				return this._GroupMenuCode;
+			}
+			set
+			{
+				if ((this._GroupMenuCode != value))
+				{
+					this._GroupMenuCode = value;
 				}
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupMenuName", DbType="VarChar(50)")]
+		public string GroupMenuName
+		{
+			get
+			{
+				return this._GroupMenuName;
+			}
+			set
+			{
+				if ((this._GroupMenuName != value))
+				{
+					this._GroupMenuName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
+		public string Iby
+		{
+			get
+			{
+				return this._Iby;
+			}
+			set
+			{
+				if ((this._Iby != value))
+				{
+					this._Iby = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
+				}
+			}
+		}
+		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
@@ -8435,10 +9115,29 @@ namespace CORE.JGC
 				if ((this._AssetCode != value))
 				{
 					this._AssetCode = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ion
+		{
+			get
+			{
+				return this._Ion;
+			}
+			set
+			{
+				if ((this._Ion != value))
+				{
+					this._Ion = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
+	}
+	
+	public partial class UtilMenu_IUDResult
+	{
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetName", DbType="VarChar(500)")]
 		public string AssetName
 		{
@@ -8467,10 +9166,53 @@ namespace CORE.JGC
 				if ((this._AssetSerialNo != value))
 				{
 					this._AssetSerialNo = value;
+=======
+		private string _Status;
+		
+		public UtilMenu_IUDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
+	}
+	
+	public partial class UtilMenu_ViewResult
+	{
 		
+		private string _MenuCode;
+		
+		private string _MenuName;
+		
+		private string _MenuPath;
+		
+		private System.Nullable<int> _LevelMenu;
+		
+		private string _ParentMenu;
+		
+		private string _Iby;
+		
+		private System.Nullable<System.DateTime> _Ion;
+		
+		public UtilMenu_ViewResult()
+		{
+		}
+		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7)")]
 		public string SiteCode
 		{
@@ -8483,10 +9225,25 @@ namespace CORE.JGC
 				if ((this._SiteCode != value))
 				{
 					this._SiteCode = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string MenuCode
+		{
+			get
+			{
+				return this._MenuCode;
+			}
+			set
+			{
+				if ((this._MenuCode != value))
+				{
+					this._MenuCode = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
 		public string SiteName
 		{
@@ -8499,10 +9256,25 @@ namespace CORE.JGC
 				if ((this._SiteName != value))
 				{
 					this._SiteName = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuName", DbType="VarChar(50)")]
+		public string MenuName
+		{
+			get
+			{
+				return this._MenuName;
+			}
+			set
+			{
+				if ((this._MenuName != value))
+				{
+					this._MenuName = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(10)")]
 		public string LocationCode
 		{
@@ -8515,10 +9287,25 @@ namespace CORE.JGC
 				if ((this._LocationCode != value))
 				{
 					this._LocationCode = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuPath", DbType="VarChar(200)")]
+		public string MenuPath
+		{
+			get
+			{
+				return this._MenuPath;
+			}
+			set
+			{
+				if ((this._MenuPath != value))
+				{
+					this._MenuPath = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
 		public string LocationName
 		{
@@ -8531,10 +9318,25 @@ namespace CORE.JGC
 				if ((this._LocationName != value))
 				{
 					this._LocationName = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LevelMenu", DbType="Int")]
+		public System.Nullable<int> LevelMenu
+		{
+			get
+			{
+				return this._LevelMenu;
+			}
+			set
+			{
+				if ((this._LevelMenu != value))
+				{
+					this._LevelMenu = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
 		
+<<<<<<< HEAD
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
 		public System.Nullable<int> Floor
 		{
@@ -8547,6 +9349,20 @@ namespace CORE.JGC
 				if ((this._Floor != value))
 				{
 					this._Floor = value;
+=======
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParentMenu", DbType="VarChar(50)")]
+		public string ParentMenu
+		{
+			get
+			{
+				return this._ParentMenu;
+			}
+			set
+			{
+				if ((this._ParentMenu != value))
+				{
+					this._ParentMenu = value;
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 				}
 			}
 		}
@@ -8582,6 +9398,35 @@ namespace CORE.JGC
 				}
 			}
 		}
+<<<<<<< HEAD
+=======
+	}
+	
+	public partial class UtilUser_IUDResult
+	{
+		
+		private string _Status;
+		
+		public UtilUser_IUDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+>>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
 	}
 }
 #pragma warning restore 1591
