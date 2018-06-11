@@ -26,7 +26,7 @@ namespace CORE.JGC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=DbAssetJGC;User ID=sa;Password=humis")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\LOCALSQL;Initial Catalog=DbAssetJGC;User ID=sa;Password=humis")]
         public string DbAssetJGCConnectionString {
             get {
                 return ((string)(this["DbAssetJGCConnectionString"]));

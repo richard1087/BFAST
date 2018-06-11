@@ -258,16 +258,14 @@ namespace CORE.JGC.Controllers
         }
         private string GenerateQrCode(string assettagid)
         {
-<<<<<<< HEAD
-            //iTextSharp.text.Document doc = new iTextSharp.text.Document(new iTextSharp.text.Rectangle(4.5f, 5.5f), 0.5f, 0.5f, 0, 0);
-            string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
-            string filepathimg = Server.MapPath(pathdb);
-=======
+
+
+
             string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
             string filepathimg = Server.MapPath(pathdb);
             //string filepathimg = Path.Combine(Server.MapPath("~/Content/res/build/images/Qrcode/"), assettagid + ".jpg");
             string base64 = string.Empty;
->>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
+
 
             ByteMatrix btm;
             Bitmap bmp = null;
@@ -310,7 +308,7 @@ namespace CORE.JGC.Controllers
                 string msg = ex.Message;
             }
             bmp.Dispose();
-<<<<<<< HEAD
+
             //fs.Close();
             return pathdb;
         }
@@ -338,11 +336,10 @@ namespace CORE.JGC.Controllers
                     }
                 }
             }
-=======
-            ms.Close();
-            //return pathdb;
-            return base64;
->>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
+            //ms.Close();
+            ////return pathdb;
+            //return base64;
+
         }
         public ActionResult Index()
         {
@@ -373,98 +370,97 @@ namespace CORE.JGC.Controllers
             ViewBag.Companyname = GetCompany();
             return View();
         }
-        [HttpPost]
-        public ActionResult InputData(MsAsset asset)
-        {
-            string UserID = Session["UserName"].ToString().Trim();
-<<<<<<< HEAD
-            //string Photo = GeneratePhoto(path);
-=======
->>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
-            string hasil = string.Empty;
-            string path = string.Empty;
-            string pathdb = string.Empty;
-            dc = new BFASTDataContext();
-            MemoryStream ms = null;
-            Bitmap bmp   = null;
-            string base64 = string.Empty;
-            try
-            {
+        //[HttpPost]
+        //public ActionResult InputData(MsAsset asset)
+        //{
+        //    string UserID = Session["UserName"].ToString().Trim();
+        //    //string Photo = GeneratePhoto(path);
+
+
+        //    string hasil = string.Empty;
+        //    string path = string.Empty;
+        //    string pathdb = string.Empty;
+        //    dc = new BFASTDataContext();
+        //    MemoryStream ms = null;
+        //    Bitmap bmp   = null;
+        //    string base64 = string.Empty;
+        //    try
+        //    {
                 
-                if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
-                {
-                    var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
-                    HttpPostedFileBase filebase = new HttpPostedFileWrapper(pic);
+        //        if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+        //        {
+        //            var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
+        //            HttpPostedFileBase filebase = new HttpPostedFileWrapper(pic);
                     
-                    if (pic.ContentLength > 0)
-                    {
-                        string filename = Path.GetFileNameWithoutExtension(pic.FileName);
-                        string ext = Path.GetExtension(pic.FileName);
-                        filename = filename + DateTime.Now.ToString("HHmmss");
-                        pathdb = "/Content/res/build/images/Assets/" + filename + ext;
-                        path = Server.MapPath(pathdb);
-                        pic.SaveAs(path);
-                        WebImage webimg = new WebImage(path);
-<<<<<<< HEAD
-                        if (webimg.Width > 150)
-                        {
-                            webimg.Resize(150, 150);
-=======
-                        if (webimg.Width > 100)
-                        {
-                            webimg.Resize(100, 100);
->>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
-                            webimg.Save(path);
-                        }
-                        bmp = new Bitmap(path);
+        //            if (pic.ContentLength > 0)
+        //            {
+        //                string filename = Path.GetFileNameWithoutExtension(pic.FileName);
+        //                string ext = Path.GetExtension(pic.FileName);
+        //                filename = filename + DateTime.Now.ToString("HHmmss");
+        //                pathdb = "/Content/res/build/images/Assets/" + filename + ext;
+        //                path = Server.MapPath(pathdb);
+        //                pic.SaveAs(path);
+        //                WebImage webimg = new WebImage(path);
+
+        //                if (webimg.Width > 150)
+        //                {
+        //                    webimg.Resize(150, 150);
+
+        //                if (webimg.Width > 100)
+        //                {
+        //                    webimg.Resize(100, 100);
+
+        //                    webimg.Save(path);
+        //                }
+        //                bmp = new Bitmap(path);
                         
-                        using (ms = new MemoryStream())
-                        {
-                            Response.ContentType = "image/jpeg";
-                            bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                            byte[] byteImg = ms.ToArray();
-                            base64 = Convert.ToBase64String(byteImg);
-                        }
-                        bmp.Dispose();
-                        ms.Close();
-                    }
-                }
-                var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
-<<<<<<< HEAD
-                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-=======
-                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
->>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
-                    Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),
-                    UserID, 1);
-                foreach (var res in query)
-                {
-                    if (res.Status == "Err This Data Already Exists")
-                    {
-                        hasil = "Data Already Exists";
-                    }
-                    else
-                    {
-<<<<<<< HEAD
-                        string qrcode = GenerateQrCode(res.AssetTag);
-                        var qr = dc.MsBarcode_IUD(res.AssetTag, qrcode, "", "", UserID, 1);
-                        hasil = res.AssetTag;
-=======
-                        string qrcode = GenerateQrCode(res.Status);
-                        var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
-                        hasil = res.Status;
->>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                bmp.Dispose();
-                ms.Close();
-                return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
-            }
-            return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
-        }
+        //                using (ms = new MemoryStream())
+        //                {
+        //                    Response.ContentType = "image/jpeg";
+        //                    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //                    byte[] byteImg = ms.ToArray();
+        //                    base64 = Convert.ToBase64String(byteImg);
+        //                }
+        //                bmp.Dispose();
+        //                ms.Close();
+        //            }
+        //        }
+        //        var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
+
+        //            Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+
+        //            Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+
+        //            Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),
+        //            UserID, 1);
+        //        foreach (var res in query)
+        //        {
+        //            if (res.Status == "Err This Data Already Exists")
+        //            {
+        //                hasil = "Data Already Exists";
+        //            }
+        //            else
+        //            {
+
+        //                //string qrcode = GenerateQrCode(res.AssetTag);
+        //                //var qr = dc.MsBarcode_IUD(res.AssetTag, qrcode, "", "", UserID, 1);
+        //                //hasil = res.AssetTag;
+
+        //                //string qrcode = GenerateQrCode(res.Status);
+        //                //var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
+        //                //hasil = res.Status;
+
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        bmp.Dispose();
+        //        ms.Close();
+        //        return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
+        //    }
+        //    return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
+        //}
         public ActionResult Maintenancedue()
         {
             TrMaintenanceAsset[] trMaintenance = null;
@@ -1578,7 +1574,7 @@ namespace CORE.JGC.Controllers
                     maintenance.MaintenanceNo = res.MaintenanceAssetNo;
                     maintenance.AssetCode = res.AssetCode;
                     maintenance.AssetName = res.AssetName;
-                    maintenance.Type = res.Type;
+                    maintenance.Type = res.NamaType;
                     maintenance.Status = res.NamaStatus;
                     maintenance.ScheduleDate = res.ScheduleDate;
                     maintenance.CompleteDate = res.CompleteDate;
