@@ -213,7 +213,7 @@
                                     <th width="12%">Asset Model</th>
                                     <th>Asset Model Name</th>
                                     <th width="15%">Asset Brand Name</th>
-                                    <th style="width:9%;"></th>
+                                    <th style="width:2%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -272,15 +272,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Brand</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">
-                                <input class="form-control readonly" id="BrandCodeId" name="BrandCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                <input class="form-control readonly" id="BrandNameId" name="BrandNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                <span class="input-group-btn">
-                                    <a class="btn btn-info" onclick="Brands('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                        <i class="fa fa-search fa-fw"></i>
-                                    </a>
-                                </span>
-                            </div>
+                            <input class="form-control readonly" id="BrandCodeId" name="BrandCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="BrandNameId" name="BrandNameId" value="" type="text" data-id="i" autocomplete="off" onclick="Brands('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                         </div>
                     </div>
 
@@ -336,15 +329,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Brand</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">
-                                <input class="form-control readonly" id="EditBrandCodeId" name="EditBrandCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                <input class="form-control readonly" id="EditBrandNameId" name="EditBrandNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                <span class="input-group-btn">
-                                    <a class="btn btn-info" onclick="Brands('2')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                        <i class="fa fa-search fa-fw"></i>
-                                    </a>
-                                </span>
-                            </div>
+                            <input class="form-control readonly" id="EditBrandCodeId" name="EditBrandCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="EditBrandNameId" name="EditBrandNameId" value="" type="text" data-id="i" autocomplete="off" onclick="Brands('2')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                         </div>
                     </div>
 

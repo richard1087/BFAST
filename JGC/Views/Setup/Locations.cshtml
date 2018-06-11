@@ -265,8 +265,8 @@
                                     <th>Location Name</th>
                                     <th width="9%">Site Code</th>
                                     <th width="9%">Site Name</th>
-                                    <th>Active</th>
-                                    <th style="width:9%;"></th>
+                                    <th width="2%">Active</th>
+                                    <th style="width:2%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -324,15 +324,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">
-                                <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                <span class="input-group-btn">
-                                    <a class="btn btn-info" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                        <i class="fa fa-search fa-fw"></i>
-                                    </a>
-                                </span>
-                            </div>
+                            <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                         </div>
                     </div>
                     <div class="form-group">
@@ -392,15 +385,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">
-                                <input class="form-control readonly" id="EditSiteCode" name="EditSiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                <input class="form-control readonly" id="EditSiteName" name="EditSiteName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                <span class="input-group-btn">
-                                    <a class="btn btn-info" onclick="Sites('2')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                        <i class="fa fa-search fa-fw"></i>
-                                    </a>
-                                </span>
-                            </div>
+                            <input class="form-control readonly" id="EditSiteCode" name="EditSiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="EditSiteName" name="EditSiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Sites('2')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                         </div>
                     </div>
                     <div class="form-group">
