@@ -22,14 +22,14 @@ namespace CORE.JGC.Controllers
         {
             dc = new BFASTDataContext();
             List<MsAsset> msasset = new List<MsAsset>();
-            string url = "http://" + Request.Url.Authority;
+            //string url = "http://" + Request.Url.Authority;
             try
             {
                 var query = dc.MsAsset_View("", "G");
                 foreach (var res in query)
                 {
                     MsAsset asset = new MsAsset();
-                    asset.Photo = url + res.AssetPhoto;
+                    asset.Photo = res.AssetPhoto;
                     asset.AssetCode = res.AssetTagID;
                     asset.AssetName = res.AssetName;
                     asset.AssetBrandCode = res.AssetBrand;
@@ -260,9 +260,12 @@ namespace CORE.JGC.Controllers
         {
             string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
             string filepathimg = Server.MapPath(pathdb);
+            //string filepathimg = Path.Combine(Server.MapPath("~/Content/res/build/images/Qrcode/"), assettagid + ".jpg");
+            string base64 = string.Empty;
 
             ByteMatrix btm;
             Bitmap bmp = null;
+            MemoryStream ms = null;
             try
             {
                 BarcodeQRCode qrcode = new BarcodeQRCode(assettagid, 200, 200, null);
@@ -287,21 +290,23 @@ namespace CORE.JGC.Controllers
                         }
                     }
                 }
-                Response.ContentType = "image/jpeg";
-                //ms = new MemoryStream();
-                bmp.Save(filepathimg, System.Drawing.Imaging.ImageFormat.Jpeg);
-                //byte[] byteImg = fs.ToArray();
-                //base64 = Convert.ToBase64String(byteImg);
-
+                using (ms = new MemoryStream())
+                {
+                    Response.ContentType = "image/jpeg";
+                    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] byteImg = ms.ToArray();
+                    base64 = Convert.ToBase64String(byteImg);
+                }
             }
             catch (Exception ex)
             {
-                //base64 = "";
+                base64 = "";
                 string msg = ex.Message;
             }
             bmp.Dispose();
-            //fs.Close();
-            return pathdb;
+            ms.Close();
+            //return pathdb;
+            return base64;
         }
         public ActionResult Index()
         {
@@ -309,7 +314,10 @@ namespace CORE.JGC.Controllers
             msasset = GridAsset();
             return View(msasset);
         }
+        private void UploadImage(HttpPostedFileBase file)
+        {
 
+        }
         public ActionResult Details()
         {
             return View();
@@ -333,12 +341,13 @@ namespace CORE.JGC.Controllers
         public ActionResult InputData(MsAsset asset)
         {
             string UserID = Session["UserName"].ToString().Trim();
-            //string Photo = GeneratePhoto(path);
             string hasil = string.Empty;
             string path = string.Empty;
             string pathdb = string.Empty;
             dc = new BFASTDataContext();
-            
+            MemoryStream ms = null;
+            Bitmap bmp   = null;
+            string base64 = string.Empty;
             try
             {
                 
@@ -346,6 +355,7 @@ namespace CORE.JGC.Controllers
                 {
                     var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
                     HttpPostedFileBase filebase = new HttpPostedFileWrapper(pic);
+                    
                     if (pic.ContentLength > 0)
                     {
                         string filename = Path.GetFileNameWithoutExtension(pic.FileName);
@@ -354,17 +364,27 @@ namespace CORE.JGC.Controllers
                         pathdb = "/Content/res/build/images/Assets/" + filename + ext;
                         path = Server.MapPath(pathdb);
                         pic.SaveAs(path);
-                        MemoryStream stream = new MemoryStream();
                         WebImage webimg = new WebImage(path);
                         if (webimg.Width > 100)
                         {
                             webimg.Resize(100, 100);
                             webimg.Save(path);
                         }
+                        bmp = new Bitmap(path);
+                        
+                        using (ms = new MemoryStream())
+                        {
+                            Response.ContentType = "image/jpeg";
+                            bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            byte[] byteImg = ms.ToArray();
+                            base64 = Convert.ToBase64String(byteImg);
+                        }
+                        bmp.Dispose();
+                        ms.Close();
                     }
                 }
                 var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
-                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
                     Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),
                     UserID, 1);
                 foreach (var res in query)
@@ -383,6 +403,8 @@ namespace CORE.JGC.Controllers
             }
             catch (Exception ex)
             {
+                bmp.Dispose();
+                ms.Close();
                 return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
             }
             return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
