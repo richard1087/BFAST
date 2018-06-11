@@ -22,10 +22,6 @@
                             <div class="mgbtm20">
                                 <a href="/asset/createmaintenance" class="btn btn-success btn-cust">Create New</a>
                                 <div class="btn-group top-2">
-                                    <button data-toggle="dropdown" class="btn btn-success btn-cust dropdown-toggle" type="button" aria-expanded="false">
-                                        List of Maintenances
-                                        <span class="caret"></span>
-                                    </button>
                                     @*<ul role="menu" class="dropdown-menu">
                                             <li><a href="#">All Maintenances</a></li>
                                             <li><a href="#">Due maintenances</a></li>
@@ -48,12 +44,13 @@
                             <thead>
                                 <tr>
                                     <th width="13%">@Html.Label("Maintenance No")</th>
-                                    <th>@Html.Label("Asset Code")</th>
-                                    <th>@Html.Label("Asset Name")</th>
-                                    <th>@Html.Label("Type")</th>
-                                    <th>@Html.Label("Schedule Date")</th>
-                                    <th>@Html.Label("Complete Date")</th>
-                                    <th>@Html.Label("Cost")</th>
+                                    <th width="8%">@Html.Label("Status")</th>
+                                    <th width="10%">@Html.Label("Asset Code")</th>
+                                    <th width="15%">@Html.Label("Asset Name")</th>
+                                    <th width="8%">@Html.Label("Type")</th>
+                                    <th width="10%">@Html.Label("Schedule Date")</th>
+                                    <th width="10%">@Html.Label("Complete Date")</th>
+                                    <th width="10%">@Html.Label("Cost")</th>
                                     <th width="4%"></th>
                                 </tr>
                             </thead>
@@ -62,14 +59,15 @@
                                 {
                                     <tr>
                                         <td>@Html.DisplayFor(modelItem => item.MaintenanceNo)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
                                         <td>@Html.DisplayFor(modelItem => item.AssetCode)</td>
                                         <td>@Html.DisplayFor(modelItem => item.AssetName)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Type)</td>
                                         <td>@Html.DisplayFor(modelItem => item.ScheduleDate)</td>
                                         <td>@Html.DisplayFor(modelItem => item.CompleteDate)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Cost)</td>
+                                        <td style="text-align:right;">@Html.DisplayFor(modelItem => item.Cost)</td>
                                         <td style="width:5% !important;text-align:center;">
-                                            <button id="delete" name="delete" type="button" data-toggle="tooltip" title="Delete" class="btn btn-success" onclick="return DeleteAsset('@Html.DisplayFor(modelItem => item.AssetCode)');"><span class="glyphicon glyphicon-erase"></span></button>
+                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return DeleteAsset('@Html.DisplayFor(modelItem => item.AssetCode)');"><span class="glyphicon glyphicon-edit"></span></button>
                                         </td>
                                     </tr>
                                 }
