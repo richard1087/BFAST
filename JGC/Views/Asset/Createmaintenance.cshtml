@@ -133,7 +133,7 @@
         var AssignTo = document.getElementById("AssignTo").value;
         var Damage = document.getElementById("Damage").value;
         var Notes = document.getElementById("Notes").value;
-        var Cost = document.getElementById("Cost").value.toString().replace(",", "");
+        var Cost = document.getElementById("Cost").value.toString().replace(/,/g, "");
 
 
         if (Type == "") {
@@ -316,7 +316,7 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
-                                    <button type="button" class="btn btn-success" onclick="Maintenance(); return false;">Dispose</button>
+                                    <button type="button" class="btn btn-success" onclick="Maintenance(); return false;">Maintenance</button>
                                 </div>
                             </div>
                         </form>
