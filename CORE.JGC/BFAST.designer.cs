@@ -33,7 +33,7 @@ namespace CORE.JGC
     #endregion
 		
 		public BFASTDataContext() : 
-				base(global::CORE.JGC.Properties.Settings.Default.DbAssetJGCConnectionString1, mappingSource)
+				base(global::CORE.JGC.Properties.Settings.Default.DbAssetJGCConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1614,24 +1614,24 @@ namespace CORE.JGC
 	public partial class MsAsset_IUDResult
 	{
 		
-		private string _AssetTag;
+		private string _Status;
 		
 		public MsAsset_IUDResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTag", DbType="VarChar(15)")]
-		public string AssetTag
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(15)")]
+		public string Status
 		{
 			get
 			{
-				return this._AssetTag;
+				return this._Status;
 			}
 			set
 			{
-				if ((this._AssetTag != value))
+				if ((this._Status != value))
 				{
-					this._AssetTag = value;
+					this._Status = value;
 				}
 			}
 		}

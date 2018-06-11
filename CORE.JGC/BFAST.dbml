@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DbAssetJGC" Class="BFASTDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=DbAssetJGC;User ID=sa" SettingsObjectName="CORE.JGC.Properties.Settings" SettingsPropertyName="DbAssetJGCConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=DbAssetJGC;User ID=sa" SettingsObjectName="CORE.JGC.Properties.Settings" SettingsPropertyName="DbAssetJGCConnectionString" Provider="System.Data.SqlClient" />
   <Function Name="dbo.Get_Login" Method="Get_Login">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(50)" />
@@ -101,7 +101,7 @@
     <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="MsAsset_IUDResult">
-      <Column Name="AssetTag" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.MsAsset_View" Method="MsAsset_View">
