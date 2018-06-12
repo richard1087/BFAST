@@ -31,6 +31,7 @@ namespace CORE.JGC.Models
         public string SupplierCode { get; set; }
         public string CompanyID { get; set; }
         public string DeptCode { get; set; }
+        public int Qty { get; set; }
         public string Iby { get; set; }
         public DateTime Ion { get; set; }
         public string Uby { get; set; }
