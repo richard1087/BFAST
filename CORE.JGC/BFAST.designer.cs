@@ -33,7 +33,7 @@ namespace CORE.JGC
     #endregion
 		
 		public BFASTDataContext() : 
-				base(global::CORE.JGC.Properties.Settings.Default.DbAssetJGCConnectionString1, mappingSource)
+				base(global::CORE.JGC.Properties.Settings.Default.DbAssetJGCConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -88,6 +88,36 @@ namespace CORE.JGC
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode);
 			return ((ISingleResult<MobTrackingAssetResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAsset_IUD")]
+		public ISingleResult<MsAsset_IUDResult> MsAsset_IUD(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetName", DbType="VarChar(200)")] string assetName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetBrandCode", DbType="VarChar(20)")] string assetBrandCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetModelCode", DbType="VarChar(20)")] string assetModelCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCategoryCode", DbType="VarChar(50)")] string assetCategoryCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetSerialNo", DbType="VarChar(100)")] string assetSerialNo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetTypeCode", DbType="VarChar(10)")] string assetTypeCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bActive, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bCapitalized, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Photo", DbType="VarChar(MAX)")] string photo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SiteCode", DbType="VarChar(50)")] string siteCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationCode", DbType="VarChar(50)")] string locationCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Floor", DbType="Int")] System.Nullable<int> floor, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseNo", DbType="VarChar(20)")] string purchaseNo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CurrencyCode", DbType="VarChar(5)")] string currencyCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchasePrice", DbType="Decimal(18,0)")] System.Nullable<decimal> purchasePrice, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseDate", DbType="DateTime")] System.Nullable<System.DateTime> purchaseDate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SupplierCode", DbType="VarChar(10)")] string supplierCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyID", DbType="VarChar(5)")] string companyID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeptCode", DbType="VarChar(20)")] string deptCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="WarrantyMonth", DbType="Int")] System.Nullable<int> warrantyMonth, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetName, assetBrandCode, assetModelCode, assetCategoryCode, assetSerialNo, assetTypeCode, bActive, bCapitalized, photo, siteCode, locationCode, floor, purchaseNo, currencyCode, purchasePrice, purchaseDate, supplierCode, companyID, deptCode, warrantyMonth, qty, userID, no);
+			return ((ISingleResult<MsAsset_IUDResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAsset_View")]
@@ -565,46 +595,6 @@ namespace CORE.JGC
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, password, name, email, address, phone, companyID, deptCode, locationCode, groupAccessCode, bActive, bManager, userID, no);
 			return ((ISingleResult<UtilUser_IUDResult>)(result.ReturnValue));
 		}
-<<<<<<< HEAD
-=======
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Pop_AssetTransferType")]
-		public ISingleResult<Pop_AssetTransferTypeResult> Pop_AssetTransferType()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Pop_AssetTransferTypeResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAsset_IUD")]
-		public ISingleResult<MsAsset_IUDResult> MsAsset_IUD(
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetName", DbType="VarChar(200)")] string assetName, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetBrandCode", DbType="VarChar(20)")] string assetBrandCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetModelCode", DbType="VarChar(20)")] string assetModelCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCategoryCode", DbType="VarChar(50)")] string assetCategoryCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetSerialNo", DbType="VarChar(100)")] string assetSerialNo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetTypeCode", DbType="VarChar(10)")] string assetTypeCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bActive, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bCapitalized, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Photo", DbType="VarChar(MAX)")] string photo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SiteCode", DbType="VarChar(50)")] string siteCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationCode", DbType="VarChar(50)")] string locationCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Floor", DbType="Int")] System.Nullable<int> floor, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseNo", DbType="VarChar(20)")] string purchaseNo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CurrencyCode", DbType="VarChar(5)")] string currencyCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchasePrice", DbType="Decimal(18,0)")] System.Nullable<decimal> purchasePrice, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseDate", DbType="DateTime")] System.Nullable<System.DateTime> purchaseDate, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SupplierCode", DbType="VarChar(10)")] string supplierCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyID", DbType="VarChar(5)")] string companyID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeptCode", DbType="VarChar(20)")] string deptCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="WarrantyMonth", DbType="Int")] System.Nullable<int> warrantyMonth, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetName, assetBrandCode, assetModelCode, assetCategoryCode, assetSerialNo, assetTypeCode, bActive, bCapitalized, photo, siteCode, locationCode, floor, purchaseNo, currencyCode, purchasePrice, purchaseDate, supplierCode, companyID, deptCode, warrantyMonth, qty, userID, no);
-			return ((ISingleResult<MsAsset_IUDResult>)(result.ReturnValue));
-		}
->>>>>>> a62cc31c6cb806a55056df6ab9b1181d0f5c7aa8
 	}
 	
 	public partial class Get_LoginResult
@@ -1624,6 +1614,32 @@ namespace CORE.JGC
 				if ((this._Iby != value))
 				{
 					this._Iby = value;
+				}
+			}
+		}
+	}
+	
+	public partial class MsAsset_IUDResult
+	{
+		
+		private string _AssetTag;
+		
+		public MsAsset_IUDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTag", DbType="VarChar(20)")]
+		public string AssetTag
+		{
+			get
+			{
+				return this._AssetTag;
+			}
+			set
+			{
+				if ((this._AssetTag != value))
+				{
+					this._AssetTag = value;
 				}
 			}
 		}
@@ -8652,78 +8668,5 @@ namespace CORE.JGC
 			}
 		}
 	}
-<<<<<<< HEAD
-=======
-	
-	public partial class Pop_AssetTransferTypeResult
-	{
-		
-		private string _Type;
-		
-		private string _NamaType;
-		
-		public Pop_AssetTransferTypeResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this._Type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaType", DbType="VarChar(50)")]
-		public string NamaType
-		{
-			get
-			{
-				return this._NamaType;
-			}
-			set
-			{
-				if ((this._NamaType != value))
-				{
-					this._NamaType = value;
-				}
-			}
-		}
-	}
-	
-	public partial class MsAsset_IUDResult
-	{
-		
-		private string _AssetTag;
-		
-		public MsAsset_IUDResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTag", DbType="VarChar(20)")]
-		public string AssetTag
-		{
-			get
-			{
-				return this._AssetTag;
-			}
-			set
-			{
-				if ((this._AssetTag != value))
-				{
-					this._AssetTag = value;
-				}
-			}
-		}
-	}
->>>>>>> a62cc31c6cb806a55056df6ab9b1181d0f5c7aa8
 }
 #pragma warning restore 1591
