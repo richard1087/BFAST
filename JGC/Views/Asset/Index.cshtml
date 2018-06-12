@@ -106,11 +106,8 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-<<<<<<< HEAD
-                                        <td align="center"><img src='@Html.DisplayFor(modelItem => item.Photo)'/></td>
-=======
+
                                         <td align="center"><img src="data:image/jpeg;base64,@Html.DisplayFor(modelItem => item.Photo)"/></td>
->>>>>>> 0655af2cbb8b9f090d3a39a57682900b59cd4868
                                         <td><a href="#" id="assetmodel">@Html.DisplayFor(modelItem => item.AssetCode)</a></td>
                                         <td><a href="#">@Html.DisplayFor(modelItem => item.AssetName)</a></td>
                                         <td><a href="#">@Html.DisplayFor(modelItem => item.AssetBrandCode)</a></td>
