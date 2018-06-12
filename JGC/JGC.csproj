@@ -4681,7 +4681,10 @@
     <Content Include="Views\Utilization\Createrole.cshtml" />
     <Content Include="Views\Utilization\Updaterole.cshtml" />
     <Content Include="Views\Utilization\Access.cshtml" />
+    <Content Include="Views\Asset\Transfer.cshtml" />
+    <Content Include="Views\Asset\Createtransfer.cshtml" />
     <Content Include="Views\Asset\Move.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

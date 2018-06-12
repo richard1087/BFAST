@@ -22,14 +22,14 @@ namespace CORE.JGC.Controllers
         {
             dc = new BFASTDataContext();
             List<MsAsset> msasset = new List<MsAsset>();
-            string url = "http://" + Request.Url.Authority;
+            //string url = "http://" + Request.Url.Authority;
             try
             {
                 var query = dc.MsAsset_View("", "G");
                 foreach (var res in query)
                 {
                     MsAsset asset = new MsAsset();
-                    asset.Photo = url + res.AssetPhoto;
+                    asset.Photo = res.AssetPhoto;
                     asset.AssetCode = res.AssetTagID;
                     asset.AssetName = res.AssetName;
                     asset.AssetBrandCode = res.AssetBrand;
@@ -258,11 +258,18 @@ namespace CORE.JGC.Controllers
         }
         private string GenerateQrCode(string assettagid)
         {
+
+
+
             string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
             string filepathimg = Server.MapPath(pathdb);
+            //string filepathimg = Path.Combine(Server.MapPath("~/Content/res/build/images/Qrcode/"), assettagid + ".jpg");
+            string base64 = string.Empty;
+
 
             ByteMatrix btm;
             Bitmap bmp = null;
+            MemoryStream ms = null;
             try
             {
                 BarcodeQRCode qrcode = new BarcodeQRCode(assettagid, 200, 200, null);
@@ -287,21 +294,52 @@ namespace CORE.JGC.Controllers
                         }
                     }
                 }
-                Response.ContentType = "image/jpeg";
-                //ms = new MemoryStream();
-                bmp.Save(filepathimg, System.Drawing.Imaging.ImageFormat.Jpeg);
-                //byte[] byteImg = fs.ToArray();
-                //base64 = Convert.ToBase64String(byteImg);
-
+                using (ms = new MemoryStream())
+                {
+                    Response.ContentType = "image/jpeg";
+                    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] byteImg = ms.ToArray();
+                    base64 = Convert.ToBase64String(byteImg);
+                }
             }
             catch (Exception ex)
             {
-                //base64 = "";
+                base64 = "";
                 string msg = ex.Message;
             }
             bmp.Dispose();
+
             //fs.Close();
             return pathdb;
+        }
+        private void UploadPhoto()
+        {
+            string path = string.Empty;
+            if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+            {
+                var pic = System.Web.HttpContext.Current.Request.Files["Assetpic"];
+                if (pic.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(pic.FileName);
+                    var ext = Path.GetExtension(pic.FileName);
+                    //imgName = Guid.NewGuid().ToString();
+                    filename = filename + DateTime.Now.ToString("HHmmss") + ext;
+                    path = "/Content/res/build/images/Assets/" + filename + ext;
+                    //var filepath = path;
+                    pic.SaveAs(path);
+                    MemoryStream stream = new MemoryStream();
+                    WebImage webimg = new WebImage(path);
+                    if (webimg.Width > 200)
+                    {
+                        webimg.Resize(200, 200);
+                        webimg.Save(path);
+                    }
+                }
+            }
+            //ms.Close();
+            ////return pathdb;
+            //return base64;
+
         }
         public ActionResult Index()
         {
@@ -309,7 +347,10 @@ namespace CORE.JGC.Controllers
             msasset = GridAsset();
             return View(msasset);
         }
+        private void UploadImage(HttpPostedFileBase file)
+        {
 
+        }
         public ActionResult Details()
         {
             return View();
@@ -329,6 +370,7 @@ namespace CORE.JGC.Controllers
             ViewBag.Companyname = GetCompany();
             return View();
         }
+<<<<<<< HEAD
 
         public ActionResult Move()
         {
@@ -347,52 +389,99 @@ namespace CORE.JGC.Controllers
             
             try
             {
+=======
+        //[HttpPost]
+        //public ActionResult InputData(MsAsset asset)
+        //{
+        //    string UserID = Session["UserName"].ToString().Trim();
+        //    //string Photo = GeneratePhoto(path);
+
+
+        //    string hasil = string.Empty;
+        //    string path = string.Empty;
+        //    string pathdb = string.Empty;
+        //    dc = new BFASTDataContext();
+        //    MemoryStream ms = null;
+        //    Bitmap bmp   = null;
+        //    string base64 = string.Empty;
+        //    try
+        //    {
+>>>>>>> 2efe459f78344db831bb0d2ef91af1f541dedba4
                 
-                if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
-                {
-                    var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
-                    HttpPostedFileBase filebase = new HttpPostedFileWrapper(pic);
-                    if (pic.ContentLength > 0)
-                    {
-                        string filename = Path.GetFileNameWithoutExtension(pic.FileName);
-                        string ext = Path.GetExtension(pic.FileName);
-                        filename = filename + DateTime.Now.ToString("HHmmss");
-                        pathdb = "/Content/res/build/images/Assets/" + filename + ext;
-                        path = Server.MapPath(pathdb);
-                        pic.SaveAs(path);
-                        MemoryStream stream = new MemoryStream();
-                        WebImage webimg = new WebImage(path);
-                        if (webimg.Width > 100)
-                        {
-                            webimg.Resize(100, 100);
-                            webimg.Save(path);
-                        }
-                    }
-                }
-                var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
-                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-                    Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),
-                    UserID, 1);
-                foreach (var res in query)
-                {
-                    if (res.Status == "Err This Data Already Exists")
-                    {
-                        hasil = "Data Already Exists";
-                    }
-                    else
-                    {
-                        string qrcode = GenerateQrCode(res.Status);
-                        var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
-                        hasil = res.Status;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
-            }
-            return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
-        }
+        //        if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+        //        {
+        //            var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
+        //            HttpPostedFileBase filebase = new HttpPostedFileWrapper(pic);
+                    
+        //            if (pic.ContentLength > 0)
+        //            {
+        //                string filename = Path.GetFileNameWithoutExtension(pic.FileName);
+        //                string ext = Path.GetExtension(pic.FileName);
+        //                filename = filename + DateTime.Now.ToString("HHmmss");
+        //                pathdb = "/Content/res/build/images/Assets/" + filename + ext;
+        //                path = Server.MapPath(pathdb);
+        //                pic.SaveAs(path);
+        //                WebImage webimg = new WebImage(path);
+
+        //                if (webimg.Width > 150)
+        //                {
+        //                    webimg.Resize(150, 150);
+
+        //                if (webimg.Width > 100)
+        //                {
+        //                    webimg.Resize(100, 100);
+
+        //                    webimg.Save(path);
+        //                }
+        //                bmp = new Bitmap(path);
+                        
+        //                using (ms = new MemoryStream())
+        //                {
+        //                    Response.ContentType = "image/jpeg";
+        //                    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //                    byte[] byteImg = ms.ToArray();
+        //                    base64 = Convert.ToBase64String(byteImg);
+        //                }
+        //                bmp.Dispose();
+        //                ms.Close();
+        //            }
+        //        }
+        //        var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
+
+        //            Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+
+        //            Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+
+        //            Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),
+        //            UserID, 1);
+        //        foreach (var res in query)
+        //        {
+        //            if (res.Status == "Err This Data Already Exists")
+        //            {
+        //                hasil = "Data Already Exists";
+        //            }
+        //            else
+        //            {
+
+        //                //string qrcode = GenerateQrCode(res.AssetTag);
+        //                //var qr = dc.MsBarcode_IUD(res.AssetTag, qrcode, "", "", UserID, 1);
+        //                //hasil = res.AssetTag;
+
+        //                //string qrcode = GenerateQrCode(res.Status);
+        //                //var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
+        //                //hasil = res.Status;
+
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        bmp.Dispose();
+        //        ms.Close();
+        //        return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
+        //    }
+        //    return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
+        //}
         public ActionResult Maintenancedue()
         {
             TrMaintenanceAsset[] trMaintenance = null;
@@ -425,6 +514,19 @@ namespace CORE.JGC.Controllers
             TrMaintenanceAssetLine[] trMaintenanceLine = null;
             trMaintenanceLine = GridMaintenanceAssetLine();
             return View(trMaintenanceLine);
+        }
+        public ActionResult Transfer()
+        {
+            TrTransferAsset[] trTransfer = null;
+            trTransfer = GridTransfer();
+            return View(trTransfer);
+        }
+
+        public ActionResult CreateTransfer()
+        {
+            TrTransferAssetLine[] trTransferLine = null;
+            trTransferLine = GridTransferLine();
+            return View(trTransferLine);
         }
 
         public ActionResult Assetpastdue()
@@ -597,6 +699,44 @@ namespace CORE.JGC.Controllers
                 {
                     string UserID = Session["UserName"].ToString().Trim();
                     var query = dc.TrxMaintenanceAssetLine_IUD(AssetCode, UserID, 3);
+
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAssetTransfer(string AssetCode)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+                    string UserID = Session["UserName"].ToString().Trim();
+                    var query = dc.TrxTransferAssetLine_IUD(AssetCode, UserID, 3);
 
                     string status = "";
                     foreach (var res in query)
@@ -956,7 +1096,7 @@ namespace CORE.JGC.Controllers
                 {
                     string TransferNo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime TransferDateC = DateTime.ParseExact(TransferDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime TransferDateC = DateTime.ParseExact(TransferDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
                     var query = dc.TrxTransferAsset_IUD(TransferNo, Type, TransferDateC, TransferAssetNoRef, SiteCode, LocationCode, Floor, Notes, UserID, 1);
                     string status = "";
@@ -1343,6 +1483,33 @@ namespace CORE.JGC.Controllers
             }
             return msCategory.ToArray();
         }
+<<<<<<< HEAD
+=======
+        public MsType[] GridPopupTypeTransfer()
+        {
+            dc = new BFASTDataContext();
+            List<MsType> msType = new List<MsType>();
+            try
+            {
+                var query = dc.Pop_AssetTransferType();
+                foreach (var res in query)
+                {
+                    MsType type = new MsType();
+
+                    type.TypeCode = res.Type ;
+                    type.TypeName = res.NamaType;
+
+                    msType.Add(type);
+                }
+            }
+            catch
+            {
+                msType = null;
+            }
+            return msType.ToArray();
+        }
+
+>>>>>>> 2efe459f78344db831bb0d2ef91af1f541dedba4
         public MsLocation[] GridPopupLocation(string SiteCode)
         {
             dc = new BFASTDataContext();
@@ -1367,7 +1534,41 @@ namespace CORE.JGC.Controllers
                 msLocation = null;
             }
             return msLocation.ToArray();
+<<<<<<< HEAD
         }        
+=======
+        }
+        public TrTransferAsset[] GridPopupTransferNoRef()
+        {
+            dc = new BFASTDataContext();
+            List<TrTransferAsset> trx = new List<TrTransferAsset>();
+            try
+            {
+                var query = dc.TrxTransferAsset_View("", "S");
+                foreach (var res in query)
+                {
+                    TrTransferAsset transfer = new TrTransferAsset();
+
+                    transfer.TransferAssetNo = res.TransferAssetNo;
+                    transfer.NamaStatus = res.NamaStatus;
+                    transfer.NamaType = res.NamaType;
+                    transfer.SiteCode = res.SiteCode;
+                    transfer.SiteName = res.SiteName;
+                    transfer.LocationCode = res.LocationCode;
+                    transfer.LocationName = res.LocationName;
+                    transfer.Floor = res.Floor;
+
+                    trx.Add(transfer);
+                }
+            }
+            catch
+            {
+                trx = null;
+            }
+            return trx.ToArray();
+        }
+
+>>>>>>> 2efe459f78344db831bb0d2ef91af1f541dedba4
         public TrCheckOut[] GridCheckOut()
         {
             dc = new BFASTDataContext();
@@ -1486,7 +1687,7 @@ namespace CORE.JGC.Controllers
                     maintenance.MaintenanceNo = res.MaintenanceAssetNo;
                     maintenance.AssetCode = res.AssetCode;
                     maintenance.AssetName = res.AssetName;
-                    maintenance.Type = res.Type;
+                    maintenance.Type = res.NamaType;
                     maintenance.Status = res.NamaStatus;
                     maintenance.ScheduleDate = res.ScheduleDate;
                     maintenance.CompleteDate = res.CompleteDate;
@@ -1527,6 +1728,69 @@ namespace CORE.JGC.Controllers
             }
             return trMaintenanceLine.ToArray();
         }
+<<<<<<< HEAD
+=======
+        public TrTransferAsset[] GridTransfer()
+        {
+            dc = new BFASTDataContext();
+            List<TrTransferAsset> trTransfer = new List<TrTransferAsset>();
+            try
+            {
+                var query = dc.TrxTransferAsset_View("", "G");
+                foreach (var res in query)
+                {
+                    TrTransferAsset transfer = new TrTransferAsset();
+
+                    transfer.TransferAssetNo = res.TransferAssetNo;
+                    transfer.Status = res.Status;
+                    transfer.NamaStatus = res.NamaStatus;
+                    transfer.Type = res.Type;
+                    transfer.NamaType = res.NamaType;
+                    transfer.TransferDate = res.TransferDate;
+                    transfer.TransferAssetNoRef = res.TransferAssetNoRef;
+                    transfer.SiteCode = res.SiteCode;
+                    transfer.SiteName = res.SiteName;
+                    transfer.LocationCode = res.LocationCode;
+                    transfer.LocationName = res.LocationName;
+                    transfer.Floor = res.Floor;
+                    transfer.Notes = res.Notes;
+
+                    trTransfer.Add(transfer);
+                }
+            }
+            catch
+            {
+                trTransfer = null;
+            }
+            return trTransfer.ToArray();
+        }
+        public TrTransferAssetLine[] GridTransferLine()
+        {
+            dc = new BFASTDataContext();
+            List<TrTransferAssetLine> trTransfer = new List<TrTransferAssetLine>();
+            try
+            {
+                var query = dc.TrxTransferAssetLine_View("","", "K");
+                foreach (var res in query)
+                {
+                    TrTransferAssetLine transfer = new TrTransferAssetLine();
+
+                    transfer.TransferAssetNo = res.TransferAssetNo;
+                    transfer.AssetCode = res.AssetCode;
+                    transfer.AssetName = res.AssetName;
+                    transfer.AssetSerialNo = res.AssetSerialNo;
+                   
+                    trTransfer.Add(transfer);
+                }
+            }
+            catch
+            {
+                trTransfer = null;
+            }
+            return trTransfer.ToArray();
+        }
+
+>>>>>>> 2efe459f78344db831bb0d2ef91af1f541dedba4
         [HttpPost]
         public JsonResult GetPopupAssetCheckOut()
         {
@@ -1718,6 +1982,28 @@ namespace CORE.JGC.Controllers
             return Json(new
             {
                 data = msCompany.Select(x => new[] { x.CompanyCode, x.CompanyName})
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetPopupTypeTransfer()
+        {
+            MsType[] msType = null;
+            msType = GridPopupTypeTransfer();
+
+            return Json(new
+            {
+                data = msType.Select(x => new[] { x.TypeCode, x.TypeName })
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetPopupTransferNoRef()
+        {
+            TrTransferAsset[] trTransferAsset = null;
+            trTransferAsset = GridPopupTransferNoRef();
+
+            return Json(new
+            {
+                data = trTransferAsset
             }, JsonRequestBehavior.AllowGet);
         }
 

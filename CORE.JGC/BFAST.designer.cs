@@ -33,7 +33,7 @@ namespace CORE.JGC
     #endregion
 		
 		public BFASTDataContext() : 
-				base(global::CORE.JGC.Properties.Settings.Default.DbAssetJGCConnectionString, mappingSource)
+				base(global::CORE.JGC.Properties.Settings.Default.DbAssetJGCConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -112,10 +112,11 @@ namespace CORE.JGC
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyID", DbType="VarChar(5)")] string companyID, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeptCode", DbType="VarChar(20)")] string deptCode, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="WarrantyMonth", DbType="Int")] System.Nullable<int> warrantyMonth, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetName, assetBrandCode, assetModelCode, assetCategoryCode, assetSerialNo, assetTypeCode, bActive, bCapitalized, photo, siteCode, locationCode, floor, purchaseNo, currencyCode, purchasePrice, purchaseDate, supplierCode, companyID, deptCode, warrantyMonth, userID, no);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetName, assetBrandCode, assetModelCode, assetCategoryCode, assetSerialNo, assetTypeCode, bActive, bCapitalized, photo, siteCode, locationCode, floor, purchaseNo, currencyCode, purchasePrice, purchaseDate, supplierCode, companyID, deptCode, warrantyMonth, qty, userID, no);
 			return ((ISingleResult<MsAsset_IUDResult>)(result.ReturnValue));
 		}
 		
@@ -586,6 +587,13 @@ namespace CORE.JGC
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, password, name, email, address, phone, companyID, deptCode, locationCode, groupAccessCode, bActive, bManager, userID, no);
 			return ((ISingleResult<UtilUser_IUDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Pop_AssetTransferType")]
+		public ISingleResult<Pop_AssetTransferTypeResult> Pop_AssetTransferType()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Pop_AssetTransferTypeResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -1164,7 +1172,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -1614,24 +1622,24 @@ namespace CORE.JGC
 	public partial class MsAsset_IUDResult
 	{
 		
-		private string _Status;
+		private string _AssetTag;
 		
 		public MsAsset_IUDResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(15)")]
-		public string Status
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTag", DbType="VarChar(20)")]
+		public string AssetTag
 		{
 			get
 			{
-				return this._Status;
+				return this._AssetTag;
 			}
 			set
 			{
-				if ((this._Status != value))
+				if ((this._AssetTag != value))
 				{
-					this._Status = value;
+					this._AssetTag = value;
 				}
 			}
 		}
@@ -1676,7 +1684,7 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTagID", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTagID", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetTagID
 		{
 			get
@@ -4584,7 +4592,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -4700,7 +4708,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -4816,7 +4824,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -4932,7 +4940,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -5048,7 +5056,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -5164,7 +5172,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTagID", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTagID", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetTagID
 		{
 			get
@@ -5280,7 +5288,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTagId", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTagId", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetTagId
 		{
 			get
@@ -6252,7 +6260,7 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -6770,7 +6778,7 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -7144,7 +7152,7 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -7354,7 +7362,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20)")]
 		public string AssetCode
 		{
 			get
@@ -7680,7 +7688,7 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -7856,7 +7864,11 @@ namespace CORE.JGC
 		
 		private string _TransferAssetNo;
 		
+		private string _Status;
+		
 		private string _NamaStatus;
+		
+		private string _Type;
 		
 		private string _NamaType;
 		
@@ -7873,6 +7885,8 @@ namespace CORE.JGC
 		private string _LocationName;
 		
 		private System.Nullable<int> _Floor;
+		
+		private string _Notes;
 		
 		public TrxTransferAsset_ViewResult()
 		{
@@ -7894,6 +7908,22 @@ namespace CORE.JGC
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(5)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaStatus", DbType="VarChar(50)")]
 		public string NamaStatus
 		{
@@ -7906,6 +7936,22 @@ namespace CORE.JGC
 				if ((this._NamaStatus != value))
 				{
 					this._NamaStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
 				}
 			}
 		}
@@ -8037,6 +8083,22 @@ namespace CORE.JGC
 				}
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(500)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this._Notes = value;
+				}
+			}
+		}
 	}
 	
 	public partial class TrxTransferAssetLine_IUDResult
@@ -8110,7 +8172,7 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string AssetCode
 		{
 			get
@@ -8558,6 +8620,50 @@ namespace CORE.JGC
 				if ((this._Status != value))
 				{
 					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Pop_AssetTransferTypeResult
+	{
+		
+		private string _Type;
+		
+		private string _NamaType;
+		
+		public Pop_AssetTransferTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaType", DbType="VarChar(50)")]
+		public string NamaType
+		{
+			get
+			{
+				return this._NamaType;
+			}
+			set
+			{
+				if ((this._NamaType != value))
+				{
+					this._NamaType = value;
 				}
 			}
 		}
