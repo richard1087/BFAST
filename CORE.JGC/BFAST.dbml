@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DbAssetJGC" Class="BFASTDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\LOCALSQL;Initial Catalog=DbAssetJGC;Persist Security Info=True;User ID=sa" SettingsObjectName="CORE.JGC.Properties.Settings" SettingsPropertyName="DbAssetJGCConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\LOCALSQL;Initial Catalog=DbAssetJGC;User ID=sa" SettingsObjectName="CORE.JGC.Properties.Settings" SettingsPropertyName="DbAssetJGCConnectionString1" Provider="System.Data.SqlClient" />
   <Function Name="dbo.Get_Login" Method="Get_Login">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(50)" />
@@ -570,6 +570,12 @@
       <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.Pop_AssetTransferType" Method="Pop_AssetTransferType">
+    <ElementType Name="Pop_AssetTransferTypeResult">
+      <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.Rpt_AssetPastDue" Method="Rpt_AssetPastDue">
     <ElementType Name="Rpt_AssetPastDueResult">
       <Column Name="AssetTagID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
@@ -661,7 +667,7 @@
     </ElementType>
   </Function>
   <Function Name="dbo.TrxCheckInLine_IUD" Method="TrxCheckInLine_IUD">
-    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="TrxCheckInLine_IUDResult">
@@ -723,7 +729,7 @@
     </ElementType>
   </Function>
   <Function Name="dbo.TrxCheckOutLine_IUD" Method="TrxCheckOutLine_IUD">
-    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="TrxCheckOutLine_IUDResult">
@@ -772,7 +778,7 @@
     </ElementType>
   </Function>
   <Function Name="dbo.TrxDisposeAssetLine_IUD" Method="TrxDisposeAssetLine_IUD">
-    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="TrxDisposeAssetLine_IUDResult">
@@ -834,7 +840,7 @@
     </ElementType>
   </Function>
   <Function Name="dbo.TrxMaintenanceAssetLine_IUD" Method="TrxMaintenanceAssetLine_IUD">
-    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="TrxMaintenanceAssetLine_IUDResult">
@@ -893,7 +899,7 @@
     </ElementType>
   </Function>
   <Function Name="dbo.TrxTransferAssetLine_IUD" Method="TrxTransferAssetLine_IUD">
-    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="TrxTransferAssetLine_IUDResult">
@@ -979,12 +985,6 @@
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="UtilUser_IUDResult">
       <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.Pop_AssetTransferType" Method="Pop_AssetTransferType">
-    <ElementType Name="Pop_AssetTransferTypeResult">
-      <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

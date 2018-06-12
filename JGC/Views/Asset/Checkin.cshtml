@@ -39,14 +39,13 @@
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (AssetSerialNo == "") {
-            $(".modal-body #peringatan3").text("Serial No must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-        else {
+        //} else if (AssetSerialNo == "") {
+        //    $(".modal-body #peringatan3").text("Serial No must be filled");
+        //    $('#btnerror').click(function (e) {
+        //        $('#Alert3').modal('hide');
+        //    })
+        //    $("#Alert3").modal();
+        } else {
             $.ajax({
                 url: '@Url.Action("AddAssetCheckIn", "Asset")',
                 type: 'Post',

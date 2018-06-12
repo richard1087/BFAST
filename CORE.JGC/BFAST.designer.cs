@@ -386,6 +386,13 @@ namespace CORE.JGC
 			return ((ISingleResult<Pop_AssetTransferResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Pop_AssetTransferType")]
+		public ISingleResult<Pop_AssetTransferTypeResult> Pop_AssetTransferType()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Pop_AssetTransferTypeResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Rpt_AssetPastDue")]
 		public ISingleResult<Rpt_AssetPastDueResult> Rpt_AssetPastDue()
 		{
@@ -429,7 +436,7 @@ namespace CORE.JGC
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxCheckInLine_IUD")]
-		public ISingleResult<TrxCheckInLine_IUDResult> TrxCheckInLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		public ISingleResult<TrxCheckInLine_IUDResult> TrxCheckInLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(20)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, userID, no);
 			return ((ISingleResult<TrxCheckInLine_IUDResult>)(result.ReturnValue));
@@ -457,7 +464,7 @@ namespace CORE.JGC
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxCheckOutLine_IUD")]
-		public ISingleResult<TrxCheckOutLine_IUDResult> TrxCheckOutLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		public ISingleResult<TrxCheckOutLine_IUDResult> TrxCheckOutLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(20)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, userID, no);
 			return ((ISingleResult<TrxCheckOutLine_IUDResult>)(result.ReturnValue));
@@ -485,7 +492,7 @@ namespace CORE.JGC
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxDisposeAssetLine_IUD")]
-		public ISingleResult<TrxDisposeAssetLine_IUDResult> TrxDisposeAssetLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		public ISingleResult<TrxDisposeAssetLine_IUDResult> TrxDisposeAssetLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(20)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, userID, no);
 			return ((ISingleResult<TrxDisposeAssetLine_IUDResult>)(result.ReturnValue));
@@ -513,7 +520,7 @@ namespace CORE.JGC
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxMaintenanceAssetLine_IUD")]
-		public ISingleResult<TrxMaintenanceAssetLine_IUDResult> TrxMaintenanceAssetLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		public ISingleResult<TrxMaintenanceAssetLine_IUDResult> TrxMaintenanceAssetLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(20)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, userID, no);
 			return ((ISingleResult<TrxMaintenanceAssetLine_IUDResult>)(result.ReturnValue));
@@ -541,7 +548,7 @@ namespace CORE.JGC
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxTransferAssetLine_IUD")]
-		public ISingleResult<TrxTransferAssetLine_IUDResult> TrxTransferAssetLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		public ISingleResult<TrxTransferAssetLine_IUDResult> TrxTransferAssetLine_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(20)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, userID, no);
 			return ((ISingleResult<TrxTransferAssetLine_IUDResult>)(result.ReturnValue));
@@ -587,13 +594,6 @@ namespace CORE.JGC
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, password, name, email, address, phone, companyID, deptCode, locationCode, groupAccessCode, bActive, bManager, userID, no);
 			return ((ISingleResult<UtilUser_IUDResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Pop_AssetTransferType")]
-		public ISingleResult<Pop_AssetTransferTypeResult> Pop_AssetTransferType()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Pop_AssetTransferTypeResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -5153,6 +5153,50 @@ namespace CORE.JGC
 		}
 	}
 	
+	public partial class Pop_AssetTransferTypeResult
+	{
+		
+		private string _Type;
+		
+		private string _NamaType;
+		
+		public Pop_AssetTransferTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaType", DbType="VarChar(50)")]
+		public string NamaType
+		{
+			get
+			{
+				return this._NamaType;
+			}
+			set
+			{
+				if ((this._NamaType != value))
+				{
+					this._NamaType = value;
+				}
+			}
+		}
+	}
+	
 	public partial class Rpt_AssetPastDueResult
 	{
 		
@@ -8620,50 +8664,6 @@ namespace CORE.JGC
 				if ((this._Status != value))
 				{
 					this._Status = value;
-				}
-			}
-		}
-	}
-	
-	public partial class Pop_AssetTransferTypeResult
-	{
-		
-		private string _Type;
-		
-		private string _NamaType;
-		
-		public Pop_AssetTransferTypeResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this._Type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaType", DbType="VarChar(50)")]
-		public string NamaType
-		{
-			get
-			{
-				return this._NamaType;
-			}
-			set
-			{
-				if ((this._NamaType != value))
-				{
-					this._NamaType = value;
 				}
 			}
 		}

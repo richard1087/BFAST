@@ -517,6 +517,12 @@ namespace CORE.JGC.Controllers
         {
             return View();
         }
+        public ActionResult Editmaintenance(string MaintenanceNo)
+        {
+            TrMaintenanceAssetLine[] trMaintenanceLine = null;
+            trMaintenanceLine = GridUpdateMaintenanceAssetLine(MaintenanceNo);
+            return View(trMaintenanceLine);
+        }
 
         [HttpPost]
         public ActionResult AddAssetCheckOut(string AssetCode)
@@ -1023,7 +1029,7 @@ namespace CORE.JGC.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveMaintenance(string ScheduleDate, string CompleteDate, string Type, string AssignTo, string Damage, string Notes, decimal Cost)
+        public ActionResult SaveMaintenance(string ScheduleDate, string Type, string AssignTo, string Damage, string Notes, decimal Cost)
         {
             try
             {
@@ -1034,7 +1040,8 @@ namespace CORE.JGC.Controllers
                     string MaintenanceTo = "";
                     string UserID = Session["UserName"].ToString().Trim();
                     DateTime ScheduleDateC = DateTime.ParseExact(ScheduleDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                    DateTime CompleteDateC = DateTime.ParseExact(CompleteDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    DateTime? CompleteDateC;
+                    CompleteDateC = null;
 
                     var query = dc.TrxMaintenanceAsset_IUD(MaintenanceTo, Type, ScheduleDateC, CompleteDateC, AssignTo, Damage, Notes, Cost, UserID, 1);
                     string status = "";
@@ -1674,7 +1681,6 @@ namespace CORE.JGC.Controllers
                     maintenance.Type = res.NamaType;
                     maintenance.Status = res.NamaStatus;
                     maintenance.ScheduleDate = res.ScheduleDate;
-                    maintenance.CompleteDate = res.CompleteDate;
                     maintenance.Cost = res.Cost;
                     maintenance.Notes = res.Notes;
 
@@ -1694,6 +1700,31 @@ namespace CORE.JGC.Controllers
             try
             {
                 var query = dc.TrxMaintenanceAssetLine_View("", "", "K");
+                foreach (var res in query)
+                {
+                    TrMaintenanceAssetLine mainLine = new TrMaintenanceAssetLine();
+
+
+                    mainLine.AssetCode = res.AssetCode;
+                    mainLine.AssetName = res.AssetName;
+                    mainLine.AssetSerialNo = res.AssetSerialNo;
+
+                    trMaintenanceLine.Add(mainLine);
+                }
+            }
+            catch
+            {
+                trMaintenanceLine = null;
+            }
+            return trMaintenanceLine.ToArray();
+        }
+        public TrMaintenanceAssetLine[] GridUpdateMaintenanceAssetLine(string MaintenanceNo)
+        {
+            dc = new BFASTDataContext();
+            List<TrMaintenanceAssetLine> trMaintenanceLine = new List<TrMaintenanceAssetLine>();
+            try
+            {
+                var query = dc.TrxMaintenanceAssetLine_View(MaintenanceNo, "", "G");
                 foreach (var res in query)
                 {
                     TrMaintenanceAssetLine mainLine = new TrMaintenanceAssetLine();

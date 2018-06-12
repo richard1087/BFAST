@@ -12,7 +12,7 @@ namespace CORE.JGC.Models
         public string MaintenanceNo { get; set; }
         public string Status { get; set; }
         public string Type { get; set; }
-        public DateTime CompleteDate { get; set; }
+        public DateTime? CompleteDate { get; set; }
         public DateTime? ScheduleDate { get; set; }
         public string AssignTo { get; set; }
         public string Damage { get; set; }

@@ -1,7 +1,9 @@
-﻿@{
-    ViewBag.Title = "Create Maintenance";
+﻿
+@{
+    ViewBag.Title = "Editmaintenance";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <script type="text/javascript">
     function Asset() {
         var Column = [
@@ -148,7 +150,7 @@
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        
+
         } else if (AssignTo == "") {
             $(".modal-body #peringatan3").text("AssignTo must be filled");
             $('#btnerror').click(function (e) {
@@ -161,7 +163,7 @@
             $('#btnyes').click(function (e) {
                 $('#Alert4').modal('hide');
                 $.ajax({
-                    
+
                     url: '@Url.Action("SaveMaintenance", "Asset")',
                     type: 'Post',
                     cache: false,
@@ -228,7 +230,7 @@
                     <div class="x_content">
                         <div class="text-muted font-13 m-b-30">
                             <div class="mgbtm20">
-                                <button id="selectasset" type="button" class="btn btn-success">Select Asset</button>
+                                <button id="selectasset" type="button" class="btn btn-success" disabled>Select Asset</button>
                             </div>
                         </div>
                         <div class="form-group">
@@ -262,7 +264,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Maintenance No</label>
                                 <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                    <input class="form-control" id="MaintenanceNo" name="MaintenanceNo" value="auto-generate" type="text" data-id="i" autocomplete="off" required="" readonly/>
+                                    <input class="form-control" id="MaintenanceNo" name="MaintenanceNo" value="auto-generate" type="text" data-id="i" autocomplete="off" required="" readonly />
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
@@ -281,12 +283,12 @@
                                     <span id="scheduleDate" class="sr-only">(success)</span>
                                 </div>
                                 @*<label class="control-label col-md-1 col-sm-1 col-xs-12">Complete Date</label>
-                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                    <input type="text" class="form-control has-feedback-left" id="single_cal5" name="CompleteDate" placeholder="Complete Date" data-id="i" aria-describedby="completeDate">
-                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                    <span id="completeDate" class="sr-only">(success)</span>
-                                </div>*@
-                                
+                                    <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                        <input type="text" class="form-control has-feedback-left" id="single_cal5" name="CompleteDate" placeholder="Complete Date" data-id="i" aria-describedby="completeDate">
+                                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <span id="completeDate" class="sr-only">(success)</span>
+                                    </div>*@
+
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Damage</label>
@@ -376,3 +378,4 @@
         });
 
 </script>
+

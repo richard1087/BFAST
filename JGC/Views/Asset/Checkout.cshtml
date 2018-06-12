@@ -88,12 +88,12 @@
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (AssetSerialNo == "") {
-            $(".modal-body #peringatan3").text("Serial No must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
+        //} else if (AssetSerialNo == "") {
+        //    $(".modal-body #peringatan3").text("Serial No must be filled");
+        //    $('#btnerror').click(function (e) {
+        //        $('#Alert3').modal('hide');
+        //    })
+        //    $("#Alert3").modal();
         }
         else {
             $.ajax({
@@ -112,7 +112,7 @@
                         $('#btnok').click(function (e) {
                             window.location.href = "@Url.Action("Checkout","Asset")";
                         })
-                        //$("#Alert2").modal();
+                        $("#Alert2").modal();
                     } else {
                         $(".modal-body #peringatan3").text(response.responseText);
                         $('#btnerror').click(function (e) {
