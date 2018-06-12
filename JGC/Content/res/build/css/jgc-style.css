@@ -532,4 +532,12 @@ table.dataTable{
     margin:0 !important;
 }
 
+#Lookup{
+    width:50%; 
+    z-index:2000; 
+    margin-top: 30px; 
+    margin-left:auto; 
+    margin-right:auto;
+}
+
 /* CONTENT CSS END */

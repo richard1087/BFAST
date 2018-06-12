@@ -13,7 +13,7 @@ using System.Globalization;
 
 namespace CORE.JGC.Controllers
 {
-    [SessionTimeoutAttribute]
+    
     public class AssetController : Controller
     {   
         BFASTDataContext dc = null;
@@ -329,6 +329,12 @@ namespace CORE.JGC.Controllers
             ViewBag.Companyname = GetCompany();
             return View();
         }
+
+        public ActionResult Move()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult InputData(MsAsset asset)
         {
@@ -1153,7 +1159,6 @@ namespace CORE.JGC.Controllers
             }
             return msSite.ToArray();
         }
-
         public MsDepartment[] GridPopupDepartment()
         {
             dc = new BFASTDataContext();
@@ -1177,7 +1182,6 @@ namespace CORE.JGC.Controllers
             }
             return msDepartment.ToArray();
         }
-
         public MsSupplier[] GridPopupSupplier()
         {
             dc = new BFASTDataContext();
@@ -1201,7 +1205,6 @@ namespace CORE.JGC.Controllers
             }
             return msSupplier.ToArray();
         }
-
         public MsAssetBrand[] GridPopupBrand()
         {
             dc = new BFASTDataContext();
@@ -1225,7 +1228,6 @@ namespace CORE.JGC.Controllers
             }
             return msBrand.ToArray();
         }
-
         public MsAssetModel[] GridPopupModel()
         {
             dc = new BFASTDataContext();
@@ -1249,7 +1251,6 @@ namespace CORE.JGC.Controllers
             }
             return msModel.ToArray();
         }
-
         public MsAssetType[] GridPopupType()
         {
             dc = new BFASTDataContext();
@@ -1273,7 +1274,6 @@ namespace CORE.JGC.Controllers
             }
             return msType.ToArray();
         }
-
         public MsCurrency[] GridPopupCurrency()
         {
             dc = new BFASTDataContext();
@@ -1297,7 +1297,6 @@ namespace CORE.JGC.Controllers
             }
             return msCurrency.ToArray();
         }
-
         public MsCompany[] GridPopupCompany()
         {
             dc = new BFASTDataContext();
@@ -1321,7 +1320,6 @@ namespace CORE.JGC.Controllers
             }
             return msCompany.ToArray();
         }
-
         public MsAssetCategory[] GridPopupCategory()
         {
             dc = new BFASTDataContext();
@@ -1345,7 +1343,6 @@ namespace CORE.JGC.Controllers
             }
             return msCategory.ToArray();
         }
-
         public MsLocation[] GridPopupLocation(string SiteCode)
         {
             dc = new BFASTDataContext();
@@ -1370,8 +1367,7 @@ namespace CORE.JGC.Controllers
                 msLocation = null;
             }
             return msLocation.ToArray();
-        }
-        
+        }        
         public TrCheckOut[] GridCheckOut()
         {
             dc = new BFASTDataContext();
@@ -1401,7 +1397,6 @@ namespace CORE.JGC.Controllers
             }
             return trCheckOut.ToArray();
         }
-
         public TrCheckOutLine[] GridCheckOutLine()
         {
             dc = new BFASTDataContext();
@@ -1427,7 +1422,6 @@ namespace CORE.JGC.Controllers
             }
             return trCheckOutLine.ToArray();
         }
-
         public TrCheckInLine[] GridCheckInLine()
         {
             dc = new BFASTDataContext();
@@ -1453,7 +1447,6 @@ namespace CORE.JGC.Controllers
             }
             return trCheckInLine.ToArray();
         }
-
         public TrDisposeAssetLine[] GridDisposeAssetLine()
         {
             dc = new BFASTDataContext();
@@ -1479,7 +1472,6 @@ namespace CORE.JGC.Controllers
             }
             return trDisposeLine.ToArray();
         }
-
         public TrMaintenanceAsset[] GridMaintenance()
         {
             dc = new BFASTDataContext();
@@ -1535,7 +1527,6 @@ namespace CORE.JGC.Controllers
             }
             return trMaintenanceLine.ToArray();
         }
-
         [HttpPost]
         public JsonResult GetPopupAssetCheckOut()
         {
@@ -1547,7 +1538,6 @@ namespace CORE.JGC.Controllers
                 data = msAsset.Select(x => new[] { x.AssetCode, x.AssetName, x.AssetSerialNo })
             }, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public JsonResult GetPopupAssetCheckIn()
         {
@@ -1559,7 +1549,6 @@ namespace CORE.JGC.Controllers
                 data = msAsset.Select(x => new[] { x.AssetCode, x.AssetName, x.AssetSerialNo })
             }, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public JsonResult GetPopupAssetDispose()
         {
@@ -1571,7 +1560,6 @@ namespace CORE.JGC.Controllers
                 data = msAsset.Select(x => new[] { x.AssetCode, x.AssetName, x.AssetSerialNo })
             }, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public JsonResult GetPopupAssetMaintenance()
         {
@@ -1583,7 +1571,6 @@ namespace CORE.JGC.Controllers
                 data = msAsset.Select(x => new[] { x.AssetCode, x.AssetName, x.AssetSerialNo })
             }, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public JsonResult GetPopupAssetTransfer()
         {
@@ -1607,7 +1594,6 @@ namespace CORE.JGC.Controllers
                 data = msEmployee
             }, JsonRequestBehavior.AllowGet);
         }
-
         //PopUp Site
         [HttpPost]
         public JsonResult GetPopupSite()
@@ -1620,7 +1606,6 @@ namespace CORE.JGC.Controllers
                 data = msSite.Select(x => new[] { x.SiteCode, x.SiteName, x.Address, x.City, x.PostalCode })
             }, JsonRequestBehavior.AllowGet);
         }
-
         //PopUp Category
         [HttpPost]
         public JsonResult GetPopupCategory()
@@ -1633,7 +1618,6 @@ namespace CORE.JGC.Controllers
                 data = msCategory.Select(x => new[] { x.AssetCategoryCode, x.AssetCategoryName })
             }, JsonRequestBehavior.AllowGet);
         }
-
         //PopUp Location
         [HttpPost]
         public JsonResult GetPopupLocation(string SiteCode)
@@ -1645,8 +1629,7 @@ namespace CORE.JGC.Controllers
             {
                 data = msLocation
             }, JsonRequestBehavior.AllowGet);
-        }
-        
+        }      
         //PopUp Department
         [HttpPost]
         public JsonResult GetPopupDepartment()
