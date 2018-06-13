@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -19,6 +20,8 @@ namespace CORE.JGC.Models
         public string AssetCode { get; set; }
         public string AssetName { get; set; }
         public string AssetSerialNo { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:0,0}")]
         public decimal? Cost { get; set; }
         public string Iby { get; set; }
         public DateTime Ion { get; set; }
