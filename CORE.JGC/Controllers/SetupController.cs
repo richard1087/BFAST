@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CORE.JGC.Models;
+using CORE.JGC.Lib;
+using CORE.JGC.POCO;
 
 
 namespace CORE.JGC.Controllers
@@ -15,6 +17,10 @@ namespace CORE.JGC.Controllers
         BFASTDataContext dc = null;
         //string UserId = Session["UserID"].ToString().Trim();
         string UserId = "ADMIN";
+        string imageName = "";
+        string identitas = "";
+        string nama = "";
+
         private MsLocation[] GridLokasi()
         {
             dc = new BFASTDataContext();
@@ -92,6 +98,35 @@ namespace CORE.JGC.Controllers
                 mssite = null;
             }
             return mssite.ToArray();
+        }
+
+        //Barcode
+        private MsBarcode[] GridBarcode()
+        {
+            dc = new BFASTDataContext();
+            List<MsBarcode> msbarcode = new List<MsBarcode>();
+            try
+            {
+                var query = dc.MsBarcode_View("", "G");
+                foreach (var res in query)
+                {
+                    string Aktif = "";
+                    MsBarcode barcode = new MsBarcode();
+
+
+                    barcode.Id = res.Id;
+                    barcode.BarcodeCode = res.Barcode;
+                    barcode.SizeBarcode = res.Size;
+                    barcode.TitleBarcode = res.Title;
+
+                    msbarcode.Add(barcode);
+                }
+            }
+            catch
+            {
+                msbarcode = null;
+            }
+            return msbarcode.ToArray();
         }
 
         //Departemen
@@ -452,11 +487,7 @@ namespace CORE.JGC.Controllers
             return msemployee.ToArray();
         }
 
-        //Untuk action
-        public ActionResult Companyinfo()
-        {
-            return View();
-        }
+        
 
         //sites
         public ActionResult Sites()
@@ -1280,85 +1311,205 @@ namespace CORE.JGC.Controllers
 
 
         //company
-        public ActionResult Createcompany()
+        //Untuk action
+        public ActionResult Companyinfo()
         {
             MsCompany[] mscompany = null;
             mscompany = GridCompany();
             return View(mscompany);
         }
 
-        //[HttpPost]
-        //public ActionResult InsertCompany(string companyCode, string companyName, string address, string city, string province, string postalCode, string telephone, int Aktif, string photoLogo)
-        //{
-        //    try
-        //    {
+        public ActionResult Createcompany()
+        {
+            //MsCompany[] mscompany = null;
+            //mscompany = GridCompany();
+            return View();
+        }
 
-        //        dc = new BFASTDataContext();
-        //        try
-        //        {
-        //            var query = dc.MsCompany_IUD(companyCode, companyName, address, city, province, postalCode, telephone, Aktif, photoLogo, UserId, 1);
-        //            string status = "";
-        //            foreach (var res in query)
-        //            {
-        //                status = res.Status;
-        //            }
+        [HttpPost]
+        public ActionResult InsertCompany(string CompanyCode, string CompanyName, string Address, string City, string Province, string PostalCode, string Telephone, int Aktif, string PhotoLogo)
+        {
+            try
+            {
 
-        //            if (status.Trim().Substring(0, 4) == "Err ")
-        //            {
-        //                return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
-        //            }
-        //            else
-        //            {
-        //                return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
+                dc = new BFASTDataContext();
+                try
+                {
+                    var query = dc.MsCompany_IUD(CompanyCode, CompanyName, Address, City, Province, PostalCode, Telephone, Aktif, PhotoLogo, UserId, 1);
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
 
-        //[HttpPost]
-        //public ActionResult UpdateCompany(string EditcompanyCode, string EditcompanyName, string Editaddress, string Editcity, string Editprovince, string EditpostalCode, string Edittelephone, int EditAktif, string EditphotoLogo)
-        //{
-        //    try
-        //    {
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
 
-        //        dc = new BFASTDataContext();
-        //        try
-        //        {
-        //            var query = dc.MsCompany_IUD(EditcompanyCode, EditcompanyName, Editaddress, Editcity, Editprovince, EditpostalCode, Edittelephone, EditAktif, EditphotoLogo, UserId, 2);
-        //            string status = "";
-        //            foreach (var res in query)
-        //            {
-        //                status = res.Status;
-        //            }
 
-        //            if (status.Trim().Substring(0, 4) == "Err ")
-        //            {
-        //                return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
-        //            }
-        //            else
-        //            {
-        //                return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
-        //            }
+        public ActionResult Updatecompany()
+        {
+            dc = new BFASTDataContext();
+            List<MsCompany> mscompany = new List<MsCompany>();
+            try
+            {
+                var query = dc.MsCompany_View(Session["ID"].ToString(), "U");
+                foreach (var res in query)
+                {
+                    string Aktif = "";
+                    MsCompany company = new MsCompany();
+                    if (res.bActive.ToString() == "True")
+                    {
+                        Aktif = "Y";
+                    }
+                    else
+                    {
+                        Aktif = "T";
+                    }
 
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
+                    ViewData["ID"] = res.Id.ToString().Trim();
+                    ViewData["CompanyID"] = res.CompanyID.ToString().Trim();
+                    ViewData["CompanyCode"] = res.CompanyCode.ToString().Trim();
+                    ViewData["CompanyName"] = res.CompanyName.ToString().Trim();
+                    ViewData["Address"] = res.Address.ToString().Trim();
+                    ViewData["City"] = res.City.ToString().Trim();
+                    ViewData["Province"] = res.Province.ToString().Trim();
+                    ViewData["PostalCode"] = res.PostalCode.ToString().Trim();
+                    ViewData["Telephone"] = res.Telephone.ToString().Trim();
+                    ViewData["Aktif"] = Aktif.ToString().Trim();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                mscompany = null;
+            }
+
+            return View();
+        }
+
+        //Buat Update
+        [HttpPost]
+        public ActionResult UpdateDataCompany(string CompanyID)
+        {
+            Session["ID"] = CompanyID;
+
+            dc = new BFASTDataContext();
+            List<MsCompany> mscompany = new List<MsCompany>();
+            try
+            {
+                var query = dc.MsCompany_View(Session["ID"].ToString(), "U");
+                foreach (var res in query)
+                {
+                    string Aktif = "";
+                    MsCompany company = new MsCompany();
+                    if (res.bActive.ToString() == "True")
+                    {
+                        Aktif = "Y";
+                    }
+                    else
+                    {
+                        Aktif = "T";
+                    }
+
+                    ViewData["ID"] = res.Id.ToString().Trim();
+                    ViewData["CompanyID"] = res.CompanyID.ToString().Trim();
+                    ViewData["CompanyCode"] = res.CompanyCode.ToString().Trim();
+                    ViewData["CompanyName"] = res.CompanyName.ToString().Trim();
+                    ViewData["Address"] = res.Address.ToString().Trim();
+                    ViewData["City"] = res.City.ToString().Trim();
+                    ViewData["Province"] = res.Province.ToString().Trim();
+                    ViewData["PostalCode"] = res.PostalCode.ToString().Trim();
+                    ViewData["Telephone"] = res.Telephone.ToString().Trim();
+                    ViewData["Aktif"] = Aktif.ToString().Trim();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                mscompany = null;
+            }
+            return View("Updatecompany");
+        }
+
+        [HttpPost]
+        public ActionResult SimpanGambarCompany(FormCollection formCollection)
+        {
+            foreach (string item in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[item] as HttpPostedFileBase;
+                if (file.ContentLength == 0)
+                    continue;
+                if (file.ContentLength > 0)
+                {
+                    ImageUpload imageUpload = new ImageUpload { Width = 600 };
+                    ImageResult imageResult = imageUpload.RenameUploadFile(file, 0, identitas, nama);
+                    if (imageResult.Success)
+                    {
+                        Console.WriteLine(imageResult.ImageName);
+                        imageName = imageResult.ImageName.ToString().Trim();
+                    }
+                    else
+                    {
+                        ViewBag.Error = imageResult.ErrorMessage;
+                    }
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UbahCompany(string EditCompanyCode, string EditCompanyName, string EditAddress, string EditCity, string EditProvince, string EditPostalCode, string EditTelephone, int EditAktif, string EditPhotoLogo)
+        {
+            try
+            {
+                dc = new BFASTDataContext();
+                try
+                {
+
+                    var query = dc.MsCompany_IUD(EditCompanyCode, EditCompanyName, EditAddress, EditCity, EditProvince, EditPostalCode, EditTelephone, EditAktif, EditPhotoLogo, UserId, 2);
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
         //----------------------------------------------------------
 
         //Exchange Rate
@@ -1526,6 +1677,16 @@ namespace CORE.JGC.Controllers
         }
 
         //----------------------------------------------------------
+        //Barcode
+        public ActionResult Barcode()
+        {
+            MsBarcode[] msbarcode = null;
+            msbarcode = GridBarcode();
+            return View(msbarcode);
+        }
+
+        //----------------------------------------------------------
+
         public ActionResult Types()
         {
             return View();
@@ -1537,11 +1698,6 @@ namespace CORE.JGC.Controllers
         }
 
         public ActionResult Autonumber()
-        {
-            return View();
-        }
-
-        public ActionResult Barcode()
         {
             return View();
         }
@@ -1593,7 +1749,7 @@ namespace CORE.JGC.Controllers
 
             return Json(new
             {
-                data = mslocation.Select(x => new[] { x.LocationCode, x.LocationName, x.SiteName, x.Floor.ToString() })
+                data = mslocation.Select(x => new[] { x.LocationCode, x.LocationName, x.SiteName, x.Floor.ToString(), x.SiteCode })
             }, JsonRequestBehavior.AllowGet);
         }
 
