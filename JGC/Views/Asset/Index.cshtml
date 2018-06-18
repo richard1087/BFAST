@@ -33,10 +33,10 @@
                 txtArea1.document.write(tab_text);
                 txtArea1.document.close();
                 txtArea1.focus();
-                sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+                sa = txtArea1.document.execCommand("SaveAs", true, "Asset.xls");
             }
             else                 //other browser not tested on IE 11
-                sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+                sa = window.open('data:application/vnd.ms-excel;base64,' + encodeURIComponent(tab_text));
             return (sa);
         }
 </script>
@@ -106,7 +106,8 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td align="center"><img src='@Html.DisplayFor(modelItem => item.Photo)'/></td>
+
+                                        <td align="center"><img src="data:image/jpeg;base64,@Html.DisplayFor(modelItem => item.Photo)"/></td>
                                         <td><a href="#" id="assetmodel">@Html.DisplayFor(modelItem => item.AssetCode)</a></td>
                                         <td><a href="#">@Html.DisplayFor(modelItem => item.AssetName)</a></td>
                                         <td><a href="#">@Html.DisplayFor(modelItem => item.AssetBrandCode)</a></td>

@@ -11,14 +11,16 @@ namespace CORE.JGC.Models
         public int Id { get; set; }
         public string TransferAssetNo { get; set; }
         public string Status { get; set; }
+        public string NamaStatus { get; set; }
         public string Type { get; set; }
+        public string NamaType { get; set; }
         public DateTime TransferDate { get; set; }
         public string TransferAssetNoRef { get; set; }
         public string SiteCode { get; set; }
         public string SiteName { get; set; }
         public string LocationCode { get; set; }
         public string LocationName { get; set; }
-        public int Floor { get; set; }
+        public int? Floor { get; set; }
         public string Notes { get; set; }
         public string Iby { get; set; }
         public DateTime Ion { get; set; }

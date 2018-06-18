@@ -245,6 +245,7 @@ D:\TEST\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
 D:\TEST\BFAST\BFAST\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
 D:\TEST\BFAST\BFAST\CORE.JGC\obj\Debug\CORE.JGC.dll
 D:\TEST\BFAST\BFAST\CORE.JGC\obj\Debug\CORE.JGC.pdb
+<<<<<<< HEAD
 F:\Hans\JGC_VER_2_REV_8\JGC\BFAST\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
 F:\Hans\JGC_VER_2_REV_8\JGC\BFAST\CORE.JGC\obj\Debug\CORE.JGC.dll
 F:\Hans\JGC_VER_2_REV_8\JGC\BFAST\CORE.JGC\obj\Debug\CORE.JGC.pdb
@@ -277,3 +278,37 @@ F:\Hans\JGC_VER_2_REV_8\JGC\BFAST\CORE.JGC\bin\Debug\System.Web.Razor.xml
 F:\Hans\JGC_VER_2_REV_8\JGC\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.xml
 F:\Hans\JGC_VER_2_REV_8\JGC\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
 F:\Hans\JGC_VER_2_REV_8\JGC\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
+=======
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\CORE.JGC.dll.config
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\CORE.JGC.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\CORE.JGC.pdb
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\EntityFramework.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\itextsharp.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\Newtonsoft.Json.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\Owin.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.Helpers.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.Mvc.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.Razor.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\EntityFramework.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\itextsharp.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\Newtonsoft.Json.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.Helpers.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.Mvc.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.Razor.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\obj\Debug\CORE.JGC.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\CORE.JGC\obj\Debug\CORE.JGC.pdb
+>>>>>>> ef59098d8c88b46fa3ac4369faae2429cfe735f1
