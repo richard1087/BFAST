@@ -369,16 +369,16 @@ namespace CORE.JGC.Controllers
                     UserID, 1);
                 foreach (var res in query)
                 {
-                    if (res.Status == "Err This Data Already Exists")
-                    {
-                        hasil = "Data Already Exists";
-                    }
-                    else
-                    {
-                        string qrcode = GenerateQrCode(res.Status);
-                        var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
-                        hasil = res.Status;
-                    }
+                    //if (res.Status == "Err This Data Already Exists")
+                    //{
+                    //    hasil = "Data Already Exists";
+                    //}
+                    //else
+                    //{
+                    //    string qrcode = GenerateQrCode(res.Status);
+                    //    var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
+                    //    hasil = res.Status;
+                    //}
                 }
             }
             catch (Exception ex)

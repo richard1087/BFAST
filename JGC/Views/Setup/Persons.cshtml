@@ -5,7 +5,7 @@
 }
 
 <script type="text/javascript">
-    function Sites(Jenis) {
+    @*function Sites(Jenis) {
         var Column = [
                     { "data": "0" },
                     { "title": "Site Code", "data": "0" },
@@ -28,7 +28,7 @@
             }
             $('#Lookup').modal('hide');
         });
-    }
+    }*@
 
     function Departement(Jenis) {
         var Column = [
@@ -65,16 +65,20 @@
             if (Jenis == '1') {
                 $("#LocationCode").val(d[0]);
                 $("#LocationName").val(d[1]);
+                $("#SiteName").val(d[2]);
+                $("#SiteCode").val(d[4]);
             }
             else {
                 $("#EditLocationCode").val(d[0]);
                 $("#EditLocationName").val(d[1]);
+                $("#EditSiteName").val(d[2]);
+                $("#EditSiteCode").val(d[4]);
             }
             $('#Lookup').modal('hide');
         });
     }
 
-    function Sites(Jenis) {
+    @*function Sites(Jenis) {
         var Column = [
                     { "data": "0" },
                     { "title": "Site Code", "data": "0" },
@@ -97,7 +101,7 @@
             }
             $('#Lookup').modal('hide');
         });
-    }
+    }*@
 
 
     function InputPerson() {
@@ -445,18 +449,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Site Code</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Location</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
+                            <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" required=""  data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Location</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Site Code</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Location('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
+                            <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
                         </div>
                     </div>
 
@@ -549,18 +553,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input class="form-control readonly" id="EditSiteCode" name="EditSiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="EditSiteName" name="EditSiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Sites('2')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Location</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input class="form-control readonly" id="EditLocationCode" name="EditLocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
                             <input class="form-control readonly" id="EditLocationName" name="EditLocationName" value="" type="text" data-id="i" autocomplete="off" onclick="Location('2')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input class="form-control readonly" id="EditSiteCode" name="EditSiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="EditSiteName" name="EditSiteName" value="" type="text" data-id="i" autocomplete="off"  data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                         </div>
                     </div>
 

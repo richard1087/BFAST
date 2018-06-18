@@ -4682,10 +4682,13 @@
     <Content Include="Views\Utilization\Updaterole.cshtml" />
     <Content Include="Views\Utilization\Access.cshtml" />
     <Content Include="Views\Asset\Move.cshtml" />
+    <Content Include="Views\Setup\Updatecompany.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
     <Folder Include="Views\Asset\ImgUpload\Image\" />
+    <Folder Include="Views\Images\" />
     <Folder Include="Views\WebLogin\" />
   </ItemGroup>
   <ItemGroup>
