@@ -432,12 +432,16 @@
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Capitalized</label>
-                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                <div class="col-md-5 col-sm-5 col-xs-12">
                                     <div class="checkbox">
                                         <label style="padding-left:0 !important">
                                             <input id="bCap" type="checkbox" class="flat"> Yes
                                         </label>
                                     </div>
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Qty</label>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <input type="number" id="Qty" name="Qty" class="form-control col-md-10" placeholder="Qty" />
                                 </div>
                             </div>
 
@@ -1142,23 +1146,24 @@
     function InputData() {
         var form = new FormData();
 
-        var SiteCode = document.getElementById("Sitecode").value;
-        var AssetCategoryCode = document.getElementById("AssetCategoryCode").value;
-        var LocationCode = document.getElementById("LocationCode").value;
-        var DeptCode = document.getElementById("DeptCode").value;
+        var SiteCode = document.getElementById("SiteCodeId").value;
+        var AssetCategoryCode = document.getElementById("CategoryCodeId").value;
+        var LocationCode = document.getElementById("LocationCodeId").value;
+        var DeptCode = document.getElementById("DepartmentCodeId").value;
         var AssetName = document.getElementById("AssetName").value;
-        var SupplierCode = document.getElementById("SupplierCode").value;
+        var SupplierCode = document.getElementById("SupplierCodeId").value;
         var PurchaseNo = document.getElementById("PurchaseNo").value;
-        var AssetBrandCode = document.getElementById("AssetBrandCode").value;
+        var AssetBrandCode = document.getElementById("BrandCodeId").value;
         var PurchaseDate = document.getElementById("single_cal2").value;
-        var AssetModelCode = document.getElementById("AssetModelCode").value;
+        var AssetModelCode = document.getElementById("ModelCodeId").value;
         var PurchasePrice = document.getElementById("PurchasePrice").value;
         var AssetSerialNo = document.getElementById("AssetSerialNo").value;
-        var AssetTypeCode = document.getElementById("AssetTypeCode").value;
-        var CompanyID = document.getElementById("CompanyId").value;
-        var CurrencyCode = document.getElementById("CurrencyCode").value;
+        var AssetTypeCode = document.getElementById("TypeCodeId").value;
+        var CompanyID = document.getElementById("CompanyCodeId").value;
+        var CurrencyCode = document.getElementById("CurrencyCodeId").value;
         var Floor = document.getElementById("Floor").value;
         var Warranty = document.getElementById("Warranty").value;
+        var Qty = document.getElementById("Qty").value;
         var bActive = document.getElementById("bActive");
         var bCap = document.getElementById("bCap");
         var file = document.getElementById("fileupload").files[0];
@@ -1287,6 +1292,12 @@
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
+        } else if (Qty == "") {
+            $(".modal-body #peringatan3").text("Qty harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
         }
         else {
             if (bActive.checked == true) {
@@ -1315,6 +1326,7 @@
             form.append("bCap", bCap);
             form.append("Floor", Floor);
             form.append("Warranty", Warranty);
+            form.append("Qty", Qty);
             form.append("Sitecode", SiteCode);
             form.append("LocationCode", LocationCode);
             form.append("PurchaseNo", PurchaseNo);
@@ -1325,60 +1337,38 @@
             form.append("CompanyId", CompanyID);
             form.append("DeptCode", DeptCode);
             form.append("fileupload", file);
-                $.ajax({
-                    url: '@Url.Action("InputData", "Asset")',
-                    type: 'POST',
-                    contentType: false,
-                    processData: false,
-                    cache: false,
-                    async: true,
-                    data:form,
-                    //    {
-                    //    site: SiteId,
-                    //    category: AssetCategoryCode,
-                    //    location: LocationCode,
-                    //    departement: DeptCode,
-                    //    assetname: AssetName,
-                    //    supplier: SupplierCode,
-                    //    purchaseno: PurchaseNo,
-                    //    brand: AssetBrandCode,
-                    //    purchasedateid: PurchaseDate,
-                    //    model: AssetModelCode,
-                    //    price: PurchasePrice,
-                    //    serialno: AssetSerialNo,
-                    //    type: AssetTypeCode,
-                    //    company: CompanyId,
-                    //    currency: CurrencyCode,
-                    //    floor: Floor,
-                    //    warranty: Warranty,
-                    //    cap: bCap,
-                    //    active: bActive,
-                        
-                    //},
-                    success: function (response) {
-                        if (response.success) {
-                            $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
-                            $('#btnok').click(function (e) {
-                                window.location.href = "@Url.Action("Index", "Asset")";
-                            })
-                            $("#Alert2").modal();
+            $.ajax({
+                url: '@Url.Action("InputData", "Asset")',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Index", "Asset")";
+                        })
+                        $("#Alert2").modal();
 
-                        } else {
-                            $(".modal-body #peringatan3").text(response.responseText);
-                            $('#btnerror').click(function (e) {
-                                $('#Alert3').modal('hide');
-                            })
-                            $("#Alert3").modal();
-                        }
-                    },
-                    error: function (response) {
-                        $(".modal-body #peringatan3").text(textStatus.responseText);
-                        $('#btncaution').click(function (e) {
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
                             $('#Alert3').modal('hide');
                         })
                         $("#Alert3").modal();
                     }
-                });
+                },
+                error: function (response) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
         }
     }
 

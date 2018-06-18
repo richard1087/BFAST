@@ -258,9 +258,6 @@ namespace CORE.JGC.Controllers
         }
         private string GenerateQrCode(string assettagid)
         {
-
-
-
             string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
             string filepathimg = Server.MapPath(pathdb);
             //string filepathimg = Path.Combine(Server.MapPath("~/Content/res/build/images/Qrcode/"), assettagid + ".jpg");
@@ -401,10 +398,29 @@ namespace CORE.JGC.Controllers
                         }
                     }
                 }
-                var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
-                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-                    Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),1,
-                    UserID, 1);
+                var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode,
+                Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+                Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty), asset.Qty,
+                UserID, 1);                
+
+                if (asset.Qty > 1)
+                {
+                    foreach (var res in query.ToList())
+                    {
+                        if (res.Status == null)
+                        {
+                            hasil = "Data Already Exists";
+                        }
+                        else
+                        {
+                            string qrcode = GenerateQrCode(res.Status);
+                            var qr = dc.MsBarcode_IUD(res.Status, qrcode, asset.CompanyID, UserID, 1);
+                            hasil = res.Status;
+                        }
+                    }
+                }
+                else
+                {
                     foreach (var res in query)
                     {
                         if (res.Status == "Err This Data Already Exists")
@@ -414,11 +430,11 @@ namespace CORE.JGC.Controllers
                         else
                         {
                             string qrcode = GenerateQrCode(res.Status);
-                            var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
+                            var qr = dc.MsBarcode_IUD(res.Status, qrcode, asset.CompanyID, UserID, 1);
                             hasil = res.Status;
                         }
                     }
-                
+                }
             }
             catch (Exception ex)
             {
