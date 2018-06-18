@@ -722,18 +722,18 @@ D:\Project\JGC\JGC\BFAST\JGC\bin\itextsharp.xml
 D:\Project\JGC\JGC\BFAST\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
 D:\Project\JGC\JGC\BFAST\JGC\obj\Debug\JGC.dll
 D:\Project\JGC\JGC\BFAST\JGC\obj\Debug\JGC.pdb
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Collections.Immutable.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.FileSystem.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Reflection.Metadata.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Primitives.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.ValueTuple.dll
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\VBCSCompiler.exe
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Collections.Immutable.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.IO.FileSystem.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Reflection.Metadata.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.ValueTuple.dll
+D:\TEST\BFAST\BFAST\JGC\bin\roslyn\VBCSCompiler.exe
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\ApplicationInsights.config
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\JGC.dll.config
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\JGC.dll
@@ -745,25 +745,36 @@ D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\csi.exe
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\csi.exe.config
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\csi.rsp
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.Managed.Core.targets
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.VisualBasic.Core.targets
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.AppContext.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Collections.Immutable.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Console.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Diagnostics.StackTrace.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.Compression.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.FileSystem.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.FileSystem.Primitives.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.Pipes.AccessControl.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.Pipes.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Reflection.Metadata.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.AccessControl.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Claims.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Primitives.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Principal.Windows.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.ValueTuple.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Xml.ReaderWriter.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Xml.XmlDocument.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Xml.XPath.dll
@@ -771,6 +782,7 @@ D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Xml.XPath.XDocum
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\vbc.exe
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\vbc.exe.config
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\vbc.rsp
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\VBCSCompiler.exe
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\VBCSCompiler.exe.config
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\Antlr3.Runtime.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\CORE.JGC.dll
@@ -855,36 +867,25 @@ D:\TEST\BFAST\BFAST\JGC\bin\roslyn\csi.exe
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\csi.exe.config
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\csi.rsp
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.Managed.Core.targets
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\Microsoft.VisualBasic.Core.targets
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.AppContext.dll
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Collections.Immutable.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Console.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Diagnostics.StackTrace.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.IO.Compression.dll
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.IO.FileSystem.dll
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.IO.FileSystem.Primitives.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.IO.Pipes.AccessControl.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.IO.Pipes.dll
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Reflection.Metadata.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Security.AccessControl.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Security.Claims.dll
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Encoding.dll
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Primitives.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Security.Principal.Windows.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.ValueTuple.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Xml.ReaderWriter.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Xml.XmlDocument.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Xml.XPath.dll
@@ -892,7 +893,6 @@ D:\TEST\BFAST\BFAST\JGC\bin\roslyn\System.Xml.XPath.XDocument.dll
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\vbc.exe
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\vbc.exe.config
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\vbc.rsp
-D:\TEST\BFAST\BFAST\JGC\bin\roslyn\VBCSCompiler.exe
 D:\TEST\BFAST\BFAST\JGC\bin\roslyn\VBCSCompiler.exe.config
 D:\TEST\BFAST\BFAST\JGC\bin\Antlr3.Runtime.dll
 D:\TEST\BFAST\BFAST\JGC\bin\CORE.JGC.dll
@@ -966,3 +966,125 @@ D:\TEST\BFAST\BFAST\JGC\bin\itextsharp.xml
 D:\TEST\BFAST\BFAST\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
 D:\TEST\BFAST\BFAST\JGC\obj\Debug\JGC.dll
 D:\TEST\BFAST\BFAST\JGC\obj\Debug\JGC.pdb
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\ApplicationInsights.config
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\JGC.dll.config
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\JGC.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\JGC.pdb
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\csc.exe
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\csc.exe.config
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\csc.rsp
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\csi.exe
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\csi.exe.config
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\csi.rsp
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.AppContext.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Console.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.IO.Compression.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.IO.Pipes.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Security.Claims.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.ValueTuple.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Xml.XPath.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\vbc.exe
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\vbc.exe.config
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\vbc.rsp
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\VBCSCompiler.exe
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Antlr3.Runtime.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\CORE.JGC.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\EntityFramework.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\EntityFramework.SqlServer.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AI.Web.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.ApplicationInsights.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Newtonsoft.Json.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Owin.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.Helpers.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.Mvc.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.Optimization.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.Razor.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.WebPages.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.WebPages.Razor.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\WebGrease.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\itextsharp.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\CORE.JGC.pdb
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Antlr3.Runtime.pdb
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\EntityFramework.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\EntityFramework.SqlServer.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AI.Web.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Newtonsoft.Json.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.Helpers.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.Mvc.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.Razor.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.WebPages.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.WebPages.Razor.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\System.Web.Optimization.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\bin\itextsharp.xml
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\obj\Debug\JGC.dll
+C:\Users\erwin.frerick\Documents\GitHub\JGC\BFAST\BFAST\JGC\obj\Debug\JGC.pdb

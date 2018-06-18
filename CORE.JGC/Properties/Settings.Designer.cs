@@ -26,10 +26,10 @@ namespace CORE.JGC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=DbAssetJGC;User ID=sa;Password=humis")]
-        public string DbAssetJGCConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLSERVER;Initial Catalog=DbAssetJGC;Integrated Security=True")]
+        public string DbAssetJGCConnectionString1 {
             get {
-                return ((string)(this["DbAssetJGCConnectionString"]));
+                return ((string)(this["DbAssetJGCConnectionString1"]));
             }
         }
     }

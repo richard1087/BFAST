@@ -44,7 +44,7 @@
   <Function Name="dbo.MobStockOpnameListAsset_View" Method="MobStockOpnameListAsset_View">
     <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
     <ElementType Name="MobStockOpnameListAsset_ViewResult">
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="AssetBrandCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="AssetModelCode" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
@@ -77,39 +77,12 @@
       <Column Name="Iby" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.MsAsset_IUD" Method="MsAsset_IUD">
-    <Parameter Name="AssetName" Parameter="assetName" Type="System.String" DbType="VarChar(200)" />
-    <Parameter Name="AssetBrandCode" Parameter="assetBrandCode" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="AssetModelCode" Parameter="assetModelCode" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="AssetCategoryCode" Parameter="assetCategoryCode" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="AssetSerialNo" Parameter="assetSerialNo" Type="System.String" DbType="VarChar(100)" />
-    <Parameter Name="AssetTypeCode" Parameter="assetTypeCode" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="bActive" Type="System.Int32" DbType="Int" />
-    <Parameter Name="bCapitalized" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Photo" Parameter="photo" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="SiteCode" Parameter="siteCode" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="LocationCode" Parameter="locationCode" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Floor" Parameter="floor" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PurchaseNo" Parameter="purchaseNo" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="CurrencyCode" Parameter="currencyCode" Type="System.String" DbType="VarChar(5)" />
-    <Parameter Name="PurchasePrice" Parameter="purchasePrice" Type="System.Decimal" DbType="Decimal(18,0)" />
-    <Parameter Name="PurchaseDate" Parameter="purchaseDate" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="SupplierCode" Parameter="supplierCode" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="CompanyID" Parameter="companyID" Type="System.String" DbType="VarChar(5)" />
-    <Parameter Name="DeptCode" Parameter="deptCode" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="WarrantyMonth" Parameter="warrantyMonth" Type="System.Int32" DbType="Int" />
-    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
-    <ElementType Name="MsAsset_IUDResult">
-      <Column Name="Status" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.MsAsset_View" Method="MsAsset_View">
     <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="MsAsset_ViewResult">
       <Column Name="AssetPhoto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="AssetTagID" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetTagID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="AssetBrand" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -521,7 +494,7 @@
   </Function>
   <Function Name="dbo.Pop_AssetCheckIn" Method="Pop_AssetCheckIn">
     <ElementType Name="Pop_AssetCheckInResult">
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -531,7 +504,7 @@
   </Function>
   <Function Name="dbo.Pop_AssetCheckOut" Method="Pop_AssetCheckOut">
     <ElementType Name="Pop_AssetCheckOutResult">
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SiteName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -541,7 +514,7 @@
   </Function>
   <Function Name="dbo.Pop_AssetDisposeAsset" Method="Pop_AssetDisposeAsset">
     <ElementType Name="Pop_AssetDisposeAssetResult">
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -551,7 +524,7 @@
   </Function>
   <Function Name="dbo.Pop_AssetMaintenance" Method="Pop_AssetMaintenance">
     <ElementType Name="Pop_AssetMaintenanceResult">
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -561,7 +534,7 @@
   </Function>
   <Function Name="dbo.Pop_AssetTransfer" Method="Pop_AssetTransfer">
     <ElementType Name="Pop_AssetTransferResult">
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -571,7 +544,7 @@
   </Function>
   <Function Name="dbo.Rpt_AssetPastDue" Method="Rpt_AssetPastDue">
     <ElementType Name="Rpt_AssetPastDueResult">
-      <Column Name="AssetTagID" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetTagID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetDescription" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="AssetBrand" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -581,7 +554,7 @@
   </Function>
   <Function Name="dbo.Rpt_WarrantyExpiring" Method="Rpt_WarrantyExpiring">
     <ElementType Name="Rpt_WarrantyExpiringResult">
-      <Column Name="AssetTagId" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetTagId" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetDescription" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -673,7 +646,7 @@
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="TrxCheckInLine_ViewResult">
       <Column Name="CheckInNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
@@ -735,7 +708,7 @@
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="TrxCheckOutLine_ViewResult">
       <Column Name="CheckOutNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
@@ -784,7 +757,7 @@
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="TrxDisposeAssetLine_ViewResult">
       <Column Name="DisposeNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
@@ -814,7 +787,7 @@
     <Parameter Name="MaintenanceAssetNo" Parameter="maintenanceAssetNo" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="TrxMaintenanceAsset_ViewResult">
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="MaintenanceAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
@@ -846,7 +819,7 @@
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="TrxMaintenanceAssetLine_ViewResult">
       <Column Name="MaintenanceAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
@@ -877,7 +850,9 @@
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="TrxTransferAsset_ViewResult">
       <Column Name="TransferAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
       <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="TransferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="TransferAssetNoRef" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
@@ -886,6 +861,7 @@
       <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.TrxTransferAssetLine_IUD" Method="TrxTransferAssetLine_IUD">
@@ -902,7 +878,7 @@
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="TrxTransferAssetLine_ViewResult">
       <Column Name="TransferAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="AssetCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
@@ -975,6 +951,40 @@
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="UtilUser_IUDResult">
       <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Pop_AssetTransferType" Method="Pop_AssetTransferType">
+    <ElementType Name="Pop_AssetTransferTypeResult">
+      <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.MsAsset_IUD" Method="MsAsset_IUD">
+    <Parameter Name="AssetName" Parameter="assetName" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="AssetBrandCode" Parameter="assetBrandCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AssetModelCode" Parameter="assetModelCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AssetCategoryCode" Parameter="assetCategoryCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="AssetSerialNo" Parameter="assetSerialNo" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="AssetTypeCode" Parameter="assetTypeCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="bActive" Type="System.Int32" DbType="Int" />
+    <Parameter Name="bCapitalized" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Photo" Parameter="photo" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="SiteCode" Parameter="siteCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="LocationCode" Parameter="locationCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Floor" Parameter="floor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PurchaseNo" Parameter="purchaseNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CurrencyCode" Parameter="currencyCode" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="PurchasePrice" Parameter="purchasePrice" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="PurchaseDate" Parameter="purchaseDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="SupplierCode" Parameter="supplierCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="CompanyID" Parameter="companyID" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="DeptCode" Parameter="deptCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="WarrantyMonth" Parameter="warrantyMonth" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
+    <ElementType Name="MsAsset_IUDResult">
+      <Column Name="AssetTag" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
