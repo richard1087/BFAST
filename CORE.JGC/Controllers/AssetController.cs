@@ -485,7 +485,6 @@ namespace CORE.JGC.Controllers
         {
             try
             {
-
                 dc = new BFASTDataContext();
                 try
                 {
