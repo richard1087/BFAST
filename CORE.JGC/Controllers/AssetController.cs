@@ -258,9 +258,6 @@ namespace CORE.JGC.Controllers
         }
         private string GenerateQrCode(string assettagid)
         {
-
-
-
             string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
             string filepathimg = Server.MapPath(pathdb);
             //string filepathimg = Path.Combine(Server.MapPath("~/Content/res/build/images/Qrcode/"), assettagid + ".jpg");
@@ -308,38 +305,7 @@ namespace CORE.JGC.Controllers
                 string msg = ex.Message;
             }
             bmp.Dispose();
-
-            //fs.Close();
             return base64;
-        }
-        private void UploadPhoto()
-        {
-            string path = string.Empty;
-            if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
-            {
-                var pic = System.Web.HttpContext.Current.Request.Files["Assetpic"];
-                if (pic.ContentLength > 0)
-                {
-                    string filename = Path.GetFileName(pic.FileName);
-                    var ext = Path.GetExtension(pic.FileName);
-                    //imgName = Guid.NewGuid().ToString();
-                    filename = filename + DateTime.Now.ToString("HHmmss") + ext;
-                    path = "/Content/res/build/images/Assets/" + filename + ext;
-                    //var filepath = path;
-                    pic.SaveAs(path);
-                    MemoryStream stream = new MemoryStream();
-                    WebImage webimg = new WebImage(path);
-                    if (webimg.Width > 200)
-                    {
-                        webimg.Resize(200, 200);
-                        webimg.Save(path);
-                    }
-                }
-            }
-            //ms.Close();
-            ////return pathdb;
-            //return base64;
-
         }
         public ActionResult Index()
         {
@@ -391,8 +357,6 @@ namespace CORE.JGC.Controllers
             string base64 = string.Empty;
             try
             {
-
-
                 if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
                 {
                     var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
@@ -444,11 +408,9 @@ namespace CORE.JGC.Controllers
                         }
                         else
                         {
-
                             string qrcode = GenerateQrCode(res.Status);
                             var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
                             hasil = res.Status;
-
                         }
                     }
                 
