@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DbAssetJGC" Class="BFASTDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=DbAssetJGC;User ID=sa" SettingsObjectName="CORE.JGC.Properties.Settings" SettingsPropertyName="DbAssetJGCConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localDB;Initial Catalog=DbAssetJGC;User ID=hans" SettingsObjectName="CORE.JGC.Properties.Settings" SettingsPropertyName="DbAssetJGCConnectionString1" Provider="System.Data.SqlClient" />
   <Function Name="dbo.Get_Login" Method="Get_Login">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(50)" />
@@ -215,42 +215,6 @@
       <Column Name="Title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Iby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.MsCompany_IUD" Method="MsCompany_IUD">
-    <Parameter Name="CompanyCode" Parameter="companyCode" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="CompanyName" Parameter="companyName" Type="System.String" DbType="VarChar(100)" />
-    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(200)" />
-    <Parameter Name="City" Parameter="city" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Province" Parameter="province" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="PostalCode" Parameter="postalCode" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="Telephone" Parameter="telephone" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="bActive" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PhotoLogo" Parameter="photoLogo" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
-    <ElementType Name="MsCompany_IUDResult">
-      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.MsCompany_View" Method="MsCompany_View">
-    <Parameter Name="CompanyID" Parameter="companyID" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
-    <ElementType Name="MsCompany_ViewResult">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CompanyID" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
-      <Column Name="CompanyCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="CompanyName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Address" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Province" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PostalCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="Telephone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="bActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Iby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="uby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Uon" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.MsCurrency_IUD" Method="MsCurrency_IUD">
@@ -953,12 +917,15 @@
       <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+<<<<<<< HEAD
+=======
   <Function Name="dbo.Pop_AssetTransferType" Method="Pop_AssetTransferType">
     <ElementType Name="Pop_AssetTransferTypeResult">
       <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
       <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
+>>>>>>> ef59098d8c88b46fa3ac4369faae2429cfe735f1
   <Function Name="dbo.MsAsset_IUD" Method="MsAsset_IUD">
     <Parameter Name="AssetName" Parameter="assetName" Type="System.String" DbType="VarChar(200)" />
     <Parameter Name="AssetBrandCode" Parameter="assetBrandCode" Type="System.String" DbType="VarChar(20)" />
@@ -980,11 +947,54 @@
     <Parameter Name="CompanyID" Parameter="companyID" Type="System.String" DbType="VarChar(5)" />
     <Parameter Name="DeptCode" Parameter="deptCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="WarrantyMonth" Parameter="warrantyMonth" Type="System.Int32" DbType="Int" />
+<<<<<<< HEAD
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
+    <ElementType Name="MsAsset_IUDResult">
+      <Column Name="AssetTag" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.MsCompany_View" Method="MsCompany_View">
+    <Parameter Name="CompanyID" Parameter="companyID" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
+    <ElementType Name="MsCompany_ViewResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PostalCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="bActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Iby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="uby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Uon" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.MsCompany_IUD" Method="MsCompany_IUD">
+    <Parameter Name="CompanyCode" Parameter="companyCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CompanyName" Parameter="companyName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="City" Parameter="city" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Province" Parameter="province" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="PostalCode" Parameter="postalCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Telephone" Parameter="telephone" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="bActive" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PhotoLogo" Parameter="photoLogo" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
+    <ElementType Name="MsCompany_IUDResult">
+      <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
+=======
     <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
     <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="MsAsset_IUDResult">
       <Column Name="AssetTag" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+>>>>>>> ef59098d8c88b46fa3ac4369faae2429cfe735f1
     </ElementType>
   </Function>
 </Database>
