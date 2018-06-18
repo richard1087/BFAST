@@ -94,18 +94,18 @@
 
     function TransferNoRef() {
         var Column = [
-                    { "data": "TransferAssetNo" },
-                    { "title": "Transfer No", "data": "TransferAssetNo" },
-                    { "title": "Status", "data": "NamaStatus" },
-                    { "title": "Type", "data": "NamaType" },
-                    { "title": "Site", "data": "SiteName" },
-                    { "title": "Location", "data": "LocationName" },
-                    { "title": "Floor", "data": "Floor" }
+                    { "data": "0" },
+                    { "title": "Transfer No", "data": "0" },
+                    { "title": "Status", "data": "1" },
+                    { "title": "Type", "data": "2" },
+                    { "title": "Site", "data": "3" },
+                    { "title": "Location", "data": "4" },
+                    { "title": "Floor", "data": "4" }
         ]
         DTable("datatablepopup", '@Url.Action("GetPopupTransferNoRef", "Asset")', Column, '{}');
         $('#datatablepopup tbody').on('click', 'tr', function () {
             var d = table.row(this).data();
-            $("#TransferAssetNoRef").val(d["TransferAssetNo"]);
+            $("#TransferAsseNoRef").val(d["TransferAsseNoRef"]);
             $("#SiteCode").val(d["SiteCode"]);
             $("#SiteName").val(d["SiteName"]);
             $("#LocationCode").val(d["LocationCode"]);
@@ -269,15 +269,16 @@
         }
         else {
             $(".modal-body #peringatan4").text("Are You Sure Transfer Asset ?");
-            $("#Alert4").modal();
             $('#btnyes').click(function (e) {
                 $('#Alert4').modal('hide');
                 $.ajax({
+
                     url: '@Url.Action("SaveTransfer", "Asset")',
                     type: 'Post',
                     cache: false,
                     async: true,
                     data: {
+
                         TransferNo: TransferNo,
                         Type: Type,
                         TransferDate: TransferDate,
@@ -315,6 +316,7 @@
         $('#btnno').click(function (e) {
             $('#Alert4').modal('hide');
         })
+        $("#Alert4").modal();
     }
 
 </script>
@@ -396,7 +398,7 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Transfer Asset Ref</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="input-group">
-                                        <input class="form-control readonly" id="TransferAssetNoRef" name="TransferAssetNoRef" value="" type="text" data-id="i" autocomplete="off" readonly />
+                                        <input class="form-control readonly" id="TransferAsseNoRef" name="TransferAsseNoRef" value="" type="text" data-id="i" autocomplete="off" readonly />
                                         <span class="input-group-btn">
                                             <a class="btn btn-info" id="btnRefTransfer" name="btnRefTransfer" onclick="TransferNoRef()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;" readonly>
                                                 <i class="fa fa-search fa-fw"></i>

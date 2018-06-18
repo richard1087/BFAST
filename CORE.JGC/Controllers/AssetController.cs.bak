@@ -258,9 +258,6 @@ namespace CORE.JGC.Controllers
         }
         private string GenerateQrCode(string assettagid)
         {
-
-
-
             string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
             string filepathimg = Server.MapPath(pathdb);
             //string filepathimg = Path.Combine(Server.MapPath("~/Content/res/build/images/Qrcode/"), assettagid + ".jpg");
@@ -360,8 +357,6 @@ namespace CORE.JGC.Controllers
             string base64 = string.Empty;
             try
             {
-
-
                 if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
                 {
                     var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
@@ -460,17 +455,6 @@ namespace CORE.JGC.Controllers
             TrMaintenanceAssetLine[] trMaintenanceLine = null;
             trMaintenanceLine = GridMaintenanceAssetLine();
             return View(trMaintenanceLine);
-        }
-        public ActionResult UpdateMaintenance()
-        {
-            TrMaintenanceAssetLine[] trMaintenanceLine = null;
-            trMaintenanceLine = GridUpdateMaintenanceAssetLine();
-            return View(trMaintenanceLine);
-        }
-        public ActionResult UpdateAsset(string MaintenanceNo)
-        {
-            Session["MaintenanceNo"] = MaintenanceNo;
-            return View("UpdateMaintenance");
         }
         public ActionResult Transfer()
         {
@@ -1653,37 +1637,6 @@ namespace CORE.JGC.Controllers
             }
             return trMaintenance.ToArray();
         }
-        [HttpPost]
-        public JsonResult LoadUpdateMaintenance()
-        {
-            dc = new BFASTDataContext();
-
-            TrMaintenanceAsset maintenance = new TrMaintenanceAsset();
-            try
-            {
-                var query = dc.TrxMaintenanceAsset_View(Session["MaintenanceNo"].ToString(), "U");
-                foreach (var res in query)
-                {
-
-                    maintenance.MaintenanceNo = res.MaintenanceAssetNo;
-                    maintenance.AssetCode = res.AssetCode;
-                    maintenance.AssetName = res.AssetName;
-                    maintenance.Type = res.NamaType;
-                    maintenance.Status = res.Status;
-                    maintenance.StatusName = res.NamaStatus;
-                    maintenance.Damage = res.Damage;
-                    maintenance.AssignTo = res.AssignTo;
-                    maintenance.ScheduleDate = res.ScheduleDate;
-                    maintenance.CompleteDate = res.CompleteDate;
-                    maintenance.Cost = res.Cost;
-                    maintenance.Notes = res.Notes;
-                }
-            }
-            catch
-            {
-            }
-            return Json(maintenance, JsonRequestBehavior.AllowGet);
-        }
         public TrMaintenanceAssetLine[] GridMaintenanceAssetLine()
         {
             dc = new BFASTDataContext();
@@ -1691,32 +1644,6 @@ namespace CORE.JGC.Controllers
             try
             {
                 var query = dc.TrxMaintenanceAssetLine_View("", "", "K");
-                foreach (var res in query)
-                {
-                    TrMaintenanceAssetLine mainLine = new TrMaintenanceAssetLine();
-
-
-                    mainLine.AssetCode = res.AssetCode;
-                    mainLine.AssetName = res.AssetName;
-                    mainLine.AssetSerialNo = res.AssetSerialNo;
-
-                    trMaintenanceLine.Add(mainLine);
-                }
-            }
-            catch
-            {
-                trMaintenanceLine = null;
-            }
-            return trMaintenanceLine.ToArray();
-        }
-        public TrMaintenanceAssetLine[] GridUpdateMaintenanceAssetLine()
-        {
-            dc = new BFASTDataContext();
-            List<TrMaintenanceAssetLine> trMaintenanceLine = new List<TrMaintenanceAssetLine>();
-            try
-            {
-                string MaintenanceNo = Session["MaintenanceNo"].ToString();
-                var query = dc.TrxMaintenanceAssetLine_View(MaintenanceNo, "" , "G");
                 foreach (var res in query)
                 {
                     TrMaintenanceAssetLine mainLine = new TrMaintenanceAssetLine();
@@ -1794,34 +1721,7 @@ namespace CORE.JGC.Controllers
             }
             return trTransfer.ToArray();
         }
-        public JsonResult UpdateMaintenance_Release(string MaintenanceAssetNo,string Status, string Actions)
-        {
-            string ex = string.Empty;
-            dc = new BFASTDataContext();
-            List<TrTransferAssetLine> trTransfer = new List<TrTransferAssetLine>();
-            try
-            {
-                if (Actions != "NA")
-                {
-                    var query = dc.TrxMaintenanceAsset_Release(MaintenanceAssetNo, Status, Actions);
-                    foreach (var res in query)
-                    {
-
-
-                        ex = res.Exception;
-                    }
-                }
-            }
-            catch
-            {
-                trTransfer = null;
-            }
-
-            return Json(new
-            {
-                data = ex
-            }, JsonRequestBehavior.AllowGet);
-        }
+        
         [HttpPost]
         public JsonResult GetPopupAssetCheckOut()
         {
