@@ -310,7 +310,7 @@ namespace CORE.JGC.Controllers
             bmp.Dispose();
 
             //fs.Close();
-            return pathdb;
+            return base64;
         }
         private void UploadPhoto()
         {
@@ -431,50 +431,27 @@ namespace CORE.JGC.Controllers
                             ms.Close();
                         }
                     }
-<<<<<<< HEAD
                 }
                 var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
-                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-                    Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),
+                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+                    Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),1,
                     UserID, 1);
-                foreach (var res in query)
-                {
-                    //if (res.Status == "Err This Data Already Exists")
-                    //{
-                    //    hasil = "Data Already Exists";
-                    //}
-                    //else
-                    //{
-                    //    string qrcode = GenerateQrCode(res.Status);
-                    //    var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
-                    //    hasil = res.Status;
-                    //}
-=======
-                    var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode,
-                        Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-                        Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, asset.Qty, Convert.ToInt32(asset.Warranty), UserID, 1);
-
                     foreach (var res in query)
                     {
-                        //if (res.Status == "Err This Data Already Exists")
-                        //{
-                        //    hasil = "Data Already Exists";
-                        //}
-                        //else
-                        //{
+                        if (res.Status == "Err This Data Already Exists")
+                        {
+                            hasil = "Data Already Exists";
+                        }
+                        else
+                        {
 
-                            //string qrcode = GenerateQrCode(res.AssetTag);
-                            //var qr = dc.MsBarcode_IUD(res.AssetTag, qrcode, "", "", UserID, 1);
-                            //hasil = res.AssetTag;
+                            string qrcode = GenerateQrCode(res.Status);
+                            var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
+                            hasil = res.Status;
 
-                            //string qrcode = GenerateQrCode(res.Status);
-                            //var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
-                            //hasil = res.Status;
-
-                        //}
+                        }
                     }
->>>>>>> ef59098d8c88b46fa3ac4369faae2429cfe735f1
-                }
+                
             }
             catch (Exception ex)
             {
