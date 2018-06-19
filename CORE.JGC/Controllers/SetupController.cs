@@ -1382,7 +1382,6 @@ namespace CORE.JGC.Controllers
                     {
                         Aktif = "T";
                     }
-
                     ViewData["ID"] = res.Id.ToString().Trim();
                     ViewData["CompanyID"] = res.CompanyID.ToString().Trim();
                     ViewData["CompanyCode"] = res.CompanyCode.ToString().Trim();
@@ -1393,7 +1392,6 @@ namespace CORE.JGC.Controllers
                     ViewData["PostalCode"] = res.PostalCode.ToString().Trim();
                     ViewData["Telephone"] = res.Telephone.ToString().Trim();
                     ViewData["Aktif"] = Aktif.ToString().Trim();
-
                 }
             }
             catch (Exception ex)

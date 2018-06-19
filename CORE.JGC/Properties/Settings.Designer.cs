@@ -29,6 +29,29 @@ namespace CORE.JGC.Properties {
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\LOCALSQL;Initial Catalog=DbAssetJGC;User ID=sa;Password=humis")]
         public string DbAssetJGCConnectionString {
             get {
+<<<<<<< HEAD
+=======
+                return ((string)(this["DbAssetJGCConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localDB;Initial Catalog=DbAssetJGC;User ID=hans;Password=123456")]
+        public string DbAssetJGCConnectionString11 {
+            get {
+                return ((string)(this["DbAssetJGCConnectionString11"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=DbAssetJGC;Integrated Security=True")]
+        public string DbAssetJGCConnectionString {
+            get {
+>>>>>>> abb501dfe664c7d2f47ab3086d547bb902310dad
                 return ((string)(this["DbAssetJGCConnectionString"]));
             }
         }

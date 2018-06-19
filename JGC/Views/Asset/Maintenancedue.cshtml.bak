@@ -2,27 +2,6 @@
     ViewBag.Title = "Maintenances";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script>
-function UpdateMaintenance(MaintenanceNo) {
-        $.ajax({
-            url: '@Url.Action("UpdateMaintenance", "Asset")',
-            type: 'post',
-            cache: false,
-            async: true,
-            data: { MaintenanceNo: MaintenanceNo },
-            success: function (response) {
-            window.location.href = "@Url.Action("Editmaintenance", "Asset")";
-            },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    $(".modal-body #peringatan1").text("Please Wait...");
-                    $('#btncaution').click(function (e) {
-                    $('#Alert1').modal('hide');
-                })
-                $("#Alert1").modal();
-            }
-            });
-}
-</script>
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -70,6 +49,7 @@ function UpdateMaintenance(MaintenanceNo) {
                                     <th width="15%">@Html.Label("Asset Name")</th>
                                     <th width="8%">@Html.Label("Type")</th>
                                     <th width="10%">@Html.Label("Schedule Date")</th>
+                                    <th width="10%">@Html.Label("Complete Date")</th>
                                     <th width="10%" style="text-align:right">@Html.Label("Cost")</th>
                                     <th width="4%"></th>
                                 </tr>
@@ -84,14 +64,10 @@ function UpdateMaintenance(MaintenanceNo) {
                                         <td>@Html.DisplayFor(modelItem => item.AssetName)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Type)</td>
                                         <td>@Convert.ToDateTime(item.ScheduleDate).ToString("dd/MM/yyyy")</td>
+                                        <td>@Convert.ToDateTime(item.CompleteDate).ToString("dd/MM/yyyy")</td>
                                         <td style="text-align:right;">@Html.DisplayFor(modelItem => item.Cost)</td>
                                         <td style="width:5% !important;text-align:center;">
-<<<<<<< HEAD
-                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="UpdateMaintenance('@Html.DisplayFor(modelItem => item.MaintenanceNo)')"><span class="glyphicon glyphicon-edit"></span></button>
-
-=======
-                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return UpdateAsset('@Html.DisplayFor(modelItem => item.MaintenanceNo)');"><span class="glyphicon glyphicon-edit"></span></button>
->>>>>>> abb501dfe664c7d2f47ab3086d547bb902310dad
+                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return DeleteAsset('@Html.DisplayFor(modelItem => item.AssetCode)');"><span class="glyphicon glyphicon-edit"></span></button>
                                         </td>
                                     </tr>
                                 }
@@ -291,30 +267,6 @@ function UpdateMaintenance(MaintenanceNo) {
           $("#MaintenanceCancelId").click(function () {
               $("#assetMaintenance").modal('toggle');
           });
-
-
-          
       });
-      function UpdateAsset(MaintenanceNo) {
-          $.ajax({
 
-              url: '@Url.Action("UpdateAsset", "Asset")',
-              type: 'Post',
-              cache: false,
-              async: true,
-              data: {
-                  MaintenanceNo: MaintenanceNo
-              },
-              success: function (response) {
-                  window.location.href = '@Url.Action("UpdateMaintenance", "Asset")'
-              },
-              error: function (XMLHttpRequest, textStatus, errorThrown) {
-                  $(".modal-body #peringatan1").text("Please Wait...");
-                  $('#btncaution').click(function (e) {
-                      $('#Alert1').modal('hide');
-                  })
-                  $("#Alert1").modal();
-              }
-          });
-      }
 </script>

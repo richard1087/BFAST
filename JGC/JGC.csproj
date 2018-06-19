@@ -4684,9 +4684,13 @@
     <Content Include="Views\Asset\Transfer.cshtml" />
     <Content Include="Views\Asset\Createtransfer.cshtml" />
     <Content Include="Views\Asset\Move.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Asset\Editmaintenance.cshtml" />
     <Content Include="Views\Setup\Updatecompany.cshtml" />
     <Content Include="Views\Asset\DisposeApproval.cshtml" />
+=======
+    <Content Include="Views\Setup\Updatecompany.cshtml" />
+>>>>>>> abb501dfe664c7d2f47ab3086d547bb902310dad
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

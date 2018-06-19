@@ -342,116 +342,12 @@ namespace CORE.JGC.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult InputData(MsAsset asset)
-        //{
-            //string UserID = Session["UserName"].ToString().Trim();
-            ////string Photo = GeneratePhoto(path);
+        [HttpPost]
+        public ActionResult InputData(MsAsset asset)
+        {
+            string UserID = Session["UserName"].ToString().Trim();
+            //string Photo = GeneratePhoto(path);
             
-<<<<<<< HEAD
-            //string hasil = string.Empty;
-            //string path = string.Empty;
-            //string pathdb = string.Empty;
-            //dc = new BFASTDataContext();
-            //MemoryStream ms = null;
-            //Bitmap bmp = null;
-            //string base64 = string.Empty;
-            //try
-            //{
-
-
-            //    if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
-            //    {
-            //        var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
-            //        HttpPostedFileBase filebase = new HttpPostedFileWrapper(pic);
-
-            //        if (pic.ContentLength > 0)
-            //        {
-            //            string filename = Path.GetFileNameWithoutExtension(pic.FileName);
-            //            string ext = Path.GetExtension(pic.FileName);
-            //            filename = filename + DateTime.Now.ToString("HHmmss");
-            //            pathdb = "/Content/res/build/images/Assets/" + filename + ext;
-            //            path = Server.MapPath(pathdb);
-            //            pic.SaveAs(path);
-            //            WebImage webimg = new WebImage(path);
-
-            //            if (webimg.Width > 150)
-            //            {
-            //                webimg.Resize(150, 150);
-
-            //                if (webimg.Width > 100)
-            //                {
-            //                    webimg.Resize(100, 100);
-
-            //                    webimg.Save(path);
-            //                }
-            //                bmp = new Bitmap(path);
-
-            //                using (ms = new MemoryStream())
-            //                {
-            //                    Response.ContentType = "image/jpeg";
-            //                    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            //                    byte[] byteImg = ms.ToArray();
-            //                    base64 = Convert.ToBase64String(byteImg);
-            //                }
-            //                bmp.Dispose();
-            //                ms.Close();
-            //            }
-            //        }
-
-            //    }
-            //    var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
-            //        Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-            //        Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),
-            //        UserID, 1);
-            //    foreach (var res in query)
-            //    {
-            //        //if (res.Status == "Err This Data Already Exists")
-            //        //{
-            //        //    hasil = "Data Already Exists";
-            //        //}
-            //        //else
-            //        //{
-            //        //    string qrcode = GenerateQrCode(res.Status);
-            //        //    var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
-            //        //    hasil = res.Status;
-            //        //}
-
-            //        var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode,
-            //            Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-            //            Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, asset.Qty, Convert.ToInt32(asset.Warranty), UserID, 1);
-
-            //        foreach (var res in query)
-            //        {
-            //            //if (res.Status == "Err This Data Already Exists")
-            //            //{
-            //            //    hasil = "Data Already Exists";
-            //            //}
-            //            //else
-            //            //{
-
-            //                //string qrcode = GenerateQrCode(res.AssetTag);
-            //                //var qr = dc.MsBarcode_IUD(res.AssetTag, qrcode, "", "", UserID, 1);
-            //                //hasil = res.AssetTag;
-
-            //                //string qrcode = GenerateQrCode(res.Status);
-            //                //var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
-            //                //hasil = res.Status;
-
-            //            //}
-            //        }
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    bmp.Dispose();
-            //    ms.Close();
-            //    return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
-            //}
-            //return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
-        //}
-=======
             string hasil = string.Empty;
             string path = string.Empty;
             string pathdb = string.Empty;
@@ -461,8 +357,6 @@ namespace CORE.JGC.Controllers
             string base64 = string.Empty;
             try
             {
-
-
                 if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
                 {
                     var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
@@ -502,29 +396,10 @@ namespace CORE.JGC.Controllers
                         }
                     }
                 }
-                var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode,
-                Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-                Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty), asset.Qty,
-                UserID, 1);                
-
-                if (asset.Qty > 1)
-                {
-                    foreach (var res in query.ToList())
-                    {
-                        if (res.Status == null)
-                        {
-                            hasil = "Data Already Exists";
-                        }
-                        else
-                        {
-                            string qrcode = GenerateQrCode(res.Status);
-                            var qr = dc.MsBarcode_IUD(res.Status, qrcode, asset.CompanyID, UserID, 1);
-                            hasil = res.Status;
-                        }
-                    }
-                }
-                else
-                {
+                var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
+                    Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
+                    Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),1,
+                    UserID, 1);
                     foreach (var res in query)
                     {
                         if (res.Status == "Err This Data Already Exists")
@@ -534,11 +409,11 @@ namespace CORE.JGC.Controllers
                         else
                         {
                             string qrcode = GenerateQrCode(res.Status);
-                            var qr = dc.MsBarcode_IUD(res.Status, qrcode, asset.CompanyID, UserID, 1);
+                            var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
                             hasil = res.Status;
                         }
                     }
-                }
+                
             }
             catch (Exception ex)
             {
@@ -548,7 +423,6 @@ namespace CORE.JGC.Controllers
             }
             return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
         }
->>>>>>> abb501dfe664c7d2f47ab3086d547bb902310dad
         public ActionResult Maintenancedue()
         {
             TrMaintenanceAsset[] trMaintenance = null;
@@ -582,17 +456,6 @@ namespace CORE.JGC.Controllers
             trMaintenanceLine = GridMaintenanceAssetLine();
             return View(trMaintenanceLine);
         }
-        public ActionResult UpdateMaintenance()
-        {
-            TrMaintenanceAssetLine[] trMaintenanceLine = null;
-            trMaintenanceLine = GridUpdateMaintenanceAssetLine();
-            return View(trMaintenanceLine);
-        }
-        public ActionResult UpdateAsset(string MaintenanceNo)
-        {
-            Session["MaintenanceNo"] = MaintenanceNo;
-            return View("UpdateMaintenance");
-        }
         public ActionResult Transfer()
         {
             TrTransferAsset[] trTransfer = null;
@@ -606,12 +469,6 @@ namespace CORE.JGC.Controllers
             trTransferLine = GridTransferLine();
             return View(trTransferLine);
         }
-        public ActionResult DisposeApproval()
-        {
-            TrDisposeAsset[] trDisposeAsset = null;
-            trDisposeAsset = GridDisposeApproval();
-            return View(trDisposeAsset);
-        }
 
         public ActionResult Assetpastdue()
         {
@@ -622,18 +479,13 @@ namespace CORE.JGC.Controllers
         {
             return View();
         }
-        public ActionResult Editmaintenance(string MaintenanceNo)
-        {
-            TrMaintenanceAssetLine[] trMaintenanceLine = null;
-            trMaintenanceLine = GridUpdateMaintenanceAssetLine(MaintenanceNo);
-            return View(trMaintenanceLine);
-        }
 
         [HttpPost]
         public ActionResult AddAssetCheckOut(string AssetCode)
         {
             try
             {
+
                 dc = new BFASTDataContext();
                 try
                 {
@@ -1012,7 +864,7 @@ namespace CORE.JGC.Controllers
                 {
                     string CheckOutNo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime CheckOutDateC = DateTime.ParseExact(CheckOutDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime CheckOutDateC = DateTime.ParseExact(CheckOutDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
                     DateTime? CheckOutDueDateC;
                     if (CheckOutDueDate == "")
@@ -1021,7 +873,7 @@ namespace CORE.JGC.Controllers
                     }
                     else
                     {
-                        CheckOutDueDateC = DateTime.ParseExact(CheckOutDueDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        CheckOutDueDateC = DateTime.ParseExact(CheckOutDueDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
                     }
                     var query = dc.TrxCheckOut_IUD(CheckOutNo, CheckOutDateC, CheckOutDueDateC, EmployeeId, Email, SiteCode, LocationCode, Floor, Notes, UserID, 1);
 
@@ -1062,7 +914,7 @@ namespace CORE.JGC.Controllers
                 {
                     string CheckInNo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime ReturnDateC = DateTime.ParseExact(ReturnDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime ReturnDateC = DateTime.ParseExact(ReturnDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
                     var query = dc.TrxCheckIn_IUD(CheckInNo, ReturnDateC, Notes, UserID, 1);
                     string status = "";
@@ -1102,7 +954,7 @@ namespace CORE.JGC.Controllers
                 {
                     string DisposeNo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime DisposeDateC = DateTime.ParseExact(DisposeDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime DisposeDateC = DateTime.ParseExact(DisposeDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
                     var query = dc.TrxDisposeAsset_IUD(DisposeNo, DisposeDateC, DisposeTo, DisposeReason, UserID, 1);
                     string status = "";
@@ -1133,7 +985,7 @@ namespace CORE.JGC.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveMaintenance(string ScheduleDate, string Type, string AssignTo, string Damage, string Notes, decimal Cost)
+        public ActionResult SaveMaintenance(string ScheduleDate, string CompleteDate, string Type, string AssignTo, string Damage, string Notes, decimal Cost)
         {
             try
             {
@@ -1143,9 +995,8 @@ namespace CORE.JGC.Controllers
                 {
                     string MaintenanceTo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime ScheduleDateC = DateTime.ParseExact(ScheduleDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    DateTime? CompleteDateC;
-                    CompleteDateC = null;
+                    DateTime ScheduleDateC = DateTime.ParseExact(ScheduleDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    DateTime CompleteDateC = DateTime.ParseExact(CompleteDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
                     var query = dc.TrxMaintenanceAsset_IUD(MaintenanceTo, Type, ScheduleDateC, CompleteDateC, AssignTo, Damage, Notes, Cost, UserID, 1);
                     string status = "";
@@ -1186,7 +1037,7 @@ namespace CORE.JGC.Controllers
                 {
                     string TransferNo = "";
                     string UserID = Session["UserName"].ToString().Trim();
-                    DateTime TransferDateC = DateTime.ParseExact(TransferDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime TransferDateC = DateTime.ParseExact(TransferDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
                     var query = dc.TrxTransferAsset_IUD(TransferNo, Type, TransferDateC, TransferAssetNoRef, SiteCode, LocationCode, Floor, Notes, UserID, 1);
                     string status = "";
@@ -1773,6 +1624,7 @@ namespace CORE.JGC.Controllers
                     maintenance.Type = res.NamaType;
                     maintenance.Status = res.NamaStatus;
                     maintenance.ScheduleDate = res.ScheduleDate;
+                    maintenance.CompleteDate = res.CompleteDate;
                     maintenance.Cost = res.Cost;
                     maintenance.Notes = res.Notes;
 
@@ -1785,37 +1637,6 @@ namespace CORE.JGC.Controllers
             }
             return trMaintenance.ToArray();
         }
-        [HttpPost]
-        public JsonResult LoadUpdateMaintenance()
-        {
-            dc = new BFASTDataContext();
-
-            TrMaintenanceAsset maintenance = new TrMaintenanceAsset();
-            try
-            {
-                var query = dc.TrxMaintenanceAsset_View(Session["MaintenanceNo"].ToString(), "U");
-                foreach (var res in query)
-                {
-
-                    maintenance.MaintenanceNo = res.MaintenanceAssetNo;
-                    maintenance.AssetCode = res.AssetCode;
-                    maintenance.AssetName = res.AssetName;
-                    maintenance.Type = res.NamaType;
-                    maintenance.Status = res.Status;
-                    maintenance.StatusName = res.NamaStatus;
-                    maintenance.Damage = res.Damage;
-                    maintenance.AssignTo = res.AssignTo;
-                    maintenance.ScheduleDate = res.ScheduleDate;
-                    maintenance.CompleteDate = res.CompleteDate;
-                    maintenance.Cost = res.Cost;
-                    maintenance.Notes = res.Notes;
-                }
-            }
-            catch
-            {
-            }
-            return Json(maintenance, JsonRequestBehavior.AllowGet);
-        }
         public TrMaintenanceAssetLine[] GridMaintenanceAssetLine()
         {
             dc = new BFASTDataContext();
@@ -1823,40 +1644,6 @@ namespace CORE.JGC.Controllers
             try
             {
                 var query = dc.TrxMaintenanceAssetLine_View("", "", "K");
-                foreach (var res in query)
-                {
-                    TrMaintenanceAssetLine mainLine = new TrMaintenanceAssetLine();
-
-
-                    mainLine.AssetCode = res.AssetCode;
-                    mainLine.AssetName = res.AssetName;
-                    mainLine.AssetSerialNo = res.AssetSerialNo;
-
-                    trMaintenanceLine.Add(mainLine);
-                }
-            }
-            catch
-            {
-                trMaintenanceLine = null;
-            }
-            return trMaintenanceLine.ToArray();
-        }
-<<<<<<< HEAD
-        public TrMaintenanceAssetLine[] GridUpdateMaintenanceAssetLine(string MaintenanceNo)
-=======
-        public TrMaintenanceAssetLine[] GridUpdateMaintenanceAssetLine()
->>>>>>> abb501dfe664c7d2f47ab3086d547bb902310dad
-        {
-            dc = new BFASTDataContext();
-            List<TrMaintenanceAssetLine> trMaintenanceLine = new List<TrMaintenanceAssetLine>();
-            try
-            {
-<<<<<<< HEAD
-                var query = dc.TrxMaintenanceAssetLine_View(MaintenanceNo, "", "G");
-=======
-                string MaintenanceNo = Session["MaintenanceNo"].ToString();
-                var query = dc.TrxMaintenanceAssetLine_View(MaintenanceNo, "" , "G");
->>>>>>> abb501dfe664c7d2f47ab3086d547bb902310dad
                 foreach (var res in query)
                 {
                     TrMaintenanceAssetLine mainLine = new TrMaintenanceAssetLine();
@@ -1934,65 +1721,7 @@ namespace CORE.JGC.Controllers
             }
             return trTransfer.ToArray();
         }
-<<<<<<< HEAD
-        public TrDisposeAsset[] GridDisposeApproval()
-        {
-            dc = new BFASTDataContext();
-            List<TrDisposeAsset> trDispApp = new List<TrDisposeAsset>();
-            try
-            {
-                var query = dc.TrxDisposeAsset_View("", "A");
-                foreach (var res in query)
-                {
-                    TrDisposeAsset dpsapp = new TrDisposeAsset();
-
-                    dpsapp.DisposeNo = res.DisposeNo;
-                    dpsapp.Status = res.Status;
-                    dpsapp.NamaStatus = res.NamaStatus;
-                    dpsapp.DisposeDate = res.DisposeDate;
-                    dpsapp.DisposeTo = res.DisposeTo;                    
-                    dpsapp.Reason = res.Reason;
-
-
-                    trDispApp.Add(dpsapp);
-=======
-        public JsonResult UpdateMaintenance_Release(string MaintenanceAssetNo,string Status, string Actions)
-        {
-            string ex = string.Empty;
-            dc = new BFASTDataContext();
-            List<TrTransferAssetLine> trTransfer = new List<TrTransferAssetLine>();
-            try
-            {
-                if (Actions != "NA")
-                {
-                    var query = dc.TrxMaintenanceAsset_Release(MaintenanceAssetNo, Status, Actions);
-                    foreach (var res in query)
-                    {
-
-
-                        ex = res.Exception;
-                    }
->>>>>>> abb501dfe664c7d2f47ab3086d547bb902310dad
-                }
-            }
-            catch
-            {
-<<<<<<< HEAD
-                trDispApp = null;
-            }
-            return trDispApp.ToArray();
-        }
-
-=======
-                trTransfer = null;
-            }
-
-            return Json(new
-            {
-                data = ex
-            }, JsonRequestBehavior.AllowGet);
-        }
->>>>>>> abb501dfe664c7d2f47ab3086d547bb902310dad
+        
         [HttpPost]
         public JsonResult GetPopupAssetCheckOut()
         {
