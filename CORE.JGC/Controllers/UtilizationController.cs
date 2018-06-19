@@ -8,9 +8,12 @@ using System.Web.Mvc;
 
 namespace CORE.JGC.Controllers
 {
-    
+    [SessionTimeoutAttribute]
+
     public class UtilizationController : Controller
     {
+        List<UtilMenu> utilMenuList;
+
         BFASTDataContext dc = null;
         public ActionResult Menu()
         {
@@ -27,8 +30,35 @@ namespace CORE.JGC.Controllers
 
         public ActionResult Updatemenu()
         {
+            if (TempData.ContainsKey("MenuCode"))
+                Session["MenuCodeS"] = TempData["MenuCode"].ToString();
+
+            dc = new BFASTDataContext();
+            List<UtilMenu> utilmenu = new List<UtilMenu>();
+            try
+            {
+                var query = dc.UtilMenu_View( Session["MenuCode"].ToString(), "G");
+                foreach (var res in query)
+                {
+                    UtilMenu menu = new UtilMenu();
+
+                    ViewData["MenuCode"] =  res.MenuCode.ToString().Trim();
+                    ViewData["MenuName"] = res.MenuName.ToString().Trim();
+                    ViewData["MenuPath"] = res.MenuPath.ToString();
+                    ViewData["LevelMenu"] = res.LevelMenu.ToString().Trim();
+                    ViewData["ParentMenu"] = res.ParentMenu.ToString();
+
+                    utilmenu.Add(menu);
+                }
+            }
+            catch
+            {
+                utilmenu = null;
+            }
             return View();
+
         }
+
 
         public ActionResult Role()
         {
@@ -59,7 +89,78 @@ namespace CORE.JGC.Controllers
             msUsers = GridUsers();
             return View(msUsers);
         }
-    
+
+        [HttpPost]
+        public ActionResult GetUpdateMenu(string MenuCode)
+        {
+            TempData["MenuCode"] = MenuCode;
+            return View("Update");
+        }
+
+        public UtilMenu[] GridPopupParentMenu(string LevelMenu)
+        {
+            dc = new BFASTDataContext();
+            List<UtilMenu> utilMenu = new List<UtilMenu>();
+            try
+            {
+                var query = dc.Pop_MenuParent(LevelMenu);
+                foreach (var res in query)
+                {
+                    UtilMenu menu = new UtilMenu();
+
+                    menu.MenuCode = res.MenuCode;
+                    menu.MenuName = res.MenuName;
+
+                    utilMenu.Add(menu);
+                }
+            }
+            catch
+            {
+                utilMenu = null;
+            }
+            return utilMenu.ToArray();
+        }
+        [HttpPost]
+        public ActionResult SaveMenu(string MenuCode, string MenuName, string MenuPath, int LevelMenu, string ParentMenu)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+                    
+                    string UserID = Session["UserName"].ToString().Trim();
+                    //CompleteDateC = null;
+
+                    var query = dc.UtilMenu_IUD(MenuCode, MenuName, MenuPath, LevelMenu, ParentMenu, UserID, 1);
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         [HttpPost]
         public MsUsers[] GridUsers()
         {
@@ -140,6 +241,17 @@ namespace CORE.JGC.Controllers
                 utilGroupMenu = null;
             }
             return utilGroupMenu.ToArray();
+        }
+        [HttpPost]
+        public JsonResult GetPopupParentMenu(string LevelMenu)
+        {
+            UtilMenu[] um = null;
+            um = GridPopupParentMenu(LevelMenu);
+
+            return Json(new
+            {
+                data = um.Select(x => new[] { x.MenuCode, x.MenuName })
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

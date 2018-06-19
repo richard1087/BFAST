@@ -13,12 +13,12 @@ function UpdateMaintenance(MaintenanceNo) {
             success: function (response) {
             window.location.href = "@Url.Action("Editmaintenance", "Asset")";
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            $(".modal-body #peringatan1").text("Please Wait...");
-            $('#btncaution').click(function (e) {
-            $('#Alert1').modal('hide');
-            })
-            $("#Alert1").modal();
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Please Wait...");
+                    $('#btncaution').click(function (e) {
+                    $('#Alert1').modal('hide');
+                })
+                $("#Alert1").modal();
             }
             });
 }
