@@ -86,12 +86,9 @@ function UpdateMaintenance(MaintenanceNo) {
                                         <td>@Convert.ToDateTime(item.ScheduleDate).ToString("dd/MM/yyyy")</td>
                                         <td style="text-align:right;">@Html.DisplayFor(modelItem => item.Cost)</td>
                                         <td style="width:5% !important;text-align:center;">
-<<<<<<< HEAD
-                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="UpdateMaintenance('@Html.DisplayFor(modelItem => item.MaintenanceNo)')"><span class="glyphicon glyphicon-edit"></span></button>
 
-=======
                                             <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return UpdateAsset('@Html.DisplayFor(modelItem => item.MaintenanceNo)');"><span class="glyphicon glyphicon-edit"></span></button>
->>>>>>> abb501dfe664c7d2f47ab3086d547bb902310dad
+
                                         </td>
                                     </tr>
                                 }
@@ -298,7 +295,7 @@ function UpdateMaintenance(MaintenanceNo) {
       function UpdateAsset(MaintenanceNo) {
           $.ajax({
 
-              url: '@Url.Action("UpdateAsset", "Asset")',
+              url: '@Url.Action("UpdateMaintenanceAsset", "Asset")',
               type: 'Post',
               cache: false,
               async: true,

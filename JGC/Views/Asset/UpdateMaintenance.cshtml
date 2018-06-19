@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Create Maintenance";
+    ViewBag.Title = "Update Maintenance";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script type="text/javascript">
@@ -23,7 +23,7 @@
                         <h5>
                             Assets •
                             <a href="/asset/maintenancedue" class="activemenu">Maintenance</a> •
-                            <a href="/asset/createmaintenance" class="activemenu">Update Maintenance</a>
+                            <a href="/asset/updatemaintenance" class="activemenu">Update Maintenance</a>
                         </h5>
                     </div>
                     <div class="x_title">
@@ -32,14 +32,14 @@
                     </div>
                     <div class="x_content">
                         <div class="form-group">
-                            <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Assets Pending Maintenance</h3>
+                            <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Assets Maintenance</h3>
                         </div>
                         <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="12%">Asset Code</th>
+                                    <th width="16%">Asset Code</th>
                                     <th>Asset Name</th>
-                                    <th width="9%">Serial No</th>
+                                    <th width="13%">Serial No</th>
                                 </tr>
                             </thead>
                             <tbody>
