@@ -3,7 +3,6 @@
     ViewBag.Title = "Persons";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <script type="text/javascript">
     @*function Sites(Jenis) {
         var Column = [
@@ -40,12 +39,12 @@
         $('#datatablepopup tbody').on('click', 'tr', function () {
             var d = table.row(this).data();
             if (Jenis == '1') {
-                $("#DepartementCode").val(d[0]);
-                $("#DepartementName").val(d[1]);
+                $("#DepartmentCode").val(d[0]);
+                $("#DepartmentName").val(d[1]);
             }
             else {
-                $("#EditDepartementCode").val(d[0]);
-                $("#EditDepartementName").val(d[1]);
+                $("#EditDepartmentCode").val(d[0]);
+                $("#EditDepartmentName").val(d[1]);
             }
             $('#Lookup').modal('hide');
         });
@@ -65,20 +64,20 @@
             if (Jenis == '1') {
                 $("#LocationCode").val(d[0]);
                 $("#LocationName").val(d[1]);
-                $("#SiteName").val(d[2]);
                 $("#SiteCode").val(d[4]);
+                $("#SiteName").val(d[2]);
             }
             else {
                 $("#EditLocationCode").val(d[0]);
                 $("#EditLocationName").val(d[1]);
-                $("#EditSiteName").val(d[2]);
                 $("#EditSiteCode").val(d[4]);
+                $("#EditSiteName").val(d[2]);
             }
             $('#Lookup').modal('hide');
         });
     }
 
-    @*function Sites(Jenis) {
+    function Sites(Jenis) {
         var Column = [
                     { "data": "0" },
                     { "title": "Site Code", "data": "0" },
@@ -101,15 +100,16 @@
             }
             $('#Lookup').modal('hide');
         });
-    }*@
+    }
 
 
     function InputPerson() {
-        var FullnameId = document.getElementById("FullnameId").value;
+        var FullNameId = document.getElementById("FullnameId").value;
         var EmployeeId = document.getElementById("EmployeeId").value;
         var TitleId = document.getElementById("TitleId").value;
         var PhoneId = document.getElementById("PhoneId").value;
         var EmailId = document.getElementById("EmailId").value;
+
         var NotesId = document.getElementById("NotesId").value;
         var SiteCode = document.getElementById("SiteCode").value;
         var LocationCode = document.getElementById("LocationCode").value;
@@ -123,7 +123,7 @@
             var Aktif = "0";
         }
 
-        if (FullnameId == "") {
+        if (FullNameId == "") {
             $(".modal-body #peringatan3").text("Full Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
@@ -186,23 +186,21 @@
                 async: true,
                 data: {
                     EmployeeId: EmployeeId,
-                    FullName: FullName,
+                    FullName: FullNameId,
                     Title: TitleId,
                     Phone: PhoneId,
-
                     Email: EmailId,
                     SiteCode: SiteCode,
                     LocationCode: LocationCode,
-                    DeptCode: DeptCode,
-
+                    DeptCode: DepartmentCode,
                     Notes: NotesId,
-                    DeptCode: DeptCode
+                    Aktif: Aktif
                 },
                 success: function (response) {
                     if (response.success == true) {
                         $(".modal-body #peringatan2").text(response.responseText);
                         $('#btnok').click(function (e) {
-                            window.location.href = "@Url.Action("Locations","Setup")";
+                            window.location.href = "@Url.Action("Persons", "Setup")";
                         })
                         $("#Alert2").modal();
                     } else {
@@ -225,7 +223,7 @@
     }
 
     function InputEditPerson() {
-        var EditFullnameId = document.getElementById("EditFullnameId").value;
+        var EditFullNameId = document.getElementById("EditFullNameId").value;
         var EditEmployeeId = document.getElementById("EditEmployeeId").value;
         var EditTitleId = document.getElementById("EditTitleId").value;
         var EditPhoneId = document.getElementById("EditPhoneId").value;
@@ -243,7 +241,7 @@
             var EditAktif = "0";
         }
 
-        if (EditFullnameId == "") {
+        if (EditFullNameId == "") {
             $(".modal-body #peringatan3").text("Full Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
@@ -293,7 +291,7 @@
             $("#Alert3").modal();
         }
         else {
-            $(".modal-body #peringatan4").text("Are You Sure Update Data: " + EditFullnameId + ' ( ' + EditEmployeeId + " ) ? ");
+            $(".modal-body #peringatan4").text("Are You Sure Update Data: " + EditFullNameId + ' ( ' + EditEmployeeId + " ) ? ");
             $('#btnyes').click(function (e) {
                 $('#Alert4').modal('hide');
 
@@ -303,17 +301,23 @@
                     cache: false,
                     async: true,
                     data: {
-                        EditLocationCodeId: EditLocationCodeId,
-                        EditLocationNameId: EditLocationNameId,
+                        EditEmployeeId: EditEmployeeId,
+                        EditFullName: EditFullNameId,
+                        EditTitle: EditTitleId,
+                        EditPhone: EditPhoneId,
+                        EditEmail: EditEmailId,
                         EditSiteCode: EditSiteCode,
-                        EditFloorId: EditFloorId,
-                        EditActiveId: EditAktif
+                        EditLocationCode: EditLocationCode,
+                        EditDeptCode: EditDepartmentCode,
+                        EditNotes: NotesId,
+                        EditAktif: EditAktif
+
                     },
                     success: function (response) {
                         if (response.success == true) {
                             $(".modal-body #peringatan2").text(response.responseText);
                             $('#btnok').click(function (e) {
-                                window.location.href = "@Url.Action("Employee","Setup")";
+                                window.location.href = "@Url.Action("Persons", "Setup")";
                             })
                             $("#Alert2").modal();
                         } else {
@@ -340,8 +344,60 @@
         }
     }
 
-</script>
+    function UpdatePersonS(NoID, EmployeeId, FullName, Title, Phone, Email, SiteCode, SiteName, LocationCode, LocationName, DeptCode, DeptName, Notes, Aktif) {
+        if (Aktif == "Y") {
+            $(".icheckbox_flat-green").addClass('checked');
+        }
 
+        $(".modal-body #NoID").val(NoID);
+
+        $(".modal-body #EditEmployeeId").val(EmployeeId);
+        $(".modal-body #EditFullNameId").val(FullName);
+
+        $(".modal-body #EditTitleId").val(Title);
+        $(".modal-body #EditPhoneId").val(Phone);
+
+        $(".modal-body #EditEmailId").val(Email);
+        $(".modal-body #EditSiteCode").val(SiteCode);
+        $(".modal-body #EditSiteName").val(SiteName);
+
+        $(".modal-body #EditLocationCode").val(LocationCode);
+        $(".modal-body #EditLocationName").val(LocationName);
+        $(".modal-body #EditDepartmentCode").val(DeptCode);
+        $(".modal-body #EditDepartmentName").val(DeptName);
+        $(".modal-body #EditNotesId").val(Notes);
+
+        $("#editModal").modal();
+    }
+
+    function CancelData(jenis) {
+        if (jenis == '1') {
+
+            $(".modal-body #SiteCode").val('');
+            $(".modal-body #SiteName").val('');
+
+            $(".modal-body #DepartmentCode").val('');
+            $(".modal-body #DepartmentName").val('');
+
+            $(".modal-body #LocationCode").val('');
+            $(".modal-body #LocationName").val('');
+
+        }
+        else {
+
+            $(".modal-body #EditSiteCode").val('');
+            $(".modal-body #EditSiteName").val('');
+
+            $(".modal-body #EditDepartmentCode").val('');
+            $(".modal-body #EditDepartmentName").val('');
+
+            $(".modal-body #EditLocationCode").val('');
+            $(".modal-body #EditLocationName").val('');
+
+        }
+    }
+
+</script>
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -358,7 +414,6 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
                         <div class="col-md-12 col-sm-12 col-xs-12 text-muted font-13 m-b-30 no-padding">
                             <div class="mgbtm20">
                                 <a href="#" id="tambahperson" class="btn btn-success btn-cust">Add New Person / Employee</a>
@@ -378,21 +433,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.EmployeeId)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Phone)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.SiteName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.LocationName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.DeptName)</td>
-                                    <td style="width:5% !important;text-align:center;">
-                                        <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick=""><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                                </tr>
-                            }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.EmployeeId)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.SiteName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.LocationName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.DeptName)</td>
+                                        <td style="width:5% !important;text-align:center;">
+                                            <button id="editpersonbutton" name="editpersonbutton" type="button" class="btn btn-success" onclick="UpdatePersonS('@Html.DisplayFor(modelItem => item.Id)','@Html.DisplayFor(modelItem => item.EmployeeId)','@Html.DisplayFor(modelItem => item.FullName)','@Html.DisplayFor(modelItem => item.Title)','@Html.DisplayFor(modelItem => item.Phone)','@Html.DisplayFor(modelItem => item.Email)','@Html.DisplayFor(modelItem => item.SiteCode)','@Html.DisplayFor(modelItem => item.SiteName)','@Html.DisplayFor(modelItem => item.LocationCode)','@Html.DisplayFor(modelItem => item.LocationName)','@Html.DisplayFor(modelItem => item.DeptCode)','@Html.DisplayFor(modelItem => item.DeptName)','@Html.DisplayFor(modelItem => item.Notes)','@Html.DisplayFor(modelItem => item.Aktif)')"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -401,7 +456,6 @@
         </div>
     </div>
 </div>
-
 <!-- MODAL1 START -->
 <div class="modal fade" id="addModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
@@ -410,7 +464,6 @@
                 <h4 class="modal-title ">Add a Person / Employee</h4>
             </div>
             <div class="modal-body col-md-12 col-sm-12 col-xs-12">
-
                 <form class="form-horizontal form-label-left">
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Employee ID</label>
@@ -418,7 +471,6 @@
                             <input id="EmployeeId" type="text" name="EmployeeId" class="form-control col-md-10" placeholder="Employee ID" />
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Full Name</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
@@ -426,21 +478,18 @@
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Title</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
                             <input id="TitleId" type="text" name="TitleId" class="form-control col-md-10" placeholder="Title" />
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Phone</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
                             <input id="PhoneId" type="number" name="PhoneId" class="form-control col-md-10" placeholder="Phone" />
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Email</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
@@ -449,36 +498,50 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Location</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" required=""  data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="input-group">
+                                <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Location('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Site Code</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="input-group">
+                                <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Departement</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input class="form-control readonly" id="DepartementCode" name="DepartementCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="DepartementName" name="DepartementName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Departement('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Departement</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="input-group">
+                                <input class="form-control readonly" id="DepartmentCode" name="DepartmentCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="DepartmentName" name="DepartmentName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Departement('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Notes</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
                             <textarea id="NotesId" class="form-control" rows="3" placeholder="Notes"></textarea>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Active</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
@@ -489,23 +552,19 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
                         <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
-                            <button id="personAddId" type="button" class="btn btn-primary" onclick="InputPerson(); return false;" >Add</button>
+                            <button id="personAddId" type="button" class="btn btn-primary" onclick="InputPerson(); return false;">Add</button>
                             <button id="personCancelId" type="button" class="btn btn-default">Cancel</button>
                         </div>
                     </div>
-
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 <!-- MODAL1 END -->
-
 <!-- MODAL2 START -->
 <div class="modal fade" id="editModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
@@ -514,75 +573,86 @@
                 <h4 class="modal-title ">Edit Person / Employee</h4>
             </div>
             <div class="modal-body col-md-12 col-sm-12 col-xs-12">
-
                 <form class="form-horizontal form-label-left">
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Full Name</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditFullnameId" type="text" name="EditFullnameId" class="form-control col-md-10" value="FullName" />
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Employee ID</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditEmployeeId" type="text" name="EditEmployeeId" class="form-control col-md-10" value="Employee ID" placeholder="Employee ID" />
+                            <input id="EditEmployeeId" type="text" name="EditEmployeeId" class="form-control col-md-10" value="" placeholder="Employee ID" readonly />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Full Name</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input id="NoId" type="hidden" name="NoId" value="" />
+                            <input id="EditFullNameId" type="text" name="EditFullNameId" class="form-control col-md-10" value="" placeholder="Full Name" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Title</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditTitleId" type="text" name="Title" class="form-control col-md-10" value="Title" placeholder="Title" />
+                            <input id="EditTitleId" type="text" name="Title" class="form-control col-md-10" value="" placeholder="Title" />
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Phone</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditPhoneId" type="number" name="Phone" class="form-control col-md-10" value="08129282922" placeholder="Phone" />
+                            <input id="EditPhoneId" type="number" name="EditPhoneId" class="form-control col-md-10" value="" placeholder="Phone" />
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Email</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input id="EditEmailId" type="email" name="EditEmailId" class="form-control col-md-10" value="Email" placeholder="Email" />
+                            <input id="EditEmailId" type="email" name="EditEmailId" class="form-control col-md-10" value="" placeholder="Email" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Location</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input class="form-control readonly" id="EditLocationCode" name="EditLocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="EditLocationName" name="EditLocationName" value="" type="text" data-id="i" autocomplete="off" onclick="Location('2')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                            <div class="input-group">
+                                <input class="form-control readonly" id="EditLocationCode" name="EditLocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="EditLocationName" name="EditLocationName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Location('2')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input class="form-control readonly" id="EditSiteCode" name="EditSiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="EditSiteName" name="EditSiteName" value="" type="text" data-id="i" autocomplete="off"  data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                            <div class="input-group">
+                                <input class="form-control readonly" id="EditSiteCode" name="EditSiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="EditSiteName" name="EditSiteName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                            </div>
                         </div>
                     </div>
+
 
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Departement</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input class="form-control readonly" id="EditDepartementCode" name="EditDepartementCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="EditDepartementName" name="EditDepartementName" value="" type="text" data-id="i" autocomplete="off" onclick="Departement('2')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                            <div class="input-group">
+                                <input class="form-control readonly" id="EditDepartmentCode" name="EditDepartmentCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                <input class="form-control readonly" id="EditDepartmentName" name="EditDepartmentName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-info" onclick="Departement('2')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Notes</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
                             <textarea id="EditNotesId" name="EditNotesId" class="form-control" rows="3" placeholder="Notes"></textarea>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Active</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
@@ -593,7 +663,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
                         <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
@@ -601,28 +670,25 @@
                             <button id="EditCancelId" type="button" class="btn btn-default">Cancel</button>
                         </div>
                     </div>
-
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 <!-- MODAL2 END -->
-
 @Html.Partial("~/Views/Shared/PopupModal.cshtml")
 @Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
-
 <script type="text/javascript">
       $(document).ready(function(){
           $("#tambahperson").click(function () {
               $("#addModal").modal();
           });
-          $("#personAddId").click(function () {
-              $("#addModal").modal('toggle');
-          });
+          //$("#personAddId").click(function () {
+          //    $("#addModal").modal('toggle');
+          //});
           $("#personCancelId").click(function () {
+              CancelData('1');
               $("#addModal").modal('toggle');
           });
 
@@ -630,10 +696,11 @@
           $("#editperson").click(function () {
               $("#editModal").modal();
           });
-          $("#EditPersonId").click(function () {
-              $("#editModal").modal('toggle');
-          });
+          //$("#EditPersonId").click(function () {
+          //    $("#editModal").modal('toggle');
+          //});
           $("#EditCancelId").click(function () {
+              CancelData('2');
               $("#editModal").modal('toggle');
           });
       });
@@ -643,5 +710,4 @@
       });
 
 </script>
-
 

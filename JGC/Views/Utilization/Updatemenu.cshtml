@@ -3,6 +3,90 @@
     ViewBag.Title = "Update Menu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+function Parent() {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Menu Code", "data": "0" },
+                    { "title": "Menu Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupParentMenu", "Utilization")', Column, function (d) { d.Level = $("#LevelMenu").val() });
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+        var d = table.row(this).data();
+        $("#ParentMenu").val(d[0]);
+        $('#Lookup').modal('hide');
+        });
+    }
+
+    function Update() {
+
+        var MenuCode = document.getElementById("MenuCode").value;
+        var MenuName = document.getElementById("MenuName").value;
+        var MenuPath = document.getElementById("MenuPath").value;
+        var LevelMenu = document.getElementById("LevelMenu").value;
+        var ParentMenu = document.getElementById("ParentMenu").value;
+
+        if (MenuCode == "") {
+            $(".modal-body #peringatan3").text("Menu Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (MenuName == "") {
+            $(".modal-body #peringatan3").text("Menu Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Update Menu: " + MenuName + "?");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+                $.ajax({
+                    url: '@Url.Action("SaveUpdateMenu", "Utilization")',
+                    type: 'Post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        MenuCode: MenuCode,
+                        MenuName: MenuName,
+                        MenuPath: MenuPath,
+                        LevelMenu: LevelMenu,
+                        ParentMenu: ParentMenu
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Menu")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            })
+        }
+        $('#btnno').click(function (e) {
+            $('#Alert4').modal('hide');
+        })
+        $("#Alert4").modal();
+    }
+
+</script>
 
 <!-- PAGE CONTENT START -->
 <div class="right_col" role="main">
@@ -24,52 +108,35 @@
                     <div class="x_content utlisasimenutable">
                         <form class="form-horizontal form-label-left">
                             <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Kode Menu</label>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Menu Code</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="Kode Menu" id="MenuID" name="MenuID" required="" maxlength="20">
+                                    <input type="text" class="form-control readonly" placeholder="Menu Code" data-id ="i" id="MenuCode" name="MenuCode" required="" maxlength="20" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Menu Subtitle</label>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Menu Name</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="Menu Subtitle" id="NamaMenu" name="NamaMenu" required="" maxlength="100">
+                                    <input type="text" class="form-control readonly" placeholder="Menu Name" data-id ="i" id="MenuName" name="MenuName" required="" maxlength="100" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Path</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="Path" id="MenuPath" name="MenuPath" required="" maxlength="100">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Tipe</label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <div class="input-group">
-                                        <input class="form-control readonly" id="TipeMenu" name="TipeMenu" value="" type="hidden" data-id="i" required />
-                                        <input class="form-control readonly" id="NamaTipeMenu" name="NamaTipeMenu" value="" type="text" required />
-                                        <span class="input-group-btn">
-                                            <a class="btn btn-info" onclick="Menu()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                                <i class="fa fa-search fa-fw"></i>
-                                            </a>
-                                        </span>
-                                    </div>
+                                    <input type="text" class="form-control" placeholder="Path" data-id ="i" id="MenuPath" name="MenuPath" maxlength="100">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Level / Parent</label>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
-                                    <select class="form-control" id="LevelMenu" name="LevelMenu" required="">
+                                    <select class="form-control" id="LevelMenu" data-id ="i" name="LevelMenu" required="">
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="input-group">
-                                        <input type="hidden" class="form-control readonly" placeholder="Parent" id="ParentMenuID" name="ParentMenuID" required="" maxlength="50">
-                                        <input type="text" class="form-control readonly" placeholder="Parent" id="NamaParentMenu" name="NamaParentMenu" required="" maxlength="50">
+                                        <input type="text" class="form-control readonly" data-id ="i" placeholder="Parent" id="ParentMenu"  name="ParentMenu" maxlength="50">
                                         <span class="input-group-btn">
                                             <a class="btn btn-info" onclick="Parent()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
                                                 <i class="fa fa-search fa-fw"></i>
@@ -78,30 +145,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12"></label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <div class="checkbox">
-                                        <label class="checkpadd0">
-                                            <input type="checkbox" class="flat" id="bVisible" name="bVisible" checked="checked"> Visible
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12"></label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <div class="checkbox">
-                                        <label class="checkpadd0">
-                                            <input type="checkbox" class="flat" id="bSeparator" name="bSeparator" checked="checked"> Separator
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="ln_solid ln_solidform"></div>
                             <div class="form-group">
                                 <div class="col-md-11 col-sm-11 col-xs-12 col-md-offset-1">
-                                    <button type="submit" class="btn btn-success" onclick="Create()">Simpan</button>
+                                    <button type="submit" class="btn btn-success" onclick="Update(); return false;">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -113,5 +160,16 @@
 </div>
 <!-- PAGE CONTENT END -->
 
-@Html.Partial("~/Views/Shared/PopupModal.cshtml")
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")
+
+<script type="text/javascript">
+
+    $("#MenuCode").val('@ViewData["MenuCode"].ToString()');
+    $("#MenuName").val('@ViewData["MenuName"].ToString()');
+    $("#MenuPath").val('@ViewData["MenuPath"].ToString()');
+    $("#LevelMenu").val('@ViewData["LevelMenu"].ToString()');
+    $("#ParentMenu").val('@ViewData["ParentMenu"].ToString()');
+
+</script>

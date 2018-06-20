@@ -29,3 +29,35 @@ D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\Project\JGC\JGC\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
 D:\Project\JGC\JGC\BFAST\CORE.JGC\obj\Debug\CORE.JGC.dll
 D:\Project\JGC\JGC\BFAST\CORE.JGC\obj\Debug\CORE.JGC.pdb
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\CORE.JGC.dll.config
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\CORE.JGC.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\CORE.JGC.pdb
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\EntityFramework.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\EntityFramework.SqlServer.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\itextsharp.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\Newtonsoft.Json.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\Owin.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.Helpers.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.Mvc.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.Razor.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\EntityFramework.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\EntityFramework.SqlServer.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\itextsharp.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\Newtonsoft.Json.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.Helpers.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.Mvc.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.Razor.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\obj\Debug\CORE.JGC.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\obj\Debug\CORE.JGC.pdb

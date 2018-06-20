@@ -5,9 +5,9 @@
 }
 
 <script>
-    function Update(MenuCode) {
+    function UpdateMenu(MenuCode) {
         $.ajax({
-            url: '@Url.Action("GetUpdateMenu", "Utilization")',
+            url: '@Url.Action("UpdateDataMenu", "Utilization")',
             type: 'post',
             cache: false,
             async: true,
@@ -67,7 +67,7 @@
                                         <td>@Html.DisplayFor(modelItem => item.LevelMenu)</td>
                                         <td>@Html.DisplayFor(modelItem => item.ParentMenu)</td>
                                         <td style="width:5% !important;text-align:center;">
-                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick=Update('@Html.DisplayFor(modelItem => item.MenuCode)')><span class="glyphicon glyphicon-edit"></span></button>
+                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="UpdateMenu('@Html.DisplayFor(modelItem => item.MenuCode)')"><span class="glyphicon glyphicon-edit"></span></button>
                                         </td>
                                     </tr>
                                 }

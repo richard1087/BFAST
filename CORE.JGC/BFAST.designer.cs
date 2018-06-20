@@ -90,36 +90,6 @@ namespace CORE.JGC
 			return ((ISingleResult<MobTrackingAssetResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAsset_IUD")]
-		public ISingleResult<MsAsset_IUDResult> MsAsset_IUD(
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetName", DbType="VarChar(200)")] string assetName, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetBrandCode", DbType="VarChar(20)")] string assetBrandCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetModelCode", DbType="VarChar(20)")] string assetModelCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCategoryCode", DbType="VarChar(50)")] string assetCategoryCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetSerialNo", DbType="VarChar(100)")] string assetSerialNo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetTypeCode", DbType="VarChar(10)")] string assetTypeCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bActive, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bCapitalized, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Photo", DbType="VarChar(MAX)")] string photo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SiteCode", DbType="VarChar(50)")] string siteCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationCode", DbType="VarChar(50)")] string locationCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Floor", DbType="Int")] System.Nullable<int> floor, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseNo", DbType="VarChar(20)")] string purchaseNo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CurrencyCode", DbType="VarChar(5)")] string currencyCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchasePrice", DbType="Decimal(18,0)")] System.Nullable<decimal> purchasePrice, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseDate", DbType="DateTime")] System.Nullable<System.DateTime> purchaseDate, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SupplierCode", DbType="VarChar(10)")] string supplierCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyID", DbType="VarChar(5)")] string companyID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeptCode", DbType="VarChar(20)")] string deptCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="WarrantyMonth", DbType="Int")] System.Nullable<int> warrantyMonth, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetName, assetBrandCode, assetModelCode, assetCategoryCode, assetSerialNo, assetTypeCode, bActive, bCapitalized, photo, siteCode, locationCode, floor, purchaseNo, currencyCode, purchasePrice, purchaseDate, supplierCode, companyID, deptCode, warrantyMonth, qty, userID, no);
-			return ((ISingleResult<MsAsset_IUDResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAsset_View")]
 		public ISingleResult<MsAsset_ViewResult> MsAsset_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(50)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
 		{
@@ -198,9 +168,9 @@ namespace CORE.JGC
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsBarcode_IUD")]
-		public ISingleResult<MsBarcode_IUDResult> MsBarcode_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Barcode", DbType="VarChar(MAX)")] string barcode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Size", DbType="VarChar(50)")] string size, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="VarChar(100)")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		public ISingleResult<MsBarcode_IUDResult> MsBarcode_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(20)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Barcode", DbType="VarChar(MAX)")] string barcode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyCode", DbType="VarChar(5)")] string companyCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, barcode, size, title, userID, no);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, barcode, companyCode, userID, no);
 			return ((ISingleResult<MsBarcode_IUDResult>)(result.ReturnValue));
 		}
 		
@@ -209,6 +179,13 @@ namespace CORE.JGC
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), barcode, tipe);
 			return ((ISingleResult<MsBarcode_ViewResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsCompany_IUD")]
+		public ISingleResult<MsCompany_IUDResult> MsCompany_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyCode", DbType="VarChar(20)")] string companyCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="VarChar(100)")] string companyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="VarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="City", DbType="VarChar(50)")] string city, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Province", DbType="VarChar(50)")] string province, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PostalCode", DbType="VarChar(10)")] string postalCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Telephone", DbType="VarChar(20)")] string telephone, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bActive, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PhotoLogo", DbType="VarChar(MAX)")] string photoLogo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), companyCode, companyName, address, city, province, postalCode, telephone, bActive, photoLogo, userID, no);
+			return ((ISingleResult<MsCompany_IUDResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsCompany_View")]
@@ -386,6 +363,13 @@ namespace CORE.JGC
 			return ((ISingleResult<Pop_AssetTransferTypeResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Pop_MenuParent")]
+		public ISingleResult<Pop_MenuParentResult> Pop_MenuParent([global::System.Data.Linq.Mapping.ParameterAttribute(Name="LevelMenu", DbType="VarChar(1)")] string levelMenu)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), levelMenu);
+			return ((ISingleResult<Pop_MenuParentResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Rpt_AssetPastDue")]
 		public ISingleResult<Rpt_AssetPastDueResult> Rpt_AssetPastDue()
 		{
@@ -475,6 +459,13 @@ namespace CORE.JGC
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), disposeNo, disposeDate, disposeTo, reason, userID, no);
 			return ((ISingleResult<TrxDisposeAsset_IUDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxDisposeAsset_View")]
+		public ISingleResult<TrxDisposeAsset_ViewResult> TrxDisposeAsset_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DisposeNo", DbType="VarChar(20)")] string disposeNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), disposeNo, tipe);
+			return ((ISingleResult<TrxDisposeAsset_ViewResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxDisposeAssetLine_IUD")]
@@ -583,31 +574,56 @@ namespace CORE.JGC
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UtilUser_IUD")]
-		public ISingleResult<UtilUser_IUDResult> UtilUser_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Password", DbType="VarChar(100)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="VarChar(100)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(500)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="VarChar(500)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="VarChar(20)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyID", DbType="VarChar(10)")] string companyID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeptCode", DbType="VarChar(10)")] string deptCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationCode", DbType="VarChar(10)")] string locationCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GroupAccessCode", DbType="VarChar(10)")] string groupAccessCode, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bActive, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bManager, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		public ISingleResult<UtilUser_IUDResult> UtilUser_IUD(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Password", DbType="VarChar(100)")] string password, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="VarChar(100)")] string name, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(500)")] string email, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="VarChar(500)")] string address, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="VarChar(20)")] string phone, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyID", DbType="VarChar(10)")] string companyID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeptCode", DbType="VarChar(10)")] string deptCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SiteCode", DbType="VarChar(50)")] string siteCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationCode", DbType="VarChar(10)")] string locationCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Floor", DbType="Int")] System.Nullable<int> floor, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="GroupAccessCode", DbType="VarChar(20)")] string groupAccessCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bActive, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bManager, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, password, name, email, address, phone, companyID, deptCode, locationCode, groupAccessCode, bActive, bManager, userID, no);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, password, name, email, address, phone, companyID, deptCode, siteCode, locationCode, floor, groupAccessCode, bActive, bManager, userID, no);
 			return ((ISingleResult<UtilUser_IUDResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsCompany_IUD")]
-		public ISingleResult<MsCompany_IUDResult> MsCompany_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyCode", DbType="VarChar(20)")] string companyCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="VarChar(100)")] string companyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="VarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="City", DbType="VarChar(50)")] string city, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Province", DbType="VarChar(50)")] string province, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PostalCode", DbType="VarChar(10)")] string postalCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Telephone", DbType="VarChar(20)")] string telephone, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bActive, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PhotoLogo", DbType="VarChar(MAX)")] string photoLogo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAsset_IUD")]
+		public ISingleResult<MsAsset_IUDResult> MsAsset_IUD(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetName", DbType="VarChar(200)")] string assetName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetBrandCode", DbType="VarChar(20)")] string assetBrandCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetModelCode", DbType="VarChar(20)")] string assetModelCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCategoryCode", DbType="VarChar(50)")] string assetCategoryCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetSerialNo", DbType="VarChar(100)")] string assetSerialNo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetTypeCode", DbType="VarChar(10)")] string assetTypeCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bActive, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> bCapitalized, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Photo", DbType="VarChar(MAX)")] string photo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SiteCode", DbType="VarChar(50)")] string siteCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationCode", DbType="VarChar(50)")] string locationCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Floor", DbType="Int")] System.Nullable<int> floor, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseNo", DbType="VarChar(20)")] string purchaseNo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CurrencyCode", DbType="VarChar(5)")] string currencyCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchasePrice", DbType="Decimal(18,0)")] System.Nullable<decimal> purchasePrice, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseDate", DbType="DateTime")] System.Nullable<System.DateTime> purchaseDate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SupplierCode", DbType="VarChar(10)")] string supplierCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyCode", DbType="VarChar(5)")] string companyCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeptCode", DbType="VarChar(20)")] string deptCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="WarrantyMonth", DbType="Int")] System.Nullable<int> warrantyMonth, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), companyCode, companyName, address, city, province, postalCode, telephone, bActive, photoLogo, userID, no);
-			return ((ISingleResult<MsCompany_IUDResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxDisposeAsset_View")]
-		public ISingleResult<TrxDisposeAsset_ViewResult> TrxDisposeAsset_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DisposeNo", DbType="VarChar(20)")] string disposeNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), disposeNo, tipe);
-			return ((ISingleResult<TrxDisposeAsset_ViewResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Pop_MenuParent")]
-		public ISingleResult<Pop_MenuParentResult> Pop_MenuParent([global::System.Data.Linq.Mapping.ParameterAttribute(Name="LevelMenu", DbType="VarChar(1)")] string levelMenu)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), levelMenu);
-			return ((ISingleResult<Pop_MenuParentResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetName, assetBrandCode, assetModelCode, assetCategoryCode, assetSerialNo, assetTypeCode, bActive, bCapitalized, photo, siteCode, locationCode, floor, purchaseNo, currencyCode, purchasePrice, purchaseDate, supplierCode, companyCode, deptCode, warrantyMonth, qty, userID, no);
+			return ((ISingleResult<MsAsset_IUDResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -1633,32 +1649,6 @@ namespace CORE.JGC
 		}
 	}
 	
-	public partial class MsAsset_IUDResult
-	{
-		
-		private string _Status;
-		
-		public MsAsset_IUDResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(20)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-	}
-	
 	public partial class MsAsset_ViewResult
 	{
 		
@@ -2609,6 +2599,32 @@ namespace CORE.JGC
 		}
 	}
 	
+	public partial class MsCompany_IUDResult
+	{
+		
+		private string _Status;
+		
+		public MsCompany_IUDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
 	public partial class MsCompany_ViewResult
 	{
 		
@@ -2639,6 +2655,8 @@ namespace CORE.JGC
 		private string _uby;
 		
 		private System.Nullable<System.DateTime> _Uon;
+		
+		private string _PhotoLogo;
 		
 		public MsCompany_ViewResult()
 		{
@@ -2864,6 +2882,22 @@ namespace CORE.JGC
 				if ((this._Uon != value))
 				{
 					this._Uon = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhotoLogo", DbType="VarChar(MAX)")]
+		public string PhotoLogo
+		{
+			get
+			{
+				return this._PhotoLogo;
+			}
+			set
+			{
+				if ((this._PhotoLogo != value))
+				{
+					this._PhotoLogo = value;
 				}
 			}
 		}
@@ -5185,6 +5219,104 @@ namespace CORE.JGC
 		}
 	}
 	
+	public partial class Pop_MenuParentResult
+	{
+		
+		private string _MenuCode;
+		
+		private string _MenuName;
+		
+		private string _MenuPath;
+		
+		private System.Nullable<int> _LevelMenu;
+		
+		private string _ParentMenu;
+		
+		public Pop_MenuParentResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string MenuCode
+		{
+			get
+			{
+				return this._MenuCode;
+			}
+			set
+			{
+				if ((this._MenuCode != value))
+				{
+					this._MenuCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuName", DbType="VarChar(50)")]
+		public string MenuName
+		{
+			get
+			{
+				return this._MenuName;
+			}
+			set
+			{
+				if ((this._MenuName != value))
+				{
+					this._MenuName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuPath", DbType="VarChar(200)")]
+		public string MenuPath
+		{
+			get
+			{
+				return this._MenuPath;
+			}
+			set
+			{
+				if ((this._MenuPath != value))
+				{
+					this._MenuPath = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LevelMenu", DbType="Int")]
+		public System.Nullable<int> LevelMenu
+		{
+			get
+			{
+				return this._LevelMenu;
+			}
+			set
+			{
+				if ((this._LevelMenu != value))
+				{
+					this._LevelMenu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParentMenu", DbType="VarChar(50)")]
+		public string ParentMenu
+		{
+			get
+			{
+				return this._ParentMenu;
+			}
+			set
+			{
+				if ((this._ParentMenu != value))
+				{
+					this._ParentMenu = value;
+				}
+			}
+		}
+	}
+	
 	public partial class Rpt_AssetPastDueResult
 	{
 		
@@ -6981,6 +7113,158 @@ namespace CORE.JGC
 		}
 	}
 	
+	public partial class TrxDisposeAsset_ViewResult
+	{
+		
+		private string _DisposeNo;
+		
+		private string _Status;
+		
+		private System.DateTime _DisposeDate;
+		
+		private string _DisposeTo;
+		
+		private string _NamaStatus;
+		
+		private string _Reason;
+		
+		private string _Iby;
+		
+		private System.DateTime _Ion;
+		
+		public TrxDisposeAsset_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisposeNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string DisposeNo
+		{
+			get
+			{
+				return this._DisposeNo;
+			}
+			set
+			{
+				if ((this._DisposeNo != value))
+				{
+					this._DisposeNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisposeDate", DbType="DateTime NOT NULL")]
+		public System.DateTime DisposeDate
+		{
+			get
+			{
+				return this._DisposeDate;
+			}
+			set
+			{
+				if ((this._DisposeDate != value))
+				{
+					this._DisposeDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisposeTo", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string DisposeTo
+		{
+			get
+			{
+				return this._DisposeTo;
+			}
+			set
+			{
+				if ((this._DisposeTo != value))
+				{
+					this._DisposeTo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaStatus", DbType="VarChar(50)")]
+		public string NamaStatus
+		{
+			get
+			{
+				return this._NamaStatus;
+			}
+			set
+			{
+				if ((this._NamaStatus != value))
+				{
+					this._NamaStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Reason", DbType="VarChar(500)")]
+		public string Reason
+		{
+			get
+			{
+				return this._Reason;
+			}
+			set
+			{
+				if ((this._Reason != value))
+				{
+					this._Reason = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Iby
+		{
+			get
+			{
+				return this._Iby;
+			}
+			set
+			{
+				if ((this._Iby != value))
+				{
+					this._Iby = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime NOT NULL")]
+		public System.DateTime Ion
+		{
+			get
+			{
+				return this._Ion;
+			}
+			set
+			{
+				if ((this._Ion != value))
+				{
+					this._Ion = value;
+				}
+			}
+		}
+	}
+	
 	public partial class TrxDisposeAssetLine_IUDResult
 	{
 		
@@ -8549,16 +8833,16 @@ namespace CORE.JGC
 		}
 	}
 	
-	public partial class MsCompany_IUDResult
+	public partial class MsAsset_IUDResult
 	{
 		
 		private string _Status;
 		
-		public MsCompany_IUDResult()
+		public MsAsset_IUDResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(20)")]
 		public string Status
 		{
 			get
@@ -8570,256 +8854,6 @@ namespace CORE.JGC
 				if ((this._Status != value))
 				{
 					this._Status = value;
-				}
-			}
-		}
-	}
-	
-	public partial class TrxDisposeAsset_ViewResult
-	{
-		
-		private string _DisposeNo;
-		
-		private string _Status;
-		
-		private System.DateTime _DisposeDate;
-		
-		private string _DisposeTo;
-		
-		private string _NamaStatus;
-		
-		private string _Reason;
-		
-		private string _Iby;
-		
-		private System.DateTime _Ion;
-		
-		public TrxDisposeAsset_ViewResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisposeNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string DisposeNo
-		{
-			get
-			{
-				return this._DisposeNo;
-			}
-			set
-			{
-				if ((this._DisposeNo != value))
-				{
-					this._DisposeNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisposeDate", DbType="DateTime NOT NULL")]
-		public System.DateTime DisposeDate
-		{
-			get
-			{
-				return this._DisposeDate;
-			}
-			set
-			{
-				if ((this._DisposeDate != value))
-				{
-					this._DisposeDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisposeTo", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string DisposeTo
-		{
-			get
-			{
-				return this._DisposeTo;
-			}
-			set
-			{
-				if ((this._DisposeTo != value))
-				{
-					this._DisposeTo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaStatus", DbType="VarChar(50)")]
-		public string NamaStatus
-		{
-			get
-			{
-				return this._NamaStatus;
-			}
-			set
-			{
-				if ((this._NamaStatus != value))
-				{
-					this._NamaStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Reason", DbType="VarChar(500)")]
-		public string Reason
-		{
-			get
-			{
-				return this._Reason;
-			}
-			set
-			{
-				if ((this._Reason != value))
-				{
-					this._Reason = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Iby
-		{
-			get
-			{
-				return this._Iby;
-			}
-			set
-			{
-				if ((this._Iby != value))
-				{
-					this._Iby = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime NOT NULL")]
-		public System.DateTime Ion
-		{
-			get
-			{
-				return this._Ion;
-			}
-			set
-			{
-				if ((this._Ion != value))
-				{
-					this._Ion = value;
-				}
-			}
-		}
-	}
-	
-	public partial class Pop_MenuParentResult
-	{
-		
-		private string _MenuCode;
-		
-		private string _MenuName;
-		
-		private string _MenuPath;
-		
-		private System.Nullable<int> _LevelMenu;
-		
-		private string _ParentMenu;
-		
-		public Pop_MenuParentResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string MenuCode
-		{
-			get
-			{
-				return this._MenuCode;
-			}
-			set
-			{
-				if ((this._MenuCode != value))
-				{
-					this._MenuCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuName", DbType="VarChar(50)")]
-		public string MenuName
-		{
-			get
-			{
-				return this._MenuName;
-			}
-			set
-			{
-				if ((this._MenuName != value))
-				{
-					this._MenuName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuPath", DbType="VarChar(200)")]
-		public string MenuPath
-		{
-			get
-			{
-				return this._MenuPath;
-			}
-			set
-			{
-				if ((this._MenuPath != value))
-				{
-					this._MenuPath = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LevelMenu", DbType="Int")]
-		public System.Nullable<int> LevelMenu
-		{
-			get
-			{
-				return this._LevelMenu;
-			}
-			set
-			{
-				if ((this._LevelMenu != value))
-				{
-					this._LevelMenu = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParentMenu", DbType="VarChar(50)")]
-		public string ParentMenu
-		{
-			get
-			{
-				return this._ParentMenu;
-			}
-			set
-			{
-				if ((this._ParentMenu != value))
-				{
-					this._ParentMenu = value;
 				}
 			}
 		}

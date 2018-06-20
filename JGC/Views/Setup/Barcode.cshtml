@@ -38,7 +38,7 @@
                                 @foreach(var item in Model)
                                 { 
                                 <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.BarcodeCode)</td>
+                                    <td align="center"><img src="@String.Format("data:image/png;base64,{0}", item.BarcodeCode)" title="@Html.DisplayFor(modelItem => item.TitleBarcode)" bgcolor='ff0000' width="100" height="100" /></td>
                                     <td>@Html.DisplayFor(modelItem => item.SizeBarcode)</td>
                                     <td>@Html.DisplayFor(modelItem => item.TitleBarcode)</td>
                                     <td style="width:5% !important;text-align:center;">

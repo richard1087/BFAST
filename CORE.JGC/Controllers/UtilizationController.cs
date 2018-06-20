@@ -28,35 +28,103 @@ namespace CORE.JGC.Controllers
             return View();
         }
 
-        public ActionResult Updatemenu()
+        //Buat Update
+        [HttpPost]
+        public ActionResult UpdateDataMenu(string MenuCode)
         {
-            if (TempData.ContainsKey("MenuCode"))
-                Session["MenuCodeS"] = TempData["MenuCode"].ToString();
+            Session["MenuCode"] = MenuCode;
 
             dc = new BFASTDataContext();
-            List<UtilMenu> utilmenu = new List<UtilMenu>();
+            List<UtilMenu> utilMenu = new List<UtilMenu>();
             try
             {
-                var query = dc.UtilMenu_View( Session["MenuCode"].ToString(), "G");
+                var query = dc.UtilMenu_View(Session["MenuCode"].ToString(), "U");
                 foreach (var res in query)
                 {
-                    UtilMenu menu = new UtilMenu();
 
-                    ViewData["MenuCode"] =  res.MenuCode.ToString().Trim();
+                    ViewData["MenuCode"] = res.MenuCode.ToString().Trim();
                     ViewData["MenuName"] = res.MenuName.ToString().Trim();
                     ViewData["MenuPath"] = res.MenuPath.ToString();
-                    ViewData["LevelMenu"] = res.LevelMenu.ToString().Trim();
+                    ViewData["LevelMenu"] = res.LevelMenu.ToString();
                     ViewData["ParentMenu"] = res.ParentMenu.ToString();
 
-                    utilmenu.Add(menu);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                utilmenu = null;
+                utilMenu = null;
             }
-            return View();
+            return View("Updatemenu");
+        }
+        [HttpPost]
+        public ActionResult UpdateDataRole(string GroupMenuCode)
+        {
+            Session["GroupMenuCode"] = GroupMenuCode;
 
+            dc = new BFASTDataContext();
+            List<UtilGroupMenu> utilMenu = new List<UtilGroupMenu>();
+            try
+            {
+                var query = dc.UtilGroupMenu_View(Session["GroupMenuCode"].ToString(), "U");
+                foreach (var res in query)
+                {
+
+                    ViewData["GroupMenuCode"] = res.GroupMenuCode.ToString().Trim();
+                    ViewData["GroupMenuName"] = res.GroupMenuName.ToString().Trim();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                utilMenu = null;
+            }
+            return View("Updaterole");
+        }
+
+        public ActionResult Updatemenu()
+        {
+            dc = new BFASTDataContext();
+            List<UtilMenu> utilMenu = new List<UtilMenu>();
+            try
+            {
+                var query = dc.UtilMenu_View(Session["MenuCode"].ToString(), "U");
+                foreach (var res in query)
+                {
+
+                    ViewData["MenuCode"] = res.MenuCode.ToString().Trim();
+                    ViewData["MenuName"] = res.MenuName.ToString().Trim();
+                    ViewData["MenuPath"] = res.MenuPath.ToString();
+                    ViewData["LevelMenu"] = res.LevelMenu.ToString();
+                    ViewData["ParentMenu"] = res.ParentMenu.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                utilMenu = null;
+            }
+
+            return View();
+        }
+        public ActionResult Updaterole()
+        {
+            dc = new BFASTDataContext();
+            List<UtilGroupMenu> utilMenu = new List<UtilGroupMenu>();
+            try
+            {
+                var query = dc.UtilGroupMenu_View(Session["GroupMenuCode"].ToString(), "U");
+                foreach (var res in query)
+                {
+
+                    ViewData["GroupMenuCode"] = res.GroupMenuCode.ToString().Trim();
+                    ViewData["GroupMenuName"] = res.GroupMenuName.ToString().Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                utilMenu = null;
+            }
+
+            return View();
         }
 
 
@@ -71,12 +139,12 @@ namespace CORE.JGC.Controllers
         {
             return View();
         }
-
-        public ActionResult Updaterole()
+        public ActionResult Createusers()
         {
             return View();
         }
 
+        
         public ActionResult Access()
         {
             return View();
@@ -90,12 +158,6 @@ namespace CORE.JGC.Controllers
             return View(msUsers);
         }
 
-        [HttpPost]
-        public ActionResult GetUpdateMenu(string MenuCode)
-        {
-            TempData["MenuCode"] = MenuCode;
-            return View("Update");
-        }
 
         public UtilMenu[] GridPopupParentMenu(string LevelMenu)
         {
@@ -120,6 +182,79 @@ namespace CORE.JGC.Controllers
             }
             return utilMenu.ToArray();
         }
+
+        public UtilGroupMenu[] GridPopupGroupMenu()
+        {
+            dc = new BFASTDataContext();
+            List<UtilGroupMenu> utilGMenu = new List<UtilGroupMenu>();
+            try
+            {
+                var query = dc.UtilGroupMenu_View("","G");
+                foreach (var res in query)
+                {
+                    UtilGroupMenu gMenu = new UtilGroupMenu();
+
+                    gMenu.GroupMenuCode = res.GroupMenuCode;
+                    gMenu.GroupMenuName = res.GroupMenuName;
+
+                    utilGMenu.Add(gMenu);
+                }
+            }
+            catch
+            {
+                utilGMenu = null;
+            }
+            return utilGMenu.ToArray();
+        }
+        public MsCompany[] GridPopupCompany()
+        {
+            dc = new BFASTDataContext();
+            List<MsCompany> msCompany = new List<MsCompany>();
+            try
+            {
+                var query = dc.MsCompany_View("", "G");
+                foreach (var res in query)
+                {
+                    MsCompany company = new MsCompany();
+
+                    company.CompanyID = res.CompanyID;
+                    company.CompanyCode = res.CompanyCode;
+                    company.CompanyName = res.CompanyName;
+
+                    msCompany.Add(company);
+                }
+            }
+            catch
+            {
+                msCompany = null;
+            }
+            return msCompany.ToArray();
+        }
+        public MsDepartment[] GridPopupDept()
+        {
+            dc = new BFASTDataContext();
+            List<MsDepartment> msDept = new List<MsDepartment>();
+            try
+            {
+                var query = dc.MsDepartment_View("", "G");
+                foreach (var res in query)
+                {
+                    MsDepartment dept = new MsDepartment();
+
+                    dept.DeptCode = res.DeptCode;
+                    dept.DeptName = res.DeptName;
+
+                    msDept.Add(dept);
+                }
+            }
+            catch
+            {
+                msDept = null;
+            }
+            return msDept.ToArray();
+        }
+
+
         [HttpPost]
         public ActionResult SaveMenu(string MenuCode, string MenuName, string MenuPath, int LevelMenu, string ParentMenu)
         {
@@ -134,6 +269,210 @@ namespace CORE.JGC.Controllers
                     //CompleteDateC = null;
 
                     var query = dc.UtilMenu_IUD(MenuCode, MenuName, MenuPath, LevelMenu, ParentMenu, UserID, 1);
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SaveRole(string GroupMenuCode, string GroupMenuName)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+
+                    string UserID = Session["UserName"].ToString().Trim();
+                    //CompleteDateC = null;
+
+                    var query = dc.UtilGroupMenu_IUD(GroupMenuCode, GroupMenuName, UserID, 1);
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpPost]
+        public ActionResult SaveUser(string GroupMenuCode,string UserNameS, string PasswordS, string Name, string Email, string Address, string Phone, string CompanyID, string DeptCode, string SiteCode, string LocationCode,int Floor )
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+
+                    string UserID = Session["UserName"].ToString().Trim();
+                    //CompleteDateC = null;
+
+                    var query = dc.UtilUser_IUD(UserNameS, PasswordS,Name,Email,Address,Phone,CompanyID,DeptCode,SiteCode,LocationCode,Floor, GroupMenuCode,1,0, UserID, 1);
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SaveUpdateMenu(string MenuCode, string MenuName, string MenuPath, int LevelMenu, string ParentMenu)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+
+                    string UserID = Session["UserName"].ToString().Trim();
+                    //CompleteDateC = null;
+
+                    var query = dc.UtilMenu_IUD(MenuCode, MenuName, MenuPath, LevelMenu, ParentMenu, UserID, 2);
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SaveUpdateRole(string GroupMenuCode, string GroupMenuName)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+
+                    string UserID = Session["UserName"].ToString().Trim();
+                    //CompleteDateC = null;
+
+                    var query = dc.UtilGroupMenu_IUD(GroupMenuCode, GroupMenuName, UserID, 2);
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SaveUpdateUser(string GroupMenuCode, string UserNameS, string PasswordS, string Name, string Email, string Address, string Phone, string CompanyID, string DeptCode, string SiteCode, string LocationCode, int Floor, int bActive)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+
+                    string UserID = Session["UserName"].ToString().Trim();
+                    //CompleteDateC = null;
+
+                    var query = dc.UtilUser_IUD(UserNameS, PasswordS, Name, Email, Address, Phone, CompanyID, DeptCode, SiteCode, LocationCode, Floor, GroupMenuCode, bActive, 0, UserID, 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -242,6 +581,8 @@ namespace CORE.JGC.Controllers
             }
             return utilGroupMenu.ToArray();
         }
+
+
         [HttpPost]
         public JsonResult GetPopupParentMenu(string LevelMenu)
         {
@@ -251,6 +592,39 @@ namespace CORE.JGC.Controllers
             return Json(new
             {
                 data = um.Select(x => new[] { x.MenuCode, x.MenuName })
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetPopupGroupMenu()
+        {
+            UtilGroupMenu[] um = null;
+            um = GridPopupGroupMenu();
+
+            return Json(new
+            {
+                data = um.Select(x => new[] { x.GroupMenuCode, x.GroupMenuName })
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetPopupCompany()
+        {
+            MsCompany[] um = null;
+            um = GridPopupCompany();
+
+            return Json(new
+            {
+                data = um.Select(x => new[] { x.CompanyID, x.CompanyCode, x.CompanyName })
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetPopupDept()
+        {
+            MsDepartment[] um = null;
+            um = GridPopupDept();
+
+            return Json(new
+            {
+                data = um.Select(x => new[] { x.DeptCode, x.DeptName })
             }, JsonRequestBehavior.AllowGet);
         }
     }

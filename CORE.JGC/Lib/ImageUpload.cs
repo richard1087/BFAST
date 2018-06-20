@@ -15,15 +15,15 @@ namespace CORE.JGC.Lib
         public int Width { get; set; }
 
         public int Height { get; set; }
-        
+
         private readonly string UploadPath = "~/Images";
 
-        public ImageResult RenameUploadFile(HttpPostedFileBase file, Int32 counter = 0, string identitas = "", string nama="")
+        public ImageResult RenameUploadFile(HttpPostedFileBase file, Int32 counter = 0, string identitas = "", string nama = "")
         {
             var fileName = Path.GetFileName(file.FileName);
-
-            string prepend = "logocompany "+nama+"(";
-            string finalFileName = prepend + identitas + ").jpg";
+            string ext = Path.GetExtension(file.FileName);
+            string prepend = "logocompany " + nama + "(";
+            string finalFileName = prepend + identitas + ")" + ext;
             if (System.IO.File.Exists
                 (HttpContext.Current.Request.MapPath(UploadPath + finalFileName)))
             {
@@ -34,12 +34,12 @@ namespace CORE.JGC.Lib
 
         private ImageResult UploadFile(HttpPostedFileBase file, string fileName)
         {
-            ImageResult imageResult = new ImageResult { Success = true, ErrorMessage = null };
+            ImageResult imageResult = new ImageResult { Success = true, ErrorMessage = null, FileConvert = "" };
 
             var path =
           Path.Combine(HttpContext.Current.Request.MapPath(UploadPath), fileName);
             string extension = Path.GetExtension(file.FileName);
-            
+
             if (!ValidateExtension(extension))
             {
                 imageResult.Success = false;
@@ -52,13 +52,23 @@ namespace CORE.JGC.Lib
                 file.SaveAs(path);
 
                 Image imgOriginal = Image.FromFile(path);
-                
                 Image imgActual = Scale(imgOriginal);
+
+                //Buat dapetin balikan ke Byte
+                var imageStream = new MemoryStream();
+                imgActual.Save(imageStream, System.Drawing.Imaging.ImageFormat.Png);
+                imageStream.Position = 0;
+                var imageBytes = imageStream.ToArray();
+                var ImageBase64 = Convert.ToBase64String(imageBytes);
+
+                string base64String = Convert.ToBase64String(imageBytes);
+
                 imgOriginal.Dispose();
                 imgActual.Save(path);
                 imgActual.Dispose();
 
                 imageResult.ImageName = fileName;
+                imageResult.FileConvert = ImageBase64.ToString().Trim();
 
                 return imageResult;
             }
@@ -66,6 +76,7 @@ namespace CORE.JGC.Lib
             {
                 imageResult.Success = false;
                 imageResult.ErrorMessage = ex.Message;
+
                 return imageResult;
             }
         }
@@ -98,7 +109,7 @@ namespace CORE.JGC.Lib
             int sourceY = 0;
             int destX = 0;
             int destY = 0;
-            
+
             if (Width != 0 && Height != 0)
             {
                 destWidth = Width;

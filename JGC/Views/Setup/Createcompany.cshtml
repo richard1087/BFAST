@@ -85,11 +85,66 @@
                 },
                 success: function (response) {
                     if (response.success == true) {
-                        $(".modal-body #peringatan2").text(response.responseText);
-                        $('#btnok').click(function (e) {
-                            window.location.href = "@Url.Action("Companyinfo", "Setup")";
-                        })
-                        $("#Alert2").modal();
+
+                        var formdata = new FormData();
+                        var fileInput = document.getElementById('file');
+                        for (i = 0; i < fileInput.files.length; i++) {
+                            formdata.append(fileInput.files[i].name, fileInput.files[i]);
+                        }
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', '/Setup/SimpanGambarCompany');
+                        xhr.send(formdata);
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState == 4 && xhr.status == 200) {
+                                $(".modal-body #peringatan1").text("data failed to save...");
+                                $('#btncaution').click(function (e) {
+                                    $('#Alert1').modal('hide');
+                                })
+                                $("#Alert1").modal();
+                            }
+                            else {
+                                $.ajax({
+                                        url: '@Url.Action("UbahCompany", "Setup")',
+                                        type: 'post',
+                                        cache: false,
+                                        async: true,
+                                        data:  {
+                                            EditCompanyCode: CompanyCode,
+                                            EditCompanyName: CompanyName,
+                                            EditAddress: AddressId,
+                                            EditCity: CityId,
+                                            EditProvince: ProvinceId,
+                                            EditPostalCode: PostalCodeId,
+                                            EditTelephone: TelephoneId,
+                                            EditAktif: Aktif,
+                                            EditPhotoLogo: ""
+                                        },
+                                        success: function (response) {
+                                            if (response.success == true) {
+                                                $(".modal-body #peringatan2").text(response.responseText);
+                                                $('#btnok').click(function (e) {
+                                                    window.location.href = "@Url.Action("Companyinfo", "Setup")";
+                                                })
+                                                $("#Alert2").modal();
+                                            } else {
+                                                $(".modal-body #peringatan3").text(response.responseText);
+                                                $('#btnerror').click(function (e) {
+                                                    $('#Alert3').modal('hide');
+                                                })
+                                                $("#Alert3").modal();
+                                            }
+                                        },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                            $(".modal-body #peringatan1").text("Please Wait...");
+                                            $('#btncaution').click(function (e) {
+                                                $('#Alert1').modal('hide');
+                                            })
+                                            $("#Alert1").modal();
+                                        }
+                                    });
+                            }
+                        }
                     } else {
                         $(".modal-body #peringatan3").text(response.responseText);
                         $('#btnerror').click(function (e) {
@@ -219,7 +274,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
                                     <button class="btn btn-default" type="button">Cancel</button>
-                                    <button type="submit" class="btn btn-success" onclick="InputCompany(); return false;" >Submit</button>
+                                    <button type="submit" class="btn btn-success" onclick="InputCompany(); return false;">Submit</button>
                                 </div>
                             </div>
                         </form>

@@ -27,7 +27,7 @@ namespace CORE.JGC.Models
         public string PurchaseNo { get; set; }
         public string CurrencyCode { get; set; }
         public string PurchasePrice { get; set; }
-        public DateTime? PurchaseDate { get; set; }
+        public string PurchaseDate { get; set; }
         public string SupplierCode { get; set; }
         public string CompanyID { get; set; }
         public string DeptCode { get; set; }

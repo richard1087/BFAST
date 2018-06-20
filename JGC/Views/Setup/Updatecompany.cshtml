@@ -73,7 +73,7 @@
                 $('#Alert4').modal('hide');
 
                 var formdata = new FormData();
-                var fileInput = document.getElementById('avatar');
+                var fileInput = document.getElementById('file');
                 for (i = 0; i < fileInput.files.length; i++) {
                     formdata.append(fileInput.files[i].name, fileInput.files[i]);
                 }
@@ -96,7 +96,7 @@
                             cache: false,
                             async: true,
                             data:  {
-                                EditCompanyCode: Id,
+                                EditCompanyCode: CompanyCode,
                                 EditCompanyName: CompanyName,
                                 EditAddress: AddressId,
                                 EditCity: CityId,
@@ -159,7 +159,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-    @using (Ajax.BeginForm("UbahCompany", "Setup", new AjaxOptions { UpdateTargetId = "OptionArea" }, new { enctype = "multipart/form-data", id = "AddDRForm", @class = "form-horizontal form-label-left" }))
+                        @using (Ajax.BeginForm("UbahCompany", "Setup", new AjaxOptions { UpdateTargetId = "OptionArea" }, new { enctype = "multipart/form-data", id = "AddDRForm", @class = "form-horizontal form-label-left" }))
     {
                             <div class="form-group">
                                 <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Company Details</h3>
@@ -174,14 +174,14 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input id="Id" type="hidden" name="Id" value="" />
                                     <input id="CompanyId" type="hidden" name="CompanyId" value="" readonly />
-                                    <input id="CompanyCode" type="text" name="CompanyCode" class="form-control col-md-10" placeholder="Company Code" />
+                                    <input id="CompanyCode" type="text" name="CompanyCode" class="form-control col-md-10" placeholder="Company Code" readonly />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Company Name</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="CompanyName" type="text" name="CompanyName" class="form-control col-md-10" placeholder="Company Name" />
+                                    <input id="CompanyName" type="text" name="CompanyName" class="form-control col-md-10" placeholder="Company Name" readonly />
                                 </div>
                             </div>
 
@@ -225,7 +225,7 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="checkbox">
                                         <label style="padding-left:0 !important">
-                                            <input id="ActiveId" name="ActiveId" type="checkbox" class="flat" value="" > Yes
+                                            <input id="ActiveId" name="ActiveId" type="checkbox" class="flat" value=""> Yes
                                         </label>
                                     </div>
                                 </div>
@@ -239,22 +239,14 @@
                                 <label class="control-label col-md-12 col-sm-12 col-xs-12">Upload your organization’s logo to make this space your own.</label>
                             </div>
 
-                            @*<div class="form-group">
+                            <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload Logo</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
                                     <input type="file" name="file" id="file" class="btn btn-success btn-cust inputfile" onchange='$("#upload-file-info").html($(this).val());' />
                                     <label for="file" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
                                     <span class='label label-info label-create' id="upload-file-info"></span>
                                 </div>
-                            </div>*@
-
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload Logo</label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                        <input type="file" name="avatar" id="avatar"/>
-                                </div>
                             </div>
-
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">

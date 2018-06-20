@@ -57,25 +57,28 @@
                                     <th style="width:10% !important;">@Html.Label("Province")</th>
                                     <th style="width:5% !important;">@Html.Label("Postal Code")</th>
                                     <th style="width:10% !important;">@Html.Label("Telephone")</th>
+                                    <th style="width:10% !important;" align="center">@Html.Label("Logo")</th>
                                     <th style="width:9%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.CompanyCode)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.CompanyName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.City)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Province)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.PostalCode)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Telephone)</td>
-                                    <td style="width:5% !important;text-align:center;">
-                                        <button id="ubah" name="ubah" data-toggle="tooltip" title="Ubah" type="button" class="btn btn-success" onclick="UpdateCompany('@Html.DisplayFor(modelItem => item.Id)')"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
-                                    </td>
-                                </tr>
-                            }
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.CompanyCode)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CompanyName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.City)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Province)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PostalCode)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Telephone)</td>
+                                        <td align="center"><img src="@String.Format("data:image/png;base64,{0}", item.PhotoLogo)" title="@Html.DisplayFor(modelItem => item.CompanyName)" bgcolor='ff0000' /></td>
+                                        <td style="width:5% !important;text-align:center;">
+                                            <button id="ubah" name="ubah" data-toggle="tooltip" title="Ubah" type="button" class="btn btn-success" onclick="UpdateCompany('@Html.DisplayFor(modelItem => item.Id)')"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -88,7 +91,7 @@
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
 
 <script type="text/javascript">
-      
+
       $("#check-all").click(function () {
           $(".checks").prop('checked', $(this).prop('checked'));
       });

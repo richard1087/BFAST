@@ -4684,13 +4684,10 @@
     <Content Include="Views\Asset\Transfer.cshtml" />
     <Content Include="Views\Asset\Createtransfer.cshtml" />
     <Content Include="Views\Asset\Move.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Views\Asset\Editmaintenance.cshtml" />
     <Content Include="Views\Setup\Updatecompany.cshtml" />
     <Content Include="Views\Asset\DisposeApproval.cshtml" />
-=======
-    <Content Include="Views\Setup\Updatecompany.cshtml" />
->>>>>>> abb501dfe664c7d2f47ab3086d547bb902310dad
+    <Content Include="Views\Asset\UpdateMaintenance.cshtml" />
+    <Content Include="Views\Utilization\Updateuser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4733,7 +4730,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61640</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

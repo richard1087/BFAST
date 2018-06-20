@@ -4,6 +4,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+    
+    function Create() {
+
+        var GroupMenuCode = document.getElementById("GroupMenuCode").value;
+        var GroupMenuName = document.getElementById("GroupMenuName").value;
+ 
+        if (GroupMenuCode == "") {
+            $(".modal-body #peringatan3").text("Role Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (GroupMenuName == "") {
+            $(".modal-body #peringatan3").text("Role Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Create Role: " + GroupMenuName + "?");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+                $.ajax({
+                    url: '@Url.Action("SaveRole", "Utilization")',
+                    type: 'Post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        GroupMenuCode: GroupMenuCode,
+                        GroupMenuName: GroupMenuName
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Role")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            })
+        }
+        $('#btnno').click(function (e) {
+            $('#Alert4').modal('hide');
+        })
+        $("#Alert4").modal();
+    }
+</script>
+
+
 <!-- PAGE CONTENT START -->
 <div class="right_col" role="main">
     <div class="">
@@ -24,32 +90,21 @@
                     <div class="x_content utlisasimenutable">
                         <form class="form-horizontal form-label-left">
                             <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Kode Roles</label>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Role  Code</label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="Kode Roles" id="RoleID" name="RoleID" maxlength="30">
+                                    <input type="text" class="form-control" placeholder="Role Code" data-id="i" id="GroupMenuCode" name="GroupMenuCode" required="" maxlength="30">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Nama Roles</label>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Role Name</label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="Nama Roles" id="RoleName" name="RoleName" maxlength="100">
+                                    <input type="text" class="form-control" placeholder="Role Name" data-id="i" id="GroupMenuName" name="GroupMenuName" required="" maxlength="100">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12"></label>
-                                <div class="col-md-11 col-sm-11 col-xs-12">
-                                    <div class="checkbox">
-                                        <label class="checkpadd0" style="padding:0 !important">
-                                            <input type="checkbox" class="flat" id="bAktif" name="bAktif"> Aktif
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="ln_solid ln_solidform"></div>
                             <div class="form-group">
                                 <div class="col-md-11 col-sm-11 col-xs-12 col-md-offset-1">
-                                    <button type="submit" class="btn btn-success" onclick="Create()">Simpan</button>
+                                    <button type="submit" class="btn btn-success" onclick="Create(); return false;">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -61,4 +116,6 @@
 </div>
 <!-- PAGE CONTENT END -->
 
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")

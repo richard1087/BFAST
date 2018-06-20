@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using CORE.JGC.Models;
 using CORE.JGC.Lib;
 using CORE.JGC.POCO;
-
+using System.Drawing;
+using System.IO;
 
 namespace CORE.JGC.Controllers
 {
@@ -15,11 +16,7 @@ namespace CORE.JGC.Controllers
         // Untuk ke data dbml
         //Lokasi
         BFASTDataContext dc = null;
-        //string UserId = Session["UserID"].ToString().Trim();
-        string UserId = "ADMIN";
-        string imageName = "";
-        string identitas = "";
-        string nama = "";
+        //string UserId = "ADMIN";
 
         private MsLocation[] GridLokasi()
         {
@@ -27,7 +24,7 @@ namespace CORE.JGC.Controllers
             List<MsLocation> mslocation = new List<MsLocation>();
             try
             {
-                var query = dc.MsLocation_View("","", "G");
+                var query = dc.MsLocation_View("", "", "G");
                 foreach (var res in query)
                 {
                     string Aktif = "";
@@ -389,9 +386,9 @@ namespace CORE.JGC.Controllers
 
                     company.PostalCode = res.PostalCode;
                     company.Telephone = res.Telephone;
+                    company.PhotoLogo = res.PhotoLogo;
 
                     company.bActive = res.bActive;
-
 
                     mscompany.Add(company);
                 }
@@ -487,7 +484,7 @@ namespace CORE.JGC.Controllers
             return msemployee.ToArray();
         }
 
-        
+
 
         //sites
         public ActionResult Sites()
@@ -507,7 +504,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsSite_IUD(SiteCodeId, SiteNameId, AddressId, CityId, PostalCodeId, TelephoneId, ActiveId, UserId, 1);
+                    var query = dc.MsSite_IUD(SiteCodeId, SiteNameId, AddressId, CityId, PostalCodeId, TelephoneId, ActiveId, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -543,7 +540,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsSite_IUD(EditSiteCodeId, EditSiteNameId, EditAddressId, EditCityId, EditPostalCodeId, EditTelephoneId, ActiveId, UserId, 2);
+                    var query = dc.MsSite_IUD(EditSiteCodeId, EditSiteNameId, EditAddressId, EditCityId, EditPostalCodeId, EditTelephoneId, ActiveId, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -590,7 +587,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsLocation_IUD(LocationCodeId, LocationNameId, SiteCode, FloorId, ActiveId, UserId, 1);
+                    var query = dc.MsLocation_IUD(LocationCodeId, LocationNameId, SiteCode, FloorId, ActiveId, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -626,7 +623,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsLocation_IUD(EditLocationCodeId, EditLocationNameId, EditSiteCode, EditFloorId, EditActiveId, UserId, 2);
+                    var query = dc.MsLocation_IUD(EditLocationCodeId, EditLocationNameId, EditSiteCode, EditFloorId, EditActiveId, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -672,7 +669,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetCategory_IUD(AssetCategoryCodeId, AssetCategoryNameId, UserId, 1);
+                    var query = dc.MsAssetCategory_IUD(AssetCategoryCodeId, AssetCategoryNameId, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -708,7 +705,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetCategory_IUD(EditAssetCategoryCodeId, EditAssetCategoryNameId, UserId, 2);
+                    var query = dc.MsAssetCategory_IUD(EditAssetCategoryCodeId, EditAssetCategoryNameId, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -755,7 +752,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetModel_IUD(AssetModelCodeId, AssetModelNameId, AssetBrandCodeId, UserId, 1);
+                    var query = dc.MsAssetModel_IUD(AssetModelCodeId, AssetModelNameId, AssetBrandCodeId, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -791,7 +788,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetModel_IUD(EditAssetModelCodeId, EditAssetModelNameId, EditAssetBrandCodeId, UserId, 2);
+                    var query = dc.MsAssetModel_IUD(EditAssetModelCodeId, EditAssetModelNameId, EditAssetBrandCodeId, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -837,7 +834,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetBrand_IUD(AssetBrandCodeId, AssetBrandNameId, UserId, 1);
+                    var query = dc.MsAssetBrand_IUD(AssetBrandCodeId, AssetBrandNameId, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -873,7 +870,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetBrand_IUD(EditAssetBrandCodeId, EditAssetBrandNameId, UserId, 2);
+                    var query = dc.MsAssetBrand_IUD(EditAssetBrandCodeId, EditAssetBrandNameId, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -918,7 +915,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetStatus_IUD(AssetStatusCodeId, AssetStatusNameId, UserId, 1);
+                    var query = dc.MsAssetStatus_IUD(AssetStatusCodeId, AssetStatusNameId, Session["username"].ToString().Trim(), 1);
                     string Exx = "";
                     foreach (var res in query)
                     {
@@ -954,7 +951,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetStatus_IUD(EditAssetStatusCodeId, EditAssetStatusNameId, UserId, 2);
+                    var query = dc.MsAssetStatus_IUD(EditAssetStatusCodeId, EditAssetStatusNameId, Session["username"].ToString().Trim(), 2);
                     string Exx = "";
                     foreach (var res in query)
                     {
@@ -1000,7 +997,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetType_IUD(AssetTypeCodeId, AssetTypeNameId, UserId, 1);
+                    var query = dc.MsAssetType_IUD(AssetTypeCodeId, AssetTypeNameId, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1036,7 +1033,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetType_IUD(EditAssetTypeCodeId, EditAssetTypeNameId, UserId, 2);
+                    var query = dc.MsAssetType_IUD(EditAssetTypeCodeId, EditAssetTypeNameId, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1081,7 +1078,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsDepartment_IUD(DepartmentCodeId, DepartmentNameId, UserId, 1);
+                    var query = dc.MsDepartment_IUD(DepartmentCodeId, DepartmentNameId, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1117,7 +1114,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsDepartment_IUD(EditDepartmentCodeId, EditDepartmentNameId, UserId, 2);
+                    var query = dc.MsDepartment_IUD(EditDepartmentCodeId, EditDepartmentNameId, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1164,7 +1161,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsCurrency_IUD(CurrencyCodeId, CurrencyNameId, UserId, 1);
+                    var query = dc.MsCurrency_IUD(CurrencyCodeId, CurrencyNameId, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1200,7 +1197,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsCurrency_IUD(EditCurrencyCodeId, EditCurrencyNameId, UserId, 2);
+                    var query = dc.MsCurrency_IUD(EditCurrencyCodeId, EditCurrencyNameId, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1245,7 +1242,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsSupplier_IUD(SupplierCode, SupplierName, PIC, Address, City, Province, PostalCode, Telephone, Fax, Aktif, UserId, 1);
+                    var query = dc.MsSupplier_IUD(SupplierCode, SupplierName, PIC, Address, City, Province, PostalCode, Telephone, Fax, Aktif, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1281,7 +1278,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsSupplier_IUD(EditSupplierCode, EditSupplierName, EditPIC, EditAddress, EditCity, EditProvince, EditPostalCode, EditTelephone, EditFax, EditAktif, UserId, 2);
+                    var query = dc.MsSupplier_IUD(EditSupplierCode, EditSupplierName, EditPIC, EditAddress, EditCity, EditProvince, EditPostalCode, EditTelephone, EditFax, EditAktif, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1335,7 +1332,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsCompany_IUD(CompanyCode, CompanyName, Address, City, Province, PostalCode, Telephone, Aktif, PhotoLogo, UserId, 1);
+                    var query = dc.MsCompany_IUD(CompanyCode, CompanyName, Address, City, Province, PostalCode, Telephone, Aktif, PhotoLogo, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1348,6 +1345,9 @@ namespace CORE.JGC.Controllers
                     }
                     else
                     {
+                        Session["identitas"] = CompanyCode;
+                        Session["nama"] = CompanyName;
+
                         return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
                     }
                 }
@@ -1382,6 +1382,7 @@ namespace CORE.JGC.Controllers
                     {
                         Aktif = "T";
                     }
+
                     ViewData["ID"] = res.Id.ToString().Trim();
                     ViewData["CompanyID"] = res.CompanyID.ToString().Trim();
                     ViewData["CompanyCode"] = res.CompanyCode.ToString().Trim();
@@ -1392,6 +1393,7 @@ namespace CORE.JGC.Controllers
                     ViewData["PostalCode"] = res.PostalCode.ToString().Trim();
                     ViewData["Telephone"] = res.Telephone.ToString().Trim();
                     ViewData["Aktif"] = Aktif.ToString().Trim();
+
                 }
             }
             catch (Exception ex)
@@ -1436,6 +1438,8 @@ namespace CORE.JGC.Controllers
                     ViewData["PostalCode"] = res.PostalCode.ToString().Trim();
                     ViewData["Telephone"] = res.Telephone.ToString().Trim();
                     ViewData["Aktif"] = Aktif.ToString().Trim();
+                    TempData["identitas"] = res.CompanyCode.ToString().Trim();
+                    TempData["nama"] = res.CompanyName.ToString().Trim();
 
                 }
             }
@@ -1449,25 +1453,60 @@ namespace CORE.JGC.Controllers
         [HttpPost]
         public ActionResult SimpanGambarCompany(FormCollection formCollection)
         {
-            foreach (string item in Request.Files)
+            try
             {
-                HttpPostedFileBase file = Request.Files[item] as HttpPostedFileBase;
-                if (file.ContentLength == 0)
-                    continue;
-                if (file.ContentLength > 0)
+
+                foreach (string item in Request.Files)
                 {
-                    ImageUpload imageUpload = new ImageUpload { Width = 600 };
-                    ImageResult imageResult = imageUpload.RenameUploadFile(file, 0, identitas, nama);
-                    if (imageResult.Success)
+                    string identitas = "";
+                    string nama = "";
+
+                    if (TempData["identitas"] == null)
                     {
-                        Console.WriteLine(imageResult.ImageName);
-                        imageName = imageResult.ImageName.ToString().Trim();
+                        identitas = Session["identitas"].ToString().Trim();
                     }
                     else
                     {
-                        ViewBag.Error = imageResult.ErrorMessage;
+                        identitas = TempData["identitas"].ToString().Trim();
+                    }
+
+                    if (TempData["nama"] == null)
+                    {
+                        nama = Session["nama"].ToString().Trim();
+                    }
+                    else
+                    {
+                        nama = TempData["nama"].ToString().Trim();
+                    }
+
+                    HttpPostedFileBase file = Request.Files[item] as HttpPostedFileBase;
+                    if (file.ContentLength == 0)
+                        continue;
+                    if (file.ContentLength > 0)
+                    {
+                        ImageUpload imageUpload = new ImageUpload { Width = 60, Height = 60 };
+                        ImageResult imageResult = imageUpload.RenameUploadFile(file, 0, identitas, nama);
+                        if (imageResult.Success)
+                        {
+                            Console.WriteLine(imageResult.ImageName);
+                            Session["nama"] = null;
+                            Session["identitas"] = null;
+                            Session["imageName"] = null;
+                            Session["fileconnvert"] = null;
+                            Session["imageName"] = imageResult.ImageName.ToString().Trim();
+                            Session["fileconnvert"] = imageResult.FileConvert;
+                        }
+                        else
+                        {
+                            ViewBag.Error = imageResult.ErrorMessage;
+                        }
                     }
                 }
+
+            }
+            catch (Exception ex)
+            {
+                string pesan = ex.Message.ToString();
             }
             return View();
         }
@@ -1480,8 +1519,16 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
+                    if (Session["fileconnvert"] == null)
+                    {
+                        EditPhotoLogo = "";
+                    }
+                    else
+                    {
+                        EditPhotoLogo = Session["fileconnvert"].ToString().Trim();
+                    }
 
-                    var query = dc.MsCompany_IUD(EditCompanyCode, EditCompanyName, EditAddress, EditCity, EditProvince, EditPostalCode, EditTelephone, EditAktif, EditPhotoLogo, UserId, 2);
+                    var query = dc.MsCompany_IUD(EditCompanyCode, EditCompanyName, EditAddress, EditCity, EditProvince, EditPostalCode, EditTelephone, EditAktif, EditPhotoLogo, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1527,7 +1574,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsExchangeRate_IUD(CurrencyCode, CurrencyCodeConvert, ExchangeRate, UserId, 1);
+                    var query = dc.MsExchangeRate_IUD(CurrencyCode, CurrencyCodeConvert, ExchangeRate, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1563,7 +1610,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsExchangeRate_IUD(EditCurrencyCode, EditCurrencyCodeConvert, EditExchangeRate, UserId, 2);
+                    var query = dc.MsExchangeRate_IUD(EditCurrencyCode, EditCurrencyCodeConvert, EditExchangeRate, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1592,8 +1639,6 @@ namespace CORE.JGC.Controllers
         }
 
         //----------------------------------------------------------
-        //Person
-
         public ActionResult Persons()
         {
             MsEmployee[] msemployee = null;
@@ -1610,7 +1655,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsEmployee_IUD(EmployeeId, FullName, Title, Phone, Email, SiteCode, LocationCode, DeptCode, Notes, Aktif, UserId, 1);
+                    var query = dc.MsEmployee_IUD(EmployeeId, FullName, Title, Phone, Email, SiteCode, LocationCode, DeptCode, Notes, Aktif, Session["username"].ToString().Trim(), 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1646,7 +1691,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsEmployee_IUD(EditEmployeeId, EditFullName, EditTitle, EditPhone, EditEmail, EditSiteCode, EditLocationCode, EditDeptCode, EditNotes, EditAktif, UserId, 2);
+                    var query = dc.MsEmployee_IUD(EditEmployeeId, EditFullName, EditTitle, EditPhone, EditEmail, EditSiteCode, EditLocationCode, EditDeptCode, EditNotes, EditAktif, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -1673,6 +1718,7 @@ namespace CORE.JGC.Controllers
                 return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
             }
         }
+
 
         //----------------------------------------------------------
         //Barcode
