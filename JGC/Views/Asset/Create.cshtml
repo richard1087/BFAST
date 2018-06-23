@@ -171,6 +171,687 @@
     }
 </script>
 
+<script type="text/javascript">
+
+    function InputData() {
+        var form = new FormData();
+
+        var SiteCode = document.getElementById("SiteCodeId").value;
+        var AssetCategoryCode = document.getElementById("CategoryCodeId").value;
+        var LocationCode = document.getElementById("LocationCodeId").value;
+        var DeptCode = document.getElementById("DepartmentCodeId").value;
+        var AssetName = document.getElementById("AssetName").value;
+        var SupplierCode = document.getElementById("SupplierCodeId").value;
+        var PurchaseNo = document.getElementById("PurchaseNo").value;
+        var AssetBrandCode = document.getElementById("BrandCodeId").value;
+        var PurchaseDate = document.getElementById("single_cal2").value;
+        var AssetModelCode = document.getElementById("ModelCodeId").value;
+        var PurchasePrice = document.getElementById("PurchasePrice").value;
+        var AssetSerialNo = document.getElementById("AssetSerialNo").value;
+        var AssetTypeCode = document.getElementById("TypeCodeId").value;
+        var CompanyID = document.getElementById("CompanyCodeId").value;
+        var CurrencyCode = document.getElementById("CurrencyCodeId").value;
+        var Floor = document.getElementById("Floor").value;
+        var Warranty = document.getElementById("Warranty").value;
+        var Qty = document.getElementById("Qty").value;
+        var bActive = document.getElementById("bActive");
+        var bCap = document.getElementById("bCap");
+        var file = document.getElementById("fileupload").files[0];
+
+        if (SiteCode == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetCategoryCode == "") {
+            $(".modal-body #peringatan3").text("Category harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (LocationCode == "") {
+            $(".modal-body #peringatan3").text("Location harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DeptCode == "") {
+            $(".modal-body #peringatan3").text("Deoartment harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetName == "") {
+            $(".modal-body #peringatan3").text("Asset Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (SupplierCode == "") {
+            $(".modal-body #peringatan3").text("Supplier harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PurchaseNo == "") {
+            $(".modal-body #peringatan3").text("Purchase No harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetBrandCode == "") {
+            $(".modal-body #peringatan3").text("Brand harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PurchaseDate == "") {
+            $(".modal-body #peringatan3").text("Purchase Date harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetModelCode == "") {
+            $(".modal-body #peringatan3").text("Model harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PurchasePrice == "") {
+            $(".modal-body #peringatan3").text("Price harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetSerialNo == "") {
+            $(".modal-body #peringatan3").text("Serial No harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetTypeCode == "") {
+            $(".modal-body #peringatan3").text("Type harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CompanyID == "") {
+            $(".modal-body #peringatan3").text("Company harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CurrencyCode == "") {
+            $(".modal-body #peringatan3").text("Currency harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (Floor == "") {
+            $(".modal-body #peringatan3").text("Floor harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (Warranty == "") {
+            $(".modal-body #peringatan3").text("Warranty harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (Qty == "") {
+            $(".modal-body #peringatan3").text("Qty harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            if (bActive.checked == true) {
+                bActive = "1";
+            }
+            else { bActive = "0"; }
+            if (bCap.checked == true) {
+                bCap = "1";
+            }
+            else { bCap = "0"; }
+
+            form.append("AssetName", AssetName);
+            form.append("AssetModelCode", AssetModelCode);
+            form.append("AssetCategoryCode", AssetCategoryCode);
+            form.append("AssetSerialNo", AssetSerialNo);
+            form.append("AssetTypeCode", AssetTypeCode);
+            form.append("AssetBrandCode", AssetBrandCode);
+            form.append("bActive", bActive);
+            form.append("bCap", bCap);
+            form.append("Floor", Floor);
+            form.append("Warranty", Warranty);
+            form.append("Qty", Qty);
+            form.append("Sitecode", SiteCode);
+            form.append("LocationCode", LocationCode);
+            form.append("PurchaseNo", PurchaseNo);
+            form.append("CurrencyCode", CurrencyCode);
+            form.append("PurchasePrice", PurchasePrice);
+            form.append("PurchaseDate", PurchaseDate);
+            form.append("SupplierCode", SupplierCode);
+            form.append("CompanyId", CompanyID);
+            form.append("DeptCode", DeptCode);
+            form.append("fileupload", file);
+            $.ajax({
+                url: '@Url.Action("InputData", "Asset")',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Index", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (response) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataMasterSite() {
+        var form = new FormData();
+        var SiteId = document.getElementById("SiteId").value;
+        var DescriptionId = document.getElementById("DescriptionId").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var bActive = document.getElementById("ActiveSite");
+        var PhoneId = document.getElementById("PhoneId").value;
+        if (SiteId == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DescriptionId == "") {
+            $(".modal-body #peringatan3").text("Description harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PhoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            if (bActive.checked == true) {
+                bActive = true;
+            }
+            else { bActive = false; }
+
+            form.append("bActive", bActive);
+            form.append("SiteCode", SiteId);
+            form.append("SiteName", DescriptionId);
+            form.append("Address", AddressId);
+            form.append("City", CityId);
+            form.append("PostalCode", PostalCodeId);
+            form.append("Telephone", PhoneId);
+            $.ajax({
+                 url: '@Url.Action("InputDataMasterSite", "Asset")',
+                type: 'post',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Create", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+                
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataCategory() {
+        var form = new FormData();
+        var AssetCategoryCodeId = document.getElementById("AssetCategoryCode").value;
+        var CategoryNameId = document.getElementById("CategoryName").value;
+        var InitialNameId = document.getElementById("InitialName").value;
+
+        if (CategoryNameId == "") {
+            $(".modal-body #peringatan3").text("Category Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetCategoryCodeId == "") {
+            $(".modal-body #peringatan3").text("Asset Category harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (InitialNameId == "") {
+            $(".modal-body #peringatan3").text("Initial Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            form.append("AssetCategoryCode", AssetCategoryCodeId);
+            form.append("AssetCategoryName", CategoryNameId);
+            form.append("Initial", InitialNameId);
+            $.ajax({
+                url: '@Url.Action("InputDataCategory", "Asset")',
+                type: 'post',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Create", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+        }
+    }
+
+    function InputDataMasterLocation() {
+        var form = new FormData();
+        var SiteId = document.getElementById("SiteId").value;
+        var LocationCode = document.getElementById("LocationCode").value;
+        var LocationName = document.getElementById("LocationName").value;
+        var Floor = document.getElementById("Floor").value;
+        var bActive = document.getElementById("bActive");
+        if (SiteId == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (LocationCode == "") {
+            $(".modal-body #peringatan3").text("Location code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else if (LocationName == "") {
+            $(".modal-body #peringatan3").text("Location name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            if (bActive.checked == true) {
+                bActive = "1";
+            }
+            else { bActive = "0"; }
+
+            form.append("SiteCode", SiteId);
+            form.append("LocationCode", LocationCode);
+            form.append("LocationName", LocationName);
+            form.append("Floor", Floor);
+            form.append("bActive", bActive);
+            $.ajax({
+                url: '@Url.Action("InputDataMasterSite", "Asset")',
+                type: 'post',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Index", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (response) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataDepartment() {
+        var DepartmentCodeId = document.getElementById("DepartmentCodeId").value;
+        var DepartmentNameId = document.getElementById("DepartmentNameId").value;
+
+        if (DepartmentCodeId == "") {
+            $(".modal-body #peringatan3").text("Department Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DepartmentNameId == "") {
+            $(".modal-body #peringatan3").text("Department Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataType() {
+        var TypeCodeId = document.getElementById("TypeCodeId").value;
+        var TypeNameId = document.getElementById("TypeNameId").value;
+
+        if (TypeCodeId == "") {
+            $(".modal-body #peringatan3").text("Type Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TypeNameId == "") {
+            $(".modal-body #peringatan3").text("Type Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataCompany() {
+        var CompanyId = document.getElementById("CompanyCode").value;
+        var CompanyName = document.getElementById("CompanyName").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var ProvinceId = document.getElementById("ProvinceId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var TelephoneId = document.getElementById("TelephoneId").value;
+
+        if (CompanyCode == "") {
+            $(".modal-body #peringatan3").text("Company Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CompanyName == "") {
+            $(".modal-body #peringatan3").text("Company Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ProvinceId == "") {
+            $(".modal-body #peringatan3").text("Province harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TelephoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataSupplier() {
+        var SupplierCodeId = document.getElementById("SupplierCodeId").value;
+        var SupplierNameId = document.getElementById("SupplierNameId").value;
+        var PIC = document.getElementById("PIC").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var ProvinceId = document.getElementById("ProvinceId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var TelephoneId = document.getElementById("TelephoneId").value;
+        var FaxId = document.getElementById("FaxId").value;
+        var Aktif = document.getElementById("ActiveId").value;
+
+        if (document.getElementById("ActiveId").checked) {
+            var Aktif = "1";
+        }
+        else {
+            var Aktif = "0";
+        }
+
+        if (SupplierCodeId == "") {
+            $(".modal-body #peringatan3").text("Supplier Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (SupplierNameId == "") {
+            $(".modal-body #peringatan3").text("Supplier Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PIC == "") {
+            $(".modal-body #peringatan3").text("PIC must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ProvinceId == "") {
+            $(".modal-body #peringatan3").text("Province must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TelephoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (FaxId == "") {
+            $(".modal-body #peringatan3").text("Fax must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataBrand() {
+        var BrandCodeId = document.getElementById("BrandCodeId").value;
+        var BrandNameId = document.getElementById("BrandNameId").value;
+
+        if (BrandCodeId == "") {
+            $(".modal-body #peringatan3").text("Brand Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (BrandNameId == "") {
+            $(".modal-body #peringatan3").text("Brand Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataModel() {
+        var ModelCodeId = document.getElementById("ModelCodeId").value;
+        var ModelNameId = document.getElementById("ModelNameId").value;
+        var BrandCodeId = document.getElementById("BrandCodeId").value;
+
+        if (ModelCodeId == "") {
+            $(".modal-body #peringatan3").text("Model Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ModelNameId == "") {
+            $(".modal-body #peringatan3").text("Model Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (BrandCodeId == "") {
+            $(".modal-body #peringatan3").text("Brand must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataCurrency() {
+        var CurrencyCodeId = document.getElementById("CurrencyCodeId").value;
+        var CurrencyNameId = document.getElementById("CurrencyNameId").value;
+
+        if (CurrencyCodeId == "") {
+            $(".modal-body #peringatan3").text("Currency Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CurrencyNameId == "") {
+            $(".modal-body #peringatan3").text("Currency Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+</script>
+
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -537,7 +1218,7 @@
                     <div class="form-group">
                         <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
                             <button type="button" id="SiteCancelId" class="btn btn-primary">Cancel</button>
-                            <button type="submit" id="SiteSubmitId" class="btn btn-success" onclick="InputDataSite(); return false;">Submit</button>
+                            <button type="submit" id="SiteSubmitId" class="btn btn-success" onclick="InputDataMasterSite(); return false;">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -569,6 +1250,12 @@
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Category Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="CategoryName" type="text" class="form-control" placeholder="Category Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Initial</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="InitialName" type="text" class="form-control" placeholder="Initial Name">
                         </div>
                     </div>
                     <div class="ln_solid"></div>
@@ -622,23 +1309,29 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Active</label>
-                        <div class="col-md-2 col-sm-2 col-xs-12">
-                            <div class="checkbox">
-                                <label style="padding-left:0 !important">
-                                    <input id="ActiveLocation" type="checkbox" class="flat"> Yes
-                                </label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Floor</label>
+                        <div class="col-md-1 col-sm-1 col-xs-12">
+                            <input type="number" id="Floor" name="Floor" class="form-control" placeholder="Floor" />
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12">Active</label>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <div class="checkbox">
+                                    <label style="padding-left:0 !important">
+                                        <input id="ActiveLocation" type="checkbox" class="flat"> Yes
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="ln_solid"></div>
-                    <div class="form-group">
-                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
-                            <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
-                            <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataLocation(); return false;">Submit</button>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
+                                <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
+                                <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataMasterLocation(); return false;">Submit</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+</form>
             </div>
         </div>
     </div>
@@ -1140,554 +1833,4 @@
               $("#currencyModal").modal('toggle');
           });
       });
-</script>
-<script type="text/javascript">
-
-    function InputData() {
-        var form = new FormData();
-
-        var SiteCode = document.getElementById("SiteCodeId").value;
-        var AssetCategoryCode = document.getElementById("CategoryCodeId").value;
-        var LocationCode = document.getElementById("LocationCodeId").value;
-        var DeptCode = document.getElementById("DepartmentCodeId").value;
-        var AssetName = document.getElementById("AssetName").value;
-        var SupplierCode = document.getElementById("SupplierCodeId").value;
-        var PurchaseNo = document.getElementById("PurchaseNo").value;
-        var AssetBrandCode = document.getElementById("BrandCodeId").value;
-        var PurchaseDate = document.getElementById("single_cal2").value;
-        var AssetModelCode = document.getElementById("ModelCodeId").value;
-        var PurchasePrice = document.getElementById("PurchasePrice").value;
-        var AssetSerialNo = document.getElementById("AssetSerialNo").value;
-        var AssetTypeCode = document.getElementById("TypeCodeId").value;
-        var CompanyID = document.getElementById("CompanyCodeId").value;
-        var CurrencyCode = document.getElementById("CurrencyCodeId").value;
-        var Floor = document.getElementById("Floor").value;
-        var Warranty = document.getElementById("Warranty").value;
-        var Qty = document.getElementById("Qty").value;
-        var bActive = document.getElementById("bActive");
-        var bCap = document.getElementById("bCap");
-        var file = document.getElementById("fileupload").files[0];
-        //var SiteId = document.getElementById("Sitecode").value;
-        //var AssetCategoryCode = document.getElementById("AssetCategoryCode").value;
-        //var LocationCode = document.getElementById("LocationCode").value;
-        //var DeptCode = document.getElementById("DeptCode").value;
-        //var AssetName = document.getElementById("AssetName").value;
-        //var SupplierCode = document.getElementById("SupplierCode").value;
-        //var PurchaseNo = document.getElementById("PurchaseNo").value;
-        //var AssetBrandCode = document.getElementById("AssetBrandCode").value;
-        //var PurchaseDate = document.getElementById("PurchaseDate").value;
-        //var AssetModelCode = document.getElementById("AssetModelCode").value;
-        //var PurchasePrice = document.getElementById("PurchasePrice").value;
-        //var AssetSerialNo = document.getElementById("AssetSerialNo").value;
-        //var AssetTypeCode = document.getElementById("AssetTypeCode").value;
-        //var CompanyId = document.getElementById("CompanyId").value;
-        //var CurrencyCode = document.getElementById("CurrencyCode").value;
-        //var Floor = document.getElementById("Floor").value;
-        //var Warranty = document.getElementById("Warranty").value;
-        //var bActive = document.getElementById("bActive");
-        //var bCap = document.getElementById("bCap");
-        //var file = document.getElementById("fileupload").files[0];
-        //var Photo = document.getElementById("file").value;
-        //var bActive = document.getElementById("bActive").value;
-
-        if (SiteCode == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetCategoryCode == "") {
-            $(".modal-body #peringatan3").text("Category harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (LocationCode == "") {
-            $(".modal-body #peringatan3").text("Location harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (DeptCode == "") {
-            $(".modal-body #peringatan3").text("Deoartment harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetName == "") {
-            $(".modal-body #peringatan3").text("Asset Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (SupplierCode == "") {
-            $(".modal-body #peringatan3").text("Supplier harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PurchaseNo == "") {
-            $(".modal-body #peringatan3").text("Purchase No harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetBrandCode == "") {
-            $(".modal-body #peringatan3").text("Brand harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PurchaseDate == "") {
-            $(".modal-body #peringatan3").text("Purchase Date harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetModelCode == "") {
-            $(".modal-body #peringatan3").text("Model harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PurchasePrice == "") {
-            $(".modal-body #peringatan3").text("Price harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetSerialNo == "") {
-            $(".modal-body #peringatan3").text("Serial No harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetTypeCode == "") {
-            $(".modal-body #peringatan3").text("Type harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CompanyID == "") {
-            $(".modal-body #peringatan3").text("Company harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CurrencyCode == "") {
-            $(".modal-body #peringatan3").text("Currency harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (Floor == "") {
-            $(".modal-body #peringatan3").text("Floor harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (Warranty == "") {
-            $(".modal-body #peringatan3").text("Warranty harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (Qty == "") {
-            $(".modal-body #peringatan3").text("Qty harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-        else {
-            if (bActive.checked == true) {
-                bActive = "1";
-            }
-            else { bActive = "0"; }
-            if (bCap.checked == true) {
-                bCap = "1";
-            }
-            else { bCap = "0"; }
-
-            //if (file == undefined) {
-            //    alert("Browser not supported!");
-            //}
-            //else {
-            //    var fd = new FormData();
-            //    fd.append("fileupload", file);
-            //}
-            form.append("AssetName", AssetName);
-            form.append("AssetModelCode", AssetModelCode);
-            form.append("AssetCategoryCode", AssetCategoryCode);
-            form.append("AssetSerialNo", AssetSerialNo);
-            form.append("AssetTypeCode", AssetTypeCode);
-            form.append("AssetBrandCode", AssetBrandCode);
-            form.append("bActive", bActive);
-            form.append("bCap", bCap);
-            form.append("Floor", Floor);
-            form.append("Warranty", Warranty);
-            form.append("Qty", Qty);
-            form.append("Sitecode", SiteCode);
-            form.append("LocationCode", LocationCode);
-            form.append("PurchaseNo", PurchaseNo);
-            form.append("CurrencyCode", CurrencyCode);
-            form.append("PurchasePrice", PurchasePrice);
-            form.append("PurchaseDate", PurchaseDate);
-            form.append("SupplierCode", SupplierCode);
-            form.append("CompanyId", CompanyID);
-            form.append("DeptCode", DeptCode);
-            form.append("fileupload", file);
-            $.ajax({
-                url: '@Url.Action("InputData", "Asset")',
-                type: 'POST',
-                contentType: false,
-                processData: false,
-                cache: false,
-                async: true,
-                data: form,
-                success: function (response) {
-                    if (response.success) {
-                        $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
-                        $('#btnok').click(function (e) {
-                            window.location.href = "@Url.Action("Index", "Asset")";
-                        })
-                        $("#Alert2").modal();
-
-                    } else {
-                        $(".modal-body #peringatan3").text(response.responseText);
-                        $('#btnerror').click(function (e) {
-                            $('#Alert3').modal('hide');
-                        })
-                        $("#Alert3").modal();
-                    }
-                },
-                error: function (response) {
-                    $(".modal-body #peringatan3").text(textStatus.responseText);
-                    $('#btncaution').click(function (e) {
-                        $('#Alert3').modal('hide');
-                    })
-                    $("#Alert3").modal();
-                }
-            });
-        }
-    }
-
-
-
-    function InputDataSite() {
-        var SiteId = document.getElementById("SiteId").value;
-        var DescriptionId = document.getElementById("DescriptionId").value;
-        var AddressId = document.getElementById("AddressId").value;
-        var CityId = document.getElementById("CityId").value;
-        var StateId = document.getElementById("StateId").value;
-        var PostalCodeId = document.getElementById("PostalCodeId").value;
-        var CountryId = document.getElementById("CountryId").value;
-
-        if (SiteId == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (DescriptionId == "") {
-            $(".modal-body #peringatan3").text("Description harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AddressId == "") {
-            $(".modal-body #peringatan3").text("Address harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CityId == "") {
-            $(".modal-body #peringatan3").text("City harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (StateId == "") {
-            $(".modal-body #peringatan3").text("State harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PostalCodeId == "") {
-            $(".modal-body #peringatan3").text("Postal Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CountryId == "") {
-            $(".modal-body #peringatan3").text("Country harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataCategory() {
-        var CategoryNameId = document.getElementById("CategoryNameId").value;
-
-        if (CategoryNameId == "") {
-            $(".modal-body #peringatan3").text("Category Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataLocation() {
-        var SiteId = document.getElementById("SiteId").value;
-        var LocationCode = document.getElementById("LocationCode").value;
-
-        if (SiteId == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (LocationCode == "") {
-            $(".modal-body #peringatan3").text("Location harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataDepartment() {
-        var DepartmentCodeId = document.getElementById("DepartmentCodeId").value;
-        var DepartmentNameId = document.getElementById("DepartmentNameId").value;
-
-        if (DepartmentCodeId == "") {
-            $(".modal-body #peringatan3").text("Department Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (DepartmentNameId == "") {
-            $(".modal-body #peringatan3").text("Department Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataType() {
-        var TypeCodeId = document.getElementById("TypeCodeId").value;
-        var TypeNameId = document.getElementById("TypeNameId").value;
-
-        if (TypeCodeId == "") {
-            $(".modal-body #peringatan3").text("Type Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (TypeNameId == "") {
-            $(".modal-body #peringatan3").text("Type Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataCompany() {
-        var CompanyId = document.getElementById("CompanyCode").value;
-        var CompanyName = document.getElementById("CompanyName").value;
-        var AddressId = document.getElementById("AddressId").value;
-        var CityId = document.getElementById("CityId").value;
-        var ProvinceId = document.getElementById("ProvinceId").value;
-        var PostalCodeId = document.getElementById("PostalCodeId").value;
-        var TelephoneId = document.getElementById("TelephoneId").value;
-
-        if (CompanyCode == "") {
-            $(".modal-body #peringatan3").text("Company Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CompanyName == "") {
-            $(".modal-body #peringatan3").text("Company Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AddressId == "") {
-            $(".modal-body #peringatan3").text("Address harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CityId == "") {
-            $(".modal-body #peringatan3").text("City harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (ProvinceId == "") {
-            $(".modal-body #peringatan3").text("Province harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PostalCodeId == "") {
-            $(".modal-body #peringatan3").text("Postal Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (TelephoneId == "") {
-            $(".modal-body #peringatan3").text("Telephone harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataSupplier() {
-        var SupplierCodeId = document.getElementById("SupplierCodeId").value;
-        var SupplierNameId = document.getElementById("SupplierNameId").value;
-        var PIC = document.getElementById("PIC").value;
-        var AddressId = document.getElementById("AddressId").value;
-        var CityId = document.getElementById("CityId").value;
-        var ProvinceId = document.getElementById("ProvinceId").value;
-        var PostalCodeId = document.getElementById("PostalCodeId").value;
-        var TelephoneId = document.getElementById("TelephoneId").value;
-        var FaxId = document.getElementById("FaxId").value;
-        var Aktif = document.getElementById("ActiveId").value;
-
-        if (document.getElementById("ActiveId").checked) {
-            var Aktif = "1";
-        }
-        else {
-            var Aktif = "0";
-        }
-
-        if (SupplierCodeId == "") {
-            $(".modal-body #peringatan3").text("Supplier Code must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (SupplierNameId == "") {
-            $(".modal-body #peringatan3").text("Supplier Name must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PIC == "") {
-            $(".modal-body #peringatan3").text("PIC must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AddressId == "") {
-            $(".modal-body #peringatan3").text("Address must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CityId == "") {
-            $(".modal-body #peringatan3").text("City must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (ProvinceId == "") {
-            $(".modal-body #peringatan3").text("Province must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PostalCodeId == "") {
-            $(".modal-body #peringatan3").text("Postal Code must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (TelephoneId == "") {
-            $(".modal-body #peringatan3").text("Telephone must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (FaxId == "") {
-            $(".modal-body #peringatan3").text("Fax must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataBrand() {
-        var BrandCodeId = document.getElementById("BrandCodeId").value;
-        var BrandNameId = document.getElementById("BrandNameId").value;
-
-        if (BrandCodeId == "") {
-            $(".modal-body #peringatan3").text("Brand Code must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (BrandNameId == "") {
-            $(".modal-body #peringatan3").text("Brand Name must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataModel() {
-        var ModelCodeId = document.getElementById("ModelCodeId").value;
-        var ModelNameId = document.getElementById("ModelNameId").value;
-        var BrandCodeId = document.getElementById("BrandCodeId").value;
-
-        if (ModelCodeId == "") {
-            $(".modal-body #peringatan3").text("Model Code must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (ModelNameId == "") {
-            $(".modal-body #peringatan3").text("Model Name must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (BrandCodeId == "") {
-            $(".modal-body #peringatan3").text("Brand must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataCurrency() {
-        var CurrencyCodeId = document.getElementById("CurrencyCodeId").value;
-        var CurrencyNameId = document.getElementById("CurrencyNameId").value;
-
-        if (CurrencyCodeId == "") {
-            $(".modal-body #peringatan3").text("Currency Code must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CurrencyNameId == "") {
-            $(".modal-body #peringatan3").text("Currency Name must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
 </script>

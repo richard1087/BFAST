@@ -61,3 +61,4 @@ D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\obj\Debug\CORE.JGC.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\obj\Debug\CORE.JGC.pdb
+D:\Project\JGC\JGC\BFAST\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache

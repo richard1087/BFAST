@@ -14,8 +14,8 @@ namespace CORE.JGC.Models
         public string City { get; set; }
         public string PostalCode { get; set; }
         public string Telephone { get; set; }
-        public bool bActive { get; set; }
         public string Aktif { get; set; }
+        public bool bActive { get; set; }
         public string Iby { get; set; }
         public DateTime Ion { get; set; }
         public string Uby { get; set; }
