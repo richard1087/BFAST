@@ -239,9 +239,9 @@
                         <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th style="width:9% !important;">@Html.Label("Currency Code")</th>
+                                    <th style="width:3% !important;">@Html.Label("Currency Code")</th>
                                     <th style="width:12% !important;">@Html.Label("Currency Name")</th>
-                                    <th style="width:9% !important;">@Html.Label("Currency Code Convert")</th>
+                                    <th style="width:5% !important;">@Html.Label("Currency Code Convert")</th>
                                     <th style="width:12% !important;">@Html.Label("Currency Name Convert")</th>
                                     <th style="width:9% !important;">@Html.Label("Exchange Rate")</th>
                                     <th style="width:9%;"></th>
@@ -291,14 +291,14 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Currency</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">
+                            <div class="">
                                 <input class="form-control readonly" id="CurrencyCode" name="CurrencyCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                <input class="form-control readonly" id="CurrencyName" name="CurrencyName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                <span class="input-group-btn">
-                                    <a class="btn btn-info" onclick="Currency('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                <input class="form-control readonly" id="CurrencyName" placeholder="Currency" name="CurrencyName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Currency('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
+                                @*<span class="input-group-btn">
+                                    <a class="btn btn-info"  style="margin-right:0;height: 34px;">
                                         <i class="fa fa-search fa-fw"></i>
                                     </a>
-                                </span>
+                                </span>*@
                             </div>
                         </div>
                     </div>
@@ -306,14 +306,14 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Currency Convert</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">
+                            <div class="">
                                 <input class="form-control readonly" id="CurrencyConvertCode" name="CurrencyConvertCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                <input class="form-control readonly" id="CurrencyConvertName" name="CurrencyConvertName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                <span class="input-group-btn">
-                                    <a class="btn btn-info" onclick="Currency('2')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                <input class="form-control readonly" id="CurrencyConvertName" placeholder="Currency Convert" name="CurrencyConvertName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Currency('2')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
+                                @*<span class="input-group-btn">
+                                    <a class="btn btn-info"  style="margin-right:0;height: 34px;">
                                         <i class="fa fa-search fa-fw"></i>
                                     </a>
-                                </span>
+                                </span>*@
                             </div>
                         </div>
                     </div>
@@ -354,15 +354,15 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Currency</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">
+                            <div class="">
                                 <input id="NoId" type="hidden" name="NoId" value="" />
                                 <input class="form-control readonly" id="EditCurrencyCode" name="EditCurrencyCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                <input class="form-control readonly" id="EditCurrencyName" name="EditCurrencyName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                <span class="input-group-btn">
-                                    <a class="btn btn-info" onclick="Currency('3')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                <input class="form-control readonly" id="EditCurrencyName" name="EditCurrencyName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Currency('3')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
+                                @*<span class="input-group-btn">
+                                    <a class="btn btn-info"  style="margin-right:0;height: 34px;">
                                         <i class="fa fa-search fa-fw"></i>
                                     </a>
-                                </span>
+                                </span>*@
                             </div>
                         </div>
                     </div>
@@ -370,14 +370,14 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Currency Convert</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">
+                            <div class="">
                                 <input class="form-control readonly" id="EditCurrencyConvertCode" name="EditCurrencyConvertCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                <input class="form-control readonly" id="EditCurrencyConvertName" name="EditCurrencyConvertName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                <span class="input-group-btn">
-                                    <a class="btn btn-info" onclick="Currency('4')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                <input class="form-control readonly" id="EditCurrencyConvertName" name="EditCurrencyConvertName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Currency('4')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" readonly />
+                                @*<span class="input-group-btn">
+                                    <a class="btn btn-info"  style="margin-right:0;height: 34px;">
                                         <i class="fa fa-search fa-fw"></i>
                                     </a>
-                                </span>
+                                </span>*@
                             </div>
                         </div>
                     </div>

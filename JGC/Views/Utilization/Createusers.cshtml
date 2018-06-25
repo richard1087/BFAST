@@ -236,16 +236,9 @@
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Role</label>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="input-group">
-                                        <input type="hidden" class="form-control readonly" placeholder="Role" id="GroupMenuCode" data-id="i" name="GroupMenuCode" maxlength="50" required="">
-                                        <input type="text" class="form-control readonly" placeholder="Role" id="GroupMenuName" value="" name="GroupMenuCode" maxlength="50">
-                                        <span class="input-group-btn">
-                                            <a class="btn btn-info" onclick="Role()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                                <i class="fa fa-search fa-fw"></i>
-                                            </a>
-                                        </span>
-                                    </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="hidden" class="form-control readonly" placeholder="Role" id="GroupMenuCode" data-id="i" name="GroupMenuCode" maxlength="50" required="">
+                                    <input type="text" class="form-control readonly" placeholder="Role" id="GroupMenuName" value="" name="GroupMenuCode" onclick="Role()" data-target="#Lookup" data-toggle="modal" autocomplete="off" maxlength="50" style="cursor:auto;" required="" readonly>
                                 </div>
                                 <!--<div class="col-md-1 col-sm-1 col-xs-12">
                                     <button class="btn btn-default" type="button">Manage Groups</button>
@@ -302,14 +295,14 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Company</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input id="CompanyID" type="hidden" name="CompanyID" class="form-control col-md-10" data-id="i" placeholder="CompanyID" required="" />
-                                    <input class="form-control readonly" id="CompanyName" name="CompanyName" value="" type="text" data-id="i" autocomplete="off" onclick="Company()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                                    <input class="form-control readonly" placeholder="Company" id="CompanyName" name="CompanyName" value="" type="text" data-id="i" autocomplete="off" onclick="Company()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Department</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input id="DeptCode" type="hidden" name="DeptCode" class="form-control col-md-10" data-id="i" placeholder="DeptCode" required="" />
-                                    <input class="form-control readonly" id="DeptName" name="DeptName" value="" type="text" data-id="i" autocomplete="off" onclick="Dept()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                                    <input class="form-control readonly" placeholder="Department" id="DeptName" name="DeptName" value="" type="text" data-id="i" autocomplete="off" onclick="Dept()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -318,22 +311,22 @@
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Site()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                                    <input class="form-control readonly" placeholder="Site" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Site()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" onclick="Location()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                                    <input class="form-control readonly" placeholder="Location" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" onclick="Location()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Floor</label>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <input class="form-control readonly" id="Floor" name="Floor" value="" type="text" data-id="i" autocomplete="off" required="" readonly/>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input class="form-control readonly" placeholder="Floor" id="Floor" name="Floor" value="" type="text" data-id="i" autocomplete="off" required="" style="cursor:auto;" readonly/>
                                 </div>
                             </div>
                             <div class="form-group">

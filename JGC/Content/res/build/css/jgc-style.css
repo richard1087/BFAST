@@ -528,8 +528,19 @@ table.dataTable{
     margin-bottom: 15px;
 }
 
-.btn-success{
+.btn{
     margin:0 !important;
+    
+}
+
+td>.btn-success{
+    /*height:27px !important;*/
+    padding-top:1px !important;
+    padding-bottom:1px !important;
+}
+
+td>.btn-success>.glyphicon{
+    font-size:11px;
 }
 
 #Lookup{
@@ -538,6 +549,10 @@ table.dataTable{
     margin-top: 30px; 
     margin-left:auto; 
     margin-right:auto;
+}
+
+#datatablepopup{
+    cursor:default;
 }
 
 /* CONTENT CSS END */

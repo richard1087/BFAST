@@ -371,18 +371,18 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Transfer No</label>
                                 <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                    <input class="form-control" id="TransferNo" name="TransferNo" value="auto-generate" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                    <input class="form-control" id="TransferNo" name="TransferNo" value="Auto Generate" type="text" data-id="i" autocomplete="off" style="cursor:auto;" required="" readonly />
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="input-group">
+                                    <div class="">
                                         <input class="form-control readonly" id="Type" name="Type" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                        <input class="form-control readonly" id="TypeName" name="TypeName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                        <span class="input-group-btn">
+                                        <input class="form-control readonly" id="TypeName" placeholder="Type" name="TypeName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="TypeTransfer()" data-target="#Lookup" data-toggle="modal" style="cursor:auto; margin-right:0;height: 34px;" readonly />
+                                        @*<span class="input-group-btn">
                                             <a class="btn btn-info" onclick="TypeTransfer()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px; readonly">
                                                 <i class="fa fa-search fa-fw"></i>
                                             </a>
-                                        </span>
+                                        </span>*@
                                     </div>
                                 </div>
                             </div>
@@ -395,46 +395,46 @@
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Transfer Asset Ref</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="input-group">
-                                        <input class="form-control readonly" id="TransferAssetNoRef" name="TransferAssetNoRef" value="" type="text" data-id="i" autocomplete="off" readonly />
-                                        <span class="input-group-btn">
+                                    <div class="">
+                                        <input class="form-control readonly" id="TransferAssetNoRef" placeholder="Transfer Asset Ref" name="TransferAssetNoRef" value="" type="text" data-id="i" autocomplete="off" onclick="TransferNoRef()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;cursor:auto;" readonly />
+                                        @*<span class="input-group-btn">
                                             <a class="btn btn-info" id="btnRefTransfer" name="btnRefTransfer" onclick="TransferNoRef()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;" readonly>
                                                 <i class="fa fa-search fa-fw"></i>
                                             </a>
-                                        </span>
+                                        </span>*@
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="input-group">
+                                    <div class="">
                                         <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                        <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                        <span class="input-group-btn">
-                                            <a class="btn btn-info" onclick="Site()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <input class="form-control readonly" placeholder="Site" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Site()" data-target="#Lookup" data-toggle="modal" style="curson:auto;margin-right:0;height: 34px; cursor:auto;" readonly />
+                                        @*<span class="input-group-btn">
+                                            <a class="btn btn-info" style="margin-right:0;height: 34px;">
                                                 <i class="fa fa-search fa-fw"></i>
                                             </a>
-                                        </span>
+                                        </span>*@
                                     </div>
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="input-group">
+                                    <div class="">
                                         <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                        <input class="form-control readonly" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                        <span class="input-group-btn">
+                                        <input class="form-control readonly" placeholder="Location" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" required="" onclick="Location()" data-target="#Lookup" data-toggle="modal"  style="cursor:auto;margin-right:0;height: 34px;" readonly />
+                                        @*<span class="input-group-btn">
                                             <a class="btn btn-info" onclick="Location()" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
                                                 <i class="fa fa-search fa-fw"></i>
                                             </a>
-                                        </span>
+                                        </span>*@
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Floor</label>
                                 <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                    <input class="form-control readonly" id="Floor" name="Floor" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                    <input class="form-control readonly" id="Floor" name="Floor" placeholder="Floor" value="" type="text" data-id="i" autocomplete="off" required="" style="cursor:auto;" readonly />
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Notes</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
@@ -468,13 +468,13 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="input-group">
-                                <input class="form-control readonly" id="AssetCode" name="AssetCode" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-                                <span class="input-group-btn">
-                                    <a class="btn btn-info" onclick="Asset('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                            <div class="">
+                                <input class="form-control readonly" id="AssetCode" placeholder="Asset Code" name="AssetCode" value="" type="text" data-id="i" autocomplete="off" onclick="Asset('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                                @*<span class="input-group-btn">
+                                    <a class="btn btn-info"  style="margin-right:0;height: 34px;">
                                         <i class="fa fa-search fa-fw"></i>
                                     </a>
-                                </span>
+                                </span>*@
                             </div>
                         </div>
                     </div>
