@@ -48,43 +48,7 @@ D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\vbc.exe.config
 D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\vbc.rsp
 D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\VBCSCompiler.exe
 D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\VBCSCompiler.exe.config
-D:\Project\JGC\JGC\BFAST\JGC\bin\Antlr3.Runtime.dll
 D:\Project\JGC\JGC\BFAST\JGC\bin\CORE.JGC.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\EntityFramework.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\EntityFramework.SqlServer.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.AI.Agent.Intercept.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.AI.DependencyCollector.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.AI.PerfCounterCollector.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.AI.ServerTelemetryChannel.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.AI.Web.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.AI.WindowsServer.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.ApplicationInsights.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.AspNet.Identity.Core.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.AspNet.TelemetryCorrelation.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.Owin.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.Owin.Security.Cookies.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.Owin.Security.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.Owin.Security.Facebook.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.Owin.Security.Google.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.Owin.Security.OAuth.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.Owin.Security.Twitter.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Microsoft.Web.Infrastructure.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Newtonsoft.Json.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\Owin.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\System.Diagnostics.DiagnosticSource.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\System.Web.Helpers.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\System.Web.Mvc.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\System.Web.Optimization.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\System.Web.Razor.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\System.Web.WebPages.Deployment.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\System.Web.WebPages.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\System.Web.WebPages.Razor.dll
-D:\Project\JGC\JGC\BFAST\JGC\bin\WebGrease.dll
 D:\Project\JGC\JGC\BFAST\JGC\bin\itextsharp.dll
 D:\Project\JGC\JGC\BFAST\JGC\bin\CORE.JGC.pdb
 D:\Project\JGC\JGC\BFAST\JGC\bin\Antlr3.Runtime.pdb
@@ -120,6 +84,7 @@ D:\Project\JGC\JGC\BFAST\JGC\bin\itextsharp.xml
 D:\Project\JGC\JGC\BFAST\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
 D:\Project\JGC\JGC\BFAST\JGC\obj\Debug\JGC.dll
 D:\Project\JGC\JGC\BFAST\JGC\obj\Debug\JGC.pdb
+<<<<<<< HEAD
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
@@ -364,3 +329,5 @@ D:\TEST\PROJECT JGC\BFAST-20180620\BFAST\JGC\bin\itextsharp.xml
 D:\TEST\PROJECT JGC\BFAST-20180620\BFAST\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
 D:\TEST\PROJECT JGC\BFAST-20180620\BFAST\JGC\obj\Debug\JGC.dll
 D:\TEST\PROJECT JGC\BFAST-20180620\BFAST\JGC\obj\Debug\JGC.pdb
+=======
+>>>>>>> 56f5a28e093c4eff5d754cd58cbfbc2c308d2855

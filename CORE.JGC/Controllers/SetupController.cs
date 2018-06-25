@@ -301,7 +301,7 @@ namespace CORE.JGC.Controllers
                     assetcategory.Id = res.Id;
                     assetcategory.AssetCategoryCode = res.AssetCategoryCode;
                     assetcategory.AssetCategoryName = res.AssetCategoryName;
-
+                    assetcategory.Initial = res.Initial;
                     msassetcategory.Add(assetcategory);
                 }
             }
@@ -661,15 +661,15 @@ namespace CORE.JGC.Controllers
         }
 
         [HttpPost]
-        public ActionResult InsertAssetCategory(string AssetCategoryCodeId, string AssetCategoryNameId)
+        public ActionResult InsertAssetCategory(string AssetCategoryCodeId, string AssetCategoryNameId, string AssetInitialNameId)
         {
             try
             {
-
+                string UserID = Session["UserName"].ToString().Trim();
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetCategory_IUD(AssetCategoryCodeId, AssetCategoryNameId, Session["username"].ToString().Trim(), 1);
+                    var query = dc.MsAssetCategory_IUD(AssetCategoryCodeId, AssetCategoryNameId, AssetInitialNameId, UserID, 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -697,7 +697,7 @@ namespace CORE.JGC.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateAssetCategory(string NoID, string EditAssetCategoryCodeId, string EditAssetCategoryNameId)
+        public ActionResult UpdateAssetCategory(string NoID, string EditAssetCategoryCodeId, string EditAssetCategoryNameId, string EditInitialNameId)
         {
             try
             {
@@ -705,7 +705,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    var query = dc.MsAssetCategory_IUD(EditAssetCategoryCodeId, EditAssetCategoryNameId, Session["username"].ToString().Trim(), 2);
+                    var query = dc.MsAssetCategory_IUD(EditAssetCategoryCodeId, EditAssetCategoryNameId, EditInitialNameId, Session["username"].ToString().Trim(), 2);
                     string status = "";
                     foreach (var res in query)
                     {
