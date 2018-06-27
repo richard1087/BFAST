@@ -4,6 +4,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+    function Update(UserName) {
+        $.ajax({
+            url: '@Url.Action("UpdateDataUser", "Utilization")',
+            type: 'post',
+            cache: false,
+            async: true,
+            data: { UserName: UserName },
+            success: function (response) {
+                window.location.href = "@Url.Action("Updateuser", "Utilization")";
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $(".modal-body #peringatan1").text("Mohon Tunggu...");
+                $('#btncaution').click(function (e) {
+                    $('#Alert1').modal('hide');
+                })
+                $("#Alert1").modal();
+            }
+        });
+    }
+</script>
+
 
 <div class="right_col" role="main">
     <div class="">
@@ -50,7 +72,7 @@
                                     <td>@Html.DisplayFor(modelItem => item.DeptName)</td>
                                     <td>@Html.DisplayFor(modelItem => item.LocationName)</td>
                                     <td style="width:5% !important;text-align:center;">
-                                        <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick=""><span class="glyphicon glyphicon-edit"></span></button>
+                                        <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="Update('@Html.DisplayFor(modelItem => item.UserName)')"><span class="glyphicon glyphicon-edit"></span></button>
                                     </td>
                                 </tr>
                                 }

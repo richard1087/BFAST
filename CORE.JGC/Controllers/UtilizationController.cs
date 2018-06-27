@@ -80,6 +80,43 @@ namespace CORE.JGC.Controllers
             }
             return View("Updaterole");
         }
+        [HttpPost]
+        public ActionResult UpdateDataUser(string UserName)
+        {
+            Session["UserName"] = UserName;
+
+            dc = new BFASTDataContext();
+            List<MsUsers> msUser = new List<MsUsers>();
+            try
+            {
+                var query = dc.UtilUser_View(Session["UserName"].ToString(), "U");
+                foreach (var res in query)
+                {
+                    ViewData["GroupMenuCode"] = res.GroupMenuCode.ToString().Trim();
+                    ViewData["GroupMenuName"] = res.GroupMenuName.ToString().Trim();
+                    ViewData["UserName"] = res.UserName.ToString().Trim();
+                    ViewData["Email"] = res.Email.ToString().Trim();
+                    ViewData["Name"] = res.Name.ToString();
+                    ViewData["Address"] = res.Address.ToString();
+                    ViewData["Phone"] = res.Phone.ToString();
+                    ViewData["CompanyID"] = res.CompanyID.ToString().Trim();
+                    ViewData["CompanyName"] = res.CompanyName.ToString();
+                    ViewData["DeptCode"] = res.DeptCode.ToString().Trim();
+                    ViewData["DeptName"] = res.DeptName.ToString().Trim();
+                    ViewData["SiteCode"] = res.SiteCode.ToString().Trim();
+                    ViewData["SiteName"] = res.SiteName.ToString().Trim();
+                    ViewData["LocationCode"] = res.LocationCode.ToString().Trim();
+                    ViewData["LocationName"] = res.LocationName.ToString().Trim();
+                    ViewData["Floor"] = res.Floor.ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                msUser = null;
+            }
+            return View("Updateuser");
+        }
 
         public ActionResult Updatemenu()
         {
@@ -126,6 +163,41 @@ namespace CORE.JGC.Controllers
 
             return View();
         }
+        public ActionResult UpdateUser()
+        {
+            dc = new BFASTDataContext();
+            List<MsUsers> msUser = new List<MsUsers>();
+            try
+            {
+                var query = dc.UtilUser_View(Session["UserName"].ToString(), "U");
+                foreach (var res in query)
+                {
+
+                    ViewData["GroupMenuCode"] = res.GroupMenuCode.ToString().Trim();
+                    ViewData["GroupMenuName"] = res.GroupMenuName.ToString().Trim();
+                    ViewData["UserName"] = res.UserName.ToString().Trim();
+                    ViewData["Email"] = res.Email.ToString().Trim();
+                    ViewData["Name"] = res.Name.ToString();
+                    ViewData["Address"] = res.Address.ToString();
+                    ViewData["Phone"] = res.Phone.ToString();
+                    ViewData["CompanyID"] = res.CompanyID.ToString().Trim();
+                    ViewData["CompanyName"] = res.CompanyName.ToString();
+                    ViewData["DeptCode"] = res.DeptCode.ToString().Trim();
+                    ViewData["DeptName"] = res.DeptName.ToString().Trim();
+                    ViewData["SiteCode"] = res.SiteCode.ToString().Trim();
+                    ViewData["SiteName"] = res.SiteName.ToString().Trim();
+                    ViewData["LocationCode"] = res.LocationCode.ToString().Trim();
+                    ViewData["LocationName"] = res.LocationName.ToString().Trim();
+                    ViewData["Floor"] = res.Floor.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                msUser = null;
+            }
+
+            return View();
+        }
 
 
         public ActionResult Role()
@@ -144,7 +216,7 @@ namespace CORE.JGC.Controllers
             return View();
         }
 
-        
+
         public ActionResult Access()
         {
             return View();
@@ -152,7 +224,7 @@ namespace CORE.JGC.Controllers
 
         public ActionResult Users()
         {
-           
+
             MsUsers[] msUsers = null;
             msUsers = GridUsers();
             return View(msUsers);
@@ -189,7 +261,7 @@ namespace CORE.JGC.Controllers
             List<UtilGroupMenu> utilGMenu = new List<UtilGroupMenu>();
             try
             {
-                var query = dc.UtilGroupMenu_View("","G");
+                var query = dc.UtilGroupMenu_View("", "G");
                 foreach (var res in query)
                 {
                     UtilGroupMenu gMenu = new UtilGroupMenu();
@@ -264,7 +336,7 @@ namespace CORE.JGC.Controllers
                 dc = new BFASTDataContext();
                 try
                 {
-                    
+
                     string UserID = Session["UserName"].ToString().Trim();
                     //CompleteDateC = null;
 
@@ -337,7 +409,7 @@ namespace CORE.JGC.Controllers
             }
         }
         [HttpPost]
-        public ActionResult SaveUser(string GroupMenuCode,string UserNameS, string PasswordS, string Name, string Email, string Address, string Phone, string CompanyID, string DeptCode, string SiteCode, string LocationCode,int Floor )
+        public ActionResult SaveUser(string GroupMenuCode, string UserNameS, string PasswordS, string Name, string Email, string Address, string Phone, string CompanyID, string DeptCode, string SiteCode, string LocationCode, int Floor)
         {
             try
             {
@@ -349,7 +421,7 @@ namespace CORE.JGC.Controllers
                     string UserID = Session["UserName"].ToString().Trim();
                     //CompleteDateC = null;
 
-                    var query = dc.UtilUser_IUD(UserNameS, PasswordS,Name,Email,Address,Phone,CompanyID,DeptCode,SiteCode,LocationCode,Floor, GroupMenuCode,1,0, UserID, 1);
+                    var query = dc.UtilUser_IUD(UserNameS, PasswordS, Name, Email, Address, Phone, CompanyID, DeptCode, SiteCode, LocationCode, Floor, GroupMenuCode, 1, 0, UserID, 1);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -460,7 +532,7 @@ namespace CORE.JGC.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveUpdateUser(string GroupMenuCode, string UserNameS, string PasswordS, string Name, string Email, string Address, string Phone, string CompanyID, string DeptCode, string SiteCode, string LocationCode, int Floor, int bActive)
+        public ActionResult SaveUpdateUser(string GroupMenuCode, string UserNameS, string PasswordS, string Name, string Email, string Address, string Phone, string CompanyID, string DeptCode, string SiteCode, string LocationCode, int Floor)
         {
             try
             {
@@ -472,7 +544,7 @@ namespace CORE.JGC.Controllers
                     string UserID = Session["UserName"].ToString().Trim();
                     //CompleteDateC = null;
 
-                    var query = dc.UtilUser_IUD(UserNameS, PasswordS, Name, Email, Address, Phone, CompanyID, DeptCode, SiteCode, LocationCode, Floor, GroupMenuCode, bActive, 0, UserID, 2);
+                    var query = dc.UtilUser_IUD(UserNameS, PasswordS, Name, Email, Address, Phone, CompanyID, DeptCode, SiteCode, LocationCode, Floor, GroupMenuCode, 1, 0, UserID, 2);
                     string status = "";
                     foreach (var res in query)
                     {
@@ -520,7 +592,7 @@ namespace CORE.JGC.Controllers
                     user.CompanyName = res.CompanyName;
                     user.DeptName = res.DeptName;
                     user.LocationName = res.LocationName;
-                    user.GroupAccessCode = res.GroupAccessCode;
+                    user.GroupMenuCode = res.GroupAccessCode;
 
                     msUsers.Add(user);
                 }
@@ -546,7 +618,7 @@ namespace CORE.JGC.Controllers
                     menu.MenuCode = res.MenuCode;
                     menu.MenuName = res.MenuName;
                     menu.MenuPath = res.MenuPath;
-                    menu.LevelMenu   = res.LevelMenu;
+                    menu.LevelMenu = res.LevelMenu;
                     menu.ParentMenu = res.ParentMenu;
                     utilMenu.Add(menu);
                 }

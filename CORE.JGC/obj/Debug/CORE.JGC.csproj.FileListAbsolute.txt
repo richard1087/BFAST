@@ -58,6 +58,5 @@ D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.Razor.xm
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.xml
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\obj\Debug\CORE.JGC.csprojResolveAssemblyReference.cache
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\obj\Debug\CORE.JGC.dll
 D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\CORE.JGC\obj\Debug\CORE.JGC.pdb
