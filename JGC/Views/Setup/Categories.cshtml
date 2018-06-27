@@ -9,6 +9,7 @@
     function InputCategories() {
         var CategoryCode = document.getElementById("CategoryCode").value;
         var CategoryName = document.getElementById("CategoryName").value;
+        var InitialName = document.getElementById("InitialName").value;
 
         if (CategoryCode == "") {
             $(".modal-body #peringatan3").text("Category Code must be filled");
@@ -24,6 +25,13 @@
             })
             $("#Alert3").modal();
         }
+        else if (InitialName == "") {
+            $(".modal-body #peringatan3").text("Initial Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
         else {
             $.ajax({
                 url: '@Url.Action("InsertAssetCategory", "Setup")',
@@ -32,7 +40,8 @@
                 async: true,
                 data: {
                     AssetCategoryCodeId: CategoryCode,
-                    AssetCategoryNameId: CategoryName
+                    AssetCategoryNameId: CategoryName,
+                    AssetInitialNameId : InitialName
                 },
                 success: function (response) {
                     if (response.success == true) {
@@ -64,6 +73,7 @@
     function InputEditCategories() {
         var EditCategoryCode = document.getElementById("EditCategoryCode").value;
         var EditCategoryName = document.getElementById("EditCategoryName").value;
+        var EditInitialName = document.getElementById("EditInitialName").value;
 
         if (EditCategoryCode == "") {
             $(".modal-body #peringatan3").text("Category Code must be filled");
@@ -92,7 +102,8 @@
                     async: true,
                     data: {
                         EditAssetCategoryCodeId: EditCategoryCode,
-                        EditAssetCategoryNameId: EditCategoryName
+                        EditAssetCategoryNameId: EditCategoryName,
+                        EditInitialNameId: EditInitialName
                     },
                     success: function (response) {
                         if (response.success == true) {
@@ -125,10 +136,11 @@
         }
     }
 
-    function UpdateAssetCategoryS(NoID,CategoryCodeId, CategoryNameId) {
+    function UpdateAssetCategoryS(NoID, CategoryCodeId, CategoryNameId, InitialName) {
       
         $(".modal-body #EditCategoryCode").val(CategoryCodeId);
         $(".modal-body #EditCategoryName").val(CategoryNameId);
+        $(".modal-body #EditInitialName").val(InitialName);
 
         $(".modal-body #NoID").val(NoID);
 
@@ -165,6 +177,7 @@
                                 <tr>
                                     <th width="10%">Category Code</th>
                                     <th>Category Name</th>
+                                    <th>Initial</th>
                                     <th style="width:2%;"></th>
                                 </tr>
                             </thead>
@@ -174,8 +187,9 @@
                                 <tr>
                                     <td>@Html.DisplayFor(modelItem => item.AssetCategoryCode)</td>
                                     <td>@Html.DisplayFor(modelItem => item.AssetCategoryName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Initial)</td>
                                     <td class="txtcenter">
-                                        <button id="editAssetCategorybutton" name="editAssetCategorybutton" type="button" class="btn btn-success" onclick="UpdateAssetCategoryS('@Html.DisplayFor(modelItem => item.Id)','@Html.DisplayFor(modelItem => item.AssetCategoryCode)','@Html.DisplayFor(modelItem => item.AssetCategoryName)')"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
+                                        <button id="editAssetCategorybutton" name="editAssetCategorybutton" type="button" class="btn btn-success" onclick="UpdateAssetCategoryS('@Html.DisplayFor(modelItem => item.Id)','@Html.DisplayFor(modelItem => item.AssetCategoryCode)','@Html.DisplayFor(modelItem => item.AssetCategoryName)','@Html.DisplayFor(modelItem => item.Initial)')"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
                                     </td>
                                 </tr>
                             }
@@ -212,7 +226,12 @@
                             <input type="text" id="CategoryName" name="CategoryName" class="form-control col-md-10" value="" placeholder="Category Name" />
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Initial</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" id="InitialName" name="InitialName" class="form-control col-md-10" value="" placeholder="Initial Name" />
+                        </div>
+                    </div>
                     <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
                         <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
@@ -259,6 +278,12 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Category Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input type="text" id="EditCategoryName" name="EditCategoryName" class="form-control col-md-10" value="" placeholder="Category Name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Initial</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" id="EditInitialName" name="EditInitialName" class="form-control col-md-10" value="" placeholder="Initial Name" />
                         </div>
                     </div>
                     <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>

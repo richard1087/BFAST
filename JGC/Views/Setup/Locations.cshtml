@@ -236,7 +236,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <p class="headcontent">
+                        @*<p class="headcontent">
                             You may also add Locations. Locations are a subset of Sites. For example, the Site may be a building or address.
                             The Location may be a specific room, office or floor within the Site. Select a Site and add your list of Locations here.
                         </p>
@@ -252,7 +252,7 @@
                                     <option value="Site 5">
                                 </datalist>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="col-md-12 col-sm-12 col-xs-12 text-muted font-13 m-b-30 no-padding">
                             <div class="mgbtm20">
                                 <a href="#" id="tambahsite" class="btn btn-success btn-cust">Add New Location</a>
@@ -304,6 +304,13 @@
                         <label class="control-label col-md-12 col-sm-12 col-xs-12">Enter the data about your new site in the fields below and we will add it to your list.</label>
                     </div>-->
                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="SiteName" placeholder="Site Code" name="SiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Location Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="LocationCodeId" type="text" name="LocationCodeId" class="form-control col-md-10" placeholder="Location Code" />
@@ -321,13 +328,7 @@
                             <input id="FloorId" type="text" name="FloorId" class="form-control col-md-10" placeholder="Floor" />
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
@@ -364,6 +365,13 @@
                         <label class="control-label col-md-12 col-sm-12 col-xs-12">Enter the data about your new site in the fields below and we will add it to your list.</label>
                     </div>-->
                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input class="form-control readonly" id="EditSiteCode" name="EditSiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="EditSiteName" name="EditSiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Sites('2')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Location Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="NoId" type="hidden" name="NoId" value="" />
@@ -382,13 +390,7 @@
                             <input id="EditFloorId" type="text" name="EditFloorId" class="form-control col-md-10" value="" placeholder="Floor" />
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site Code</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input class="form-control readonly" id="EditSiteCode" name="EditSiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                            <input class="form-control readonly" id="EditSiteName" name="EditSiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Sites('2')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">

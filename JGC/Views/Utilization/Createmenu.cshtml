@@ -144,14 +144,14 @@ if ($('#LevelMenu').val() == "0") {
                                     </select>
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="input-group">
+                                    <div class="">
                                         <input type="hidden" class="form-control readonly" placeholder="Parent" id="ParentMenu" data-id="i" name="ParentMenu"  maxlength="50">
-                                        <input type="text" class="form-control readonly" placeholder="Parent" id="NamaParentMenu" name="NamaParentMenu"  maxlength="50">
-                                        <span class="input-group-btn">
-                                            <a class="btn btn-info" onclick="Parent()" id="btnParent" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                        <input type="text" class="form-control readonly" placeholder="Parent" id="NamaParentMenu" name="NamaParentMenu"  onclick="Parent()" id="btnParent" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly maxlength="50">
+                                        @*<span class="input-group-btn">
+                                            <a class="btn btn-info" style="margin-right:0;height: 34px;">
                                                 <i class="fa fa-search fa-fw"></i>
                                             </a>
-                                        </span>
+                                        </span>*@
                                     </div>
                                 </div>
                             </div>

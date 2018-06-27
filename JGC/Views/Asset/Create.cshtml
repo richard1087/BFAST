@@ -171,6 +171,922 @@
     }
 </script>
 
+<script type="text/javascript">
+
+    function InputData() {
+        var form = new FormData();
+
+<<<<<<< HEAD
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Site" id="Sitecode" name="Site" class="form-control" placeholder="Select Site">
+                                    <datalist id="Site">
+                                        @for (int i = 0; i < ViewBag.Sitecode.Length; i++)
+                                        {
+                                            <option label='@ViewBag.Sitecode[i].SiteName' value='@ViewBag.Sitecode[i].SiteCode'></option>
+                                        }
+                                    </datalist>*@
+                                    <input class="form-control readonly" id="SiteCodeId" name="SiteCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Site" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" id="SiteNameId" name="SiteNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    @*<span class="input-group-btn">
+                                        <a class="btn btn-info" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                            <i class="fa fa-search fa-fw"></i>
+                                        </a>
+                                    </span>*@
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createsite" type="button" class="btn btn-success">New</button>
+                                </div>
+
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Category</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Category" id="AssetCategoryCode" name="Category" class="form-control" placeholder="Select Category">
+                                    <datalist id="Category">
+                                        @for (int i = 0; i < ViewBag.Category.Length; i++)
+                                        {
+                                            <option label='@ViewBag.Category[i].AssetCategoryName' value='@ViewBag.Category[i].AssetCategoryCode'></option>
+                                        }
+                                    </datalist>*@
+                                    <input class="form-control readonly" id="CategoryCodeId" name="CategoryCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Category" onclick="Categories('1')" data-target="#Lookup" data-toggle="modal" id="CategoryNameId" name="CategoryNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createcategory" type="button" class="btn btn-success">New</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="location" id="LocationCode" name="location" class="form-control" placeholder="Select a Location">
+                                    <datalist id="location">
+                                        @for (int i = 0; i < ViewBag.Location.Length; i++)
+                                        {
+                                            <option label='@ViewBag.Location[i].LocationName' value='@ViewBag.Location[i].LocationCode'></option>
+                                        }
+                                    </datalist>*@
+                                    <input class="form-control readonly" id="LocationCodeId" name="LocationCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Location" onclick="Locations('1')" data-target="#Lookup" data-toggle="modal" id="LocationNameId" name="LocationNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createlocation" type="button" class="btn btn-success">New</button>
+                                </div>
+
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Department</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="department" id="DeptCode" name="department" class="form-control" placeholder="Select a Department">
+                                    <datalist id="department">
+                                        @for (int i = 0; i < ViewBag.Dept.Length; i++)
+                                        {
+                                            <option label='@ViewBag.Dept[i].DeptName' value='@ViewBag.Dept[i].DeptCode'></option>
+                                        }
+                                    </datalist>*@
+                                    <input class="form-control readonly" id="DepartmentCodeId" name="DepartmentCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Department" onclick="Departments('1')" data-target="#Lookup" data-toggle="modal" id="DepartmentNameId" name="DepartmentNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createdepartment" type="button" class="btn btn-success">New</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Asset Details</h3>
+                            </div>
+=======
+        var SiteCode = document.getElementById("SiteCodeId").value;
+        var AssetCategoryCode = document.getElementById("CategoryCodeId").value;
+        var LocationCode = document.getElementById("LocationCodeId").value;
+        var DeptCode = document.getElementById("DepartmentCodeId").value;
+        var AssetName = document.getElementById("AssetName").value;
+        var SupplierCode = document.getElementById("SupplierCodeId").value;
+        var PurchaseNo = document.getElementById("PurchaseNo").value;
+        var AssetBrandCode = document.getElementById("BrandCodeId").value;
+        var PurchaseDate = document.getElementById("single_cal2").value;
+        var AssetModelCode = document.getElementById("ModelCodeId").value;
+        var PurchasePrice = document.getElementById("PurchasePrice").value;
+        var AssetSerialNo = document.getElementById("AssetSerialNo").value;
+        var AssetTypeCode = document.getElementById("TypeCodeId").value;
+        var CompanyID = document.getElementById("CompanyCodeId").value;
+        var CurrencyCode = document.getElementById("CurrencyCodeId").value;
+        var Floor = document.getElementById("Floor").value;
+        var Warranty = document.getElementById("Warranty").value;
+        var Qty = document.getElementById("Qty").value;
+        var bActive = document.getElementById("bActive");
+        var bCap = document.getElementById("bCap");
+        var file = document.getElementById("fileupload").files[0];
+
+        if (SiteCode == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetCategoryCode == "") {
+            $(".modal-body #peringatan3").text("Category harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (LocationCode == "") {
+            $(".modal-body #peringatan3").text("Location harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DeptCode == "") {
+            $(".modal-body #peringatan3").text("Deoartment harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetName == "") {
+            $(".modal-body #peringatan3").text("Asset Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (SupplierCode == "") {
+            $(".modal-body #peringatan3").text("Supplier harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PurchaseNo == "") {
+            $(".modal-body #peringatan3").text("Purchase No harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetBrandCode == "") {
+            $(".modal-body #peringatan3").text("Brand harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PurchaseDate == "") {
+            $(".modal-body #peringatan3").text("Purchase Date harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetModelCode == "") {
+            $(".modal-body #peringatan3").text("Model harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PurchasePrice == "") {
+            $(".modal-body #peringatan3").text("Price harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetSerialNo == "") {
+            $(".modal-body #peringatan3").text("Serial No harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetTypeCode == "") {
+            $(".modal-body #peringatan3").text("Type harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CompanyID == "") {
+            $(".modal-body #peringatan3").text("Company harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CurrencyCode == "") {
+            $(".modal-body #peringatan3").text("Currency harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (Floor == "") {
+            $(".modal-body #peringatan3").text("Floor harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (Warranty == "") {
+            $(".modal-body #peringatan3").text("Warranty harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (Qty == "") {
+            $(".modal-body #peringatan3").text("Qty harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            if (bActive.checked == true) {
+                bActive = "1";
+            }
+            else { bActive = "0"; }
+            if (bCap.checked == true) {
+                bCap = "1";
+            }
+            else { bCap = "0"; }
+
+            form.append("AssetName", AssetName);
+            form.append("AssetModelCode", AssetModelCode);
+            form.append("AssetCategoryCode", AssetCategoryCode);
+            form.append("AssetSerialNo", AssetSerialNo);
+            form.append("AssetTypeCode", AssetTypeCode);
+            form.append("AssetBrandCode", AssetBrandCode);
+            form.append("bActive", bActive);
+            form.append("bCap", bCap);
+            form.append("Floor", Floor);
+            form.append("Warranty", Warranty);
+            form.append("Qty", Qty);
+            form.append("Sitecode", SiteCode);
+            form.append("LocationCode", LocationCode);
+            form.append("PurchaseNo", PurchaseNo);
+            form.append("CurrencyCode", CurrencyCode);
+            form.append("PurchasePrice", PurchasePrice);
+            form.append("PurchaseDate", PurchaseDate);
+            form.append("SupplierCode", SupplierCode);
+            form.append("CompanyId", CompanyID);
+            form.append("DeptCode", DeptCode);
+            form.append("fileupload", file);
+            $.ajax({
+                url: '@Url.Action("InputData", "Asset")',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Index", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (response) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataMasterSite() {
+        var form = new FormData();
+        var SiteId = document.getElementById("SiteId").value;
+        var DescriptionId = document.getElementById("DescriptionId").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var bActive = document.getElementById("ActiveSite");
+        var PhoneId = document.getElementById("PhoneId").value;
+        if (SiteId == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DescriptionId == "") {
+            $(".modal-body #peringatan3").text("Description harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PhoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            if (bActive.checked == true) {
+                bActive = true;
+            }
+            else { bActive = false; }
+>>>>>>> 56f5a28e093c4eff5d754cd58cbfbc2c308d2855
+
+            form.append("bActive", bActive);
+            form.append("SiteCode", SiteId);
+            form.append("SiteName", DescriptionId);
+            form.append("Address", AddressId);
+            form.append("City", CityId);
+            form.append("PostalCode", PostalCodeId);
+            form.append("Telephone", PhoneId);
+            $.ajax({
+                 url: '@Url.Action("InputDataMasterSite", "Asset")',
+                type: 'post',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Create", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+                
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataCategory() {
+        var form = new FormData();
+        var AssetCategoryCodeId = document.getElementById("AssetCategoryCode").value;
+        var CategoryNameId = document.getElementById("CategoryName").value;
+        var InitialNameId = document.getElementById("InitialName").value;
+
+<<<<<<< HEAD
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Asset Name</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" id="AssetName" name="Asset Name" class="form-control col-md-10" placeholder="Asset Name" />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Supplier Name</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Supplier" id="SupplierCode" name="SupplierName" class="form-control col-md-10" placeholder="Select Supplier Name">
+                                    <datalist id="Supplier">
+                                        @for (int i = 0; i < ViewBag.Suppliername.Length; i++)
+                                        {
+                                            <option label='@ViewBag.Suppliername[i].SupplierName' value='@ViewBag.Suppliername[i].SupplierCode'></option>
+                                        }
+                                    </datalist>*@
+                                    <input class="form-control readonly" id="SupplierCodeId" name="SupplierCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control" placeholder="Supplier Name" readonly" onclick="Suppliers('1')" data-target="#Lookup" data-toggle="modal" id="SupplierNameId" name="SupplierNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createsupplier" type="button" class="btn btn-success">New</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Purchase No</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" id="PurchaseNo" name="PurchaseNo" class="form-control col-md-10" placeholder="Purchase No" />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Brand</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Brand" id="AssetBrandCode" name="Brand" class="form-control col-md-10" placeholder="Select Brand">
+                                    <datalist id="Brand">
+                                        @for (int i = 0; i < ViewBag.BrandName.Length; i++)
+                                        {
+                                            <option label='@ViewBag.BrandName[i].BrandName' value='@ViewBag.BrandName[i].BrandCode'></option>
+                                        }
+                                    </datalist>*@
+                                    <input class="form-control readonly" id="BrandCodeId" name="BrandCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Brand" onclick="Brands('1')" data-target="#Lookup" data-toggle="modal" id="BrandNameId" name="BrandNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createbrand" type="button" class="btn btn-success">New</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Purchase Date</label>
+                                <div class="col-md-5 col-sm-5 xdisplay_inputx form-group has-feedback" style="margin-bottom: 0 !important;">
+                                    <input type="text" class="form-control has-feedback-left" id="single_cal2" placeholder="Purchase Date" aria-describedby="purchaseDate">
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    <span id="purchaseDate" class="sr-only">(success)</span>
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Model</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Model" id="AssetModelCode" name="Model" class="form-control col-md-10" placeholder="Select Model">
+                                    <datalist id="Model">
+                                        @for (int i = 0; i < ViewBag.ModelName.Length; i++)
+                                        {
+                                            <option label='@ViewBag.ModelName[i].ModelName' value='@ViewBag.ModelName[i].ModelCode'></option>
+                                        }
+                                    </datalist>*@
+                                    <input class="form-control readonly" id="ModelCodeId" name="ModelCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Model" onclick="Models('1')" data-target="#Lookup" data-toggle="modal" id="ModelNameId" name="ModelNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createmodel" type="button" class="btn btn-success">New</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Purchase Price</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="number" id="PurchasePrice" name="Purchase Price" class="form-control col-md-10" placeholder="Purchase Price" />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial No</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" id="AssetSerialNo" name="SerialNo" class="form-control col-md-10" placeholder="Serial No" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Type" id="AssetTypeCode" name="Type" class="form-control" placeholder="Select Type">
+                                    <datalist id="Type">
+                                        @for (int i = 0; i < ViewBag.AssetType.Length; i++)
+                                        {
+                                            <option label='@ViewBag.AssetType[i].AssetTypeName' value='@ViewBag.AssetType[i].AssetTypeCode'></option>
+                                        }
+                                    </datalist>*@
+                                    <input class="form-control readonly" id="TypeCodeId" name="TypeCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Type" onclick="Types('1')" data-target="#Lookup" data-toggle="modal" id="TypeNameId" name="TypeNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createtype" type="button" class="btn btn-success">New</button>
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Currency</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Currency" id="CurrencyCode" name="Currency" class="form-control col-md-10" placeholder="Select Currency">
+                                    <datalist id="Currency">
+                                        @for (int i = 0; i < ViewBag.Currencyname.Length; i++)
+                                        {
+                                            <option label='@ViewBag.Currencyname[i].CurrencyName' value='@ViewBag.Currencyname[i].CurrencyCode'></option>
+                                        }
+                                    </datalist>*@
+                                    <input class="form-control readonly" id="CurrencyCodeId" name="CurrencyCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Currency" onclick="Currencies('1')" data-target="#Lookup" data-toggle="modal" id="CurrencyNameId" name="CurrencyNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createcurrency" type="button" class="btn btn-success">New</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Company</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Company" id="CompanyId" name="Company" class="form-control col-md-10" placeholder="Company" />
+                                    <datalist id="Company">
+                                        @for (int i = 0; i < ViewBag.Companyname.Length; i++)
+                                        {
+                                            <option label='@ViewBag.Companyname[i].CompanyName' value='@ViewBag.Companyname[i].CompanyCode'></option>
+                                        }
+                                    </datalist>*@
+                                    <input class="form-control readonly" id="CompanyCodeId" name="CompanyCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Company" onclick="Companies('1')" data-target="#Lookup" data-toggle="modal" id="CompanyNameId" name="CompanyNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createcompany" type="button" class="btn btn-success">New</button>
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Floor</label>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <input type="number" id="Floor" name="Floor" class="form-control col-md-10" placeholder="Floor" />
+                                </div>
+=======
+        if (CategoryNameId == "") {
+            $(".modal-body #peringatan3").text("Category Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetCategoryCodeId == "") {
+            $(".modal-body #peringatan3").text("Asset Category harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (InitialNameId == "") {
+            $(".modal-body #peringatan3").text("Initial Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            form.append("AssetCategoryCode", AssetCategoryCodeId);
+            form.append("AssetCategoryName", CategoryNameId);
+            form.append("Initial", InitialNameId);
+            $.ajax({
+                url: '@Url.Action("InputDataCategory", "Asset")',
+                type: 'post',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Create", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+        }
+    }
+
+    function InputDataMasterLocation() {
+        var form = new FormData();
+        var SiteId = document.getElementById("SiteId").value;
+        var LocationCode = document.getElementById("LocationCode").value;
+        var LocationName = document.getElementById("LocationName").value;
+        var Floor = document.getElementById("Floor").value;
+        var bActive = document.getElementById("bActive");
+        if (SiteId == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (LocationCode == "") {
+            $(".modal-body #peringatan3").text("Location code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else if (LocationName == "") {
+            $(".modal-body #peringatan3").text("Location name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            if (bActive.checked == true) {
+                bActive = "1";
+            }
+            else { bActive = "0"; }
+
+            form.append("SiteCode", SiteId);
+            form.append("LocationCode", LocationCode);
+            form.append("LocationName", LocationName);
+            form.append("Floor", Floor);
+            form.append("bActive", bActive);
+            $.ajax({
+                url: '@Url.Action("InputDataMasterSite", "Asset")',
+                type: 'post',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Index", "Asset")";
+                        })
+                        $("#Alert2").modal();
+>>>>>>> 56f5a28e093c4eff5d754cd58cbfbc2c308d2855
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (response) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataDepartment() {
+        var DepartmentCodeId = document.getElementById("DepartmentCodeId").value;
+        var DepartmentNameId = document.getElementById("DepartmentNameId").value;
+
+        if (DepartmentCodeId == "") {
+            $(".modal-body #peringatan3").text("Department Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DepartmentNameId == "") {
+            $(".modal-body #peringatan3").text("Department Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataType() {
+        var TypeCodeId = document.getElementById("TypeCodeId").value;
+        var TypeNameId = document.getElementById("TypeNameId").value;
+
+        if (TypeCodeId == "") {
+            $(".modal-body #peringatan3").text("Type Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TypeNameId == "") {
+            $(".modal-body #peringatan3").text("Type Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataCompany() {
+        var CompanyId = document.getElementById("CompanyCode").value;
+        var CompanyName = document.getElementById("CompanyName").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var ProvinceId = document.getElementById("ProvinceId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var TelephoneId = document.getElementById("TelephoneId").value;
+
+        if (CompanyCode == "") {
+            $(".modal-body #peringatan3").text("Company Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CompanyName == "") {
+            $(".modal-body #peringatan3").text("Company Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ProvinceId == "") {
+            $(".modal-body #peringatan3").text("Province harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TelephoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataSupplier() {
+        var SupplierCodeId = document.getElementById("SupplierCodeId").value;
+        var SupplierNameId = document.getElementById("SupplierNameId").value;
+        var PIC = document.getElementById("PIC").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var ProvinceId = document.getElementById("ProvinceId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var TelephoneId = document.getElementById("TelephoneId").value;
+        var FaxId = document.getElementById("FaxId").value;
+        var Aktif = document.getElementById("ActiveId").value;
+
+        if (document.getElementById("ActiveId").checked) {
+            var Aktif = "1";
+        }
+        else {
+            var Aktif = "0";
+        }
+
+        if (SupplierCodeId == "") {
+            $(".modal-body #peringatan3").text("Supplier Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (SupplierNameId == "") {
+            $(".modal-body #peringatan3").text("Supplier Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PIC == "") {
+            $(".modal-body #peringatan3").text("PIC must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ProvinceId == "") {
+            $(".modal-body #peringatan3").text("Province must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TelephoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (FaxId == "") {
+            $(".modal-body #peringatan3").text("Fax must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataBrand() {
+        var BrandCodeId = document.getElementById("BrandCodeId").value;
+        var BrandNameId = document.getElementById("BrandNameId").value;
+
+        if (BrandCodeId == "") {
+            $(".modal-body #peringatan3").text("Brand Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (BrandNameId == "") {
+            $(".modal-body #peringatan3").text("Brand Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataModel() {
+        var ModelCodeId = document.getElementById("ModelCodeId").value;
+        var ModelNameId = document.getElementById("ModelNameId").value;
+        var BrandCodeId = document.getElementById("BrandCodeId").value;
+
+        if (ModelCodeId == "") {
+            $(".modal-body #peringatan3").text("Model Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ModelNameId == "") {
+            $(".modal-body #peringatan3").text("Model Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (BrandCodeId == "") {
+            $(".modal-body #peringatan3").text("Brand must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataCurrency() {
+        var CurrencyCodeId = document.getElementById("CurrencyCodeId").value;
+        var CurrencyNameId = document.getElementById("CurrencyNameId").value;
+
+<<<<<<< HEAD
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="AssetCategoryCode" type="text" class="form-control" placeholder="Category">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Category Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="CategoryName" type="text" class="form-control" placeholder="Category Name">
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                            <button id="CategoryCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="CategorySubmitId" type="submit" class="btn btn-success" onclick="InputDataCategory(); return false;">Submit</button>
+                        </div>
+=======
+        if (CurrencyCodeId == "") {
+            $(".modal-body #peringatan3").text("Currency Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CurrencyNameId == "") {
+            $(".modal-body #peringatan3").text("Currency Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+</script>
+
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -186,13 +1102,67 @@
                     <div class="x_title">
                         <h2>Add an Asset</h2>
                         <div class="clearfix"></div>
+>>>>>>> 56f5a28e093c4eff5d754cd58cbfbc2c308d2855
                     </div>
                     <div class="x_content">
                         <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
 
+<<<<<<< HEAD
+                <p style="margin-left:8px; margin-bottom:25px;">Enter the data about your new location in the fields below and we will add it to your list.</p>
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="SiteId" list="Site" name="Site" class="form-control" placeholder="Select a Site">
+                            <datalist id="Site">
+                                @for (int i = 0; i < ViewBag.Sitecode.Length; i++)
+                                {
+                                    <option value='@ViewBag.Sitecode[i].SiteName'></option>
+                                }
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="LocationCode" type="text" class="form-control" placeholder="Location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="LocationName" type="text" class="form-control" placeholder="Location Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="checkbox">
+                                <label style="padding-left:0 !important">
+                                    <input id="ActiveLocation" type="checkbox" class="flat"> Yes
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                            <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataLocation(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL3 END -->
+=======
                             <div class="form-group">
                                 <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Site Location, Category, and Departments</h3>
                             </div>
+>>>>>>> 56f5a28e093c4eff5d754cd58cbfbc2c308d2855
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
@@ -537,7 +1507,7 @@
                     <div class="form-group">
                         <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
                             <button type="button" id="SiteCancelId" class="btn btn-primary">Cancel</button>
-                            <button type="submit" id="SiteSubmitId" class="btn btn-success" onclick="InputDataSite(); return false;">Submit</button>
+                            <button type="submit" id="SiteSubmitId" class="btn btn-success" onclick="InputDataMasterSite(); return false;">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -569,6 +1539,12 @@
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Category Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="CategoryName" type="text" class="form-control" placeholder="Category Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Initial</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="InitialName" type="text" class="form-control" placeholder="Initial Name">
                         </div>
                     </div>
                     <div class="ln_solid"></div>
@@ -622,23 +1598,29 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Active</label>
-                        <div class="col-md-2 col-sm-2 col-xs-12">
-                            <div class="checkbox">
-                                <label style="padding-left:0 !important">
-                                    <input id="ActiveLocation" type="checkbox" class="flat"> Yes
-                                </label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Floor</label>
+                        <div class="col-md-1 col-sm-1 col-xs-12">
+                            <input type="number" id="Floor" name="Floor" class="form-control" placeholder="Floor" />
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12">Active</label>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <div class="checkbox">
+                                    <label style="padding-left:0 !important">
+                                        <input id="ActiveLocation" type="checkbox" class="flat"> Yes
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="ln_solid"></div>
-                    <div class="form-group">
-                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
-                            <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
-                            <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataLocation(); return false;">Submit</button>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
+                                <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
+                                <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataMasterLocation(); return false;">Submit</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+</form>
             </div>
         </div>
     </div>
@@ -1140,554 +2122,4 @@
               $("#currencyModal").modal('toggle');
           });
       });
-</script>
-<script type="text/javascript">
-
-    function InputData() {
-        var form = new FormData();
-
-        var SiteCode = document.getElementById("SiteCodeId").value;
-        var AssetCategoryCode = document.getElementById("CategoryCodeId").value;
-        var LocationCode = document.getElementById("LocationCodeId").value;
-        var DeptCode = document.getElementById("DepartmentCodeId").value;
-        var AssetName = document.getElementById("AssetName").value;
-        var SupplierCode = document.getElementById("SupplierCodeId").value;
-        var PurchaseNo = document.getElementById("PurchaseNo").value;
-        var AssetBrandCode = document.getElementById("BrandCodeId").value;
-        var PurchaseDate = document.getElementById("single_cal2").value;
-        var AssetModelCode = document.getElementById("ModelCodeId").value;
-        var PurchasePrice = document.getElementById("PurchasePrice").value;
-        var AssetSerialNo = document.getElementById("AssetSerialNo").value;
-        var AssetTypeCode = document.getElementById("TypeCodeId").value;
-        var CompanyID = document.getElementById("CompanyCodeId").value;
-        var CurrencyCode = document.getElementById("CurrencyCodeId").value;
-        var Floor = document.getElementById("Floor").value;
-        var Warranty = document.getElementById("Warranty").value;
-        var Qty = document.getElementById("Qty").value;
-        var bActive = document.getElementById("bActive");
-        var bCap = document.getElementById("bCap");
-        var file = document.getElementById("fileupload").files[0];
-        //var SiteId = document.getElementById("Sitecode").value;
-        //var AssetCategoryCode = document.getElementById("AssetCategoryCode").value;
-        //var LocationCode = document.getElementById("LocationCode").value;
-        //var DeptCode = document.getElementById("DeptCode").value;
-        //var AssetName = document.getElementById("AssetName").value;
-        //var SupplierCode = document.getElementById("SupplierCode").value;
-        //var PurchaseNo = document.getElementById("PurchaseNo").value;
-        //var AssetBrandCode = document.getElementById("AssetBrandCode").value;
-        //var PurchaseDate = document.getElementById("PurchaseDate").value;
-        //var AssetModelCode = document.getElementById("AssetModelCode").value;
-        //var PurchasePrice = document.getElementById("PurchasePrice").value;
-        //var AssetSerialNo = document.getElementById("AssetSerialNo").value;
-        //var AssetTypeCode = document.getElementById("AssetTypeCode").value;
-        //var CompanyId = document.getElementById("CompanyId").value;
-        //var CurrencyCode = document.getElementById("CurrencyCode").value;
-        //var Floor = document.getElementById("Floor").value;
-        //var Warranty = document.getElementById("Warranty").value;
-        //var bActive = document.getElementById("bActive");
-        //var bCap = document.getElementById("bCap");
-        //var file = document.getElementById("fileupload").files[0];
-        //var Photo = document.getElementById("file").value;
-        //var bActive = document.getElementById("bActive").value;
-
-        if (SiteCode == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetCategoryCode == "") {
-            $(".modal-body #peringatan3").text("Category harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (LocationCode == "") {
-            $(".modal-body #peringatan3").text("Location harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (DeptCode == "") {
-            $(".modal-body #peringatan3").text("Deoartment harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetName == "") {
-            $(".modal-body #peringatan3").text("Asset Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (SupplierCode == "") {
-            $(".modal-body #peringatan3").text("Supplier harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PurchaseNo == "") {
-            $(".modal-body #peringatan3").text("Purchase No harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetBrandCode == "") {
-            $(".modal-body #peringatan3").text("Brand harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PurchaseDate == "") {
-            $(".modal-body #peringatan3").text("Purchase Date harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetModelCode == "") {
-            $(".modal-body #peringatan3").text("Model harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PurchasePrice == "") {
-            $(".modal-body #peringatan3").text("Price harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetSerialNo == "") {
-            $(".modal-body #peringatan3").text("Serial No harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetTypeCode == "") {
-            $(".modal-body #peringatan3").text("Type harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CompanyID == "") {
-            $(".modal-body #peringatan3").text("Company harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CurrencyCode == "") {
-            $(".modal-body #peringatan3").text("Currency harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (Floor == "") {
-            $(".modal-body #peringatan3").text("Floor harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (Warranty == "") {
-            $(".modal-body #peringatan3").text("Warranty harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (Qty == "") {
-            $(".modal-body #peringatan3").text("Qty harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-        else {
-            if (bActive.checked == true) {
-                bActive = "1";
-            }
-            else { bActive = "0"; }
-            if (bCap.checked == true) {
-                bCap = "1";
-            }
-            else { bCap = "0"; }
-
-            //if (file == undefined) {
-            //    alert("Browser not supported!");
-            //}
-            //else {
-            //    var fd = new FormData();
-            //    fd.append("fileupload", file);
-            //}
-            form.append("AssetName", AssetName);
-            form.append("AssetModelCode", AssetModelCode);
-            form.append("AssetCategoryCode", AssetCategoryCode);
-            form.append("AssetSerialNo", AssetSerialNo);
-            form.append("AssetTypeCode", AssetTypeCode);
-            form.append("AssetBrandCode", AssetBrandCode);
-            form.append("bActive", bActive);
-            form.append("bCap", bCap);
-            form.append("Floor", Floor);
-            form.append("Warranty", Warranty);
-            form.append("Qty", Qty);
-            form.append("Sitecode", SiteCode);
-            form.append("LocationCode", LocationCode);
-            form.append("PurchaseNo", PurchaseNo);
-            form.append("CurrencyCode", CurrencyCode);
-            form.append("PurchasePrice", PurchasePrice);
-            form.append("PurchaseDate", PurchaseDate);
-            form.append("SupplierCode", SupplierCode);
-            form.append("CompanyId", CompanyID);
-            form.append("DeptCode", DeptCode);
-            form.append("fileupload", file);
-            $.ajax({
-                url: '@Url.Action("InputData", "Asset")',
-                type: 'POST',
-                contentType: false,
-                processData: false,
-                cache: false,
-                async: true,
-                data: form,
-                success: function (response) {
-                    if (response.success) {
-                        $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
-                        $('#btnok').click(function (e) {
-                            window.location.href = "@Url.Action("Index", "Asset")";
-                        })
-                        $("#Alert2").modal();
-
-                    } else {
-                        $(".modal-body #peringatan3").text(response.responseText);
-                        $('#btnerror').click(function (e) {
-                            $('#Alert3').modal('hide');
-                        })
-                        $("#Alert3").modal();
-                    }
-                },
-                error: function (response) {
-                    $(".modal-body #peringatan3").text(textStatus.responseText);
-                    $('#btncaution').click(function (e) {
-                        $('#Alert3').modal('hide');
-                    })
-                    $("#Alert3").modal();
-                }
-            });
-        }
-    }
-
-
-
-    function InputDataSite() {
-        var SiteId = document.getElementById("SiteId").value;
-        var DescriptionId = document.getElementById("DescriptionId").value;
-        var AddressId = document.getElementById("AddressId").value;
-        var CityId = document.getElementById("CityId").value;
-        var StateId = document.getElementById("StateId").value;
-        var PostalCodeId = document.getElementById("PostalCodeId").value;
-        var CountryId = document.getElementById("CountryId").value;
-
-        if (SiteId == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (DescriptionId == "") {
-            $(".modal-body #peringatan3").text("Description harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AddressId == "") {
-            $(".modal-body #peringatan3").text("Address harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CityId == "") {
-            $(".modal-body #peringatan3").text("City harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (StateId == "") {
-            $(".modal-body #peringatan3").text("State harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PostalCodeId == "") {
-            $(".modal-body #peringatan3").text("Postal Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CountryId == "") {
-            $(".modal-body #peringatan3").text("Country harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataCategory() {
-        var CategoryNameId = document.getElementById("CategoryNameId").value;
-
-        if (CategoryNameId == "") {
-            $(".modal-body #peringatan3").text("Category Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataLocation() {
-        var SiteId = document.getElementById("SiteId").value;
-        var LocationCode = document.getElementById("LocationCode").value;
-
-        if (SiteId == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (LocationCode == "") {
-            $(".modal-body #peringatan3").text("Location harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataDepartment() {
-        var DepartmentCodeId = document.getElementById("DepartmentCodeId").value;
-        var DepartmentNameId = document.getElementById("DepartmentNameId").value;
-
-        if (DepartmentCodeId == "") {
-            $(".modal-body #peringatan3").text("Department Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (DepartmentNameId == "") {
-            $(".modal-body #peringatan3").text("Department Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataType() {
-        var TypeCodeId = document.getElementById("TypeCodeId").value;
-        var TypeNameId = document.getElementById("TypeNameId").value;
-
-        if (TypeCodeId == "") {
-            $(".modal-body #peringatan3").text("Type Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (TypeNameId == "") {
-            $(".modal-body #peringatan3").text("Type Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataCompany() {
-        var CompanyId = document.getElementById("CompanyCode").value;
-        var CompanyName = document.getElementById("CompanyName").value;
-        var AddressId = document.getElementById("AddressId").value;
-        var CityId = document.getElementById("CityId").value;
-        var ProvinceId = document.getElementById("ProvinceId").value;
-        var PostalCodeId = document.getElementById("PostalCodeId").value;
-        var TelephoneId = document.getElementById("TelephoneId").value;
-
-        if (CompanyCode == "") {
-            $(".modal-body #peringatan3").text("Company Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CompanyName == "") {
-            $(".modal-body #peringatan3").text("Company Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AddressId == "") {
-            $(".modal-body #peringatan3").text("Address harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CityId == "") {
-            $(".modal-body #peringatan3").text("City harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (ProvinceId == "") {
-            $(".modal-body #peringatan3").text("Province harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PostalCodeId == "") {
-            $(".modal-body #peringatan3").text("Postal Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (TelephoneId == "") {
-            $(".modal-body #peringatan3").text("Telephone harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataSupplier() {
-        var SupplierCodeId = document.getElementById("SupplierCodeId").value;
-        var SupplierNameId = document.getElementById("SupplierNameId").value;
-        var PIC = document.getElementById("PIC").value;
-        var AddressId = document.getElementById("AddressId").value;
-        var CityId = document.getElementById("CityId").value;
-        var ProvinceId = document.getElementById("ProvinceId").value;
-        var PostalCodeId = document.getElementById("PostalCodeId").value;
-        var TelephoneId = document.getElementById("TelephoneId").value;
-        var FaxId = document.getElementById("FaxId").value;
-        var Aktif = document.getElementById("ActiveId").value;
-
-        if (document.getElementById("ActiveId").checked) {
-            var Aktif = "1";
-        }
-        else {
-            var Aktif = "0";
-        }
-
-        if (SupplierCodeId == "") {
-            $(".modal-body #peringatan3").text("Supplier Code must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (SupplierNameId == "") {
-            $(".modal-body #peringatan3").text("Supplier Name must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PIC == "") {
-            $(".modal-body #peringatan3").text("PIC must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AddressId == "") {
-            $(".modal-body #peringatan3").text("Address must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CityId == "") {
-            $(".modal-body #peringatan3").text("City must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (ProvinceId == "") {
-            $(".modal-body #peringatan3").text("Province must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PostalCodeId == "") {
-            $(".modal-body #peringatan3").text("Postal Code must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (TelephoneId == "") {
-            $(".modal-body #peringatan3").text("Telephone must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (FaxId == "") {
-            $(".modal-body #peringatan3").text("Fax must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataBrand() {
-        var BrandCodeId = document.getElementById("BrandCodeId").value;
-        var BrandNameId = document.getElementById("BrandNameId").value;
-
-        if (BrandCodeId == "") {
-            $(".modal-body #peringatan3").text("Brand Code must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (BrandNameId == "") {
-            $(".modal-body #peringatan3").text("Brand Name must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataModel() {
-        var ModelCodeId = document.getElementById("ModelCodeId").value;
-        var ModelNameId = document.getElementById("ModelNameId").value;
-        var BrandCodeId = document.getElementById("BrandCodeId").value;
-
-        if (ModelCodeId == "") {
-            $(".modal-body #peringatan3").text("Model Code must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (ModelNameId == "") {
-            $(".modal-body #peringatan3").text("Model Name must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (BrandCodeId == "") {
-            $(".modal-body #peringatan3").text("Brand must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataCurrency() {
-        var CurrencyCodeId = document.getElementById("CurrencyCodeId").value;
-        var CurrencyNameId = document.getElementById("CurrencyNameId").value;
-
-        if (CurrencyCodeId == "") {
-            $(".modal-body #peringatan3").text("Currency Code must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CurrencyNameId == "") {
-            $(".modal-body #peringatan3").text("Currency Name must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
 </script>

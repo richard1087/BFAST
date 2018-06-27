@@ -262,7 +262,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Maintenance No</label>
                                 <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                    <input class="form-control" id="MaintenanceNo" name="MaintenanceNo" value="auto-generate" type="text" data-id="i" autocomplete="off" required="" readonly/>
+                                    <input class="form-control" id="MaintenanceNo" name="MaintenanceNo" value="Auto Generate" type="text" data-id="i" autocomplete="off" required="" style="cursor:auto;" readonly/>
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
@@ -280,6 +280,10 @@
                                     <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     <span id="scheduleDate" class="sr-only">(success)</span>
                                 </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Assign To</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" id="AssignTo" name="AssignTo" value="" type="text" data-id="i" autocomplete="off" required="" />
+                                </div>
                                 @*<label class="control-label col-md-1 col-sm-1 col-xs-12">Complete Date</label>
                                 <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
                                     <input type="text" class="form-control has-feedback-left" id="single_cal5" name="CompleteDate" placeholder="Complete Date" data-id="i" aria-describedby="completeDate">
@@ -293,9 +297,9 @@
                                 <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
                                     <input class="form-control" id="Damage" name="Damage" value="" type="text" data-id="i" autocomplete="off" required="" />
                                 </div>
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Assign To</label>
-                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                    <input class="form-control" id="AssignTo" name="AssignTo" value="" type="text" data-id="i" autocomplete="off" required="" />
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Cost</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" class="form-control angka isnumeric" placeholder="Cost" id="Cost" name="Cost" value="0" autocomplete="off" name="Cost" required="required" maxlength="12">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -303,10 +307,7 @@
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <textarea id="Notes" name="Notes" class="form-control" rows="3" placeholder="Notes" data-id="i"></textarea>
                                 </div>
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Cost</label>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <input type="text" class="form-control angka isnumeric" placeholder="Cost" id="Cost" name="Cost" value="0" autocomplete="off" name="Cost" required="required" maxlength="12">
-                                </div>
+                                
                             </div>
                             <div class="ln_solid"></div>
                             <div class="form-group">
@@ -336,7 +337,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input class="form-control readonly" id="AssetCode" name="AssetCode" value="" type="text" data-id="i" autocomplete="off" onclick="Asset('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto" required="" readonly />
+                            <input class="form-control readonly" id="AssetCode" name="AssetCode" placeholder="Asset Code" value="" type="text" data-id="i" autocomplete="off" onclick="Asset('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto" required="" readonly />
                         </div>
                     </div>
                     <div class="form-group">

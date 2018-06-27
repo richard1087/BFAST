@@ -346,111 +346,6 @@ namespace CORE.JGC.Controllers
         public ActionResult InputData(MsAsset asset)
         {
             string UserID = Session["UserName"].ToString().Trim();
-            ////string Photo = GeneratePhoto(path);
-
-            //string hasil = string.Empty;
-            //string path = string.Empty;
-            //string pathdb = string.Empty;
-            //dc = new BFASTDataContext();
-            //MemoryStream ms = null;
-            //Bitmap bmp = null;
-            //string base64 = string.Empty;
-            //try
-            //{
-
-
-            //    if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
-            //    {
-            //        var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
-            //        HttpPostedFileBase filebase = new HttpPostedFileWrapper(pic);
-
-            //        if (pic.ContentLength > 0)
-            //        {
-            //            string filename = Path.GetFileNameWithoutExtension(pic.FileName);
-            //            string ext = Path.GetExtension(pic.FileName);
-            //            filename = filename + DateTime.Now.ToString("HHmmss");
-            //            pathdb = "/Content/res/build/images/Assets/" + filename + ext;
-            //            path = Server.MapPath(pathdb);
-            //            pic.SaveAs(path);
-            //            WebImage webimg = new WebImage(path);
-
-            //            if (webimg.Width > 150)
-            //            {
-            //                webimg.Resize(150, 150);
-
-            //                if (webimg.Width > 100)
-            //                {
-            //                    webimg.Resize(100, 100);
-
-            //                    webimg.Save(path);
-            //                }
-            //                bmp = new Bitmap(path);
-
-            //                using (ms = new MemoryStream())
-            //                {
-            //                    Response.ContentType = "image/jpeg";
-            //                    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            //                    byte[] byteImg = ms.ToArray();
-            //                    base64 = Convert.ToBase64String(byteImg);
-            //                }
-            //                bmp.Dispose();
-            //                ms.Close();
-            //            }
-            //        }
-
-            //    }
-            //    var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode, 
-            //        Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-            //        Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty),
-            //        UserID, 1);
-            //    foreach (var res in query)
-            //    {
-            //        //if (res.Status == "Err This Data Already Exists")
-            //        //{
-            //        //    hasil = "Data Already Exists";
-            //        //}
-            //        //else
-            //        //{
-            //        //    string qrcode = GenerateQrCode(res.Status);
-            //        //    var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
-            //        //    hasil = res.Status;
-            //        //}
-
-            //        var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode,
-            //            Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), pathdb, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-            //            Convert.ToDecimal(asset.PurchasePrice), Convert.ToDateTime(asset.PurchaseDate), asset.SupplierCode, asset.CompanyID, asset.DeptCode, asset.Qty, Convert.ToInt32(asset.Warranty), UserID, 1);
-
-            //        foreach (var res in query)
-            //        {
-            //            //if (res.Status == "Err This Data Already Exists")
-            //            //{
-            //            //    hasil = "Data Already Exists";
-            //            //}
-            //            //else
-            //            //{
-
-            //                //string qrcode = GenerateQrCode(res.AssetTag);
-            //                //var qr = dc.MsBarcode_IUD(res.AssetTag, qrcode, "", "", UserID, 1);
-            //                //hasil = res.AssetTag;
-
-            //                //string qrcode = GenerateQrCode(res.Status);
-            //                //var qr = dc.MsBarcode_IUD(res.Status, qrcode, "", "", UserID, 1);
-            //                //hasil = res.Status;
-
-            //            //}
-            //        }
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    bmp.Dispose();
-            //    ms.Close();
-            //    return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
-            //}
-            //return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
-            //}
-
             string hasil = string.Empty;
             string path = string.Empty;
             string pathdb = string.Empty;
@@ -460,8 +355,6 @@ namespace CORE.JGC.Controllers
             string base64 = string.Empty;
             try
             {
-
-
                 if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
                 {
                     var pic = System.Web.HttpContext.Current.Request.Files["fileupload"];
@@ -550,7 +443,62 @@ namespace CORE.JGC.Controllers
             }
             return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpPost]
+        public ActionResult InputDataMasterSite(MsSite msite)
+        {
+            string UserID = Session["UserName"].ToString().Trim();
+            string hasil = string.Empty;
+            dc = new BFASTDataContext();
+            try
+            {
+                var query = dc.MsSite_IUD(msite.SiteCode, msite.SiteName, msite.Address, msite.City, msite.PostalCode, msite.Telephone, Convert.ToInt32(msite.bActive), UserID, 1);
+                foreach (var res in query)
+                {
+                    hasil = res.Status;                    
+                }
+                if (hasil == "Err This Data Already Exists")
+                {
+                    return Json(new { success = false, responseText = hasil }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
+            }
+            
+        }
+        [HttpPost]
+        public ActionResult InputDataCategory(MsAssetCategory mCategory)
+        {
+            string UserID = Session["UserName"].ToString().Trim();
+            string hasil = string.Empty;
+            dc = new BFASTDataContext();
+            try
+            {
+                var query = dc.MsAssetCategory_IUD(mCategory.AssetCategoryCode, mCategory.AssetCategoryName, mCategory.Initial, UserID, 1);
+                foreach (var res in query)
+                {
+                    hasil = res.Status;
+                }
+                if (hasil == "Err This Data Already Exists")
+                {
+                    return Json(new { success = false, responseText = hasil }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Maintenancedue()
         {
             TrMaintenanceAsset[] trMaintenance = null;
