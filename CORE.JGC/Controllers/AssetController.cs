@@ -13,7 +13,7 @@ using System.Globalization;
 
 namespace CORE.JGC.Controllers
 {
-    
+    [SessionTimeoutAttribute]
     public class AssetController : Controller
     {   
         BFASTDataContext dc = null;

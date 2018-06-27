@@ -41,7 +41,7 @@ namespace CORE.JGC.Controllers
                             Hasil.CompanyName = res.CompanyName;
                         }
 
-                        if (Hasil.Jumlah > 0)
+                        if (Hasil.Jumlah > 0 || Hasil.Jumlah == null)
                         {
                             if (Hasil.UserName.Trim() != UserName.Trim() || Hasil.Password.Trim() != Password.Trim())
                             {
@@ -50,7 +50,7 @@ namespace CORE.JGC.Controllers
                                 //user & password tidak sama
                             }
 
-                            else
+                        else
                             {
                                 //berhasil login
                                 Session["username"] = Hasil.UserName;
@@ -58,9 +58,10 @@ namespace CORE.JGC.Controllers
                                 Session["dept"] = Hasil.DeptName;
                                 Session["location"] = Hasil.LocationName;
                                 Session["company"] = Hasil.CompanyName;
+                                Session["namedept"] = Hasil.Name.ToString() + " - " + Hasil.DeptName.ToString();
 
-                                //TempData["coba"] = "1234";
-                                return RedirectToAction("Index", "Dashboard");
+                            //TempData["coba"] = "1234";
+                            return RedirectToAction("Index", "Dashboard");
                             }
                         
                         }
@@ -71,7 +72,7 @@ namespace CORE.JGC.Controllers
                     {
                         if (ex.ToString().ToUpper().Trim().Contains("NULL"))
                         {
-                            ViewBag.Error = "1";
+                            ViewBag.Error = "0";
                         }
                         
                         return View();
@@ -79,7 +80,45 @@ namespace CORE.JGC.Controllers
                 }
                 
             }
+        [HttpPost]
+        public ActionResult UpdateDataResetMaster(string oldPassword, string NewPassword, string ConfirmNewPassword)
+        {
+            try
+            {
+
+                dc = new BFASTDataContext();
+                try
+                {
+                    string UserName = Session["username"].ToString().Trim();
+                    var query = dc.UtilUser_ChangePass(UserName, oldPassword, NewPassword,ConfirmNewPassword, Session["username"].ToString().Trim(), 1);
+                    string status = "";
+                    foreach (var res in query)
+                    {
+                        status = res.Status;
+                    }
+
+                    if (status.Trim().Substring(0, 4) == "Err ")
+                    {
+                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+            }
         }
+    }
+
     }    
 
 

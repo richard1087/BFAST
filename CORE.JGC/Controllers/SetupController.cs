@@ -11,6 +11,7 @@ using System.IO;
 
 namespace CORE.JGC.Controllers
 {
+    [SessionTimeoutAttribute]
     public class SetupController : Controller
     {
         // Untuk ke data dbml

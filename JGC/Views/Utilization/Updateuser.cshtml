@@ -10,16 +10,6 @@
                     { "data": "0" },
                     { "title": "Role Code", "data": "0" },
                     { "title": "Role Name", "data": "1" }
-
-<<<<<<< HEAD
-=======
-    function Role() {
-        var Column = [
-                    { "data": "0" },
-                    { "title": "Role Code", "data": "0" },
-                    { "title": "Role Name", "data": "1" }
-
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
         ]
         DTable("datatablepopup", '@Url.Action("GetPopupGroupMenu", "Utilization")', Column, '{}');
         $('#datatablepopup tbody').on('click', 'tr', function () {
@@ -43,12 +33,9 @@
             var d = table.row(this).data();
             $("#SiteCode").val(d[0]);
             $("#SiteName").val(d[1]);
-<<<<<<< HEAD
             $("#LocationCode").val("");
             $("#LocationName").val("");
             $("#Floor").val("");
-=======
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
             $('#Lookup').modal('hide');
         });
     }
@@ -98,18 +85,11 @@
             $('#Lookup').modal('hide');
         });
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
     function Update() {
 
         var GroupMenuCode = document.getElementById("GroupMenuCode").value;
         var UserNameS = document.getElementById("UserNameS").value;
-<<<<<<< HEAD
-=======
-        var PasswordS = document.getElementById("PasswordS").value;
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
         var Name = document.getElementById("Name").value;
         var Email = document.getElementById("Email").value;
         var Address = document.getElementById("Address").value;
@@ -119,10 +99,6 @@
         var SiteCode = document.getElementById("SiteCode").value;
         var LocationCode = document.getElementById("LocationCode").value;
         var Floor = document.getElementById("Floor").value;
-<<<<<<< HEAD
-
-=======
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
 
         if (GroupMenuCode == "") {
             $(".modal-body #peringatan3").text("Role must be filled");
@@ -136,15 +112,7 @@
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-<<<<<<< HEAD
-=======
-        } else if (PasswordS == "") {
-            $(".modal-body #peringatan3").text("Password must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
+
         } else if (Address == "") {
             $(".modal-body #peringatan3").text("Address must be filled");
             $('#btnerror').click(function (e) {
@@ -153,28 +121,16 @@
             $("#Alert3").modal();
         } else if (CompanyID == "") {
             $(".modal-body #peringatan3").text("Company must be filled");
-<<<<<<< HEAD
-=======
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (DeptCode == "") {
             $(".modal-body #peringatan3").text("Dept must be filled");
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-<<<<<<< HEAD
-        } else if (DeptCode == "") {
-            $(".modal-body #peringatan3").text("Dept must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-=======
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
         } else if (SiteCode == "") {
             $(".modal-body #peringatan3").text("SiteCode must be filled");
             $('#btnerror').click(function (e) {
@@ -200,10 +156,6 @@
                     data: {
                         GroupMenuCode: GroupMenuCode,
                         UserNameS: UserNameS,
-<<<<<<< HEAD
-=======
-                        PasswordS: PasswordS,
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
                         Name: Name,
                         Email: Email,
                         Address: Address,
@@ -246,11 +198,8 @@
     }
 </script>
 
-<<<<<<< HEAD
 <!-- PAGE CONTENT START -->
 
-=======
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -260,11 +209,7 @@
                         <h5>
                             Advanced •
                             <a href="/utilization/users" class="activemenu">Users</a> •
-<<<<<<< HEAD
                             <a href="/utilization/updateuser" class="activemenu">Update</a>
-=======
-                            <a href="/utilization/createusers" class="activemenu">Create</a>
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
                         </h5>
                     </div>
                     <div class="x_title">
@@ -286,7 +231,7 @@
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Role</label>
-<<<<<<< HEAD
+
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="input-group">
                                         <input type="hidden" class="form-control readonly" placeholder="Role" id="GroupMenuCode" data-id="i" name="GroupMenuCode" maxlength="50" required="" readonly>
@@ -297,18 +242,12 @@
                                             </a>
                                         </span>
                                     </div>
-=======
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="hidden" class="form-control readonly" placeholder="Role" id="GroupMenuCode" data-id="i" name="GroupMenuCode" maxlength="50" required="">
-                                    <input type="text" class="form-control readonly" placeholder="Role" id="GroupMenuName" value="" name="GroupMenuCode" onclick="Role()" data-target="#Lookup" data-toggle="modal" autocomplete="off" maxlength="50" style="cursor:auto;" required="" readonly>
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
                                 </div>
                                 <!--<div class="col-md-1 col-sm-1 col-xs-12">
                                     <button class="btn btn-default" type="button">Manage Groups</button>
                                 </div>-->
                             </div>
 
-<<<<<<< HEAD
                             <div class="form-group">
                                 <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">User Info</h3>
                             </div>
@@ -317,33 +256,12 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">User Name</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input id="UserNameS" type="text" name="UserNameS" class="form-control col-md-10 readonly" value="" data-id="i" placeholder="User Name" required="" readonly/>
-=======
-                            <div class="form-group">
-                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">User Info</h3>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">User Name</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="UserNameS" type="text" name="UserNameS" class="form-control col-md-10" value="" data-id="i" placeholder="User Name" required="" />
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Password </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="PasswordS" type="password" name="PasswordS" class="form-control col-md-10" value="" data-id="i" placeholder="Password" required="" />
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Name</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-<<<<<<< HEAD
                                     <input id="Name" type="text" name="Name" class="form-control col-md-10 readonly" value="" data-id="i" placeholder="Name" required="" readonly/>
-=======
-                                    <input id="Name" type="text" name="Name" class="form-control col-md-10" value="" data-id="i" placeholder="Name" required="" />
                                 </div>
                             </div>
 
@@ -388,55 +306,6 @@
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" placeholder="Site" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Site()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-<<<<<<< HEAD
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Email</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="Email" type="text" name="Email" class="form-control col-md-10" value="" data-id="i" placeholder="Email" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Address</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="Address" data-id="i"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Phone</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="Phone" type="text" name="Phone" class="form-control col-md-10" data-id="i" placeholder="Phone" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Company</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="CompanyID" type="hidden" name="CompanyID" class="form-control col-md-10" data-id="i" placeholder="CompanyID" required="" readonly/>
-                                    <input class="form-control readonly" id="CompanyName" name="CompanyName" value="" type="text" data-id="i" autocomplete="off" onclick="Company()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Department</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="DeptCode" type="hidden" name="DeptCode" class="form-control col-md-10" data-id="i" placeholder="DeptCode" required="" />
-                                    <input class="form-control readonly" id="DeptName" name="DeptName" value="" type="text" data-id="i" autocomplete="off" onclick="Dept()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Localization</h3>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
                                     <input class="form-control readonly" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Site()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
@@ -451,42 +320,14 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Floor</label>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <input class="form-control readonly" id="Floor" name="Floor" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
-=======
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" placeholder="Location" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" onclick="Location()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Floor</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input class="form-control readonly" placeholder="Floor" id="Floor" name="Floor" value="" type="text" data-id="i" autocomplete="off" required="" style="cursor:auto;" readonly />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">User Photo</h3>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload Image</label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="file" name="file" id="file" class="btn btn-success btn-cust inputfile" />
-                                    <label for="file" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
-                                </div>
-                            </div>
-
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
-<<<<<<< HEAD
                                     <button type="submit" class="btn btn-success" onclick="Update(); return false;">Submit</button>
-=======
-                                    <button type="submit" class="btn btn-success" onclick="InputUser(); return false;">Submit</button>
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
                                 </div>
                             </div>
                         </form>
@@ -496,11 +337,8 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
 
 <!-- PAGE CONTENT END -->
-=======
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
 
 @Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
@@ -508,11 +346,10 @@
 
 <script type="text/javascript">
 
-<<<<<<< HEAD
+
     $("#GroupMenuCode").val('@ViewData["GroupMenuCode"].ToString()');
     $("#GroupMenuName").val('@ViewData["GroupMenuName"].ToString()');
     $("#UserNameS").val('@ViewData["UserName"].ToString()');
-=======
     $(document).ready(function () {
         $("#createsite").click(function () {
             $("#myModal").modal();
@@ -534,21 +371,15 @@
         });
     });
 
-    //$("#GroupMenuCode").val('@ViewData["GroupMenuCode"].ToString()');
-    //$("#GroupMenuName").val('@ViewData["GroupMenuName"].ToString()');
+    $("#GroupMenuCode").val('@ViewData["GroupMenuCode"].ToString()');
+    $("#GroupMenuName").val('@ViewData["GroupMenuName"].ToString()');
     $("#UserNameS").val('@ViewData["UserName"].ToString()');
-    $("#PasswordS").val('@ViewData["Password"].ToString()');
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
     $("#Name").val('@ViewData["Name"].ToString()');
     $("#Email").val('@ViewData["Email"].ToString()');
     $("#Address").val('@ViewData["Address"].ToString()');
     $("#Phone").val('@ViewData["Phone"].ToString()');
-<<<<<<< HEAD
     $("#CompanyID").val('@ViewData["CompanyID"].ToString()');
     $("#CompanyName").val('@ViewData["CompanyName"].ToString()');
-=======
-    $("#Company").val('@ViewData["Company"].ToString()');
->>>>>>> 9cdc076d7eb91d446d1f9a4e62ab4e78e65d2e5c
     $("#DeptCode").val('@ViewData["DeptCode"].ToString()');
     $("#DeptName").val('@ViewData["DeptName"].ToString()');
     $("#SiteCode").val('@ViewData["SiteCode"].ToString()');

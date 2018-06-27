@@ -1,4 +1,13 @@
-﻿<div class="top_nav">
+﻿<script>
+function UpdateDataResetMaster() {
+        var success = "$('.modal-body #peringatan2').text('Success');$('#btnok').click(function (e) {window.location.href = '@Url.Action("Index")'});$('#Alert2').modal();";
+        InUp('@Url.Action("UpdateDataResetMaster", "Login")', success,'z');
+}
+
+
+</script>
+
+<div class="top_nav">
     <div class="nav_menu">
         <nav>
             <!-- MENUTOGGLE START -->
@@ -10,12 +19,18 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        John Doe
+                        @if (@Session["name"] != null)
+                        {
+                            @Session["namedept"].ToString().Trim() 
+                        }
+                        else
+                        {
+                            @Html.Action("Index", "Login")
+                        }
                         <span class=" fa fa-angle-down"></span>
                     </a>
-                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="/profile/editprofile"><i class="fa fa-user pull-right"></i> My Profile</a></li>
-                        <li><a href="/profile/changepassword"><i class="fa fa-asterisk pull-right"></i> Change Password</a></li>
+                    <ul class="dropdown-menu dropdown-usermenu pull-right">                        
+                        <li><a data-target="#LookupReset" data-toggle="modal"><span>Change Password</span></a></li>
                         <li><a href="/login"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                     </ul>
                 </li>
@@ -24,3 +39,50 @@
         </nav>
     </div>
 </div>
+<!-- MODALSETTING START -->
+<div id="LookupReset" class="modal fade in" style="width:800px; left:23%" role="dialog">
+    <div class="modal-content">
+
+        <div class="modal-body">
+            <div class="widget-box" style="margin-top:0px;">
+                <div class="widget-title">
+                    <span class="icon"><i class="icon-th"></i></span>
+                    <h5 id="h5popupheader"></h5>
+                </div>
+                <div id='PopupReset' class="sharepop" style="color:black">
+                    <form class="form-horizontal form-label-left">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Old Password</label>
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <input type="password" class="form-control" placeholder="Password Lama" id="OldPassword" name="OldPassword" data-id="z" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">New Password</label>
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <input type="password" class="form-control" placeholder="Password Baru" id="NewPassword" name="NewPassword" data-id="z" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Confirm New Password</label>
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <input type="password" class="form-control" placeholder="Konfirm Password Baru" id="ConfirmNewPassword" name="ConfirmNewPassword" data-id="z" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 col-sm-5 col-xs-12 col-md-offset-3">
+                                <button type="submit" class="btn btn-success" onclick="UpdateDataResetMaster(); return false;">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+<!-- MODALSETTING END -->
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")
