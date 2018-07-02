@@ -22,6 +22,9 @@ namespace CORE.JGC.Models
         public string LocationName { get; set; }
         public int? Floor { get; set; }
         public string Notes { get; set; }
+        public string AssetCode { get; set; }
+        public string AssetName { get; set; }
+        public string AssetSerialNo { get; set; }
         public string Iby { get; set; }
         public DateTime Ion { get; set; }
         public string Uby { get; set; }

@@ -105,7 +105,7 @@
                     { "title": "Location", "data": "LocationName" },
                     { "title": "Floor", "data": "Floor" }
         ]
-        DTable("datatablepopup", '@Url.Action("GetPopupTransferNoRef", "Asset")', Column, '{}');
+        DTable("datatablepopup", '@Url.Action("GetPopupTransferNoRef", "Asset")', Column, function (d) { d.Type = $('#Type').val() });
         $('#datatablepopup tbody').on('click', 'tr', function () {
             var d = table.row(this).data();
             $("#TransferAssetNoRef").val(d["TransferAssetNo"]);
@@ -135,12 +135,12 @@
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (AssetSerialNo == "") {
-            $(".modal-body #peringatan3").text("Serial No must be filled");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
+            //} else if (AssetSerialNo == "") {
+            //    $(".modal-body #peringatan3").text("Serial No must be filled");
+            //    $('#btnerror').click(function (e) {
+            //        $('#Alert3').modal('hide');
+            //    })
+            //    $("#Alert3").modal();
         }
         else {
             $.ajax({

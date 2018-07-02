@@ -39,7 +39,8 @@ namespace CORE.JGC.Controllers
                             Hasil.DeptName = res.DeptName;
                             Hasil.LocationName = res.LocationName;
                             Hasil.CompanyName = res.CompanyName;
-                        }
+                            Hasil.GroupAccessCode = res.GroupAccessCode;
+                    }
 
                         if (Hasil.Jumlah > 0 || Hasil.Jumlah == null)
                         {
@@ -58,6 +59,7 @@ namespace CORE.JGC.Controllers
                                 Session["dept"] = Hasil.DeptName;
                                 Session["location"] = Hasil.LocationName;
                                 Session["company"] = Hasil.CompanyName;
+                                Session["groupaccescode"] = Hasil.GroupAccessCode;
                                 Session["namedept"] = Hasil.Name.ToString() + " - " + Hasil.DeptName.ToString();
 
                             //TempData["coba"] = "1234";
@@ -99,22 +101,22 @@ namespace CORE.JGC.Controllers
 
                     if (status.Trim().Substring(0, 4) == "Err ")
                     {
-                        return Json(new { success = false, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                        return Json(new { success = false, Exception = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
                     }
                     else
                     {
-                        return Json(new { success = true, responseText = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                        return Json(new { success = true, Exception = status.Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
                     }
 
                 }
                 catch (Exception ex)
                 {
-                    return Json(new { success = false, responseText = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                    return Json(new { success = false, Exception = ex.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
             {
-                return Json(new { success = false, responseText = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = false, Exception = ex.Message.ToString().Trim().Replace("err ", "") }, JsonRequestBehavior.AllowGet);
             }
         }
     }

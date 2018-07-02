@@ -1,21 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DbAssetJGC" Class="BFASTDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.\LOCALSQL;Initial Catalog=DbAssetJGC;Persist Security Info=True;User ID=sa" SettingsObjectName="CORE.JGC.Properties.Settings" SettingsPropertyName="DbAssetJGCConnectionString2" Provider="System.Data.SqlClient" />
-  <Function Name="dbo.Get_Login" Method="Get_Login">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(50)" />
-    <ElementType Name="Get_LoginResult">
-      <Column Name="Jumlah" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UserName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="DeptName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CompanyName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="bActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="bManager" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.UtilUser_View" Method="UtilUser_View">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
@@ -883,25 +867,6 @@
       <Column Name="Exception" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.TrxTransferAsset_View" Method="TrxTransferAsset_View">
-    <Parameter Name="TransferAssetNo" Parameter="transferAssetNo" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
-    <ElementType Name="TrxTransferAsset_ViewResult">
-      <Column Name="TransferAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
-      <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TransferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="TransferAssetNoRef" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
-      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.TrxTransferAssetLine_IUD" Method="TrxTransferAssetLine_IUD">
     <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
@@ -1024,6 +989,68 @@
     <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
     <ElementType Name="UtilUser_ChangePassResult">
       <Column Name="Status" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TrxTransferAsset_View" Method="TrxTransferAsset_View">
+    <Parameter Name="TransferAssetNo" Parameter="transferAssetNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
+    <ElementType Name="TrxTransferAsset_ViewResult">
+      <Column Name="TransferAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TransferAssetNoRef" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Pop_AssetNoTransferRef" Method="Pop_AssetNoTransferRef">
+    <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="Pop_AssetNoTransferRefResult">
+      <Column Name="TransferAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TransferAssetNoRef" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Floor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Login" Method="Get_Login">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="Get_LoginResult">
+      <Column Name="Jumlah" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DeptName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="bActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GroupAccessCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TrxDisposeApprovalAsset_Release" Method="TrxDisposeApprovalAsset_Release">
+    <Parameter Name="DisposeNo" Parameter="disposeNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CurrentStatus" Parameter="currentStatus" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="TrxDisposeApprovalAsset_ReleaseResult">
+      <Column Name="Exception" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

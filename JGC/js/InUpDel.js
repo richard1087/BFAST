@@ -16,7 +16,7 @@
                     }
                 });
                 function OnSuccess(response) {
-                    if (response[0].Exception == "1") {
+                    if (response.Exception.substring(0,3) != "err") {
                         $("[type=text]").val("");
                         $('[type=checkbox]').prop('checked', false);
                         $('[type=checkbox]').closest(".checked").removeClass("checked");
@@ -24,7 +24,7 @@
                         funtio.call(this);
                     }
                     else {
-                        $(".modal-body #peringatan3").text(response[0].Exception.substring(4, response[0].Exception.length));
+                        $(".modal-body #peringatan3").text(response.Exception.substring(4, response.Exception.length));
                         $("#Alert3").modal();
 
                     }

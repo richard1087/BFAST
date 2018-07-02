@@ -3,25 +3,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script>
-function UpdateMaintenance(MaintenanceNo) {
+
+    function UpdateMaintenance(MaintenanceNo) {
         $.ajax({
-            url: '@Url.Action("UpdateMaintenance", "Asset")',
-            type: 'post',
+
+            url: '@Url.Action("UpdateMaintenanceAsset", "Asset")',
+            type: 'Post',
             cache: false,
             async: true,
-            data: { MaintenanceNo: MaintenanceNo },
-            success: function (response) {
-            window.location.href = "@Url.Action("Editmaintenance", "Asset")";
+            data: {
+                MaintenanceNo: MaintenanceNo
             },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    $(".modal-body #peringatan1").text("Please Wait...");
-                    $('#btncaution').click(function (e) {
+            success: function (response) {
+                window.location.href = '@Url.Action("UpdateMaintenance", "Asset")'
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $(".modal-body #peringatan1").text("Please Wait...");
+                $('#btncaution').click(function (e) {
                     $('#Alert1').modal('hide');
                 })
                 $("#Alert1").modal();
             }
-            });
-}
+        });
+    }
 </script>
 <div class="right_col" role="main">
     <div class="">
@@ -87,7 +91,7 @@ function UpdateMaintenance(MaintenanceNo) {
                                         <td style="text-align:right;">@Html.DisplayFor(modelItem => item.Cost)</td>
                                         <td style="width:5% !important;text-align:center;">
 
-                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return UpdateAsset('@Html.DisplayFor(modelItem => item.MaintenanceNo)');"><span class="glyphicon glyphicon-edit"></span></button>
+                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return UpdateMaintenance('@Html.DisplayFor(modelItem => item.MaintenanceNo)');"><span class="glyphicon glyphicon-edit"></span></button>
 
                                         </td>
                                     </tr>
@@ -292,26 +296,5 @@ function UpdateMaintenance(MaintenanceNo) {
 
           
       });
-      function UpdateAsset(MaintenanceNo) {
-          $.ajax({
-
-              url: '@Url.Action("UpdateMaintenanceAsset", "Asset")',
-              type: 'Post',
-              cache: false,
-              async: true,
-              data: {
-                  MaintenanceNo: MaintenanceNo
-              },
-              success: function (response) {
-                  window.location.href = '@Url.Action("UpdateMaintenance", "Asset")'
-              },
-              error: function (XMLHttpRequest, textStatus, errorThrown) {
-                  $(".modal-body #peringatan1").text("Please Wait...");
-                  $('#btncaution').click(function (e) {
-                      $('#Alert1').modal('hide');
-                  })
-                  $("#Alert1").modal();
-              }
-          });
-      }
+      
 </script>

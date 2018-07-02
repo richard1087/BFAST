@@ -86,3 +86,23 @@ function UpdateDataResetMaster() {
 <!-- MODALSETTING END -->
 @Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @Html.Partial("~/Views/Shared/PopupModal.cshtml")
+
+<script type="text/javascript">
+      $(document).ready(function(){
+          $("#create").click(function(){
+              $("#myModal").modal({ backdrop: 'static', keyboard: false });
+          });
+
+          $("#createharga").click(function () {
+              $("#myModal2").modal({ backdrop: 'static', keyboard: false });
+          });
+
+      });
+
+      $.fn.digits = function () {
+          return this.each(function () {
+              $(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+          })
+      }
+
+</script>

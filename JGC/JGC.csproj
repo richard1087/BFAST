@@ -4764,6 +4764,8 @@
     <Content Include="Views\Asset\DisposeApproval.cshtml" />
     <Content Include="Views\Asset\UpdateMaintenance.cshtml" />
     <Content Include="Views\Utilization\Updateuser.cshtml" />
+    <Content Include="Views\Asset\UpdateTransfer.cshtml" />
+    <Content Include="Views\Asset\UpdateDisposeApproval.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

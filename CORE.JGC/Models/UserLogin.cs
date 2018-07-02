@@ -14,6 +14,7 @@ namespace CORE.JGC.Models
         public string Email { get; set; }
         public string Name { get; set; }
         public string DeptName { get; set; }
+        public string GroupAccessCode { get; set; }
         public string LocationName { get; set; }
         public string CompanyName { get; set; }
         public bool bActive { get; set; }

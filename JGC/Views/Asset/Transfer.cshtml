@@ -2,6 +2,30 @@
     ViewBag.Title = "Transfer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+    function UpdateTransfer(TransferAssetNo) {
+          $.ajax({
+
+              url: '@Url.Action("UpdateTransferAsset", "Asset")',
+              type: 'Post',
+              cache: false,
+              async: true,
+              data: {
+                  TransferAssetNo: TransferAssetNo
+              },
+              success: function (response) {
+                  window.location.href = '@Url.Action("UpdateTransfer", "Asset")'
+              },
+              error: function (XMLHttpRequest, textStatus, errorThrown) {
+                  $(".modal-body #peringatan1").text("Please Wait...");
+                  $('#btncaution').click(function (e) {
+                      $('#Alert1').modal('hide');
+                  })
+                  $("#Alert1").modal();
+              }
+          });
+      }
+</script>
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -48,7 +72,7 @@
                                         <td>@Html.DisplayFor(modelItem => item.LocationName)</td> 
                                         <td>@Html.DisplayFor(modelItem => item.Floor)</td> 
                                         <td style="width:5% !important;text-align:center;">
-                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return DeleteAsset('@Html.DisplayFor(modelItem => item.TransferAssetNo)');"><span class="glyphicon glyphicon-edit"></span></button>
+                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return UpdateTransfer('@Html.DisplayFor(modelItem => item.TransferAssetNo)');"><span class="glyphicon glyphicon-edit"></span></button>
                                         </td>
                                     </tr>
                                 }

@@ -526,6 +526,18 @@ namespace CORE.JGC.Controllers
             trDisposeAssetLine = GridDisposeAssetLine();
             return View(trDisposeAssetLine);
         }
+        public ActionResult UpdateDisposeApprovalAsset(string DisposeNo)
+        {
+            Session["DisposeNo"] = DisposeNo;
+            return View("UpdateDisposeApproval");
+        }
+
+        public ActionResult UpdateDisposeApproval()
+        {
+            TrDisposeAssetLine[] trDisposeLine = null;
+            trDisposeLine = GridUpdateDisposeApprovalAssetLine();
+            return View(trDisposeLine);
+        }
         public ActionResult Createmaintenance()
         {
             TrMaintenanceAssetLine[] trMaintenanceLine = null;
@@ -542,6 +554,17 @@ namespace CORE.JGC.Controllers
         {
             Session["MaintenanceNo"] = MaintenanceNo;
             return View("UpdateMaintenance");
+        }
+        public ActionResult UpdateTransfer()
+        {
+            TrTransferAssetLine[] trTransferLine = null;
+            trTransferLine = GridUpdateTransferAssetLine();
+            return View(trTransferLine);
+        }
+        public ActionResult UpdateTransferAsset(string TransferAssetNo)
+        {
+            Session["TransferAssetNo"] = TransferAssetNo;
+            return View("UpdateTransfer");
         }
         public ActionResult Transfer()
         {
@@ -1567,13 +1590,13 @@ namespace CORE.JGC.Controllers
             }
             return msLocation.ToArray();
         }
-        public TrTransferAsset[] GridPopupTransferNoRef()
+        public TrTransferAsset[] GridPopupTransferNoRef(string Type)
         {
             dc = new BFASTDataContext();
             List<TrTransferAsset> trx = new List<TrTransferAsset>();
             try
             {
-                var query = dc.TrxTransferAsset_View("", "S");
+                var query = dc.Pop_AssetNoTransferRef(Type);
                 foreach (var res in query)
                 {
                     TrTransferAsset transfer = new TrTransferAsset();
@@ -1730,6 +1753,33 @@ namespace CORE.JGC.Controllers
             return trMaintenance.ToArray();
         }
         [HttpPost]
+        public JsonResult LoadUpdateDisposeApproval()
+        {
+            dc = new BFASTDataContext();
+
+            TrDisposeAsset a = new TrDisposeAsset();
+            try
+            {
+                string DisposeNo = Session["DisposeNo"].ToString();
+                var query = dc.TrxDisposeAsset_View(DisposeNo, "U");
+                foreach (var res in query)
+                {
+
+                    a.DisposeNo = res.DisposeNo;
+                    a.Status = res.Status;
+                    a.NamaStatus = res.NamaStatus;
+                    a.DisposeDate = res.DisposeDate;
+                    a.DisposeTo = res.DisposeTo;
+                    a.Reason = res.Reason;
+
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return Json(a, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
         public JsonResult LoadUpdateMaintenance()
         {
             dc = new BFASTDataContext();
@@ -1761,6 +1811,40 @@ namespace CORE.JGC.Controllers
             {
             }
             return Json(maintenance, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult LoadUpdateTransfer()
+        {
+            dc = new BFASTDataContext();
+
+            TrTransferAsset trf = new TrTransferAsset();
+            try
+            {
+                string TransferAssetNo = Session["TransferAssetNo"].ToString();
+                var query = dc.TrxTransferAsset_View(TransferAssetNo, "U");
+                foreach (var res in query)
+                {
+
+                    trf.TransferAssetNo = res.TransferAssetNo;
+                    trf.Type = res.Type;
+                    trf.NamaType = res.NamaType;
+                    trf.Status = res.Status;
+                    trf.NamaStatus = res.NamaStatus;
+                    trf.TransferAssetNoRef = res.TransferAssetNoRef;
+                    trf.TransferDate = res.TransferDate;
+                    trf.SiteCode = res.SiteCode;
+                    trf.SiteName = res.SiteName;
+                    trf.LocationCode = res.LocationCode;
+                    trf.LocationName = res.LocationName;
+                    trf.Floor = res.Floor;
+                    trf.Notes = res.Notes;
+
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return Json(trf, JsonRequestBehavior.AllowGet);
         }
         public TrMaintenanceAssetLine[] GridMaintenanceAssetLine()
         {
@@ -1878,6 +1962,35 @@ namespace CORE.JGC.Controllers
             return trTransfer.ToArray();
         }
 
+        public TrTransferAssetLine[] GridUpdateTransferAssetLine()
+
+        {
+            dc = new BFASTDataContext();
+            List<TrTransferAssetLine> trTransferLine = new List<TrTransferAssetLine>();
+            try
+            {
+
+                string TransferAssetNo = Session["TransferAssetNo"].ToString();
+                var query = dc.TrxTransferAssetLine_View(TransferAssetNo, "", "G");
+
+                foreach (var res in query)
+                {
+                    TrTransferAssetLine transfLine = new TrTransferAssetLine();
+
+                    transfLine.AssetCode = res.AssetCode;
+                    transfLine.AssetName = res.AssetName;
+                    transfLine.AssetSerialNo = res.AssetSerialNo;
+
+                    trTransferLine.Add(transfLine);
+                }
+            }
+            catch
+            {
+                trTransferLine = null;
+            }
+            return trTransferLine.ToArray();
+        }
+
         public TrDisposeAsset[] GridDisposeApproval()
         {
             dc = new BFASTDataContext();
@@ -1906,7 +2019,34 @@ namespace CORE.JGC.Controllers
             }
                 return trDispApp.ToArray();
         }
+        public TrDisposeAssetLine[] GridUpdateDisposeApprovalAssetLine()
 
+        {
+            dc = new BFASTDataContext();
+            List<TrDisposeAssetLine> trDisposeLine = new List<TrDisposeAssetLine>();
+            try
+            {
+
+                string DisposeNo = Session["DisposeNo"].ToString();
+                var query = dc.TrxDisposeAssetLine_View(DisposeNo, "", "G");
+
+                foreach (var res in query)
+                {
+                    TrDisposeAssetLine disLine = new TrDisposeAssetLine();
+
+                    disLine.AssetCode = res.AssetCode;
+                    disLine.AssetName = res.AssetName;
+                    disLine.AssetSerialNo = res.AssetSerialNo;
+
+                    trDisposeLine.Add(disLine);
+                }
+            }
+            catch
+            {
+                trDisposeLine = null;
+            }
+            return trDisposeLine.ToArray();
+        }
 
         public JsonResult UpdateMaintenance_Release(string MaintenanceAssetNo,string Status, string Actions)
         {
@@ -1932,6 +2072,38 @@ namespace CORE.JGC.Controllers
 
 
                 trTransfer = null;
+            }
+
+            return Json(new
+            {
+                data = ex
+            }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult UpdateDisposeApproval_Release(string DisposeNo, string Status, string Actions)
+        {
+            string ex = string.Empty;
+            dc = new BFASTDataContext();
+            List<TrDisposeAssetLine> trDispose = new List<TrDisposeAssetLine>();
+            try
+            {
+                if (Actions != "NA")
+                {
+                    string UserID = Session["UserName"].ToString().Trim();
+                    var query = dc.TrxDisposeApprovalAsset_Release(DisposeNo, Status, Actions, UserID);
+                    foreach (var res in query)
+                    {
+
+
+                        ex = res.Exception;
+                    }
+
+                }
+            }
+            catch
+            {
+
+
+                trDispose = null;
             }
 
             return Json(new
@@ -2145,10 +2317,10 @@ namespace CORE.JGC.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult GetPopupTransferNoRef()
+        public JsonResult GetPopupTransferNoRef(string Type)
         {
             TrTransferAsset[] trTransferAsset = null;
-            trTransferAsset = GridPopupTransferNoRef();
+            trTransferAsset = GridPopupTransferNoRef(Type);
 
             return Json(new
             {
