@@ -33,7 +33,7 @@ namespace CORE.JGC
     #endregion
 		
 		public BFASTDataContext() : 
-				base(global::CORE.JGC.Properties.Settings.Default.DbAssetJGCConnectionString, mappingSource)
+				base(global::CORE.JGC.Properties.Settings.Default.DbAssetJGCConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -139,6 +139,20 @@ namespace CORE.JGC
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), brandCode, tipe);
 			return ((ISingleResult<MsAssetBrand_ViewResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAssetCategory_IUD")]
+		public ISingleResult<MsAssetCategory_IUDResult> MsAssetCategory_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryCode", DbType="VarChar(20)")] string categoryCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryName", DbType="VarChar(100)")] string categoryName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Initial", DbType="VarChar(10)")] string initial, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryCode, categoryName, initial, userID, no);
+			return ((ISingleResult<MsAssetCategory_IUDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAssetCategory_View")]
+		public ISingleResult<MsAssetCategory_ViewResult> MsAssetCategory_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryCode", DbType="VarChar(20)")] string categoryCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryCode, tipe);
+			return ((ISingleResult<MsAssetCategory_ViewResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAssetModel_IUD")]
@@ -611,27 +625,6 @@ namespace CORE.JGC
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, password, name, email, address, phone, companyID, deptCode, siteCode, locationCode, floor, groupAccessCode, bActive, bManager, userID, no);
 			return ((ISingleResult<UtilUser_IUDResult>)(result.ReturnValue));
 		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAssetCategory_View")]
-		public ISingleResult<MsAssetCategory_ViewResult> MsAssetCategory_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryCode", DbType="VarChar(20)")] string categoryCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryCode, tipe);
-			return ((ISingleResult<MsAssetCategory_ViewResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAssetCategory_IUD")]
-		public ISingleResult<MsAssetCategory_IUDResult> MsAssetCategory_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryCode", DbType="VarChar(20)")] string categoryCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryName", DbType="VarChar(100)")] string categoryName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Initial", DbType="VarChar(10)")] string initial, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryCode, categoryName, initial, userID, no);
-			return ((ISingleResult<MsAssetCategory_IUDResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UtilUser_ChangePass")]
-		public ISingleResult<UtilUser_ChangePassResult> UtilUser_ChangePass([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OldPassword", DbType="VarChar(100)")] string oldPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="VarChar(100)")] string newPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ConfirmNewPassword", DbType="VarChar(100)")] string confirmNewPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, oldPassword, newPassword, confirmNewPassword, userID, no);
-			return ((ISingleResult<UtilUser_ChangePassResult>)(result.ReturnValue));
-		}
 	}
 	
 	public partial class Get_LoginResult
@@ -843,15 +836,9 @@ namespace CORE.JGC
 		
 		private string _DeptName;
 		
-		private string _SiteCode;
-		
-		private string _SiteName;
-		
 		private string _LocationCode;
 		
 		private string _LocationName;
-		
-		private System.Nullable<int> _Floor;
 		
 		private System.Nullable<bool> _bManager;
 		
@@ -859,7 +846,7 @@ namespace CORE.JGC
 		
 		private bool _bActive;
 		
-		private string _GroupMenuCode;
+		private string _GroupAccessCode;
 		
 		private System.Nullable<System.DateTime> _LoginDate;
 		
@@ -868,10 +855,6 @@ namespace CORE.JGC
 		private string _Iby;
 		
 		private System.Nullable<System.DateTime> _Ion;
-		
-		private string _GroupAccessCode;
-		
-		private string _GroupMenuName;
 		
 		public UtilUser_ViewResult()
 		{
@@ -1021,38 +1004,6 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(50)")]
-		public string SiteCode
-		{
-			get
-			{
-				return this._SiteCode;
-			}
-			set
-			{
-				if ((this._SiteCode != value))
-				{
-					this._SiteCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
-		public string SiteName
-		{
-			get
-			{
-				return this._SiteName;
-			}
-			set
-			{
-				if ((this._SiteName != value))
-				{
-					this._SiteName = value;
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(50)")]
 		public string LocationCode
 		{
@@ -1081,22 +1032,6 @@ namespace CORE.JGC
 				if ((this._LocationName != value))
 				{
 					this._LocationName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
-		public System.Nullable<int> Floor
-		{
-			get
-			{
-				return this._Floor;
-			}
-			set
-			{
-				if ((this._Floor != value))
-				{
-					this._Floor = value;
 				}
 			}
 		}
@@ -1149,18 +1084,18 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupMenuCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string GroupMenuCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupAccessCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string GroupAccessCode
 		{
 			get
 			{
-				return this._GroupMenuCode;
+				return this._GroupAccessCode;
 			}
 			set
 			{
-				if ((this._GroupMenuCode != value))
+				if ((this._GroupAccessCode != value))
 				{
-					this._GroupMenuCode = value;
+					this._GroupAccessCode = value;
 				}
 			}
 		}
@@ -1225,38 +1160,6 @@ namespace CORE.JGC
 				if ((this._Ion != value))
 				{
 					this._Ion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupAccessCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string GroupAccessCode
-		{
-			get
-			{
-				return this._GroupAccessCode;
-			}
-			set
-			{
-				if ((this._GroupAccessCode != value))
-				{
-					this._GroupAccessCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupMenuName", DbType="VarChar(50)")]
-		public string GroupMenuName
-		{
-			get
-			{
-				return this._GroupMenuName;
-			}
-			set
-			{
-				if ((this._GroupMenuName != value))
-				{
-					this._GroupMenuName = value;
 				}
 			}
 		}
@@ -2011,6 +1914,148 @@ namespace CORE.JGC
 				if ((this._BrandName != value))
 				{
 					this._BrandName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Iby
+		{
+			get
+			{
+				return this._Iby;
+			}
+			set
+			{
+				if ((this._Iby != value))
+				{
+					this._Iby = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime NOT NULL")]
+		public System.DateTime Ion
+		{
+			get
+			{
+				return this._Ion;
+			}
+			set
+			{
+				if ((this._Ion != value))
+				{
+					this._Ion = value;
+				}
+			}
+		}
+	}
+	
+	public partial class MsAssetCategory_IUDResult
+	{
+		
+		private string _Status;
+		
+		public MsAssetCategory_IUDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class MsAssetCategory_ViewResult
+	{
+		
+		private int _Id;
+		
+		private string _AssetCategoryCode;
+		
+		private string _AssetCategoryName;
+		
+		private string _Initial;
+		
+		private string _Iby;
+		
+		private System.DateTime _Ion;
+		
+		public MsAssetCategory_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCategoryCode", DbType="VarChar(7) NOT NULL", CanBeNull=false)]
+		public string AssetCategoryCode
+		{
+			get
+			{
+				return this._AssetCategoryCode;
+			}
+			set
+			{
+				if ((this._AssetCategoryCode != value))
+				{
+					this._AssetCategoryCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCategoryName", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string AssetCategoryName
+		{
+			get
+			{
+				return this._AssetCategoryName;
+			}
+			set
+			{
+				if ((this._AssetCategoryName != value))
+				{
+					this._AssetCategoryName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Initial", DbType="VarChar(10)")]
+		public string Initial
+		{
+			get
+			{
+				return this._Initial;
+			}
+			set
+			{
+				if ((this._Initial != value))
+				{
+					this._Initial = value;
 				}
 			}
 		}
@@ -8812,174 +8857,6 @@ namespace CORE.JGC
 		private string _Status;
 		
 		public UtilUser_IUDResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-	}
-	
-	public partial class MsAssetCategory_ViewResult
-	{
-		
-		private int _Id;
-		
-		private string _AssetCategoryCode;
-		
-		private string _AssetCategoryName;
-		
-		private string _Initial;
-		
-		private string _Iby;
-		
-		private System.DateTime _Ion;
-		
-		public MsAssetCategory_ViewResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCategoryCode", DbType="VarChar(7) NOT NULL", CanBeNull=false)]
-		public string AssetCategoryCode
-		{
-			get
-			{
-				return this._AssetCategoryCode;
-			}
-			set
-			{
-				if ((this._AssetCategoryCode != value))
-				{
-					this._AssetCategoryCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCategoryName", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
-		public string AssetCategoryName
-		{
-			get
-			{
-				return this._AssetCategoryName;
-			}
-			set
-			{
-				if ((this._AssetCategoryName != value))
-				{
-					this._AssetCategoryName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Initial", DbType="VarChar(10)")]
-		public string Initial
-		{
-			get
-			{
-				return this._Initial;
-			}
-			set
-			{
-				if ((this._Initial != value))
-				{
-					this._Initial = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Iby
-		{
-			get
-			{
-				return this._Iby;
-			}
-			set
-			{
-				if ((this._Iby != value))
-				{
-					this._Iby = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime NOT NULL")]
-		public System.DateTime Ion
-		{
-			get
-			{
-				return this._Ion;
-			}
-			set
-			{
-				if ((this._Ion != value))
-				{
-					this._Ion = value;
-				}
-			}
-		}
-	}
-	
-	public partial class MsAssetCategory_IUDResult
-	{
-		
-		private string _Status;
-		
-		public MsAssetCategory_IUDResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(23) NOT NULL", CanBeNull=false)]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-	}
-	
-	public partial class UtilUser_ChangePassResult
-	{
-		
-		private string _Status;
-		
-		public UtilUser_ChangePassResult()
 		{
 		}
 		
