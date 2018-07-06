@@ -646,6 +646,13 @@ namespace CORE.JGC
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), disposeNo, currentStatus, action, userID);
 			return ((ISingleResult<TrxDisposeApprovalAsset_ReleaseResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Ms_DisplayMenuMaster_View")]
+		public ISingleResult<Ms_DisplayMenuMaster_ViewResult> Ms_DisplayMenuMaster_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="GroupMenuCode", DbType="VarChar(50)")] string groupMenuCode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), groupMenuCode);
+			return ((ISingleResult<Ms_DisplayMenuMaster_ViewResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class UtilUser_ViewResult
@@ -9277,6 +9284,68 @@ namespace CORE.JGC
 				if ((this._Exception != value))
 				{
 					this._Exception = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Ms_DisplayMenuMaster_ViewResult
+	{
+		
+		private string _MenuCode;
+		
+		private string _Parent;
+		
+		private string _MenuCodeAkses;
+		
+		public Ms_DisplayMenuMaster_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuCode", DbType="VarChar(50)")]
+		public string MenuCode
+		{
+			get
+			{
+				return this._MenuCode;
+			}
+			set
+			{
+				if ((this._MenuCode != value))
+				{
+					this._MenuCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parent", DbType="VarChar(50)")]
+		public string Parent
+		{
+			get
+			{
+				return this._Parent;
+			}
+			set
+			{
+				if ((this._Parent != value))
+				{
+					this._Parent = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuCodeAkses", DbType="VarChar(50)")]
+		public string MenuCodeAkses
+		{
+			get
+			{
+				return this._MenuCodeAkses;
+			}
+			set
+			{
+				if ((this._MenuCodeAkses != value))
+				{
+					this._MenuCodeAkses = value;
 				}
 			}
 		}

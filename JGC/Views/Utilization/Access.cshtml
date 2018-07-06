@@ -13,13 +13,13 @@
             <!-- MENU SECTION START -->
             <div class="menusect">
                 <h5>
-                    Utilisasi &bull;
-                    <a href="/akses" class="activemenu">Akses</a>
+                    Utilization &bull;
+                    <a href="/akses" class="activemenu">Access</a>
                 </h5>
             </div>
             <!-- MENU SECTION END -->
             <div class="x_title">
-                <h2>Konfigurasi Utilisasi Akses</h2>
+                <h2>Configuration Utilization Access</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content utlisasiaksestable">
@@ -27,16 +27,16 @@
                     <table id="datatable" class="table table-striped table-bordered tbdef">
                         <thead>
                             <tr>
-                                <th>Kode Roles</th>
-                                <th>Nama Roles</th>
+                                <th>Roles Code</th>
+                                <th>Roles Name</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (CORE.JGC.Models.UtilGroupMenu item in Model)
                             {
                                 <tr>
-                                    <td class="showakses">@Html.DisplayFor(modelItem => item.RoleID)</td>
-                                    <td class="showakses">@Html.DisplayFor(modelItem => item.RoleName)</td>
+                                    <td class="showakses">@Html.DisplayFor(modelItem => item.GroupMenuCode)</td>
+                                    <td class="showakses">@Html.DisplayFor(modelItem => item.GroupMenuName)</td>
                                 </tr>
                             }
                         </tbody>
@@ -45,7 +45,7 @@
                 <div class="col-md-10 col-sm-12 col-xs-12 contentakses" style="display:none;">
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Menu Akses</a></li>
+                            <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Access Menu</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
@@ -61,12 +61,12 @@
                                         <div class="x_content">
                                             <div class="form-group">
                                                 <div class="controls">
-                                                    <input id="RolesID" type="hidden" />
+                                                    <input id="GroupMenuCode" type="hidden" />
                                                     <div class="TreeContainer">
                                                         <ul class="tree"></ul>
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-success" onclick="Save(); return false;">Simpan</button>
+                                                <button type="submit" class="btn btn-success" onclick="Save(); return false;">Save</button>
                                             </div>
                                         </div>
                                     </div>
@@ -87,14 +87,14 @@
     $(".showakses").click(function (ev) {
             $(".tree").empty();
             $(".contentakses").show();
-            $("#RolesID").val($(this).closest("[role='row'").find("td:first").html());
+            $("#GroupMenuCode").val($(this).closest("[role='row'").find("td:first").html());
             $.ajax({
                 url: '@Url.Action("GetMenu")',
                 type: 'post',
                 cache: false,
                 async: false,
                 data: {
-                    RolesID: $(this).closest("[role='row'").find("td:first").html()
+                    GroupMenuCode: $(this).closest("[role='row'").find("td:first").html()
                 },
                 success: function (response) {
                     var elements = '';
@@ -102,20 +102,20 @@
                     $.each(response, function (k, v) {
                         Check = '';
                         if (v.Parent == null) {
-                            if (v.MenuIDAkses != null) {
+                            if (v.MenuCodeAkses != null) {
                                 Check = 'checked';
                             }
-                            $(".tree:first").append('<li id=' + v.MenuID + '><input id=' + v.MenuID + ' name=' + v.MenuID + ' type="checkbox" ' + Check + ' /><a>' + v.MenuID + '</a></li>')
+                            $(".tree:first").append('<li id=' + v.MenuCode + '><input id=' + v.MenuCode + ' name=' + v.MenuCode + ' type="checkbox" ' + Check + ' /><a>' + v.MenuCode + '</a></li>')
                         }
                         else if (v.Parent != null) {
-                            if (v.MenuIDAkses != null) {
+                            if (v.MenuCodeAkses != null) {
                                 Check = 'checked';
                             }
                             if ($(".tree").find("#" + v.Parent + ":first").find("ul").length) {
-                                $(".tree").find("#" + v.Parent + ":first").find("ul").append('<li id=' + v.MenuID + '><input id=' + v.MenuID + ' name=' + v.MenuID + ' type="checkbox" ' + Check + ' /><a>' + v.MenuID + '</a></li>')
+                                $(".tree").find("#" + v.Parent + ":first").find("ul").append('<li id=' + v.MenuCode + '><input id=' + v.MenuCode + ' name=' + v.MenuCode + ' type="checkbox" ' + Check + ' /><a>' + v.MenuCode + '</a></li>')
                             }
                             else {
-                                $(".tree").find("#" + v.Parent + ":first").append('<ul style="display:none"><li id=' + v.MenuID + '><input id=' + v.MenuID + ' name=' + v.MenuID + ' type="checkbox" ' + Check + ' /><a>' + v.MenuID + '</a></li></ul>')
+                                $(".tree").find("#" + v.Parent + ":first").append('<ul style="display:none"><li id=' + v.MenuCode + '><input id=' + v.MenuCode + ' name=' + v.MenuCode + ' type="checkbox" ' + Check + ' /><a>' + v.MenuCode + '</a></li></ul>')
                             }
                         }
                     });
@@ -187,6 +187,6 @@
                 if($(this).prop("checked"))
                 datas.push($(this).prop("id"))
             })
-            InUpManual('@Url.Action("Save")', 'alert("success"); window.location.href = "@Url.Action("Index")"',JSON.stringify({RolesID: $("#RolesID").val(), Datas: datas }));
+            InUpManual('@Url.Action("Save")', 'alert("success"); window.location.href = "@Url.Action("Index")"',JSON.stringify({RolesID: $("#GroupMenuCode").val(), Datas: datas }));
     }
 </script>

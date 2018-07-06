@@ -1053,4 +1053,12 @@
       <Column Name="Exception" Type="System.String" DbType="VarChar(23) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.Ms_DisplayMenuMaster_View" Method="Ms_DisplayMenuMaster_View">
+    <Parameter Name="GroupMenuCode" Parameter="groupMenuCode" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="Ms_DisplayMenuMaster_ViewResult">
+      <Column Name="MenuCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Parent" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MenuCodeAkses" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

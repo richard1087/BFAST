@@ -119,6 +119,7 @@
     <Compile Include="Lib\ImageUpload.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CRUD.cs" />
+    <Compile Include="Models\DisplayMenuMaster.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MsAsset.cs" />
