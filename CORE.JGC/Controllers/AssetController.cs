@@ -370,16 +370,11 @@ namespace CORE.JGC.Controllers
                         pic.SaveAs(path);
                         WebImage webimg = new WebImage(path);
 
-                        if (webimg.Width > 150)
+                        if (webimg.Width > 100)
                         {
-                            webimg.Resize(150, 150);
-
-                            if (webimg.Width > 100)
-                            {
-                                webimg.Resize(100, 100);
-
-                                webimg.Save(path);
-                            }
+                            webimg.Resize(100, 100);
+                            webimg.Save(path);
+                            
                             bmp = new Bitmap(path);
 
                             using (ms = new MemoryStream())
@@ -497,7 +492,7 @@ namespace CORE.JGC.Controllers
             {
                 return Json(new { error = true, responseText = ex.Message.ToString().Trim() }, JsonRequestBehavior.AllowGet);
             }
-            return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
+            //return Json(new { success = true, responseText = hasil }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Maintenancedue()
         {
