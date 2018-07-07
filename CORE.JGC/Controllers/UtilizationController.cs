@@ -328,37 +328,29 @@ namespace CORE.JGC.Controllers
             }
             return msDept.ToArray();
         }
-        //[HttpPost]
-        //public JsonResult GetMenu(string GroupMenuCode)
-        //{
-        //    //dc = new BFASTDataContext();
+        [HttpPost]
+        public JsonResult GetMenu(string GroupMenuCode)
+        {
+            dc = new BFASTDataContext();
 
-        //    //DisplayMenuMaster a = new DisplayMenuMaster();
-        //    //try
-        //    //{
-        //    //    var query = dc.TrxDisposeAsset_View(DisposeNo, "U");
-        //    //    foreach (var res in query)
-        //    //    {
+            DisplayMenuMaster a = new DisplayMenuMaster();
+            try
+            {
+                var query = dc.Ms_DisplayMenuMaster_View(GroupMenuCode);
+                foreach (var res in query)
+                {
 
-        //    //        a.DisposeNo = res.DisposeNo;
-        //    //        a.Status = res.Status;
-        //    //        a.NamaStatus = res.NamaStatus;
-        //    //        a.DisposeDate = res.DisposeDate;
-        //    //        a.DisposeTo = res.DisposeTo;
-        //    //        a.Reason = res.Reason;
+                    a.MenuCode = res.MenuCode;
+                    a.Parent = res.Parent;
+                    a.MenuCodeAkses = res.MenuCodeAkses;
 
-        //    //    }
-        //    //}
-        //    //catch (Exception ex)
-        //    //{
-        //    //}
-        //    //var response = dc.Ms_DisplayMenuMaster_View(GroupMenuCode);
-
-        //    //DisplayMenuMaster[] Result = null;
-        //    //Result = JsonConvert.DeserializeObject<DisplayMenuMaster[]>(response.Result.Content.ReadAsStringAsync().Result);
-
-        //    //return Json(query, JsonRequestBehavior.AllowGet);
-        //}
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return Json(a, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public ActionResult SaveMenu(string MenuCode, string MenuName, string MenuPath, int LevelMenu, string ParentMenu)

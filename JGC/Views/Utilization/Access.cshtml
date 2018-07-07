@@ -80,7 +80,7 @@
     </div>
 </div>
 <!-- PAGE CONTENT END -->
-
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
 
 <script type="text/javascript">
@@ -182,11 +182,23 @@
 <script type="text/javascript">
     function Save()
     {
-         var datas = new Array();
+        $(".modal-body #peringatan4").text("Are You Sure Save " + $("#GroupMenuCode").val() + "? ");
+        $('#btnyes').click(function (e) {
+            $('#Alert4').modal('hide');
+
+            var success = "$('.modal-body #peringatan2').text('Success');$('#btnok').click(function (e) {window.location.href = '@Url.Action("Index")'});$('#Alert2').modal();";
+            var datas = new Array();
             $(".tree input:checkbox").each(function () {
-                if($(this).prop("checked"))
-                datas.push($(this).prop("id"))
+                if ($(this).prop("checked"))
+                    datas.push($(this).prop("id"))
             })
-            InUpManual('@Url.Action("Save")', 'alert("success"); window.location.href = "@Url.Action("Index")"',JSON.stringify({RolesID: $("#GroupMenuCode").val(), Datas: datas }));
+            InUpManual('@Url.Action("Save","Utilization")', success, JSON.stringify({ GroupMenuCode: $("#GroupMenuCode").val(), Datas: datas }));
+
+        });
+        $('#btnno').click(function (e) {
+            $('#Alert4').modal('hide');
+        });
+        $("#Alert4").modal();
     }
 </script>
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
