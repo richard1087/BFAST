@@ -8,7 +8,7 @@ namespace CORE.JGC.Models
     public class MsAsset
     {
         //public int Id { get; set; }
-        
+
         public string AssetName { get; set; }
         public string AssetModelCode { get; set; }
         public string AssetCategoryCode { get; set; }
@@ -29,6 +29,7 @@ namespace CORE.JGC.Models
         public string PurchasePrice { get; set; }
         public string PurchaseDate { get; set; }
         public string SupplierCode { get; set; }
+        public string SupplierName { get; set; }
         public string CompanyID { get; set; }
         public string DeptCode { get; set; }
         public int Qty { get; set; }
@@ -37,5 +38,9 @@ namespace CORE.JGC.Models
         public string Uby { get; set; }
         public DateTime Uon { get; set; }
         public string AssetCode { get; set; }
+        public string SiteName { get; set; }
+        public string LocationName { get; set; }
+        public int Life { get; set; }
+        public string Salvage { get; set; }
     }
 }

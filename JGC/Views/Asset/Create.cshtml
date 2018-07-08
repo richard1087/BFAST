@@ -464,7 +464,7 @@
                     $("#Alert3").modal();
                 }
             });
-                
+
         }
     }
 </script>
@@ -869,56 +869,6 @@
                     <div class="x_content">
                         <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
 
-                <p style="margin-left:8px; margin-bottom:25px;">Enter the data about your new location in the fields below and we will add it to your list.</p>
-
-                <form class="form-horizontal form-label-left">
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="SiteId" list="Site" name="Site" class="form-control" placeholder="Select a Site">
-                            <datalist id="Site">
-                                @for (int i = 0; i < ViewBag.Sitecode.Length; i++)
-                                {
-                                    <option value='@ViewBag.Sitecode[i].SiteName'></option>
-                                }
-                            </datalist>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="LocationCode" type="text" class="form-control" placeholder="Location">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location Name</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="LocationName" type="text" class="form-control" placeholder="Location Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <div class="checkbox">
-                                <label style="padding-left:0 !important">
-                                    <input id="ActiveLocation" type="checkbox" class="flat"> Yes
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ln_solid"></div>
-                    <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                            <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
-                            <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataLocation(); return false;">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- MODAL3 END -->
                             <div class="form-group">
                                 <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Site Location, Category, and Departments</h3>
                             </div>
@@ -927,19 +877,19 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     @*<input list="Site" id="Sitecode" name="Site" class="form-control" placeholder="Select Site">
-                                    <datalist id="Site">
-                                        @for (int i = 0; i < ViewBag.Sitecode.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Sitecode[i].SiteName' value='@ViewBag.Sitecode[i].SiteCode'></option>
-                                        }
-                                    </datalist>*@
+                                        <datalist id="Site">
+                                            @for (int i = 0; i < ViewBag.Sitecode.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Sitecode[i].SiteName' value='@ViewBag.Sitecode[i].SiteCode'></option>
+                                            }
+                                        </datalist>*@
                                     <input class="form-control readonly" id="SiteCodeId" name="SiteCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" id="SiteNameId" name="SiteNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    <input class="form-control readonly" placeholder="Sites" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" id="SiteNameId" name="SiteNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                     @*<span class="input-group-btn">
-                                        <a class="btn btn-info" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
-                                            <i class="fa fa-search fa-fw"></i>
-                                        </a>
-                                    </span>*@
+                                            <a class="btn btn-info" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                                <i class="fa fa-search fa-fw"></i>
+                                            </a>
+                                        </span>*@
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createsite" type="button" class="btn btn-success">New</button>
@@ -948,14 +898,14 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Category</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     @*<input list="Category" id="AssetCategoryCode" name="Category" class="form-control" placeholder="Select Category">
-                                    <datalist id="Category">
-                                        @for (int i = 0; i < ViewBag.Category.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Category[i].AssetCategoryName' value='@ViewBag.Category[i].AssetCategoryCode'></option>
-                                        }
-                                    </datalist>*@
+                                        <datalist id="Category">
+                                            @for (int i = 0; i < ViewBag.Category.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Category[i].AssetCategoryName' value='@ViewBag.Category[i].AssetCategoryCode'></option>
+                                            }
+                                        </datalist>*@
                                     <input class="form-control readonly" id="CategoryCodeId" name="CategoryCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" onclick="Categories('1')" data-target="#Lookup" data-toggle="modal" id="CategoryNameId" name="CategoryNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    <input class="form-control readonly" placeholder="Categories" onclick="Categories('1')" data-target="#Lookup" data-toggle="modal" id="CategoryNameId" name="CategoryNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createcategory" type="button" class="btn btn-success">New</button>
@@ -966,14 +916,14 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     @*<input list="location" id="LocationCode" name="location" class="form-control" placeholder="Select a Location">
-                                    <datalist id="location">
-                                        @for (int i = 0; i < ViewBag.Location.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Location[i].LocationName' value='@ViewBag.Location[i].LocationCode'></option>
-                                        }
-                                    </datalist>*@
+                                        <datalist id="location">
+                                            @for (int i = 0; i < ViewBag.Location.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Location[i].LocationName' value='@ViewBag.Location[i].LocationCode'></option>
+                                            }
+                                        </datalist>*@
                                     <input class="form-control readonly" id="LocationCodeId" name="LocationCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" onclick="Locations('1')" data-target="#Lookup" data-toggle="modal" id="LocationNameId" name="LocationNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    <input class="form-control readonly" placeholder="Locations" onclick="Locations('1')" data-target="#Lookup" data-toggle="modal" id="LocationNameId" name="LocationNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createlocation" type="button" class="btn btn-success">New</button>
@@ -982,14 +932,14 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Department</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     @*<input list="department" id="DeptCode" name="department" class="form-control" placeholder="Select a Department">
-                                    <datalist id="department">
-                                        @for (int i = 0; i < ViewBag.Dept.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Dept[i].DeptName' value='@ViewBag.Dept[i].DeptCode'></option>
-                                        }
-                                    </datalist>*@
+                                        <datalist id="department">
+                                            @for (int i = 0; i < ViewBag.Dept.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Dept[i].DeptName' value='@ViewBag.Dept[i].DeptCode'></option>
+                                            }
+                                        </datalist>*@
                                     <input class="form-control readonly" id="DepartmentCodeId" name="DepartmentCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" onclick="Departments('1')" data-target="#Lookup" data-toggle="modal" id="DepartmentNameId" name="DepartmentNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    <input class="form-control readonly" placeholder="Departments" onclick="Departments('1')" data-target="#Lookup" data-toggle="modal" id="DepartmentNameId" name="DepartmentNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createdepartment" type="button" class="btn btn-success">New</button>
@@ -1005,7 +955,6 @@
                                 <div class="col-md-11 col-sm-11 col-xs-12">
                                     <input type="text" name="AssetTagID" class="form-control col-md-10" placeholder="Auto Generated" readonly />
                                 </div>
-
                             </div>
 
                             <div class="form-group">
@@ -1016,14 +965,14 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Supplier Name</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     @*<input list="Supplier" id="SupplierCode" name="SupplierName" class="form-control col-md-10" placeholder="Select Supplier Name">
-                                    <datalist id="Supplier">
-                                        @for (int i = 0; i < ViewBag.Suppliername.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Suppliername[i].SupplierName' value='@ViewBag.Suppliername[i].SupplierCode'></option>
-                                        }
-                                    </datalist>*@
+                                        <datalist id="Supplier">
+                                            @for (int i = 0; i < ViewBag.Suppliername.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Suppliername[i].SupplierName' value='@ViewBag.Suppliername[i].SupplierCode'></option>
+                                            }
+                                        </datalist>*@
                                     <input class="form-control readonly" id="SupplierCodeId" name="SupplierCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" onclick="Suppliers('1')" data-target="#Lookup" data-toggle="modal" id="SupplierNameId" name="SupplierNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    <input class="form-control readonly" placeholder="Supplier Name" onclick="Suppliers('1')" data-target="#Lookup" data-toggle="modal" id="SupplierNameId" name="SupplierNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createsupplier" type="button" class="btn btn-success">New</button>
@@ -1038,14 +987,14 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Brand</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     @*<input list="Brand" id="AssetBrandCode" name="Brand" class="form-control col-md-10" placeholder="Select Brand">
-                                    <datalist id="Brand">
-                                        @for (int i = 0; i < ViewBag.BrandName.Length; i++)
-                                        {
-                                            <option label='@ViewBag.BrandName[i].BrandName' value='@ViewBag.BrandName[i].BrandCode'></option>
-                                        }
-                                    </datalist>*@
+                                        <datalist id="Brand">
+                                            @for (int i = 0; i < ViewBag.BrandName.Length; i++)
+                                            {
+                                                <option label='@ViewBag.BrandName[i].BrandName' value='@ViewBag.BrandName[i].BrandCode'></option>
+                                            }
+                                        </datalist>*@
                                     <input class="form-control readonly" id="BrandCodeId" name="BrandCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" onclick="Brands('1')" data-target="#Lookup" data-toggle="modal" id="BrandNameId" name="BrandNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    <input class="form-control readonly"placeholder="Brand" onclick="Brands('1')" data-target="#Lookup" data-toggle="modal" id="BrandNameId" name="BrandNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createbrand" type="button" class="btn btn-success">New</button>
@@ -1062,14 +1011,14 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Model</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     @*<input list="Model" id="AssetModelCode" name="Model" class="form-control col-md-10" placeholder="Select Model">
-                                    <datalist id="Model">
-                                        @for (int i = 0; i < ViewBag.ModelName.Length; i++)
-                                        {
-                                            <option label='@ViewBag.ModelName[i].ModelName' value='@ViewBag.ModelName[i].ModelCode'></option>
-                                        }
-                                    </datalist>*@
+                                        <datalist id="Model">
+                                            @for (int i = 0; i < ViewBag.ModelName.Length; i++)
+                                            {
+                                                <option label='@ViewBag.ModelName[i].ModelName' value='@ViewBag.ModelName[i].ModelCode'></option>
+                                            }
+                                        </datalist>*@
                                     <input class="form-control readonly" id="ModelCodeId" name="ModelCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" onclick="Models('1')" data-target="#Lookup" data-toggle="modal" id="ModelNameId" name="ModelNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    <input class="form-control readonly" placeholder="Model" onclick="Models('1')" data-target="#Lookup" data-toggle="modal" id="ModelNameId" name="ModelNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createmodel" type="button" class="btn btn-success">New</button>
@@ -1091,14 +1040,14 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     @*<input list="Type" id="AssetTypeCode" name="Type" class="form-control" placeholder="Select Type">
-                                    <datalist id="Type">
-                                        @for (int i = 0; i < ViewBag.AssetType.Length; i++)
-                                        {
-                                            <option label='@ViewBag.AssetType[i].AssetTypeName' value='@ViewBag.AssetType[i].AssetTypeCode'></option>
-                                        }
-                                    </datalist>*@
+                                        <datalist id="Type">
+                                            @for (int i = 0; i < ViewBag.AssetType.Length; i++)
+                                            {
+                                                <option label='@ViewBag.AssetType[i].AssetTypeName' value='@ViewBag.AssetType[i].AssetTypeCode'></option>
+                                            }
+                                        </datalist>*@
                                     <input class="form-control readonly" id="TypeCodeId" name="TypeCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" onclick="Types('1')" data-target="#Lookup" data-toggle="modal" id="TypeNameId" name="TypeNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    <input class="form-control readonly" placeholder="Type" onclick="Types('1')" data-target="#Lookup" data-toggle="modal" id="TypeNameId" name="TypeNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createtype" type="button" class="btn btn-success">New</button>
@@ -1106,14 +1055,14 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Currency</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     @*<input list="Currency" id="CurrencyCode" name="Currency" class="form-control col-md-10" placeholder="Select Currency">
-                                    <datalist id="Currency">
-                                        @for (int i = 0; i < ViewBag.Currencyname.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Currencyname[i].CurrencyName' value='@ViewBag.Currencyname[i].CurrencyCode'></option>
-                                        }
-                                    </datalist>*@
+                                        <datalist id="Currency">
+                                            @for (int i = 0; i < ViewBag.Currencyname.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Currencyname[i].CurrencyName' value='@ViewBag.Currencyname[i].CurrencyCode'></option>
+                                            }
+                                        </datalist>*@
                                     <input class="form-control readonly" id="CurrencyCodeId" name="CurrencyCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" onclick="Currencies('1')" data-target="#Lookup" data-toggle="modal" id="CurrencyNameId" name="CurrencyNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    <input class="form-control readonly" placeholder="Currency" onclick="Currencies('1')" data-target="#Lookup" data-toggle="modal" id="CurrencyNameId" name="CurrencyNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createcurrency" type="button" class="btn btn-success">New</button>
@@ -1124,14 +1073,14 @@
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Company</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     @*<input list="Company" id="CompanyId" name="Company" class="form-control col-md-10" placeholder="Company" />
-                                    <datalist id="Company">
-                                        @for (int i = 0; i < ViewBag.Companyname.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Companyname[i].CompanyName' value='@ViewBag.Companyname[i].CompanyCode'></option>
-                                        }
-                                    </datalist>*@
+                                        <datalist id="Company">
+                                            @for (int i = 0; i < ViewBag.Companyname.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Companyname[i].CompanyName' value='@ViewBag.Companyname[i].CompanyCode'></option>
+                                            }
+                                        </datalist>*@
                                     <input class="form-control readonly" id="CompanyCodeId" name="CompanyCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
-                                    <input class="form-control readonly" onclick="Companies('1')" data-target="#Lookup" data-toggle="modal" id="CompanyNameId" name="CompanyNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    <input class="form-control readonly" placeholder="Company" onclick="Companies('1')" data-target="#Lookup" data-toggle="modal" id="CompanyNameId" name="CompanyNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createcompany" type="button" class="btn btn-success">New</button>
@@ -1180,7 +1129,6 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload Image</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-
                                     <input type="file" name="file" id="fileupload" class="btn btn-success btn-cust inputfile" onchange='$("#upload-file-info").html($(this).val());' />
                                     <label for="fileupload" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
                                     <span class='label label-info label-create' id="upload-file-info"></span>
@@ -1193,7 +1141,6 @@
                                     <button class="btn btn-default" type="button">Cancel</button>
                                     <button type="submit" class="btn btn-success" onclick="InputData(); return false;">Submit</button>
                                 </div>
-
                             </div>
 
                         </form>
@@ -1275,7 +1222,6 @@
     </div>
 </div>
 <!-- MODAL1 END -->
-
 <!-- MODAL2 START -->
 <div class="modal fade" id="categoryModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
@@ -1289,26 +1235,26 @@
 
                 <form class="form-horizontal form-label-left">
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="AssetCategoryCode" type="text" class="form-control" placeholder="Category">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category Name</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Category Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="CategoryName" type="text" class="form-control" placeholder="Category Name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Initial</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Initial</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="InitialName" type="text" class="form-control" placeholder="Initial Name">
                         </div>
                     </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
-                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
+                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-3">
                             <button id="CategoryCancelId" type="button" class="btn btn-primary">Cancel</button>
                             <button id="CategorySubmitId" type="submit" class="btn btn-success" onclick="InputDataCategory(); return false;">Submit</button>
                         </div>
@@ -1319,7 +1265,6 @@
     </div>
 </div>
 <!-- MODAL2 END -->
-
 <!-- MODAL3 START -->
 <div class="modal fade" id="locationModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
@@ -1333,7 +1278,7 @@
 
                 <form class="form-horizontal form-label-left">
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Site</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="SiteId" list="Site" name="Site" class="form-control" placeholder="Select a Site">
                             <datalist id="Site">
@@ -1345,47 +1290,46 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Location</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="LocationCode" type="text" class="form-control" placeholder="Location">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Location Name</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="LocationName" type="text" class="form-control" placeholder="Location Name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Floor</label>
-                        <div class="col-md-1 col-sm-1 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Floor</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
                             <input type="number" id="Floor" name="Floor" class="form-control" placeholder="Floor" />
                         </div>
                     </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-2 col-sm-2 col-xs-12">Active</label>
-                            <div class="col-md-2 col-sm-2 col-xs-12">
-                                <div class="checkbox">
-                                    <label style="padding-left:0 !important">
-                                        <input id="ActiveLocation" type="checkbox" class="flat"> Yes
-                                    </label>
-                                </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <div class="checkbox">
+                                <label style="padding-left:0 !important">
+                                    <input id="ActiveLocation" type="checkbox" class="flat"> Yes
+                                </label>
                             </div>
                         </div>
-                        <div class="ln_solid"></div>
-                        <div class="form-group">
-                            <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
-                                <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
-                                <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataMasterLocation(); return false;">Submit</button>
-                            </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-3">
+                            <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataMasterLocation(); return false;">Submit</button>
                         </div>
-</form>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
 <!-- MODAL3 END -->
-
 <!-- MODAL4 START -->
 <div class="modal fade" id="departmentModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
@@ -1423,7 +1367,6 @@
     </div>
 </div>
 <!-- MODAL4 END -->
-
 <!-- MODAL5 START -->
 <div class="modal fade" id="typeModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
@@ -1459,7 +1402,6 @@
     </div>
 </div>
 <!-- MODAL5 END -->
-
 <!-- MODAL6 START -->
 <div class="modal fade" id="companyModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
@@ -1543,7 +1485,6 @@
     </div>
 </div>
 <!-- MODAL6 END -->
-
 <!-- MODAL7 START -->
 <div class="modal fade" id="supplierModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
@@ -1640,7 +1581,6 @@
     </div>
 </div>
 <!-- MODAL7 END -->
-
 <!-- MODAL8 START -->
 <div class="modal fade" id="brandModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
@@ -1677,7 +1617,6 @@
     </div>
 </div>
 <!-- MODAL8 END -->
-
 <!-- MODAL9 START -->
 <div class="modal fade" id="modelModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
@@ -1688,6 +1627,21 @@
             <div class="modal-body ">
 
                 <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Brand</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            @*<input list="Brand" id="AssetBrandCode" name="Brand" class="form-control col-md-10" placeholder="Select Brand">
+                <datalist id="Brand">
+                    @for (int i = 0; i < ViewBag.BrandName.Length; i++)
+                    {
+                        <option label='@ViewBag.BrandName[i].BrandName' value='@ViewBag.BrandName[i].BrandCode'></option>
+                    }
+                </datalist>*@
+                            <input class="form-control readonly" id="AssetBrandCode" name="AssetBrandCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" onclick="Brands('1')" data-target="#Lookup" data-toggle="modal" id="AssetBrandName" name="AssetBrandName" value="" type="text" data-id="i" autocomplete="off" required="" placeholder="Brand Name" readonly style="cursor:auto;" />
+
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Model Code</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
@@ -1702,19 +1656,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Brand</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input list="Brand" id="AssetBrandCode" name="Brand" class="form-control col-md-10" placeholder="Select Brand">
-                            <datalist id="Brand">
-                                @for (int i = 0; i < ViewBag.BrandName.Length; i++)
-                                {
-                                    <option label='@ViewBag.BrandName[i].BrandName' value='@ViewBag.BrandName[i].BrandCode'></option>
-                                }
-                            </datalist>
-
-                        </div>
-                    </div>
+                    
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-9 col-sm-10 col-xs-12 col-md-offset-3">
@@ -1728,7 +1670,6 @@
     </div>
 </div>
 <!-- MODAL9 END -->
-
 <!-- MODAL10 START -->
 <div class="modal fade" id="currencyModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">

@@ -15,8 +15,13 @@ namespace CORE.JGC.Controllers
 {
     [SessionTimeoutAttribute]
     public class AssetController : Controller
-    {   
+    {
         BFASTDataContext dc = null;
+        MsAsset[] msasset = null;
+        AssetDetails aDetails = new AssetDetails();
+        List<AssetWarranty> warranty;
+        List<AssetHistory> history;
+        List<AssetMaintenance> maintenance;
         // GET: Asset
         private MsAsset[] GridAsset()
         {
@@ -29,10 +34,14 @@ namespace CORE.JGC.Controllers
                 foreach (var res in query)
                 {
                     MsAsset asset = new MsAsset();
-                    asset.Photo = res.AssetPhoto;
+                    //asset.Photo = res.AssetPhoto;
                     asset.AssetCode = res.AssetTagID;
                     asset.AssetName = res.AssetName;
                     asset.AssetBrandCode = res.AssetBrand;
+                    asset.SiteName = res.SiteName;
+                    asset.LocationName = res.LocationName;
+                    asset.Floor = Convert.ToInt32(res.Floor);
+                    asset.SupplierCode = res.SupplierName;
                     asset.PurchaseDate = res.PurchaseDate.ToString();
                     double price = Convert.ToDouble(res.PurchasePrice);
                     asset.PurchasePrice = res.CurrencyCode + " " + price.ToString("N0");
@@ -256,6 +265,83 @@ namespace CORE.JGC.Controllers
             }
             return mCompany.ToArray();
         }
+        private void GetHistoryAsset(string assetcode)
+        {
+            history = new List<AssetHistory>();
+            dc = new BFASTDataContext();
+            try
+            {
+                var query = dc.MsAsset_HistoryView(Session["Assetcodes"].ToString());
+                foreach (var res in query)
+                {
+                    AssetHistory hist = new AssetHistory();
+                    hist.No = Convert.ToInt32(res.Urut);
+                    hist.AssetCode = res.AssetCode;
+                    hist.Date = Convert.ToDateTime(res.Date);
+                    hist.Event = res.Event;
+                    hist.StatusFrom = res.StatusFrom;
+                    hist.Status = res.Status;
+                    hist.Iby = res.Iby;
+                    history.Add(hist);
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+            }
+            //return history.ToArray();
+        }
+        private void GetMaintenanceAsset(string assetcode)
+        {
+            maintenance = new List<AssetMaintenance>();
+            dc = new BFASTDataContext();
+            try
+            {
+                var query = dc.MsAsset_MaintenanceView(Session["Assetcodes"].ToString());
+                foreach (var res in query)
+                {
+                    AssetMaintenance main = new AssetMaintenance();
+                    main.MaintenanceNo = res.MaintenanceAssetNo;
+                    main.ScheduleDate = Convert.ToDateTime(res.ScheduleDate);
+                    main.CompleteDate = Convert.ToDateTime(res.CompleteDate);
+                    main.MaintenanceBy = res.MaintenanceBy;
+                    main.Cost = Convert.ToDecimal(res.Cost);
+                    main.Status = res.Status;
+                    main.Note = res.Notes;
+                    maintenance.Add(main);
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+            }
+            //return maintenance.ToArray();
+        }
+        private void GetWarrantyAsset(string assetcode)
+        {
+            warranty = new List<AssetWarranty>();
+            dc = new BFASTDataContext();
+            try
+            {
+                var query = dc.MsAsset_WarrantyView(Session["Assetcodes"].ToString());
+                foreach (var res in query)
+                {
+                    AssetWarranty warr = new AssetWarranty();
+                    warr.AssetCode = res.AssetTagID;
+                    warr.AssetName = res.AssetName;
+                    warr.WarrantyMonth = Convert.ToInt32(res.WarrantyMonth);
+                    warr.PurchaseDate = Convert.ToDateTime(res.PurchaseDate);
+                    warr.ExpiredDate = Convert.ToDateTime(res.ExpireDate);
+                    warr.Active = res.Active;
+                    warranty.Add(warr);
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+            }
+            //return warranty.ToArray();
+        }
         private string GenerateQrCode(string assettagid)
         {
             string pathdb = "/Content/res/build/images/Qrcode/" + assettagid + ".jpg";
@@ -313,13 +399,59 @@ namespace CORE.JGC.Controllers
             msasset = GridAsset();
             return View(msasset);
         }
-        private void UploadImage(HttpPostedFileBase file)
-        {
-
-        }
         public ActionResult Details()
         {
-            return View();
+            if (TempData.ContainsKey("Assetcode"))
+                Session["Assetcodes"] = TempData["Assetcode"].ToString();
+            //AssetDetails assetdetail = new AssetDetails();
+            //aDetails = new AssetDetails();
+            GetHistoryAsset(Session["Assetcodes"].ToString());
+            GetMaintenanceAsset(Session["Assetcodes"].ToString());
+            GetWarrantyAsset(Session["Assetcodes"].ToString());
+            aDetails.history = history.ToList();
+            aDetails.maintenance = maintenance.ToList();
+            aDetails.warranty = warranty.ToList();
+            dc = new BFASTDataContext();
+            try
+            {
+                var query = dc.MsAsset_View(Session["Assetcodes"].ToString().Trim(), "U");
+                foreach (var res in query)
+                {
+                    ViewData["Photo"] = res.AssetPhoto;
+                    ViewData["AssetTagID"] = res.AssetTagID;
+                    ViewData["Assetname"] = res.AssetName;
+                    ViewData["Purchasedate"] = res.PurchaseDate;
+                    ViewData["Purchasefrom"] = res.SupplierName;
+                    ViewData["Purchaseprice"] = res.PurchasePrice;
+                    ViewData["Brand"] = res.AssetBrand;
+                    ViewData["Model"] = res.Model;
+                    ViewData["Category"] = res.AssetCategoryName;
+                    ViewData["Serialno"] = res.SerialNo;
+                    ViewData["Site"] = res.SiteName;
+                    ViewData["Location"] = res.LocationName;
+                    ViewData["Department"] = res.Dept;
+                    ViewData["Assignto"] = res.AssignTo;
+                    ViewData["Status"] = res.NamaStatus;
+                    ViewBag.ImageData = "data:image/png;base64," + res.Barcode;
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message.ToString().Trim();
+            }
+            return View(aDetails);
+        }
+        [HttpPost]
+        public ActionResult AssetDetail(string assetcode)
+        {
+            Session["Assetcodes"] = assetcode;
+            GetHistoryAsset(Session["Assetcodes"].ToString());
+            GetMaintenanceAsset(Session["Assetcodes"].ToString());
+            GetWarrantyAsset(Session["Assetcodes"].ToString());
+            aDetails.history = history.ToList();
+            aDetails.maintenance = maintenance.ToList();
+            aDetails.warranty = warranty.ToList();
+            return View("Details", aDetails);
         }
 
         public ActionResult Create()
@@ -394,7 +526,8 @@ namespace CORE.JGC.Controllers
 
                 var query = dc.MsAsset_IUD(asset.AssetName, asset.AssetBrandCode, asset.AssetModelCode, asset.AssetCategoryCode, asset.AssetSerialNo, asset.AssetTypeCode,
                 Convert.ToInt32(asset.bActive), Convert.ToInt32(asset.bCap), base64, asset.SiteCode, asset.LocationCode, Convert.ToInt32(asset.Floor), asset.PurchaseNo, asset.CurrencyCode,
-                Convert.ToDecimal(asset.PurchasePrice), PurchaseDateC, asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty), asset.Qty,
+                Convert.ToDecimal(asset.PurchasePrice), PurchaseDateC, asset.SupplierCode, asset.CompanyID, asset.DeptCode, Convert.ToInt32(asset.Warranty), asset.Qty, asset.Life,
+                Convert.ToDecimal(asset.Salvage),
                 UserID, 1);                
 
                 if (asset.Qty > 1)

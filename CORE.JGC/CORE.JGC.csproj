@@ -118,6 +118,10 @@
     <Compile Include="Controllers\UtilizationController.cs" />
     <Compile Include="Lib\ImageUpload.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AssetDetails.cs" />
+    <Compile Include="Models\AssetHistory.cs" />
+    <Compile Include="Models\AssetMaintenance.cs" />
+    <Compile Include="Models\AssetWarranty.cs" />
     <Compile Include="Models\CRUD.cs" />
     <Compile Include="Models\DisplayMenuMaster.cs" />
     <Compile Include="Models\IdentityModels.cs" />
