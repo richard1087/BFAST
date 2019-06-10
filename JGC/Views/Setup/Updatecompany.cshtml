@@ -1,0 +1,283 @@
+﻿
+@{
+    ViewBag.Title = "Update Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+    function UpdateCompany() {
+        var CompanyCode = document.getElementById("CompanyCode").value;
+        var Id = document.getElementById("Id").value;
+        var CompanyName = document.getElementById("CompanyName").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var ProvinceId = document.getElementById("ProvinceId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var TelephoneId = document.getElementById("TelephoneId").value;
+        var Aktif = document.getElementById("ActiveId").value;
+
+        if (document.getElementById("ActiveId").checked) {
+            var Aktif = "1";
+        }
+        else {
+            var Aktif = "0";
+        }
+
+        if (CompanyCode == "") {
+            $(".modal-body #peringatan3").text("Company Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CompanyName == "") {
+            $(".modal-body #peringatan3").text("Company Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ProvinceId == "") {
+            $(".modal-body #peringatan3").text("Province must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TelephoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Update Data: " + CompanyCode + ' ( ' + CompanyName + " ) ? ");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+
+                var formdata = new FormData();
+                var fileInput = document.getElementById('file');
+                for (i = 0; i < fileInput.files.length; i++) {
+                    formdata.append(fileInput.files[i].name, fileInput.files[i]);
+                }
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/Setup/SimpanGambarCompany');
+                xhr.send(formdata);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        $(".modal-body #peringatan1").text("data failed to save...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                    else {
+                        $.ajax({
+                            url: '@Url.Action("UbahCompany", "Setup")',
+                            type: 'post',
+                            cache: false,
+                            async: true,
+                            data:  {
+                                EditCompanyCode: CompanyCode,
+                                EditCompanyName: CompanyName,
+                                EditAddress: AddressId,
+                                EditCity: CityId,
+                                EditProvince: ProvinceId,
+                                EditPostalCode: PostalCodeId,
+                                EditTelephone: TelephoneId,
+                                EditAktif: Aktif,
+                                EditPhotoLogo: ""
+                            },
+                            success: function (response) {
+                                if (response.success == true) {
+                                    $(".modal-body #peringatan2").text(response.responseText);
+                                    $('#btnok').click(function (e) {
+                                        window.location.href = "@Url.Action("Companyinfo", "Setup")";
+                                    })
+                                    $("#Alert2").modal();
+                                } else {
+                                    $(".modal-body #peringatan3").text(response.responseText);
+                                    $('#btnerror').click(function (e) {
+                                        $('#Alert3').modal('hide');
+                                    })
+                                    $("#Alert3").modal();
+                                }
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                $(".modal-body #peringatan1").text("Please Wait...");
+                                $('#btncaution').click(function (e) {
+                                    $('#Alert1').modal('hide');
+                                })
+                                $("#Alert1").modal();
+                            }
+                        });
+                    }
+                }
+            });
+            $('#btnno').click(function (e) {
+                $('#Alert4').modal('hide');
+            });
+            $("#Alert4").modal();
+        }
+}
+
+
+</script>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Setup •
+                            <a href="/setup/companyinfo" class="activemenu">List Company</a> •
+                            <a href="/setup/updatecompany" class="activemenu">Update Company</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>Company Information</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @using (Ajax.BeginForm("UbahCompany", "Setup", new AjaxOptions { UpdateTargetId = "OptionArea" }, new { enctype = "multipart/form-data", id = "AddDRForm", @class = "form-horizontal form-label-left" }))
+    {
+                            <div class="form-group">
+                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Company Details</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12">Provide the name and site of the main office.</label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Company Code</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="Id" type="hidden" name="Id" value="" />
+                                    <input id="CompanyId" type="hidden" name="CompanyId" value="" readonly />
+                                    <input id="CompanyCode" type="text" name="CompanyCode" class="form-control col-md-10" placeholder="Company Code" readonly />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Company Name</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="CompanyName" type="text" name="CompanyName" class="form-control col-md-10" placeholder="Company Name" readonly />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Address</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="AddressId" type="text" name="AddressId" class="form-control col-md-10" placeholder="Address" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">City</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="CityId" type="text" name="City" class="form-control col-md-10" placeholder="City" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Province</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="ProvinceId" type="text" name="ProvinceId" class="form-control col-md-10" placeholder="Province" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Postal Code</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="PostalCodeId" type="text" name="Postal Code" class="form-control col-md-10" placeholder="Postal Code" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Telephone</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="tel" id="TelephoneId" name="TelephoneId" class="form-control col-md-10" placeholder="Telephone" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Active</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="checkbox">
+                                        <label style="padding-left:0 !important">
+                                            <input id="ActiveId" name="ActiveId" type="checkbox" class="flat" value=""> Yes
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Company Logo</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12">Upload your organization’s logo to make this space your own.</label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload Logo</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="file" name="file" id="file" class="btn btn-success btn-cust inputfile" onchange='$("#upload-file-info").html($(this).val());' />
+                                    <label for="file" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
+                                    <span class='label label-info label-create' id="upload-file-info"></span>
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
+                                    <button class="btn btn-default" type="button">Cancel</button>
+                                    <button type="submit" class="btn btn-success" onclick="UpdateCompany(); return false;">Submit</button>
+                                </div>
+                            </div>
+}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $("#Id").val('@ViewData["ID"].ToString()');
+    $("#CompanyId").val('@ViewData["CompanyID"].ToString()');
+    $("#CompanyCode").val('@ViewData["CompanyCode"].ToString()');
+    $("#CompanyName").val('@ViewData["CompanyName"].ToString()');
+    $("#AddressId").val('@ViewData["Address"].ToString()');
+    $("#CityId").val('@ViewData["City"].ToString()');
+
+
+    $("#ProvinceId").val('@ViewData["Province"].ToString()');
+    $("#PostalCodeId").val('@ViewData["PostalCode"].ToString()');
+    $("#TelephoneId").val('@ViewData["Telephone"].ToString()');
+
+    if ('@ViewData["Aktif"].ToString()' == "Y") {
+        $("#ActiveId").attr("checked", "");
+    }
+</script>
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")

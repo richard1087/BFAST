@@ -1,488 +1,114 @@
-D:\TEST\JGC\JGC\bin\ApplicationInsights.config
-D:\TEST\JGC\JGC\bin\roslyn\csc.exe
-D:\TEST\JGC\JGC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\TEST\JGC\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\TEST\JGC\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\TEST\JGC\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\TEST\JGC\JGC\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\TEST\JGC\JGC\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\TEST\JGC\JGC\bin\roslyn\System.Collections.Immutable.dll
-D:\TEST\JGC\JGC\bin\roslyn\System.Reflection.Metadata.dll
-D:\TEST\JGC\JGC\bin\roslyn\vbc.exe
-D:\TEST\JGC\JGC\bin\roslyn\VBCSCompiler.exe
-D:\TEST\JGC\JGC\bin\roslyn\VBCSCompiler.exe.config
-D:\TEST\JGC\JGC\bin\JGC.dll.config
-D:\TEST\JGC\JGC\bin\JGC.dll
-D:\TEST\JGC\JGC\bin\JGC.pdb
-D:\TEST\JGC\JGC\bin\Antlr3.Runtime.dll
-D:\TEST\JGC\JGC\bin\EntityFramework.dll
-D:\TEST\JGC\JGC\bin\EntityFramework.SqlServer.dll
-D:\TEST\JGC\JGC\bin\Microsoft.AI.Agent.Intercept.dll
-D:\TEST\JGC\JGC\bin\Microsoft.AI.DependencyCollector.dll
-D:\TEST\JGC\JGC\bin\Microsoft.AI.PerfCounterCollector.dll
-D:\TEST\JGC\JGC\bin\Microsoft.AI.ServerTelemetryChannel.dll
-D:\TEST\JGC\JGC\bin\Microsoft.AI.Web.dll
-D:\TEST\JGC\JGC\bin\Microsoft.AI.WindowsServer.dll
-D:\TEST\JGC\JGC\bin\Microsoft.ApplicationInsights.dll
-D:\TEST\JGC\JGC\bin\Microsoft.AspNet.Identity.Core.dll
-D:\TEST\JGC\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\TEST\JGC\JGC\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\TEST\JGC\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.dll
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.Cookies.dll
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.dll
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.Facebook.dll
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.Google.dll
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.OAuth.dll
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.Twitter.dll
-D:\TEST\JGC\JGC\bin\Microsoft.Web.Infrastructure.dll
-D:\TEST\JGC\JGC\bin\Newtonsoft.Json.dll
-D:\TEST\JGC\JGC\bin\Owin.dll
-D:\TEST\JGC\JGC\bin\System.Web.Helpers.dll
-D:\TEST\JGC\JGC\bin\System.Web.Mvc.dll
-D:\TEST\JGC\JGC\bin\System.Web.Optimization.dll
-D:\TEST\JGC\JGC\bin\System.Web.Razor.dll
-D:\TEST\JGC\JGC\bin\System.Web.WebPages.Deployment.dll
-D:\TEST\JGC\JGC\bin\System.Web.WebPages.dll
-D:\TEST\JGC\JGC\bin\System.Web.WebPages.Razor.dll
-D:\TEST\JGC\JGC\bin\WebGrease.dll
-D:\TEST\JGC\JGC\bin\Microsoft.AI.DependencyCollector.xml
-D:\TEST\JGC\JGC\bin\Microsoft.AI.ServerTelemetryChannel.xml
-D:\TEST\JGC\JGC\bin\Microsoft.AI.Web.xml
-D:\TEST\JGC\JGC\bin\Microsoft.AI.WindowsServer.xml
-D:\TEST\JGC\JGC\bin\Microsoft.ApplicationInsights.xml
-D:\TEST\JGC\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\TEST\JGC\JGC\bin\System.Web.Helpers.xml
-D:\TEST\JGC\JGC\bin\System.Web.Mvc.xml
-D:\TEST\JGC\JGC\bin\System.Web.Optimization.xml
-D:\TEST\JGC\JGC\bin\System.Web.Razor.xml
-D:\TEST\JGC\JGC\bin\System.Web.WebPages.xml
-D:\TEST\JGC\JGC\bin\System.Web.WebPages.Deployment.xml
-D:\TEST\JGC\JGC\bin\System.Web.WebPages.Razor.xml
-D:\TEST\JGC\JGC\bin\Antlr3.Runtime.pdb
-D:\TEST\JGC\JGC\bin\Newtonsoft.Json.xml
-D:\TEST\JGC\JGC\bin\EntityFramework.xml
-D:\TEST\JGC\JGC\bin\EntityFramework.SqlServer.xml
-D:\TEST\JGC\JGC\bin\Microsoft.AspNet.Identity.Core.xml
-D:\TEST\JGC\JGC\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\TEST\JGC\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.xml
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.xml
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.Facebook.xml
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.Cookies.xml
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.OAuth.xml
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.Google.xml
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.Twitter.xml
-D:\TEST\JGC\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\TEST\JGC\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
-D:\TEST\JGC\JGC\obj\Debug\JGC.dll
-D:\TEST\JGC\JGC\obj\Debug\JGC.pdb
-D:\TEST\JGC 2\JGC\bin\ApplicationInsights.config
-D:\TEST\JGC 2\JGC\bin\roslyn\csc.exe
-D:\TEST\JGC 2\JGC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\TEST\JGC 2\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\TEST\JGC 2\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\TEST\JGC 2\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\TEST\JGC 2\JGC\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\TEST\JGC 2\JGC\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\TEST\JGC 2\JGC\bin\roslyn\System.Collections.Immutable.dll
-D:\TEST\JGC 2\JGC\bin\roslyn\System.Reflection.Metadata.dll
-D:\TEST\JGC 2\JGC\bin\roslyn\vbc.exe
-D:\TEST\JGC 2\JGC\bin\roslyn\VBCSCompiler.exe
-D:\TEST\JGC 2\JGC\bin\roslyn\VBCSCompiler.exe.config
-D:\TEST\JGC 2\JGC\bin\JGC.dll.config
-D:\TEST\JGC 2\JGC\bin\JGC.dll
-D:\TEST\JGC 2\JGC\bin\JGC.pdb
-D:\TEST\JGC 2\JGC\bin\Antlr3.Runtime.dll
-D:\TEST\JGC 2\JGC\bin\EntityFramework.dll
-D:\TEST\JGC 2\JGC\bin\EntityFramework.SqlServer.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.AI.Agent.Intercept.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.AI.DependencyCollector.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.AI.PerfCounterCollector.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.AI.ServerTelemetryChannel.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.AI.Web.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.AI.WindowsServer.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.ApplicationInsights.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.AspNet.Identity.Core.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.Cookies.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.Facebook.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.Google.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.OAuth.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.Twitter.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.Web.Infrastructure.dll
-D:\TEST\JGC 2\JGC\bin\Newtonsoft.Json.dll
-D:\TEST\JGC 2\JGC\bin\Owin.dll
-D:\TEST\JGC 2\JGC\bin\System.Web.Helpers.dll
-D:\TEST\JGC 2\JGC\bin\System.Web.Mvc.dll
-D:\TEST\JGC 2\JGC\bin\System.Web.Optimization.dll
-D:\TEST\JGC 2\JGC\bin\System.Web.Razor.dll
-D:\TEST\JGC 2\JGC\bin\System.Web.WebPages.Deployment.dll
-D:\TEST\JGC 2\JGC\bin\System.Web.WebPages.dll
-D:\TEST\JGC 2\JGC\bin\System.Web.WebPages.Razor.dll
-D:\TEST\JGC 2\JGC\bin\WebGrease.dll
-D:\TEST\JGC 2\JGC\bin\Microsoft.AI.DependencyCollector.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.AI.ServerTelemetryChannel.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.AI.Web.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.AI.WindowsServer.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.ApplicationInsights.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\TEST\JGC 2\JGC\bin\System.Web.Helpers.xml
-D:\TEST\JGC 2\JGC\bin\System.Web.Mvc.xml
-D:\TEST\JGC 2\JGC\bin\System.Web.Optimization.xml
-D:\TEST\JGC 2\JGC\bin\System.Web.Razor.xml
-D:\TEST\JGC 2\JGC\bin\System.Web.WebPages.xml
-D:\TEST\JGC 2\JGC\bin\System.Web.WebPages.Deployment.xml
-D:\TEST\JGC 2\JGC\bin\System.Web.WebPages.Razor.xml
-D:\TEST\JGC 2\JGC\bin\Antlr3.Runtime.pdb
-D:\TEST\JGC 2\JGC\bin\Newtonsoft.Json.xml
-D:\TEST\JGC 2\JGC\bin\EntityFramework.xml
-D:\TEST\JGC 2\JGC\bin\EntityFramework.SqlServer.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.AspNet.Identity.Core.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.Facebook.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.Cookies.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.OAuth.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.Google.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.Twitter.xml
-D:\TEST\JGC 2\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\TEST\JGC 2\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
-D:\TEST\JGC 2\JGC\obj\Debug\JGC.dll
-D:\TEST\JGC 2\JGC\obj\Debug\JGC.pdb
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\ApplicationInsights.config
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\csc.exe
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\System.Collections.Immutable.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\System.Reflection.Metadata.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\vbc.exe
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\VBCSCompiler.exe
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\roslyn\VBCSCompiler.exe.config
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\JGC.dll.config
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\JGC.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\JGC.pdb
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Antlr3.Runtime.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\EntityFramework.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\EntityFramework.SqlServer.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AI.Agent.Intercept.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AI.DependencyCollector.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AI.PerfCounterCollector.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AI.ServerTelemetryChannel.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AI.Web.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AI.WindowsServer.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.ApplicationInsights.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AspNet.Identity.Core.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.Cookies.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.Facebook.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.Google.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.OAuth.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.Twitter.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Web.Infrastructure.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Newtonsoft.Json.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Owin.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.Helpers.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.Mvc.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.Optimization.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.Razor.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.WebPages.Deployment.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.WebPages.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.WebPages.Razor.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\WebGrease.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AI.DependencyCollector.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AI.ServerTelemetryChannel.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AI.Web.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AI.WindowsServer.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.ApplicationInsights.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.Helpers.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.Mvc.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.Optimization.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.Razor.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.WebPages.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.WebPages.Deployment.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\System.Web.WebPages.Razor.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Antlr3.Runtime.pdb
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Newtonsoft.Json.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\EntityFramework.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\EntityFramework.SqlServer.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AspNet.Identity.Core.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.Facebook.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.Cookies.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.OAuth.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.Google.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.Twitter.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\obj\Debug\JGC.dll
-D:\Project\JGC\JGC_VER_2_REV_2\JGC 2\JGC\obj\Debug\JGC.pdb
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\ApplicationInsights.config
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\JGC.dll.config
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\JGC.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\JGC.pdb
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\csc.exe
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\csc.exe.config
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\csc.rsp
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\csi.exe
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\csi.exe.config
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\csi.rsp
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.Managed.Core.targets
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.AppContext.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Collections.Immutable.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Console.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.IO.Compression.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.IO.FileSystem.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.IO.Pipes.AccessControl.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.IO.Pipes.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Reflection.Metadata.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Security.AccessControl.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Security.Claims.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Security.Cryptography.Encoding.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Security.Cryptography.Primitives.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Security.Principal.Windows.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.ValueTuple.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Xml.ReaderWriter.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Xml.XmlDocument.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Xml.XPath.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\System.Xml.XPath.XDocument.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\vbc.exe
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\vbc.exe.config
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\vbc.rsp
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\VBCSCompiler.exe
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\roslyn\VBCSCompiler.exe.config
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Antlr3.Runtime.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\CORE.JGC.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\EntityFramework.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\EntityFramework.SqlServer.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AI.Agent.Intercept.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AI.DependencyCollector.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AI.PerfCounterCollector.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AI.ServerTelemetryChannel.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AI.Web.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AI.WindowsServer.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.ApplicationInsights.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AspNet.Identity.Core.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AspNet.TelemetryCorrelation.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.Cookies.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.Facebook.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.Google.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.OAuth.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.Twitter.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Web.Infrastructure.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Newtonsoft.Json.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Owin.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Diagnostics.DiagnosticSource.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.Helpers.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.Mvc.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.Optimization.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.Razor.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.WebPages.Deployment.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.WebPages.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.WebPages.Razor.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\WebGrease.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\CORE.JGC.pdb
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Antlr3.Runtime.pdb
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\EntityFramework.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\EntityFramework.SqlServer.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AI.DependencyCollector.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AI.Web.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AI.WindowsServer.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AspNet.TelemetryCorrelation.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.Cookies.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.Facebook.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.Google.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.OAuth.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.Owin.Security.Twitter.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Newtonsoft.Json.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Diagnostics.DiagnosticSource.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.Helpers.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.Mvc.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.Razor.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.WebPages.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.WebPages.Deployment.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.WebPages.Razor.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\System.Web.Optimization.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AspNet.Identity.Core.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\obj\Debug\JGC.dll
-D:\TEST\JGC_VER_2_REV_3\JGC_VER_2_REV_3\JGC 3\JGC\obj\Debug\JGC.pdb
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\ApplicationInsights.config
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\JGC.dll.config
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\JGC.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\JGC.pdb
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\csc.exe
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\csc.exe.config
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\csc.rsp
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\csi.exe
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\csi.exe.config
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\csi.rsp
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.Managed.Core.targets
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.AppContext.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Collections.Immutable.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Console.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.IO.Compression.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.IO.FileSystem.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.IO.Pipes.AccessControl.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.IO.Pipes.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Reflection.Metadata.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Security.AccessControl.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Security.Claims.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Security.Cryptography.Encoding.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Security.Cryptography.Primitives.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Security.Principal.Windows.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.ValueTuple.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Xml.ReaderWriter.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Xml.XmlDocument.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Xml.XPath.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\System.Xml.XPath.XDocument.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\vbc.exe
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\vbc.exe.config
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\vbc.rsp
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\VBCSCompiler.exe
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\roslyn\VBCSCompiler.exe.config
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Antlr3.Runtime.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\CORE.JGC.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\EntityFramework.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\EntityFramework.SqlServer.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AI.Agent.Intercept.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AI.DependencyCollector.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AI.PerfCounterCollector.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AI.ServerTelemetryChannel.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AI.Web.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AI.WindowsServer.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.ApplicationInsights.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AspNet.Identity.Core.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AspNet.TelemetryCorrelation.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.Cookies.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.Facebook.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.Google.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.OAuth.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.Twitter.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Web.Infrastructure.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Newtonsoft.Json.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Owin.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Diagnostics.DiagnosticSource.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.Helpers.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.Mvc.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.Optimization.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.Razor.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.WebPages.Deployment.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.WebPages.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.WebPages.Razor.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\WebGrease.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\CORE.JGC.pdb
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Antlr3.Runtime.pdb
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\EntityFramework.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\EntityFramework.SqlServer.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AI.DependencyCollector.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AI.Web.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AI.WindowsServer.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AspNet.TelemetryCorrelation.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.Cookies.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.Facebook.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.Google.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.OAuth.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.Owin.Security.Twitter.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Newtonsoft.Json.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Diagnostics.DiagnosticSource.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.Helpers.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.Mvc.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.Razor.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.WebPages.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.WebPages.Deployment.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.WebPages.Razor.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\System.Web.Optimization.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AspNet.Identity.Core.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\obj\Debug\JGC.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\obj\Debug\JGC.pdb
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\itextsharp.dll
-D:\Project\JGC\JGC_VER_2_REV_7\JGC 3\JGC\bin\itextsharp.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Collections.Immutable.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.FileSystem.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Reflection.Metadata.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.ValueTuple.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\VBCSCompiler.exe
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\ApplicationInsights.config
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\JGC.dll.config
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\JGC.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\JGC.pdb
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\csc.exe
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\csc.exe.config
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\csc.rsp
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\csi.exe
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\csi.exe.config
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\csi.rsp
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.AppContext.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Console.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.Compression.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.IO.Pipes.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.AccessControl.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Claims.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Xml.XPath.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\vbc.exe
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\vbc.exe.config
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\vbc.rsp
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\roslyn\VBCSCompiler.exe.config
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\CORE.JGC.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\itextsharp.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\CORE.JGC.pdb
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\bin\itextsharp.xml
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\obj\Debug\JGC.dll
+D:\Fandy\Fandy PC\PROJEK\JGC-GITHUB\BFAST\JGC\obj\Debug\JGC.pdb
+D:\Project\JGC\JGC\BFAST\JGC\bin\ApplicationInsights.config
+D:\Project\JGC\JGC\BFAST\JGC\bin\JGC.dll.config
+D:\Project\JGC\JGC\BFAST\JGC\bin\JGC.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\JGC.pdb
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\csc.exe
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\csc.exe.config
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\csc.rsp
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\csi.exe
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\csi.exe.config
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\csi.rsp
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.AppContext.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Collections.Immutable.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Console.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.IO.Compression.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.IO.FileSystem.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.IO.Pipes.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Reflection.Metadata.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Security.AccessControl.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Security.Claims.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.ValueTuple.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Xml.XPath.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\vbc.exe
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\vbc.exe.config
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\vbc.rsp
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\VBCSCompiler.exe
+D:\Project\JGC\JGC\BFAST\JGC\bin\roslyn\VBCSCompiler.exe.config
+D:\Project\JGC\JGC\BFAST\JGC\bin\CORE.JGC.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\itextsharp.dll
+D:\Project\JGC\JGC\BFAST\JGC\bin\CORE.JGC.pdb
+D:\Project\JGC\JGC\BFAST\JGC\bin\itextsharp.xml
+D:\Project\JGC\JGC\BFAST\JGC\obj\Debug\JGC.csprojResolveAssemblyReference.cache
+D:\Project\JGC\JGC\BFAST\JGC\obj\Debug\JGC.dll
+D:\Project\JGC\JGC\BFAST\JGC\obj\Debug\JGC.pdb

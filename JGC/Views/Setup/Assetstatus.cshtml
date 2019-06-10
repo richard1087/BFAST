@@ -1,4 +1,4 @@
-﻿
+﻿@model CORE.JGC.Models.MsAssetStatus[]
 @{
     ViewBag.Title = "Asset Status";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,41 +7,129 @@
 <script type="text/javascript">
 
     function InputAssetStatus() {
-        var StatusId = document.getElementById("StatusId").value;
+        var StatusCodeId = document.getElementById("StatusCodeId").value;
         var StatusNameId = document.getElementById("StatusNameId").value;
 
-        if (StatusId == "") {
-            $(".modal-body #peringatan3").text("Status harus diisi");
+        if (StatusCodeId == "") {
+            $(".modal-body #peringatan3").text("Status Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (StatusNameId == "") {
-            $(".modal-body #peringatan3").text("Status Name harus diisi");
+            $(".modal-body #peringatan3").text("Status Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         }
+        else {
+            $.ajax({
+                url: '@Url.Action("InsertAssetStatus", "Setup")',
+                type: 'post',
+                cache: false,
+                async: true,
+                data: {
+                    AssetStatusCodeId: StatusCodeId,
+                    AssetStatusNameId: StatusNameId
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Assetstatus", "Setup")";
+                        })
+                        $("#Alert2").modal();
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Please Wait...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
+        }
     }
 
     function InputEditAssetStatus() {
-        var EditStatusId = document.getElementById("EditStatusId").value;
+        var EditStatusCodeId = document.getElementById("EditStatusCodeId").value;
         var EditStatusNameId = document.getElementById("EditStatusNameId").value;
 
-        if (EditStatusId == "") {
-            $(".modal-body #peringatan3").text("Status harus diisi");
+        if (EditStatusCodeId == "") {
+            $(".modal-body #peringatan3").text("Status Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditStatusNameId == "") {
-            $(".modal-body #peringatan3").text("Status Name harus diisi");
+            $(".modal-body #peringatan3").text("Status Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Update Data: " + EditStatusCodeId + ' ( ' + EditStatusNameId + " ) ? ");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+
+                $.ajax({
+                    url: '@Url.Action("UpdateAssetStatus", "Setup")',
+                    type: 'post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        EditAssetStatusCodeId: EditStatusCodeId,
+                        EditAssetStatusNameId: EditStatusNameId
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Assetstatus", "Setup")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            });
+            $('#btnno').click(function (e) {
+                $('#Alert4').modal('hide');
+            });
+            $("#Alert4").modal();
+        }
+    }
+
+    function UpdateAssetStatusS(NoID, StatusCodeId, StatusNameId) {
+
+        $(".modal-body #EditStatusCodeId").val(StatusCodeId);
+        $(".modal-body #EditStatusNameId").val(StatusNameId);
+
+        $(".modal-body #NoID").val(NoID);
+
+        $("#editModal").modal();
+
     }
 
 </script>
@@ -74,43 +162,25 @@
                                 <a href="#" id="tambahstatus" class="btn btn-success btn-cust">Add New Asset Status</a>
                             </div>
                         </div>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
                                     <th width="9%">Asset Status</th>
                                     <th>Asset Status Name</th>
-                                    <th style="width:9%;"></th>
+                                    <th style="width:2%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">AVL</a></td>
-                                    <td><a href="#">Available</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" id="EditStatusButton" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">DPS</a></td>
-                                    <td><a href="#">Dispose</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" id="EditStatusButton" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">LAS</a></td>
-                                    <td><a href="#">Lease</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" id="EditStatusButton" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td><a href="#">@Html.DisplayFor(modelItem => item.Status)</a></td>
+                                        <td><a href="#">@Html.DisplayFor(modelItem => item.NameStatus)</a></td>
+                                        <td class="txtcenter">
+                                            <button id="editAssetStatusbutton" name="editAssetStatusbutton" type="button" class="btn btn-success" onclick="UpdateAssetStatusS('@Html.DisplayFor(modelItem => item.Id)','@Html.DisplayFor(modelItem => item.Status)','@Html.DisplayFor(modelItem => item.NameStatus)')"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -141,14 +211,14 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Status</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="StatusId" type="text" name="Status" class="form-control col-md-10" placeholder="Status" />
+                            <input id="StatusCodeId" type="text" name="StatusCodeId" class="form-control col-md-10" placeholder="Status Code" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Status Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="StatusNameId" type="text" name="NamaStatus" class="form-control col-md-10" placeholder="Status Name" />
+                            <input id="StatusNameId" type="text" name="StatusNameId" class="form-control col-md-10" placeholder="Status Name" />
                         </div>
                     </div>
 
@@ -189,21 +259,22 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Status</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="EditStatusId" type="text" name="Status" class="form-control col-md-10" placeholder="Status" value="Status" />
+                            <input id="NoId" type="hidden" name="NoId" value="" />
+                            <input id="EditStatusCodeId" type="text" name="EditStatusCodeId" class="form-control col-md-10" placeholder="Status" value="Status" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Status Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="EditStatusNameId" type="text" name="NamaStatus" class="form-control col-md-10" placeholder="Status Name" value="Status Name" />
+                            <input id="EditStatusNameId" type="text" name="EditStatusNameId" class="form-control col-md-10" placeholder="Status Name" value="Status Name" />
                         </div>
                     </div>
 
                     <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
                         <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
-                            <button id="EditStatusId" type="button" class="btn btn-primary" onclick="InputEditAssetStatus(); return false;" >Edit</button>
+                            <button id="EditStatusIdBtn" type="button" class="btn btn-primary" onclick="InputEditAssetStatus(); return false;" >Edit</button>
                             <button id="CancelStatusId" type="button" class="btn btn-default">Cancel</button>
                         </div>
                     </div>

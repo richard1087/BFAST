@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewBag.Title = "UpdateDisposeApproval";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+
+    function Dispose() {
+        if ($("#Action").val() != "NA") {
+            $(".modal-body #peringatan4").text("Are You Sure Dispose Approval this Asset ?");
+            $("#Alert4").modal();
+        }
+    }
+
+
+</script>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Assets •
+                            <a href="/asset/disposeapproval" class="activemenu">Dispose Approval</a> •
+                            <a href="/asset/updatedisposeapproval" class="activemenu">Update Dispose Approval</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>Update Dispose Approval</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="form-group">
+                            <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Assets Dispose Approval</h3>
+                        </div>
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
+                            <thead>
+                                <tr>
+                                    <th width="16%">Asset Code</th>
+                                    <th>Asset Name</th>
+                                    <th width="13%">Serial No</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @try
+                                {
+                                    foreach (CORE.JGC.Models.TrDisposeAssetLine item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.AssetCode)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.AssetName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.AssetSerialNo)</td>
+                                        </tr>
+                                    }
+                                }
+                                catch
+                                { }
+                            </tbody>
+                        </table>
+                        <div class="ln_solid"></div>
+                        <form class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Status</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" id="Status" name="Status" value="" type="hidden" data-id="i" autocomplete="off" required="" readonly />
+                                    <input class="form-control" id="NamaStatus" name="NamaStatus" value="" type="text" autocomplete="off" required="" readonly />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Action</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <select class="form-control" id="Action" name="Action"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Dispose No</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" id="DisposeNo" name="DisposeNo" value="auto-generate" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Dispose Date</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input type="text" class="form-control has-feedback-left" id="DisposeDate" name="DisposeDate" placeholder="Dispose Date" data-id="i" aria-describedby="disposeDate" readonly>
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    <span id="disposeDate" class="sr-only">(success)</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Dispose To</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" placeholder="Dispose To" id="DisposeTo" name="DisposeTo" value="" type="text" data-id="i" autocomplete="off" required="" />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Dispose Reason</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <textarea id="Reason" name="Reason" class="form-control" rows="3" placeholder="Notes" data-id="i"></textarea>
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
+
+                                    <button id="submit" type="button" class="btn btn-success" onclick="Dispose(); return false;">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL1 END -->
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")
+
+<script type="text/javascript">
+    function Load() {
+
+        $.ajax({
+            url: '@Url.Action("LoadUpdateDisposeApproval", "Asset")',
+            type: 'Post',
+            cache: false,
+            async: true,
+            data: {},
+            success: function (response) {
+                $("#DisposeNo").val(response.DisposeNo);
+                var DisposeDate = new Date(parseInt(response.DisposeDate.substr(6)));
+                $("#DisposeDate").val(DisposeDate.format("d/m/Y"));
+                $("#DisposeTo").val(response.DisposeTo);
+                $("#Reason").val(response.Reason);
+                $("#Status").val(numberWithCommas(response.Status));
+                $("#NamaStatus").val(numberWithCommas(response.NamaStatus));
+                var groupaccesscode = '@Session["groupaccescode"]';
+                //alert(groupaccesscode);
+
+                var Str = "<option value='NA'>No Action</option>";
+                if (response.Status == "DAM" && groupaccesscode == "MGRIT") {
+                    Str += "<option value='DAG'>Approve</option>"
+                }
+                else if (response.Status == "DAG" && groupaccesscode == "GMIT") {
+                    Str += "<option value='DAD'>Approve</option>"
+                }
+                else if (response.Status == "DAD" && groupaccesscode == "DIROPS") {
+                    Str += "<option value='RLS'>Approve</option>"
+                }
+                else {
+                    $("#submit").remove();
+                }
+                $("#Action").empty();
+                $("#Action").append(Str)
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $(".modal-body #peringatan1").text("Please Wait...");
+                $('#btncaution').click(function (e) {
+                    $('#Alert1').modal('hide');
+                })
+                $("#Alert1").modal();
+            }
+        });
+    }
+    $('#btnno').click(function (e) {
+        $('#Alert4').modal('hide');
+    })
+    $('#btnyes').click(function (e) {
+        $('#Alert4').modal('hide');
+        $.ajax({
+            url: '@Url.Action("UpdateDisposeApproval_Release", "Asset")',
+            type: 'Post',
+            cache: false,
+            async: true,
+            data: {
+
+                DisposeNo: $("#DisposeNo").val(),
+                Status: $("#Status").val(),
+                Actions: $("#Action").val()
+            },
+            success: function (response) {
+                if (response.data.substring(0, 3).trim() != "err") {
+                    $(".modal-body #peringatan2").text(response.data.substring(0, response.data.length).trim());
+                    $('#btnok').click(function (e) {
+                        Load();
+                        $('#Alert2').modal('hide');
+                    })
+                    $("#Alert2").modal();
+                }
+                else {
+                    $(".modal-body #peringatan3").text(response.data.substring(5, response.data.length).trim());
+                    $('#btnerror').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $(".modal-body #peringatan1").text("Please Wait...");
+                $('#btncaution').click(function (e) {
+                    $('#Alert1').modal('hide');
+                })
+                $("#Alert1").modal();
+            }
+        });
+    })
+
+
+    Load();
+</script>
+
+

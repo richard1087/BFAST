@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CORE.JGC.Controllers
 {
+    [SessionTimeoutAttribute]
     public class ProfileController : Controller
     {
         // GET: Profile

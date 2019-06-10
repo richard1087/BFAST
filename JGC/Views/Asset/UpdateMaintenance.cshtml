@@ -1,0 +1,230 @@
+﻿@{
+    ViewBag.Title = "Update Maintenance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    
+    
+    function Maintenance() {
+        if ($("#Action").val() != "NA") {
+            $(".modal-body #peringatan4").text("Are You Sure Maintenance Asset ?");
+            $("#Alert4").modal();
+        }
+    }
+    
+        
+</script>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Assets •
+                            <a href="/asset/maintenancedue" class="activemenu">Maintenance</a> •
+                            <a href="/asset/updatemaintenance" class="activemenu">Update Maintenance</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>Update Maintenance</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="form-group">
+                            <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Assets Maintenance</h3>
+                        </div>
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
+                            <thead>
+                                <tr>
+                                    <th width="16%">Asset Code</th>
+                                    <th>Asset Name</th>
+                                    <th width="13%">Serial No</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               @try
+                               {
+                                   foreach (CORE.JGC.Models.TrMaintenanceAssetLine item in Model)
+                                   {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetCode)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetSerialNo)</td>
+                                    </tr>
+                                   }
+                               }
+                               catch
+                               { }
+                            </tbody>
+                        </table>
+                        <div class="ln_solid"></div>
+                        <form class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Status</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" id="Status" name="Status" value="" type="hidden" data-id="i" autocomplete="off" required="" readonly />
+                                    <input class="form-control" id="StatusName" name="StatusName" value="" type="text" autocomplete="off" required="" readonly />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Action</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <select class="form-control" id="Action" name="Action">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Maintenance No</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" id="MaintenanceNo" name="MaintenanceNo" value="auto-generate" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <select class="form-control" id="Type" name="Type" required="" disabled>
+                                        <option value="Maintenance">Maintenance</option>
+                                        <option value="Repair">Repair</option>
+                                        <option value="Upgrade">Upgrade</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Schedule Date</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input type="text" class="form-control has-feedback-left" id="ScheduleDate" name="ScheduleDate" placeholder="Schedule Date" data-id="i" aria-describedby="scheduleDate" readonly>
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    <span id="scheduleDate" class="sr-only">(success)</span>
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Complete Date</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input type="text" class="form-control has-feedback-left" id="CompleteDate" name="CompleteDate" placeholder="Complete Date" data-id="i" aria-describedby="completeDate" readonly>
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    <span id="completeDate" class="sr-only">(success)</span>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Damage</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" id="Damage" name="Damage" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Assign To</label>
+                                <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                    <input class="form-control" id="AssignTo" name="AssignTo" value="" type="text" data-id="i" autocomplete="off" required="" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Notes</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <textarea id="Notes" name="Notes" class="form-control" rows="3" placeholder="Notes" data-id="i" readonly></textarea>
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Cost</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" class="form-control angka isnumeric" placeholder="Cost" id="Cost" name="Cost" value="0" autocomplete="off" name="Cost" required="required" maxlength="12" readonly>
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
+
+                                    <button id="submit" type="button" class="btn btn-success" onclick="Maintenance(); return false;">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL1 END -->
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")
+
+<script type="text/javascript">
+    function Load()
+    {
+        $.ajax({
+            url: '@Url.Action("LoadUpdateMaintenance", "Asset")',
+            type: 'Post',
+            cache: false,
+            async: true,
+            data: {},
+            success: function (response) {
+                $("#MaintenanceNo").val(response.MaintenanceNo);
+                $("#Type").val(response.Type);
+                var ScheduleDate = new Date(parseInt(response.ScheduleDate.substr(6)));
+                $("#ScheduleDate").val(ScheduleDate.format("d/m/Y"));
+                var CompleteDate = new Date(parseInt(response.CompleteDate.substr(6)));
+                $("#CompleteDate").val(CompleteDate.format("d/m/Y"));
+                $("#Damage").val(response.Damage);
+                $("#AssignTo").val(response.AssignTo);
+                $("#Notes").val(response.Notes);
+                $("#Cost").val(numberWithCommas(response.Cost));
+                $("#Status").val(numberWithCommas(response.Status));
+                $("#StatusName").val(numberWithCommas(response.StatusName));
+                var Str = "<option value='NA'>No Action</option>";
+                if (response.Status == "IPG") {
+                    Str += "<option value='COM'>Complete</option>"
+                    Str += "<option value='CAN'>Cancel</option>"
+                }
+                else {
+                    $("#submit").remove();
+                }
+                $("#Action").empty();
+                $("#Action").append(Str)
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $(".modal-body #peringatan1").text("Please Wait...");
+                $('#btncaution').click(function (e) {
+                    $('#Alert1').modal('hide');
+                })
+                $("#Alert1").modal();
+            }
+        });
+     }
+    $('#btnno').click(function (e) {
+        $('#Alert4').modal('hide');
+    })
+    $('#btnyes').click(function (e) {
+        $('#Alert4').modal('hide');
+        $.ajax({
+            url: '@Url.Action("UpdateMaintenance_Release", "Asset")',
+            type: 'Post',
+            cache: false,
+            async: true,
+            data: {
+
+                MaintenanceAssetNo: $("#MaintenanceNo").val(),
+                Status: $("#Status").val(),
+                Actions: $("#Action").val()
+            },
+            success: function (response) {
+                if (response.data.substring(0, 3).trim() != "err") {
+                    $(".modal-body #peringatan2").text(response.data.substring(0, response.data.length).trim());
+                    $('#btnok').click(function (e) {
+                        Load();
+                        $('#Alert2').modal('hide');
+                    })
+                    $("#Alert2").modal();
+                }
+                else {
+                    $(".modal-body #peringatan3").text(response.data.substring(5, response.data.length).trim());
+                    $('#btnerror').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $(".modal-body #peringatan1").text("Please Wait...");
+                $('#btncaution').click(function (e) {
+                    $('#Alert1').modal('hide');
+                })
+                $("#Alert1").modal();
+            }
+        });
+    })
+
+    Load();
+</script>

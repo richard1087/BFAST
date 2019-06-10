@@ -71,6 +71,13 @@ namespace JGC
                     "~/Content/res/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js",
                     "~/Content/res/build/js/select2.min.js",
                     "~/Content/res/build/js/custom.js"));
+            bundles.Add(new ScriptBundle("~/Content/CommonJS").Include(
+                      "~/js/Common.js",
+                      "~/js/GetInput.js",
+                      "~/js/Required.js",
+                      "~/js/KeyPressText.js",
+                      "~/js/DatatablesGrid.js",
+                      "~/js/InUpDel.js"));
         }
     }
 }

@@ -3,58 +3,264 @@
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <script type="text/javascript">
+    function Asset() {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Asset Code", "data": "0" },
+                    { "title": "Asset Name", "data": "1" },
+                    { "title": "Serial No", "data": "2" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupAssetCheckOut", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+                $("#AssetCode").val(d[0]);
+                $("#AssetName").val(d[1]);
+                $("#AssetSerialNo").val(d[2]);
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Employee() {
+        var Column = [
+                    { "data": "EmployeeId" },
+                    { "title": "Employee Id", "data": "EmployeeId" },
+                    { "title": "Full Name", "data": "FullName" },
+                    { "title": "Email", "data": "Email" },
+                    { "title": "Dept", "data": "DeptName" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupEmployee", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            $("#EmployeeId").val(d["EmployeeId"]);
+            $("#FullName").val(d["FullName"]);
+            $("#Email").val(d["Email"]);
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Site() {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Site Code", "data": "0" },
+                    { "title": "Site Name", "data": "1" },
+                    { "title": "Address", "data": "2" },
+                    { "title": "City", "data": "3" },
+                    { "title": "PostalCode", "data": "4" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupSite", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            $("#SiteCode").val(d[0]);
+            $("#SiteName").val(d[1]);
+            $("#LocationCode").val("");
+            $("#LocationName").val("");
+            $("#Floor").val("");
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Location() {
+        var Column = [
+                    { "data": "LocationCode" },
+                    { "title": "Location Code", "data": "LocationCode" },
+                    { "title": "Location Name", "data": "LocationName" },
+                    { "title": "Site Name", "data": "SiteName" },
+                    { "title": "Floor", "data": "Floor" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupLocation", "Asset")', Column, function (d) { d.SiteCode = $('#SiteCode').val() });
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            $("#LocationCode").val(d["LocationCode"]);
+            $("#LocationName").val(d["LocationName"]);
+            $("#Floor").val(d["Floor"]);
+            $('#Lookup').modal('hide');
+        });
+    }
+    function AddAsset() {
+        var AssetCode = document.getElementById("AssetCode").value;
+        var AssetName = document.getElementById("AssetName").value;
+        var AssetSerialNo = document.getElementById("AssetSerialNo").value;
 
-    //if ($('checkoutperson').prop('checked') !== false) {
-        function Checkout() {
-            var PersonId = document.getElementById("PersonId").value;
-            var SitePersonId = document.getElementById("SitePersonId").value;
-            var LocationPersonId = document.getElementById("LocationPersonId").value;
-
-            if (PersonId == "") {
-                $(".modal-body #peringatan3").text("Person harus diisi");
-                $('#btnerror').click(function (e) {
-                    $('#Alert3').modal('hide');
-                })
-                $("#Alert3").modal();
-            } else if (SitePersonId == "") {
-                $(".modal-body #peringatan3").text("Site harus diisi");
-                $('#btnerror').click(function (e) { 
-                    $('#Alert3').modal('hide');
-                })
-                $("#Alert3").modal();
-            } else if (LocationPersonId == "") {
-                $(".modal-body #peringatan3").text("Location harus diisi");
-                $('#btnerror').click(function (e) {
-                    $('#Alert3').modal('hide');
-                })
-                $("#Alert3").modal();
-            }
+        if (AssetCode == "") {
+            $(".modal-body #peringatan3").text("Asset Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetName == "") {
+            $(".modal-body #peringatan3").text("Asset Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        //} else if (AssetSerialNo == "") {
+        //    $(".modal-body #peringatan3").text("Serial No must be filled");
+        //    $('#btnerror').click(function (e) {
+        //        $('#Alert3').modal('hide');
+        //    })
+        //    $("#Alert3").modal();
         }
-    //}
+        else {
+            $.ajax({
+                url: '@Url.Action("AddAssetCheckOut", "Asset")',
+                type: 'Post',
+                cache: false,
+                async: true,
+                data: {
+                    AssetCode: AssetCode,
+                    AssetName: AssetName,
+                    AssetSerialNo: AssetSerialNo
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Checkout","Asset")";
+                        })
+                        $("#Alert2").modal();
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Please Wait...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
+        }
+    }
+    function DeleteAsset(AssetCode) {
 
-    //if ($('checkoutsite').prop('checked') !== false) {
-    //    function Checkout() {
-    //        var SiteId = document.getElementById("SiteId").value;
-    //        var LocationSiteId = document.getElementById("LocationSiteId").value;
+        $(".modal-body #peringatan4").text("Are You Sure Delete Asset Code " + AssetCode  + " ?");
+        $('#btnyes').click(function (e) {
+            $('#Alert4').modal('hide');
+            $.ajax({
+                url: '@Url.Action("DeleteAssetCheckOut", "Asset")',
+                type: 'Post',
+                cache: false,
+                async: true,
+                data: {
+                    AssetCode: AssetCode
+                },
+                success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Checkout","Asset")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Mohon Tunggu...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
+        })
+        $('#btnno').click(function (e) {
+            $('#Alert4').modal('hide');
+        })
+        $("#Alert4").modal();
+    }
 
-    //        if (SiteId == "") {
-    //            $(".modal-body #peringatan3").text("Site harus diisi");
-    //            $('#btnerror').click(function (e) {
-    //                $('#Alert3').modal('hide');
-    //            })
-    //            $("#Alert3").modal();
-    //        } else if (LocationSiteId == "") {
-    //            $(".modal-body #peringatan3").text("Location harus diisi");
-    //            $('#btnerror').click(function (e) {
-    //                $('#Alert3').modal('hide');
-    //            })
-    //            $("#Alert3").modal();
-    //        }
-    //    }
-    //}
+    function CheckOut() {
 
+        var EmployeeId = document.getElementById("EmployeeId").value;
+        var Email = document.getElementById("Email").value;
+        var SiteCode = document.getElementById("SiteCode").value;
+        var LocationCode = document.getElementById("LocationCode").value;
+        var Floor = document.getElementById("Floor").value;
+        var CheckOutDate = document.getElementById("single_cal2").value;
+        var Notes = document.getElementById("Notes").value;
+        var checkbox = document.getElementById("DueDatePersonId");
+
+        if (checkbox.checked == false) {
+            $("#single_cal5").val("");
+        }
+
+        var CheckOutDueDate = document.getElementById("single_cal5").value;
+        if (EmployeeId == "") {
+            $(".modal-body #peringatan3").text("Person must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CheckOutDate == "") {
+            $(".modal-body #peringatan3").text("CheckOut Date must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CheckOutDueDate == "" && checkbox.checked == true) {
+            $(".modal-body #peringatan3").text("CheckOut Date must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Check Out Asset ?");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+                $.ajax({
+                    url: '@Url.Action("SaveCheckOut", "Asset")',
+                    type: 'Post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        EmployeeId: EmployeeId,
+                        Email: Email,
+                        SiteCode: SiteCode,
+                        LocationCode: LocationCode,
+                        Floor: Floor,
+                        CheckOutDate: CheckOutDate,
+                        CheckOutDueDate: CheckOutDueDate,
+                        Notes: Notes
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Checkout","Asset")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            })
+        }
+        $('#btnno').click(function (e) {
+            $('#Alert4').modal('hide');
+        })
+        $("#Alert4").modal();
+    }
 </script>
 
 <div class="right_col" role="main">
@@ -75,217 +281,107 @@
                     <div class="x_content">
                         <div class="text-muted font-13 m-b-30">
                             <div class="mgbtm20">
-                                <p>Keep track of your assets within your organization and create an even more detailed history of them.</p>
-                                <button id="addtosite" type="button" class="btn btn-success">Select Asset</button>
+                                <button id="selectasset" type="button" class="btn btn-success">Select Asset</button>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Asset Pending Check Out</h3>
                         </div>
-
-                        <table id="checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
-                                    <th>Asset Tag ID</th>
+                                    <th width="18%">Asset Code</th>
                                     <th>Asset Name</th>
-                                    <th>Status</th>
-                                    <th>Site</th>
-                                    <th>Location</th>
+                                    <th width="15%">Serial No</th>
+                                    <th style="width:9%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="">ASST000001</a></td>
-                                    <td><a href="#">Laptop Lenovo</a></td>
-                                    <td><a href="#">Available</a></td>
-                                    <td><a href="#">Jekardah</a></td>
-                                    <td><a href="#">Jekardah</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="">ASST000001</a></td>
-                                    <td><a href="#">Laptop Lenovo</a></td>
-                                    <td><a href="#">Available</a></td>
-                                    <td><a href="#">Jekardah</a></td>
-                                    <td><a href="#">Jekardah</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="">ASST000001</a></td>
-                                    <td><a href="#">Laptop Lenovo</a></td>
-                                    <td><a href="#">Available</a></td>
-                                    <td><a href="#">Jekardah</a></td>
-                                    <td><a href="#">Jekardah</a></td>
-                                </tr>
+                                @foreach (CORE.JGC.Models.TrCheckOutLine item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetCode)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AssetSerialNo)</td>
+                                        <td style="width:5% !important;text-align:center;">
+                                            <button id="delete" name="delete" type="button" data-toggle="tooltip" title="Delete" class="btn btn-success" onclick="return DeleteAsset('@Html.DisplayFor(modelItem => item.AssetCode)');"><span class="glyphicon glyphicon-erase"></span></button>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
+
                         <div class="ln_solid"></div>
-
-`                       <form class="form-horizontal form-label-left">
-
-                            <!--<div class="form-group" style="border-bottom: 1px dashed;padding-bottom: 10px;margin-bottom: 20px;border-color: #c11118;">
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12" style="padding-top:0 !important;">Check Out to</label>
-                                <div class="col-md-11 col-sm-11 col-xs-12">
-                                    <input type="radio" name="checkoutto" class="radbut" id="checkoutperson" value="checkperson" checked/> Person &nbsp;&nbsp;&nbsp;
-                                    <input type="radio" name="checkoutto" class="radbut" id="checkoutsite" value="checksite" /> Site / Location
-                                </div>
-                            </div>-->
-
+                        `<form class="form-horizontal form-label-left">
                             <div id="persons_check">
                                 <div class="form-group">
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Person</label>
                                     <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <input id="PersonId" list="Person" name="Person" class="form-control" placeholder="Select Person">
-                                        <datalist id="Person">
-                                            <option value="Person 1">
-                                            <option value="Person 2">
-                                            <option value="Person 3">
-                                            <option value="Person 4">
-                                            <option value="Person 5">
-                                        </datalist>
+                                        <input class="form-control readonly" id="EmployeeId" name="EmployeeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                        <input class="form-control readonly" placeholder="Person" id="FullName" name="FullName" value="" type="text" data-id="i" autocomplete="off" onclick="Employee()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                                     </div>
-
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
                                     <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <input id="SitePersonId" list="Site" name="Site" class="form-control" placeholder="Select Site">
-                                        <datalist id="Site">
-                                            <option value="Site 1">
-                                            <option value="Site 2">
-                                            <option value="Site 3">
-                                            <option value="Site 4">
-                                            <option value="Site 5">
-                                        </datalist>
+                                        <input class="form-control readonly" id="SiteCode" name="SiteCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                        <input class="form-control readonly" placeholder="Site" id="SiteName" name="SiteName" value="" type="text" data-id="i" autocomplete="off" onclick="Site()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Email</label>
+                                    <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                        <input class="form-control readonly" placeholder="Email" id="Email" name="Email" value="" type="text" data-id="i" autocomplete="off" required="" style="cursor:auto;" readonly />
+                                    </div>
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <input class="form-control readonly" id="LocationCode" name="LocationCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                        <input class="form-control readonly" placeholder="Location" id="LocationName" name="LocationName" value="" type="text" data-id="i" autocomplete="off" onclick="Location()" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Check Out Date</label>
                                     <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                        <input type="text" class="form-control has-feedback-left" id="single_cal2" placeholder="Check Out Date" aria-describedby="checkoutDate">
+                                        <input type="text" class="form-control has-feedback-left" id="single_cal2" name="CheckOutDate" placeholder="Check Out Date" data-id="i" aria-describedby="checkoutDate">
                                         <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                         <span id="checkoutDate" class="sr-only">(success)</span>
                                     </div>
-
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <input id="LocationPersonId" list="Location" name="Location" class="form-control" placeholder="Select Location">
-                                        <datalist id="Location">
-                                            <option value="Location 1">
-                                            <option value="Location 2">
-                                            <option value="Location 3">
-                                            <option value="Location 4">
-                                            <option value="Location 5">
-                                        </datalist>
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Floor</label>
+                                    <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
+                                        <input class="form-control readonly" placeholder="Floor" id="Floor" name="Floor" value="" type="text" data-id="i" autocomplete="off" required="" style="cursor:auto;" readonly />
                                     </div>
 
                                     <div class="col-md-11 col-sm-11 col-xs-11 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                                        <input id="DueDatePersonId" type="checkbox" class="checks"> Due Date
+                                        <input id="DueDatePersonId" name="chkbox" type="checkbox" class="checks"> Due Date
                                     </div>
                                 </div>
                                 <div class="form-group" id="duedate" style="display:none;">
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Due Date</label>
                                     <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                        <input type="text" class="form-control has-feedback-left" id="single_cal5" placeholder="Due Date" aria-describedby="dueDate">
+                                        <input type="text" class="form-control has-feedback-left" id="single_cal5" name="CheckOutDueDate" data-id="i" placeholder="Due Date" aria-describedby="dueDate">
                                         <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                         <span id="dueDate" class="sr-only">(success)</span>
                                     </div>
 
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12">Notes</label>
                                     <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <textarea id="NotesPersonId" class="form-control" rows="3" placeholder="Notes"></textarea>
+                                        <textarea id="Notes" name="Notes" class="form-control" rows="3" placeholder="Notes" data-id="i"></textarea>
                                     </div>
                                 </div>
-
-                                @*<div class="form-group">
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Select Asset</label>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <button id="addtosite" type="button" class="btn btn-success">Select Asset</button>
-                                    </div>
-                                </div>*@
                             </div>
-
-                            <!--<div id="sites_check" style="display:none;">
-                                <div class="form-group">
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <input id="SiteId" list="Site" name="Site" class="form-control" placeholder="Select Site">
-                                        <datalist id="Site">
-                                            <option value="Site 1">
-                                            <option value="Site 2">
-                                            <option value="Site 3">
-                                            <option value="Site 4">
-                                            <option value="Site 5">
-                                        </datalist>
-                                    </div>
-
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Department</label>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <input list="Department" name="Department" class="form-control" placeholder="Select Department">
-                                        <datalist id="Department">
-                                            <option value="Department 1">
-                                            <option value="Department 2">
-                                            <option value="Department 3">
-                                            <option value="Department 4">
-                                            <option value="Department 5">
-                                        </datalist>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <input id="LocationSiteId" list="Location" name="Location" class="form-control" placeholder="Select Location">
-                                        <datalist id="Location">
-                                            <option value="Location 1">
-                                            <option value="Location 2">
-                                            <option value="Location 3">
-                                            <option value="Location 4">
-                                            <option value="Location 5">
-                                        </datalist>
-                                    </div>
-
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Notes</label>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <textarea class="form-control" rows="3" placeholder="Notes"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Check Out Date</label>
-                                    <div class="col-md-4 col-sm-4 xdisplay_inputx form-group has-feedback">
-                                        <input type="text" class="form-control has-feedback-left" id="single_cal5" placeholder="Check Out Date" aria-describedby="checkoutDate">
-                                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                        <span id="checkoutDate" class="sr-only">(success)</span>
-                                    </div>
-
-                                    <div class="col-md-11 col-sm-11 col-xs-11 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                                        <input id="DueDateSiteId" type="checkbox" class="flat" checked="checked"> No Due Date
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Notes</label>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <textarea id="NotesSiteId" class="form-control" rows="3" placeholder="Notes"></textarea>
-                                    </div>
-                                </div>
-                            </div>-->
 
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
-                                    <button class="btn btn-primary" type="button">Cancel</button>
-                                    <button type="submit" class="btn btn-success" onclick="Checkout(); return false;">Check Out</button>
+                                    <button type="button" class="btn btn-success" onclick="CheckOut(); return false;">Check Out</button>
                                 </div>
                             </div>
 
                         </form>
 
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -293,60 +389,37 @@
 </div>
 
 <!-- MODAL1 START -->
-<div class="modal fade" id="assetModal" role="dialog">
-    <div class="modal-dialog" style="width:70%;">
-        <div class="modal-content">
+<div class="modal fade" id="addModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content col-md-12 col-sm-12 col-xs-12 pdlr1">
             <div class="modal-header">
-                <h4 class="modal-title ">Select Assets</h4>
+                <h4 class="modal-title ">Add Asset</h4>
             </div>
-            <div class="modal-body ">
-
+            <div class="modal-body col-md-12 col-sm-12 col-xs-12">
                 <form class="form-horizontal form-label-left">
-                    
-                    <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
-                        <thead>
-                            <tr>
-                                <th width="3%"><input type="checkbox" id="check-all2" class="checksmodal"></th></th>
-                                <th>Asset Tag ID</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th>Site</th>
-                                <th>Location</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="checkbox" id="check-all" class="checksmodal"></td>
-                                <td><a href="">ASST000001</a></td>
-                                <td><a href="#">Description 1</a></td>
-                                <td><a href="#">Available</a></td>
-                                <td><a href="#">Jekardah</a></td>
-                                <td><a href="#">Jekardah</a></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" id="check-all" class="checksmodal"></td>
-                                <td><a href="">ASST000001</a></td>
-                                <td><a href="#">Description 1</a></td>
-                                <td><a href="#">Available</a></td>
-                                <td><a href="#">Jekardah</a></td>
-                                <td><a href="#">Jekardah</a></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" id="check-all" class="checksmodal"></td>
-                                <td><a href="">ASST000001</a></td>
-                                <td><a href="#">Description 1</a></td>
-                                <td><a href="#">Available</a></td>
-                                <td><a href="#">Jekardah</a></td>
-                                <td><a href="#">Jekardah</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="ln_solid"></div>
                     <div class="form-group">
-                        <div class="col-md-12 col-sm-12 col-xs-12" style="text-align:right;">
-                            <button id="AssetCancelId" type="button" class="btn btn-primary">Cancel</button>
-                            <button id="AssetAddId" type="submit" class="btn btn-success">Add to List</button>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input class="form-control readonly" placeholder="Asset Code" id="AssetCode" name="AssetCode" value="" type="text" data-id="i" autocomplete="off" onclick="Asset('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="AssetName" type="text" name="AssetName" class="form-control col-md-10" placeholder="Asset Name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial No</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="AssetSerialNo" type="text" name="AssetSerialNo" class="form-control col-md-10" placeholder="Serial No" />
+                        </div>
+                    </div>
+                    <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
+                        <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button id="AddAssetBtn" type="button" class="btn btn-primary" onclick="AddAsset(); return false;">Add</button>
                         </div>
                     </div>
                 </form>
@@ -358,39 +431,12 @@
 
 @Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")
 
 <script type="text/javascript">
       $(document).ready(function(){
-          $("#addtosite").click(function(){
-              $("#assetModal").modal();
-          });
-          $("#AssetCancelId").click(function () {
-              $("#assetModal").modal('toggle');
-          });
-          $("#AssetAddId").click(function () {
-              $("#assetModal").modal('toggle');
-          });
-      });
-
-      $(document).ready(function () {
-          $("#checkoutperson").click(function () {
-              $("#persons_check:hidden").show('slow');
-              $("#sites_check").hide();
-          });
-          $("#checkoutperson").click(function () {
-              if ($('checkoutperson').prop('checked') === false) {
-                  $('#persons_check').hide();
-              }
-          });
-
-          $("#checkoutsite").click(function () {
-              $("#sites_check:hidden").show('slow');
-              $("#persons_check").hide();
-          });
-          $("#checkoutsite").click(function () {
-              if ($('checkoutsite').prop('checked') === false) {
-                  $('#sites_check').hide();
-              }
+          $("#selectasset").click(function () {
+              $("#addModal").modal();
           });
       });
 
@@ -406,7 +452,7 @@
                   $('#persons_check').hide();
               }
           });
-    
+
           $("#DueDatePersonId").click(function () {
               if (checkbox.checked == true) {
                   $("#duedate:hidden").show('slow');

@@ -1,61 +1,180 @@
-﻿
+﻿@model CORE.JGC.Models.MsAssetModel[]
 @{
     ViewBag.Title = "Asset Model";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <script type="text/javascript">
+    function Brands(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Brand Code", "data": "0" },
+                    { "title": "Brand Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupBrand", "Setup")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#BrandCodeId").val(d[0]);
+                $("#BrandNameId").val(d[1]);
+            }
+            else {
+                $("#EditBrandCodeId").val(d[0]);
+                $("#EditBrandNameId").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
 
     function InputAssetModel() {
-        var ModelId = document.getElementById("ModelId").value;
+        var ModelCodeId = document.getElementById("ModelCodeId").value;
         var ModelNameId = document.getElementById("ModelNameId").value;
-        var BrandNameId = document.getElementById("BrandNameId").value;
+        var BrandCodeId = document.getElementById("BrandCodeId").value;
 
-        if (ModelId == "") {
-            $(".modal-body #peringatan3").text("Model harus diisi");
+        if (ModelCodeId == "") {
+            $(".modal-body #peringatan3").text("Model Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (ModelNameId == "") {
-            $(".modal-body #peringatan3").text("Model Name harus diisi");
+            $(".modal-body #peringatan3").text("Model Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (BrandNameId == "") {
-            $(".modal-body #peringatan3").text("Brand Name harus diisi");
+        } else if (BrandCodeId == "") {
+            $(".modal-body #peringatan3").text("Brand must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         }
+        else {
+            $.ajax({
+                url: '@Url.Action("InsertAssetModel", "Setup")',
+                type: 'post',
+                cache: false,
+                async: true,
+                data: {
+                    AssetModelCodeId: ModelCodeId,
+                    AssetModelNameId: ModelNameId,
+                    AssetBrandCodeId: BrandCodeId
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Assetmodel", "Setup")";
+                        })
+                        $("#Alert2").modal();
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Please Wait...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
+        }
     }
 
     function InputEditAssetModel() {
-        var EditModelId = document.getElementById("EditModelId").value;
+        var EditModelCodeId = document.getElementById("EditModelCodeId").value;
         var EditModelNameId = document.getElementById("EditModelNameId").value;
-        var EditBrandNameId = document.getElementById("EditBrandNameId").value;
+        var EditBrandCodeId = document.getElementById("EditBrandCodeId").value;
 
-        if (EditModelId == "") {
-            $(".modal-body #peringatan3").text("Model harus diisi");
+        if (EditModelCodeId == "") {
+            $(".modal-body #peringatan3").text("Model Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditModelNameId == "") {
-            $(".modal-body #peringatan3").text("Model Name harus diisi");
+            $(".modal-body #peringatan3").text("Model Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
-        } else if (EditBrandNameId == "") {
-            $(".modal-body #peringatan3").text("Brand Name harus diisi");
+        } else if (EditBrandCodeId == "") {
+            $(".modal-body #peringatan3").text("Brand must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Update Data: " + EditModelCodeId + ' ( ' + EditModelNameId + " ) ? ");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+
+                $.ajax({
+                    url: '@Url.Action("UpdateAssetModel", "Setup")',
+                    type: 'post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        EditAssetModelCodeId: EditModelCodeId,
+                        EditAssetModelNameId: EditModelNameId,
+                        EditAssetBrandCodeId: EditBrandCodeId
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Assetmodel", "Setup")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            });
+            $('#btnno').click(function (e) {
+                $('#Alert4').modal('hide');
+            });
+            $("#Alert4").modal();
+        }
+    }
+
+    function UpdateAssetModelS(NoID, ModelCode, ModelName, BrandCode, BrandName) {
+
+        $(".modal-body #EditModelCodeId").val(ModelCode);
+        $(".modal-body #EditModelNameId").val(ModelName);
+
+        $(".modal-body #EditBrandCodeId").val(BrandCode);
+        $(".modal-body #EditBrandNameId").val(BrandName)
+        ;
+        $(".modal-body #NoID").val(NoID);
+
+        $("#editModal").modal();
+
+    }
+
+    function CancelData() {
+        $(".modal-body #SiteCode").val('');
+        $(".modal-body #SiteName").val('');
+
     }
 
 </script>
@@ -88,37 +207,27 @@
                                 <a href="#" id="tambahmodel" class="btn btn-success btn-cust">Add New Asset Models</a>
                             </div>
                         </div>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
-                                    <th width="9%">Asset Model</th>
+                                    <th width="12%">Asset Model</th>
                                     <th>Asset Model Name</th>
-                                    <th width="11%">Asset Brand Name</th>
-                                    <th style="width:9%;"></th>
+                                    <th width="15%">Asset Brand Name</th>
+                                    <th style="width:2%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">ASUSVB5</a></td>
-                                    <td><a href="#">ASUS VIBE 5</a></td>
-                                    <td><a href="#">ASUS </a></td>
-                                    <td class="txtcenter">
-                                        <a id="editModelButton" href="#" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">LENIDEAPAD</a></td>
-                                    <td><a href="#">LENOVO IDEAPAD 500</a></td>
-                                    <td><a href="#">LENOVO </a></td>
-                                    <td class="txtcenter">
-                                        <a id="editModelButton" href="#" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td><a href="#">@Html.DisplayFor(modelItem => item.ModelCode)</a></td>
+                                        <td><a href="#">@Html.DisplayFor(modelItem => item.ModelName)</a></td>
+                                        <td><a href="#">@Html.DisplayFor(modelItem => item.BrandName)</a></td>
+                                        <td class="txtcenter">
+                                            <button id="editlocationbutton" name="editlocationbutton" type="button" class="btn btn-success" onclick="UpdateAssetModelS('@Html.DisplayFor(modelItem => item.Id)','@Html.DisplayFor(modelItem => item.ModelCode)','@Html.DisplayFor(modelItem => item.ModelName)','@Html.DisplayFor(modelItem => item.BrandCode)','@Html.DisplayFor(modelItem => item.BrandName)')"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -147,9 +256,17 @@
                     </div>-->
 
                     <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Model</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Brand</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="ModelId" type="text" name="Model" class="form-control col-md-10" placeholder="Model" />
+                            <input class="form-control readonly" id="BrandCodeId" name="BrandCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="BrandNameId" placeholder="Brand" name="BrandNameId" value="" type="text" data-id="i" autocomplete="off" onclick="Brands('1')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Model Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="ModelCodeId" type="text" name="ModelCodeId" class="form-control col-md-10" placeholder="Model Code" />
                         </div>
                     </div>
 
@@ -160,25 +277,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Brand Name</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="BrandNameId" list="Brand" name="SupplierName" class="form-control col-md-10" placeholder="Select Brand Name">
-                            <datalist id="Brand">
-                                <option value="Brand 1">
-                                <option value="Brand 2">
-                                <option value="Brand 3">
-                                <option value="Brand 4">
-                                <option value="Brand 5">
-                            </datalist>
-                        </div>
-                    </div>
-
                     <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
                         <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
                             <button id="ModelAddId" type="button" class="btn btn-primary" onclick="InputAssetModel(); return false;">Add</button>
-                            <button id="ModelCancelId" type="button" class="btn btn-default">Cancel</button>
+                            <button id="ModelCancelId" type="button" class="btn btn-default" onclick="CancelData();">Cancel</button>
                         </div>
                     </div>
 
@@ -209,9 +312,18 @@
                     </div>-->
 
                     <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Model</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Brand</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="EditModelId" type="text" name="Model" class="form-control col-md-10" value="Model" placeholder="Model" />
+                            <input class="form-control readonly" id="EditBrandCodeId" name="EditBrandCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" id="EditBrandNameId" placeholder="Brand" name="EditBrandNameId" value="" type="text" data-id="i" autocomplete="off" onclick="Brands('2')" data-target="#Lookup" data-toggle="modal" style="cursor:auto;" required="" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Model Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="NoId" type="hidden" name="NoId" value="" />
+                            <input id="EditModelCodeId" type="text" name="EditModelCodeId" class="form-control col-md-10" value="Model Code" placeholder="Model" />
                         </div>
                     </div>
 
@@ -219,20 +331,6 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Model Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="EditModelNameId" type="text" name="ModelName" class="form-control col-md-10" value="Model Name" placeholder="Model Name" />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Brand Name</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="EditBrandNameId" list="Brand" name="SupplierName" class="form-control col-md-10" placeholder="Select Brand Name">
-                            <datalist id="Brand">
-                                <option value="Brand 1">
-                                <option value="Brand 2">
-                                <option value="Brand 3">
-                                <option value="Brand 4">
-                                <option value="Brand 5">
-                            </datalist>
                         </div>
                     </div>
 
@@ -251,7 +349,7 @@
     </div>
 </div>
 <!-- MODAL2 END -->
-
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")
 @Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
 

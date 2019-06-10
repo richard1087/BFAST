@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CORE.JGC.Models
 {
-    public class Trx_DisposeAssetLine
+    public class TrDisposeAssetLine
     {
         public int Id { get; set; }
         public string DisposeNo { get; set; }

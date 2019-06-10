@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Dispose Approval";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+
+    function UpdateDispose(DisposeNo) {
+        $.ajax({
+            url: '@Url.Action("UpdateDisposeApprovalAsset", "Asset")',
+            type: 'Post',
+            cache: false,
+            async: true,
+            data: {
+                DisposeNo: DisposeNo
+            },
+            success: function (response) {
+                window.location.href = '@Url.Action("UpdateDisposeApproval", "Asset")'
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $(".modal-body #peringatan1").text("Please Wait...");
+                $('#btncaution').click(function (e) {
+                    $('#Alert1').modal('hide');
+                })
+                $("#Alert1").modal();
+            }
+        });
+    }
+</script>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Dispose Approval •
+                            <a href="/asset/disposeapproval" class="activemenu">Dispose Approval</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>List of Dispose Approval</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <p class="text-muted font-13 m-b-30">
+                            
+                        </p>
+                        <table id="datatable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th width="10%">@Html.Label("Dispose No")</th>
+                                    <th width="10%">@Html.Label("Date")</th>
+                                    <th width="13%">@Html.Label("Status")</th>                                    
+                                    <th width="15%">@Html.Label("Dispose To")</th>
+                                    <th width="15%">@Html.Label("Reason")</th>
+                                    <th width="4%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (CORE.JGC.Models.TrDisposeAsset item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.DisposeNo)</td>
+                                        <td>@Convert.ToDateTime(item.DisposeDate).ToString("dd/MM/yyyy")</td>
+                                        <td>@Html.DisplayFor(modelItem => item.NamaStatus)</td>                                        
+                                        <td>@Html.DisplayFor(modelItem => item.DisposeTo)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Reason)</td>                                        
+                                        <td style="width:5% !important;text-align:center;">
+                                            <button id="edit" name="edit" type="button" data-toggle="tooltip" title="Edit" class="btn btn-success" onclick="return UpdateDispose('@Html.DisplayFor(modelItem => item.DisposeNo)');"><span class="glyphicon glyphicon-edit"></span></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+<script type="text/javascript">
+      $(document).ready(function(){
+          $("#assetmodel").click(function () {
+              $("#assetModal").modal();
+          });
+          $("#AssetCloseId").click(function () {
+              $("#assetModal").modal('toggle');
+          });
+
+          $("#lihatmaintenance").click(function () {
+              $("#assetMaintenance").modal();
+          });
+          $("#MaintenanceLinkId").click(function () {
+              $("#assetMaintenance").modal('toggle');
+          });
+          $("#MaintenanceCancelId").click(function () {
+              $("#assetMaintenance").modal('toggle');
+          });
+      });
+
+</script>

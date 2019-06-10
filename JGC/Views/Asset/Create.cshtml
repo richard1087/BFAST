@@ -4,9 +4,852 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> 
-  
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<script type="text/javascript">
+    function Sites(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Site Code", "data": "0" },
+                    { "title": "Site Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupSite", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#SiteCodeId").val(d[0]);
+                $("#SiteNameId").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Categories(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Category Code", "data": "0" },
+                    { "title": "Category Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupCategory", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#CategoryCodeId").val(d[0]);
+                $("#CategoryNameId").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Locations() {
+        var Column = [
+                    { "data": "LocationCode" },
+                    { "title": "Location Code", "data": "LocationCode" },
+                    { "title": "Location Name", "data": "LocationName" },
+                    { "title": "Site Name", "data": "SiteName" },
+                    { "title": "Floor", "data": "Floor" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupLocation", "Asset")', Column, function (d) { d.SiteCode = $('#SiteCodeId').val() });
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            $("#LocationCodeId").val(d["LocationCode"]);
+            $("#LocationNameId").val(d["LocationName"]);
+            $("#Floor").val(d["Floor"]);
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Departments(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Department Code", "data": "0" },
+                    { "title": "Department Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupDepartment", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#DepartmentCodeId").val(d[0]);
+                $("#DepartmentNameId").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Suppliers(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Supplier Code", "data": "0" },
+                    { "title": "Supplier Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupSupplier", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#SupplierCodeId").val(d[0]);
+                $("#SupplierNameId").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Brands(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Brand Code", "data": "0" },
+                    { "title": "Brand Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupBrand", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#BrandCodeId").val(d[0]);
+                $("#BrandNameId").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Models(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Model Code", "data": "0" },
+                    { "title": "Model Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupModel", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#ModelCodeId").val(d[0]);
+                $("#ModelNameId").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Types(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Type Code", "data": "0" },
+                    { "title": "Type Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupType", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#TypeCodeId").val(d[0]);
+                $("#TypeNameId").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Currencies(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Currency Code", "data": "0" },
+                    { "title": "Currency Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupCurrency", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#CurrencyCodeId").val(d[0]);
+                $("#CurrencyNameId").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+    function Companies(Jenis) {
+        var Column = [
+                    { "data": "0" },
+                    { "title": "Company Code", "data": "0" },
+                    { "title": "Company Name", "data": "1" }
+        ]
+        DTable("datatablepopup", '@Url.Action("GetPopupCompany", "Asset")', Column, '{}');
+        $('#datatablepopup tbody').on('click', 'tr', function () {
+            var d = table.row(this).data();
+            if (Jenis == '1') {
+                $("#CompanyCodeId").val(d[0]);
+                $("#CompanyNameId").val(d[1]);
+            }
+            $('#Lookup').modal('hide');
+        });
+    }
+</script>
+
+<script type="text/javascript">
+
+    function InputData() {
+        var form = new FormData();
+        var SiteCode = document.getElementById("SiteCodeId").value;
+        var AssetCategoryCode = document.getElementById("CategoryCodeId").value;
+        var LocationCode = document.getElementById("LocationCodeId").value;
+        var DeptCode = document.getElementById("DepartmentCodeId").value;
+        var AssetName = document.getElementById("AssetName").value;
+        var SupplierCode = document.getElementById("SupplierCodeId").value;
+        var PurchaseNo = document.getElementById("PurchaseNo").value;
+        var AssetBrandCode = document.getElementById("BrandCodeId").value;
+        var PurchaseDate = document.getElementById("single_cal2").value;
+        var AssetModelCode = document.getElementById("ModelCodeId").value;
+        var PurchasePrice = document.getElementById("PurchasePrice").value;
+        var AssetSerialNo = document.getElementById("AssetSerialNo").value;
+        var AssetTypeCode = document.getElementById("TypeCodeId").value;
+        var CompanyID = document.getElementById("CompanyCodeId").value;
+        var CurrencyCode = document.getElementById("CurrencyCodeId").value;
+        var Floor = document.getElementById("Floor").value;
+        var Warranty = document.getElementById("Warranty").value;
+        var Qty = document.getElementById("Qty").value;
+        var bActive = document.getElementById("bActive");
+        var bCap = document.getElementById("bCap");
+        var file = document.getElementById("fileupload").files[0];
+
+        if (SiteCode == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetCategoryCode == "") {
+            $(".modal-body #peringatan3").text("Category harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (LocationCode == "") {
+            $(".modal-body #peringatan3").text("Location harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DeptCode == "") {
+            $(".modal-body #peringatan3").text("Deoartment harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetName == "") {
+            $(".modal-body #peringatan3").text("Asset Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (SupplierCode == "") {
+            $(".modal-body #peringatan3").text("Supplier harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PurchaseNo == "") {
+            $(".modal-body #peringatan3").text("Purchase No harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetBrandCode == "") {
+            $(".modal-body #peringatan3").text("Brand harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PurchaseDate == "") {
+            $(".modal-body #peringatan3").text("Purchase Date harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetModelCode == "") {
+            $(".modal-body #peringatan3").text("Model harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PurchasePrice == "") {
+            $(".modal-body #peringatan3").text("Price harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetSerialNo == "") {
+            $(".modal-body #peringatan3").text("Serial No harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetTypeCode == "") {
+            $(".modal-body #peringatan3").text("Type harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CompanyID == "") {
+            $(".modal-body #peringatan3").text("Company harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CurrencyCode == "") {
+            $(".modal-body #peringatan3").text("Currency harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (Floor == "") {
+            $(".modal-body #peringatan3").text("Floor harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (Warranty == "") {
+            $(".modal-body #peringatan3").text("Warranty harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (Qty == "") {
+            $(".modal-body #peringatan3").text("Qty harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            if (bActive.checked == true) {
+                bActive = "1";
+            }
+            else { bActive = "0"; }
+            if (bCap.checked == true) {
+                bCap = "1";
+            }
+            else { bCap = "0"; }
+
+            form.append("AssetName", AssetName);
+            form.append("AssetModelCode", AssetModelCode);
+            form.append("AssetCategoryCode", AssetCategoryCode);
+            form.append("AssetSerialNo", AssetSerialNo);
+            form.append("AssetTypeCode", AssetTypeCode);
+            form.append("AssetBrandCode", AssetBrandCode);
+            form.append("bActive", bActive);
+            form.append("bCap", bCap);
+            form.append("Floor", Floor);
+            form.append("Warranty", Warranty);
+            form.append("Qty", Qty);
+            form.append("Sitecode", SiteCode);
+            form.append("LocationCode", LocationCode);
+            form.append("PurchaseNo", PurchaseNo);
+            form.append("CurrencyCode", CurrencyCode);
+            form.append("PurchasePrice", PurchasePrice);
+            form.append("PurchaseDate", PurchaseDate);
+            form.append("SupplierCode", SupplierCode);
+            form.append("CompanyId", CompanyID);
+            form.append("DeptCode", DeptCode);
+            form.append("fileupload", file);
+            $.ajax({
+                url: '@Url.Action("InputData", "Asset")',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Index", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (response) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataMasterSite() {
+        var form = new FormData();
+        var SiteId = document.getElementById("SiteId").value;
+        var DescriptionId = document.getElementById("DescriptionId").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var bActive = document.getElementById("ActiveSite");
+        var PhoneId = document.getElementById("PhoneId").value;
+        if (SiteId == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DescriptionId == "") {
+            $(".modal-body #peringatan3").text("Description harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PhoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            if (bActive.checked == true) {
+                bActive = true;
+            }
+            else { bActive = false; }
+
+            form.append("bActive", bActive);
+            form.append("SiteCode", SiteId);
+            form.append("SiteName", DescriptionId);
+            form.append("Address", AddressId);
+            form.append("City", CityId);
+            form.append("PostalCode", PostalCodeId);
+            form.append("Telephone", PhoneId);
+            $.ajax({
+                 url: '@Url.Action("InputDataMasterSite", "Asset")',
+                type: 'post',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Create", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataCategory() {
+        var form = new FormData();
+        var AssetCategoryCodeId = document.getElementById("AssetCategoryCode").value;
+        var CategoryNameId = document.getElementById("CategoryName").value;
+        var InitialNameId = document.getElementById("InitialName").value;
+
+        if (CategoryNameId == "") {
+            $(".modal-body #peringatan3").text("Category Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetCategoryCodeId == "") {
+            $(".modal-body #peringatan3").text("Asset Category harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (InitialNameId == "") {
+            $(".modal-body #peringatan3").text("Initial Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            form.append("AssetCategoryCode", AssetCategoryCodeId);
+            form.append("AssetCategoryName", CategoryNameId);
+            form.append("Initial", InitialNameId);
+            $.ajax({
+                url: '@Url.Action("InputDataCategory", "Asset")',
+                type: 'post',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Create", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+        }
+    }
+
+    function InputDataMasterLocation() {
+        var form = new FormData();
+        var SiteId = document.getElementById("SiteId").value;
+        var LocationCode = document.getElementById("LocationCode").value;
+        var LocationName = document.getElementById("LocationName").value;
+        var Floor = document.getElementById("Floor").value;
+        var bActive = document.getElementById("bActive");
+        if (SiteId == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (LocationCode == "") {
+            $(".modal-body #peringatan3").text("Location code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else if (LocationName == "") {
+            $(".modal-body #peringatan3").text("Location name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+        else {
+            if (bActive.checked == true) {
+                bActive = "1";
+            }
+            else { bActive = "0"; }
+
+            form.append("SiteCode", SiteId);
+            form.append("LocationCode", LocationCode);
+            form.append("LocationName", LocationName);
+            form.append("Floor", Floor);
+            form.append("bActive", bActive);
+            $.ajax({
+                url: '@Url.Action("InputDataMasterSite", "Asset")',
+                type: 'post',
+                contentType: false,
+                processData: false,
+                cache: false,
+                async: true,
+                data: form,
+                success: function (response) {
+                    if (response.success) {
+                        $(".modal-body #peringatan2").text("Successfully Inserted " + response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Index", "Asset")";
+                        })
+                        $("#Alert2").modal();
+
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (response) {
+                    $(".modal-body #peringatan3").text(textStatus.responseText);
+                    $('#btncaution').click(function (e) {
+                        $('#Alert3').modal('hide');
+                    })
+                    $("#Alert3").modal();
+                }
+            });
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataDepartment() {
+        var DepartmentCodeId = document.getElementById("DepartmentCodeId").value;
+        var DepartmentNameId = document.getElementById("DepartmentNameId").value;
+
+        if (DepartmentCodeId == "") {
+            $(".modal-body #peringatan3").text("Department Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DepartmentNameId == "") {
+            $(".modal-body #peringatan3").text("Department Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+</script>
+<script type="text/javascript">
+    function InputDataType() {
+        var TypeCodeId = document.getElementById("TypeCodeId").value;
+        var TypeNameId = document.getElementById("TypeNameId").value;
+
+        if (TypeCodeId == "") {
+            $(".modal-body #peringatan3").text("Type Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TypeNameId == "") {
+            $(".modal-body #peringatan3").text("Type Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataCompany() {
+        var CompanyId = document.getElementById("CompanyCode").value;
+        var CompanyName = document.getElementById("CompanyName").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var ProvinceId = document.getElementById("ProvinceId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var TelephoneId = document.getElementById("TelephoneId").value;
+
+        if (CompanyCode == "") {
+            $(".modal-body #peringatan3").text("Company Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CompanyName == "") {
+            $(".modal-body #peringatan3").text("Company Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ProvinceId == "") {
+            $(".modal-body #peringatan3").text("Province harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TelephoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataSupplier() {
+        var SupplierCodeId = document.getElementById("SupplierCodeId").value;
+        var SupplierNameId = document.getElementById("SupplierNameId").value;
+        var PIC = document.getElementById("PIC").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var ProvinceId = document.getElementById("ProvinceId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var TelephoneId = document.getElementById("TelephoneId").value;
+        var FaxId = document.getElementById("FaxId").value;
+        var Aktif = document.getElementById("ActiveId").value;
+
+        if (document.getElementById("ActiveId").checked) {
+            var Aktif = "1";
+        }
+        else {
+            var Aktif = "0";
+        }
+
+        if (SupplierCodeId == "") {
+            $(".modal-body #peringatan3").text("Supplier Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (SupplierNameId == "") {
+            $(".modal-body #peringatan3").text("Supplier Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PIC == "") {
+            $(".modal-body #peringatan3").text("PIC must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ProvinceId == "") {
+            $(".modal-body #peringatan3").text("Province must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TelephoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (FaxId == "") {
+            $(".modal-body #peringatan3").text("Fax must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataBrand() {
+        var BrandCodeId = document.getElementById("BrandCodeId").value;
+        var BrandNameId = document.getElementById("BrandNameId").value;
+
+        if (BrandCodeId == "") {
+            $(".modal-body #peringatan3").text("Brand Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (BrandNameId == "") {
+            $(".modal-body #peringatan3").text("Brand Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataModel() {
+        var ModelCodeId = document.getElementById("ModelCodeId").value;
+        var ModelNameId = document.getElementById("ModelNameId").value;
+        var BrandCodeId = document.getElementById("BrandCodeId").value;
+
+        if (ModelCodeId == "") {
+            $(".modal-body #peringatan3").text("Model Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ModelNameId == "") {
+            $(".modal-body #peringatan3").text("Model Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (BrandCodeId == "") {
+            $(".modal-body #peringatan3").text("Brand must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function InputDataCurrency() {
+        var CurrencyCodeId = document.getElementById("CurrencyCodeId").value;
+        var CurrencyNameId = document.getElementById("CurrencyNameId").value;
+        if (CurrencyCodeId == "") {
+            $(".modal-body #peringatan3").text("Currency Code must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CurrencyNameId == "") {
+            $(".modal-body #peringatan3").text("Currency Name must be filled");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+</script>
+
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -24,7 +867,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form class="form-horizontal form-label-left">
+                        <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Site Location, Category, and Departments</h3>
@@ -33,13 +876,20 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <input list="Site" id="Sitecode" name="Site" class="form-control" placeholder="Select Site">
-                                    <datalist id="Site">
-                                        @for (int i = 0; i < ViewBag.Sitecode.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Sitecode[i].SiteName' value='@ViewBag.Sitecode[i].SiteCode'></option>
-                                        }
-                                    </datalist>
+                                    @*<input list="Site" id="Sitecode" name="Site" class="form-control" placeholder="Select Site">
+                                        <datalist id="Site">
+                                            @for (int i = 0; i < ViewBag.Sitecode.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Sitecode[i].SiteName' value='@ViewBag.Sitecode[i].SiteCode'></option>
+                                            }
+                                        </datalist>*@
+                                    <input class="form-control readonly" id="SiteCodeId" name="SiteCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Sites" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" id="SiteNameId" name="SiteNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                    @*<span class="input-group-btn">
+                                            <a class="btn btn-info" onclick="Sites('1')" data-target="#Lookup" data-toggle="modal" style="margin-right:0;height: 34px;">
+                                                <i class="fa fa-search fa-fw"></i>
+                                            </a>
+                                        </span>*@
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createsite" type="button" class="btn btn-success">New</button>
@@ -47,13 +897,15 @@
 
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Category</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <input list="Category" id="CategoryId" name="Category" class="form-control" placeholder="Select Category">
-                                    <datalist id="Category">
-                                        @for (int i = 0; i < ViewBag.Category.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Category[i].AssetCategoryName' value='@ViewBag.Category[i].AssetCategoryCode'></option>
-                                        }
-                                    </datalist>
+                                    @*<input list="Category" id="AssetCategoryCode" name="Category" class="form-control" placeholder="Select Category">
+                                        <datalist id="Category">
+                                            @for (int i = 0; i < ViewBag.Category.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Category[i].AssetCategoryName' value='@ViewBag.Category[i].AssetCategoryCode'></option>
+                                            }
+                                        </datalist>*@
+                                    <input class="form-control readonly" id="CategoryCodeId" name="CategoryCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Categories" onclick="Categories('1')" data-target="#Lookup" data-toggle="modal" id="CategoryNameId" name="CategoryNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createcategory" type="button" class="btn btn-success">New</button>
@@ -63,13 +915,15 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <input list="location" id="LocationId" name="location" class="form-control" placeholder="Select a Location">
-                                    <datalist id="location">
-                                        @for (int i = 0; i < ViewBag.Location.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Location[i].LocationName' value='@ViewBag.Location[i].LocationCode'></option>
-                                        }
-                                    </datalist>
+                                    @*<input list="location" id="LocationCode" name="location" class="form-control" placeholder="Select a Location">
+                                        <datalist id="location">
+                                            @for (int i = 0; i < ViewBag.Location.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Location[i].LocationName' value='@ViewBag.Location[i].LocationCode'></option>
+                                            }
+                                        </datalist>*@
+                                    <input class="form-control readonly" id="LocationCodeId" name="LocationCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Locations" onclick="Locations('1')" data-target="#Lookup" data-toggle="modal" id="LocationNameId" name="LocationNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createlocation" type="button" class="btn btn-success">New</button>
@@ -77,13 +931,15 @@
 
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Department</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <input list="department" id="DepartmentId" name="department" class="form-control" placeholder="Select a Department">
-                                    <datalist id="department">
-                                        @for (int i = 0; i < ViewBag.Dept.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Dept[i].DeptName' value='@ViewBag.Dept[i].DeptCode'></option>
-                                        }
-                                    </datalist>
+                                    @*<input list="department" id="DeptCode" name="department" class="form-control" placeholder="Select a Department">
+                                        <datalist id="department">
+                                            @for (int i = 0; i < ViewBag.Dept.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Dept[i].DeptName' value='@ViewBag.Dept[i].DeptCode'></option>
+                                            }
+                                        </datalist>*@
+                                    <input class="form-control readonly" id="DepartmentCodeId" name="DepartmentCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Departments" onclick="Departments('1')" data-target="#Lookup" data-toggle="modal" id="DepartmentNameId" name="DepartmentNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <button id="createdepartment" type="button" class="btn btn-success">New</button>
@@ -99,40 +955,49 @@
                                 <div class="col-md-11 col-sm-11 col-xs-12">
                                     <input type="text" name="AssetTagID" class="form-control col-md-10" placeholder="Auto Generated" readonly />
                                 </div>
-                                
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Asset Name</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="text" id="AssetNameId" name="Asset Name" class="form-control col-md-10" placeholder="Asset Name" />
+                                    <input type="text" id="AssetName" name="Asset Name" class="form-control col-md-10" placeholder="Asset Name" />
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Supplier Name</label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Supplier" id="SupplierId" name="SupplierName" class="form-control col-md-10" placeholder="Select Supplier Name">
-                                    <datalist id="Supplier">
-                                        @for (int i = 0; i < ViewBag.Suppliername.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Suppliername[i].SupplierName' value='@ViewBag.Suppliername[i].SupplierCode'></option>
-                                        }
-                                    </datalist>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Supplier" id="SupplierCode" name="SupplierName" class="form-control col-md-10" placeholder="Select Supplier Name">
+                                        <datalist id="Supplier">
+                                            @for (int i = 0; i < ViewBag.Suppliername.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Suppliername[i].SupplierName' value='@ViewBag.Suppliername[i].SupplierCode'></option>
+                                            }
+                                        </datalist>*@
+                                    <input class="form-control readonly" id="SupplierCodeId" name="SupplierCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Supplier Name" onclick="Suppliers('1')" data-target="#Lookup" data-toggle="modal" id="SupplierNameId" name="SupplierNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createsupplier" type="button" class="btn btn-success">New</button>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Purchase No</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="text" id="PurchaseNoId" name="PurchaseNo" class="form-control col-md-10" placeholder="Purchase No" />
+                                    <input type="text" id="PurchaseNo" name="PurchaseNo" class="form-control col-md-10" placeholder="Purchase No" />
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Brand</label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Brand" id="BrandId" name="Brand" class="form-control col-md-10" placeholder="Select Brand">
-                                    <datalist id="Brand">
-                                        @for (int i = 0; i < ViewBag.BrandName.Length; i++)
-                                        {
-                                            <option label='@ViewBag.BrandName[i].BrandName' value='@ViewBag.BrandName[i].BrancCode'></option>
-                                        }
-                                    </datalist>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Brand" id="AssetBrandCode" name="Brand" class="form-control col-md-10" placeholder="Select Brand">
+                                        <datalist id="Brand">
+                                            @for (int i = 0; i < ViewBag.BrandName.Length; i++)
+                                            {
+                                                <option label='@ViewBag.BrandName[i].BrandName' value='@ViewBag.BrandName[i].BrandCode'></option>
+                                            }
+                                        </datalist>*@
+                                    <input class="form-control readonly" id="BrandCodeId" name="BrandCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly"placeholder="Brand" onclick="Brands('1')" data-target="#Lookup" data-toggle="modal" id="BrandNameId" name="BrandNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createbrand" type="button" class="btn btn-success">New</button>
                                 </div>
                             </div>
 
@@ -144,67 +1009,87 @@
                                     <span id="purchaseDate" class="sr-only">(success)</span>
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Model</label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Model" id="ModelId" name="Model" class="form-control col-md-10" placeholder="Select Model">
-                                    <datalist id="Model">
-                                        @for (int i = 0; i < ViewBag.ModelName.Length; i++)
-                                        {
-                                            <option label='@ViewBag.ModelName[i].ModelName' value='@ViewBag.ModelName[i].ModelCode'></option>
-                                        }
-                                    </datalist>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Model" id="AssetModelCode" name="Model" class="form-control col-md-10" placeholder="Select Model">
+                                        <datalist id="Model">
+                                            @for (int i = 0; i < ViewBag.ModelName.Length; i++)
+                                            {
+                                                <option label='@ViewBag.ModelName[i].ModelName' value='@ViewBag.ModelName[i].ModelCode'></option>
+                                            }
+                                        </datalist>*@
+                                    <input class="form-control readonly" id="ModelCodeId" name="ModelCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Model" onclick="Models('1')" data-target="#Lookup" data-toggle="modal" id="ModelNameId" name="ModelNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createmodel" type="button" class="btn btn-success">New</button>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Purchase Price</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="number" id="PriceId" name="Purchase Price" class="form-control col-md-10" placeholder="Purchase Price" />
+                                    <input type="number" id="PurchasePrice" name="Purchase Price" class="form-control col-md-10" placeholder="Purchase Price" />
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial No</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input type="text" id="SerialNoId" name="SerialNo" class="form-control col-md-10" placeholder="Serial No" />
+                                    <input type="text" id="AssetSerialNo" name="SerialNo" class="form-control col-md-10" placeholder="Serial No" />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Type" id="TypeId" name="Type" class="form-control" placeholder="Select Type">
-                                    <datalist id="Type">
-                                        @for (int i = 0; i < ViewBag.AssetType.Length; i++)
-                                        {
-                                            <option label='@ViewBag.AssetType[i].AssetTypeName' value='@ViewBag.AssetType[i].AssetTypeCode'></option>
-                                        }
-                                    </datalist>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Type" id="AssetTypeCode" name="Type" class="form-control" placeholder="Select Type">
+                                        <datalist id="Type">
+                                            @for (int i = 0; i < ViewBag.AssetType.Length; i++)
+                                            {
+                                                <option label='@ViewBag.AssetType[i].AssetTypeName' value='@ViewBag.AssetType[i].AssetTypeCode'></option>
+                                            }
+                                        </datalist>*@
+                                    <input class="form-control readonly" id="TypeCodeId" name="TypeCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Type" onclick="Types('1')" data-target="#Lookup" data-toggle="modal" id="TypeNameId" name="TypeNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createtype" type="button" class="btn btn-success">New</button>
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Currency</label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Currency" id="CurrencyId" name="Currency" class="form-control col-md-10" placeholder="Select Currency">
-                                    <datalist id="Currency">
-                                        @for (int i = 0; i < ViewBag.Currencyname.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Currencyname[i].CurrencyName' value='@ViewBag.Currencyname[i].CurrencyCode'></option>
-                                        }
-                                    </datalist>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Currency" id="CurrencyCode" name="Currency" class="form-control col-md-10" placeholder="Select Currency">
+                                        <datalist id="Currency">
+                                            @for (int i = 0; i < ViewBag.Currencyname.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Currencyname[i].CurrencyName' value='@ViewBag.Currencyname[i].CurrencyCode'></option>
+                                            }
+                                        </datalist>*@
+                                    <input class="form-control readonly" id="CurrencyCodeId" name="CurrencyCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Currency" onclick="Currencies('1')" data-target="#Lookup" data-toggle="modal" id="CurrencyNameId" name="CurrencyNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createcurrency" type="button" class="btn btn-success">New</button>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Company</label>
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <input list="Company" id="CompanyId" name="Company" class="form-control col-md-10" placeholder="Company" />
-                                    <datalist id="Company">
-                                        @for (int i = 0; i < ViewBag.Companyname.Length; i++)
-                                        {
-                                            <option label='@ViewBag.Companyname[i].CompanyName' value='@ViewBag.Companyname[i].CompanyCode'></option>
-                                        }
-                                    </datalist>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    @*<input list="Company" id="CompanyId" name="Company" class="form-control col-md-10" placeholder="Company" />
+                                        <datalist id="Company">
+                                            @for (int i = 0; i < ViewBag.Companyname.Length; i++)
+                                            {
+                                                <option label='@ViewBag.Companyname[i].CompanyName' value='@ViewBag.Companyname[i].CompanyCode'></option>
+                                            }
+                                        </datalist>*@
+                                    <input class="form-control readonly" id="CompanyCodeId" name="CompanyCodeId" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                                    <input class="form-control readonly" placeholder="Company" onclick="Companies('1')" data-target="#Lookup" data-toggle="modal" id="CompanyNameId" name="CompanyNameId" value="" type="text" data-id="i" autocomplete="off" required="" readonly style="cursor:auto;" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createcompany" type="button" class="btn btn-success">New</button>
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Floor</label>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
-                                    <input type="number" id="FloorId" name="Floor" class="form-control col-md-10" placeholder="Floor" />
+                                    <input type="number" id="Floor" name="Floor" class="form-control col-md-10" placeholder="Floor" />
                                 </div>
-                                
+
                             </div>
 
                             <div class="form-group">
@@ -212,38 +1097,41 @@
                                 <div class="col-md-5 col-sm-5 col-xs-12">
                                     <div class="checkbox">
                                         <label style="padding-left:0 !important">
-                                            <input id="ActiveId" type="checkbox" class="flat" value=""> Yes
+                                            <input id="bActive" type="checkbox" class="flat"> Yes
                                         </label>
                                     </div>
                                 </div>
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Warranty</label>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
-                                    <input type="number" id="WarrantyId" name="Warranty" class="form-control col-md-10" placeholder="Warranty" />
+                                    <input type="number" id="Warranty" name="Warranty" class="form-control col-md-10" placeholder="Warranty" />
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12" style="padding:0;"><label style="margin-top:7px;font-size:15px !important;">/ Month</label></div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Capitalized</label>
-                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                <div class="col-md-5 col-sm-5 col-xs-12">
                                     <div class="checkbox">
                                         <label style="padding-left:0 !important">
-                                            <input id="CapitalizedId" type="checkbox" class="flat" value=""> Yes
+                                            <input id="bCap" type="checkbox" class="flat"> Yes
                                         </label>
                                     </div>
                                 </div>
-                            </div>                            
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Qty</label>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <input type="number" id="Qty" name="Qty" class="form-control col-md-10" placeholder="Qty" />
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Asset Photo</h3>
                             </div>
-
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload Image</label>
                                 <div class="col-md-5 col-sm-5 col-xs-12">
-                                    
-                                    <input type="file" name="file" id="file" class="btn btn-success btn-cust inputfile" />
-                                    <label for="file" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
+                                    <input type="file" name="file" id="fileupload" class="btn btn-success btn-cust inputfile" onchange='$("#upload-file-info").html($(this).val());' />
+                                    <label for="fileupload" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
+                                    <span class='label label-info label-create' id="upload-file-info"></span>
                                 </div>
                             </div>
 
@@ -251,10 +1139,10 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
                                     <button class="btn btn-default" type="button">Cancel</button>
-                                    <button type="submit" class="btn btn-success" onclick="InputData(); return false;" >Submit</button>
+                                    <button type="submit" class="btn btn-success" onclick="InputData(); return false;">Submit</button>
                                 </div>
-                                
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -264,7 +1152,7 @@
 </div>
 
 <!-- MODAL1 START -->
-<div class="modal fade" id="siteModal" role="dialog">
+<div class="modal fade" id="siteModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -305,11 +1193,27 @@
                             <input id="PostalCodeId" type="text" class="form-control" placeholder="Postal Code">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Phone</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="PhoneId" type="tel" class="form-control" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Active</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <div class="checkbox">
+                                <label style="padding-left:0 !important">
+                                    <input id="ActiveSite" type="checkbox" class="flat"> Yes
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
                             <button type="button" id="SiteCancelId" class="btn btn-primary">Cancel</button>
-                            <button type="submit" id="SiteSubmitId" class="btn btn-success" onclick="InputDataSite(); return false;">Submit</button>
+                            <button type="submit" id="SiteSubmitId" class="btn btn-success" onclick="InputDataMasterSite(); return false;">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -318,9 +1222,8 @@
     </div>
 </div>
 <!-- MODAL1 END -->
-
 <!-- MODAL2 START -->
-<div class="modal fade" id="categoryModal" role="dialog">
+<div class="modal fade" id="categoryModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -332,22 +1235,28 @@
 
                 <form class="form-horizontal form-label-left">
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="CategoryId" type="text" class="form-control" placeholder="Category">
+                            <input id="AssetCategoryCode" type="text" class="form-control" placeholder="Category">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category Name</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Category Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="CategoryName" type="text" class="form-control" placeholder="Category Name">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Initial</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="InitialName" type="text" class="form-control" placeholder="Initial Name">
+                        </div>
+                    </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
-                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
+                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-3">
                             <button id="CategoryCancelId" type="button" class="btn btn-primary">Cancel</button>
-                            <button id="CategorySubmitId" type="submit" class="btn btn-success" onclick="InputDataCategory(); return false;" >Submit</button>
+                            <button id="CategorySubmitId" type="submit" class="btn btn-success" onclick="InputDataCategory(); return false;">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -356,9 +1265,8 @@
     </div>
 </div>
 <!-- MODAL2 END -->
-
 <!-- MODAL3 START -->
-<div class="modal fade" id="locationModal" role="dialog">
+<div class="modal fade" id="locationModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -370,7 +1278,7 @@
 
                 <form class="form-horizontal form-label-left">
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Site</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Site</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="SiteId" list="Site" name="Site" class="form-control" placeholder="Select a Site">
                             <datalist id="Site">
@@ -382,22 +1290,38 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Location</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="LocationId" type="text" class="form-control" placeholder="Location">
+                            <input id="LocationCode" type="text" class="form-control" placeholder="Location">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Location Name</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Location Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input id="LocationName" type="text" class="form-control" placeholder="Location Name">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Floor</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <input type="number" id="Floor" name="Floor" class="form-control" placeholder="Floor" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <div class="checkbox">
+                                <label style="padding-left:0 !important">
+                                    <input id="ActiveLocation" type="checkbox" class="flat"> Yes
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
-                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
+                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-3">
                             <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
-                            <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataLocation(); return false;" >Submit</button>
+                            <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataMasterLocation(); return false;">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -406,9 +1330,8 @@
     </div>
 </div>
 <!-- MODAL3 END -->
-
 <!-- MODAL4 START -->
-<div class="modal fade" id="departmentModal" role="dialog">
+<div class="modal fade" id="departmentModal" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -435,7 +1358,7 @@
                     <div class="form-group">
                         <div class="col-md-9 col-sm-10 col-xs-12 col-md-offset-3">
                             <button id="DepartmentCancelId" type="button" class="btn btn-primary">Cancel</button>
-                            <button id="DepartmentSubmitId" type="submit" class="btn btn-success" onclick="InputDataDepartment(); return false;" >Submit</button>
+                            <button id="DepartmentSubmitId" type="submit" class="btn btn-success" onclick="InputDataDepartment(); return false;">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -444,7 +1367,347 @@
     </div>
 </div>
 <!-- MODAL4 END -->
+<!-- MODAL5 START -->
+<div class="modal fade" id="typeModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Create Type</h4>
+            </div>
+            <div class="modal-body ">
 
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Type</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="TypeCodeId" type="text" class="form-control" placeholder="Type">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Type Name</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="TypeNameId" type="text" class="form-control" placeholder="Type Name">
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-10 col-xs-12 col-md-offset-3">
+                            <button id="TypeCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="TypeSubmitId" type="submit" class="btn btn-success" onclick="InputDataType(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL5 END -->
+<!-- MODAL6 START -->
+<div class="modal fade" id="companyModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Create Company</h4>
+            </div>
+            <div class="modal-body ">
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Company Code</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="CompanyCode" type="text" name="CompanyCode" class="form-control col-md-10" placeholder="Company Code" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Company name</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="CompanyName" type="text" name="CompanyName" class="form-control col-md-10" placeholder="Company Name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="AddressId" type="text" name="Address" class="form-control col-md-10" placeholder="Address" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">City</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="CityId" type="text" name="City" class="form-control col-md-10" placeholder="City" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Province</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="ProvinceId" type="text" name="Province" class="form-control col-md-10" placeholder="Province" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Postal Code</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="PostalCodeId" type="text" name="Postal Code" class="form-control col-md-10" placeholder="Postal Code" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Telephone</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="tel" id="TelephoneId" name="Telephone" class="form-control col-md-10" placeholder="Telephone" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <div class="checkbox">
+                                <label style="padding-left:0 !important">
+                                    <input id="ActiveId" type="checkbox" class="flat" value=""> Yes
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Upload Logo</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="file" name="file" id="file" class="btn btn-success btn-cust inputfile" onchange='$("#upload-file-info2").html($(this).val());' />
+                            <label for="file" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
+                            <span class='label label-info label-create' id="upload-file-info2"></span>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-10 col-xs-12 col-md-offset-3">
+                            <button id="CompanyCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="CompanySubmitId" type="submit" class="btn btn-success" onclick="InputDataCompany(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL6 END -->
+<!-- MODAL7 START -->
+<div class="modal fade" id="supplierModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Create Supplier</h4>
+            </div>
+            <div class="modal-body ">
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Supplier Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="SupplierCodeId" type="text" name="SupplierCodeId" class="form-control col-md-10" placeholder="Supplier Code" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Supplier Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="SupplierNameId" type="text" name="SupplierNameId" class="form-control col-md-10" placeholder="Supplier Name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">PIC</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="PIC" type="text" name="PIC" class="form-control col-md-10" placeholder="PIC" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="AddressId" type="text" name="AddressId" class="form-control col-md-10" placeholder="Address" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">City</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="CityId" type="text" name="CityId" class="form-control col-md-10" placeholder="City" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Province</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="ProvinceId" type="text" name="ProvinceId" class="form-control col-md-10" placeholder="Province" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Postal Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="PostalCodeId" type="number" name="PostalCodeId" class="form-control col-md-10" placeholder="Postal Code" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Telephone</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="TelephoneId" type="tel" name="TelephoneId" class="form-control col-md-10" placeholder="Telephone" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Fax</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="FaxId" type="tel" name="FaxId" class="form-control col-md-10" placeholder="Fax" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="checkbox">
+                                <label style="padding-left:0 !important">
+                                    <input id="ActiveId" name="ActiveId" type="checkbox" class="flat" value=""> Yes
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-10 col-xs-12 col-md-offset-3">
+                            <button id="SupplierCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="SupplierSubmitId" type="submit" class="btn btn-success" onclick="InputDataSupplier(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL7 END -->
+<!-- MODAL8 START -->
+<div class="modal fade" id="brandModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Create Brand</h4>
+            </div>
+            <div class="modal-body ">
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Brand</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="BrandCodeId" type="text" name="BrandCodeId" class="form-control col-md-10" placeholder="Brand Code" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Brand Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="BrandNameId" type="text" name="BrandNameId" class="form-control col-md-10" placeholder="Brand Name" />
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-10 col-xs-12 col-md-offset-3">
+                            <button id="BrandCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="BrandSubmitId" type="submit" class="btn btn-success" onclick="InputDataBrand(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL8 END -->
+<!-- MODAL9 START -->
+<div class="modal fade" id="modelModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Create Brand</h4>
+            </div>
+            <div class="modal-body ">
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Brand</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            @*<input list="Brand" id="AssetBrandCode" name="Brand" class="form-control col-md-10" placeholder="Select Brand">
+                <datalist id="Brand">
+                    @for (int i = 0; i < ViewBag.BrandName.Length; i++)
+                    {
+                        <option label='@ViewBag.BrandName[i].BrandName' value='@ViewBag.BrandName[i].BrandCode'></option>
+                    }
+                </datalist>*@
+                            <input class="form-control readonly" id="AssetBrandCode" name="AssetBrandCode" value="" type="hidden" data-id="i" autocomplete="off" required="" />
+                            <input class="form-control readonly" onclick="Brands('1')" data-target="#Lookup" data-toggle="modal" id="AssetBrandName" name="AssetBrandName" value="" type="text" data-id="i" autocomplete="off" required="" placeholder="Brand Name" readonly style="cursor:auto;" />
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Model Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="ModelCodeId" type="text" name="ModelCodeId" class="form-control col-md-10" placeholder="Model Code" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Model Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="ModelNameId" type="text" name="ModelName" class="form-control col-md-10" placeholder="Model Name" />
+                        </div>
+                    </div>
+
+                    
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-10 col-xs-12 col-md-offset-3">
+                            <button id="ModelCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="ModelSubmitId" type="submit" class="btn btn-success" onclick="InputDataModel(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL9 END -->
+<!-- MODAL10 START -->
+<div class="modal fade" id="currencyModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Create Brand</h4>
+            </div>
+            <div class="modal-body ">
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Currency Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="CurrencyCodeId" type="text" name="CurrencyCodeId" class="form-control col-md-10" placeholder="Currency Code" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Currency Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="CurrencyNameId" type="text" name="CurrencyNameId" class="form-control col-md-10" placeholder="Currency Name" />
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-10 col-xs-12 col-md-offset-3">
+                            <button id="CurrencyCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="CurrencySubmitId" type="submit" class="btn btn-success" onclick="InputDataCurrency(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL10 END -->
+
+@Html.Partial("~/Views/Shared/PopupModal.cshtml")
 @Html.Partial("~/Views/Shared/WarningModal.cshtml")
 @RenderPage("~/Views/Shared/_FooterLayout.cshtml")
 
@@ -493,299 +1756,70 @@
               $("#departmentModal").modal('toggle');
           });
       });
-</script>
-<script type="text/javascript">
-    function InputData() {
-        var SiteId = document.getElementById("Sitecode").value;
-        var CategoryId = document.getElementById("CategoryId").value;
-        var LocationId = document.getElementById("LocationId").value;
-        var DepartmentId = document.getElementById("DepartmentId").value;
-        var AssetNameId = document.getElementById("AssetNameId").value;
-        var SupplierId = document.getElementById("SupplierId").value;
-        var PurchaseNoId = document.getElementById("PurchaseNoId").value;
-        var BrandId = document.getElementById("BrandId").value;
-        var PurchaseDate = document.getElementById("single_cal2").value;
-        var ModelId = document.getElementById("ModelId").value;
-        var PriceId = document.getElementById("PriceId").value;
-        var SerialNoId = document.getElementById("SerialNoId").value;
-        var TypeId = document.getElementById("TypeId").value;
-        var CompanyId = document.getElementById("CompanyId").value;
-        var CurrencyId = document.getElementById("CurrencyId").value;
-        var FloorId = document.getElementById("FloorId").value;
-        var WarrantyId = document.getElementById("WarrantyId").value;
-        var ActiveId = document.getElementById("ActiveId").value;
-        var CapitalizedId = document.getElementById("CapitalizedId").value;
-        //var Photo = document.getElementById("file").value;
-        var ActiveId = document.getElementById("ActiveId").value;
-
-        if (SiteId == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CategoryId == "") {
-            $(".modal-body #peringatan3").text("Category harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (LocationId == "") {
-            $(".modal-body #peringatan3").text("Location harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (DepartmentId == "") {
-            $(".modal-body #peringatan3").text("Deoartment harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AssetNameId == "") {
-            $(".modal-body #peringatan3").text("Asset Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (SupplierId == "") {
-            $(".modal-body #peringatan3").text("Supplier harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PurchaseNoId == "") {
-            $(".modal-body #peringatan3").text("Purchase No harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (BrandId == "") {
-            $(".modal-body #peringatan3").text("Brand harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PurchaseDate == "") {
-            $(".modal-body #peringatan3").text("Purchase Date harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }else if (ModelId == "") {
-            $(".modal-body #peringatan3").text("Model harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PriceId == "") {
-            $(".modal-body #peringatan3").text("Price harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (SerialNoId == "") {
-            $(".modal-body #peringatan3").text("Serial No harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (TypeId == "") {
-            $(".modal-body #peringatan3").text("Type harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CompanyId == "") {
-            $(".modal-body #peringatan3").text("Company harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CurrencyId == "") {
-            $(".modal-body #peringatan3").text("Currency harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (FloorId == "") {
-            $(".modal-body #peringatan3").text("Floor harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (WarrantyId == "") {
-            $(".modal-body #peringatan3").text("Warranty harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-        else
-        {
-            if (ActiveId.checked == true) {
-                ActiveId = "1";
-            }
-            else { ActiveId = "0"; }
-            if (CapitalizedId.checked == true) {
-                CapitalizedId = "1";
-            }
-            else { CapitalizedId = "0";}
-            $.ajax({
-                url: '@Url.Action("InputData", "Asset")',
-                type: 'post',
-                cache: false,
-                async: true,
-                data: {
-                    site: SiteId,
-                    category: CategoryId,
-                    location: LocationId,
-                    departement: DepartmentId,
-                    assetname: AssetNameId,
-                    supplier: SupplierId,
-                    purchaseno: PurchaseNoId,
-                    brand: BrandId,
-                    purchasedateid: PurchaseDate,
-                    model: ModelId,
-                    price: PriceId,
-                    serialno: SerialNoId,
-                    type: TypeId,
-                    company: CompanyId,
-                    currency: CurrencyId,
-                    floor: FloorId,
-                    warranty: WarrantyId,
-                    cap: CapitalizedId,
-                    active: ActiveId
-                },
-                success: function (response) {
-                    if (response.success) {
-                        $(".modal-body #peringatan2").text("Successfully Inserted " +response.responseText);
-                        $('#btnok').click(function (e) {
-                            window.location.href = "@Url.Action("Index", "Asset")";
-                        })
-                        $("#Alert2").modal();
-
-                    } else {
-                        $(".modal-body #peringatan3").text(response.responseText);
-                        $('#btnerror').click(function (e) {
-                            $('#Alert3').modal('hide');
-                        })
-                        $("#Alert3").modal();
-                    }
-                },
-                error: function (response) {
-                    $(".modal-body #peringatan3").text(textStatus.responseText);
-                    $('#btncaution').click(function (e) {
-                        $('#Alert3').modal('hide');
-                    })
-                    $("#Alert3").modal();
-                }
-            });
-        }
-    }
-
-    function InputDataSite() {
-        var SiteId = document.getElementById("SiteId").value;
-        var DescriptionId = document.getElementById("DescriptionId").value;
-        var AddressId = document.getElementById("AddressId").value;
-        var CityId = document.getElementById("CityId").value;
-        var StateId = document.getElementById("StateId").value;
-        var PostalCodeId = document.getElementById("PostalCodeId").value;
-        var CountryId = document.getElementById("CountryId").value;
-
-        if (SiteId == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (DescriptionId == "") {
-            $(".modal-body #peringatan3").text("Description harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (AddressId == "") {
-            $(".modal-body #peringatan3").text("Address harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CityId == "") {
-            $(".modal-body #peringatan3").text("City harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (StateId == "") {
-            $(".modal-body #peringatan3").text("State harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (PostalCodeId == "") {
-            $(".modal-body #peringatan3").text("Postal Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (CountryId == "") {
-            $(".modal-body #peringatan3").text("Country harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataCategory() {
-        var CategoryNameId = document.getElementById("CategoryNameId").value;
-
-        if (CategoryNameId == "") {
-            $(".modal-body #peringatan3").text("Category Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataLocation() {
-        var SiteId = document.getElementById("SiteId").value;
-        var LocationId = document.getElementById("LocationId").value;
-
-        if (SiteId == "") {
-            $(".modal-body #peringatan3").text("Site harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (LocationId == "") {
-            $(".modal-body #peringatan3").text("Location harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
-    function InputDataDepartment() {
-        var DepartmentCodeId = document.getElementById("DepartmentCodeId").value;
-        var DepartmentNameId = document.getElementById("DepartmentNameId").value;
-
-        if (DepartmentCodeId == "") {
-            $(".modal-body #peringatan3").text("Department Code harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        } else if (DepartmentNameId == "") {
-            $(".modal-body #peringatan3").text("Department Name harus diisi");
-            $('#btnerror').click(function (e) {
-                $('#Alert3').modal('hide');
-            })
-            $("#Alert3").modal();
-        }
-    }
-
+      $(document).ready(function () {
+          $("#createtype").click(function () {
+              $("#typeModal").modal();
+          });
+          $("#TypeCancelId").click(function () {
+              $("#typeModal").modal('toggle');
+          });
+          $("#TypeSubmitId").click(function () {
+              $("#typeModal").modal('toggle');
+          });
+      });
+      $(document).ready(function () {
+          $("#createcompany").click(function () {
+              $("#companyModal").modal();
+          });
+          $("#CompanyCancelId").click(function () {
+              $("#companyModal").modal('toggle');
+          });
+          $("#CompanySubmitId").click(function () {
+              $("#companyModal").modal('toggle');
+          });
+      });
+      $(document).ready(function () {
+          $("#createsupplier").click(function () {
+              $("#supplierModal").modal();
+          });
+          $("#SupplierCancelId").click(function () {
+              $("#supplierModal").modal('toggle');
+          });
+          $("#SupplierSubmitId").click(function () {
+              $("#supplierModal").modal('toggle');
+          });
+      });
+      $(document).ready(function () {
+          $("#createbrand").click(function () {
+              $("#brandModal").modal();
+          });
+          $("#BrandCancelId").click(function () {
+              $("#brandModal").modal('toggle');
+          });
+          $("#BrandSubmitId").click(function () {
+              $("#brandModal").modal('toggle');
+          });
+      });
+      $(document).ready(function () {
+          $("#createmodel").click(function () {
+              $("#modelModal").modal();
+          });
+          $("#ModelCancelId").click(function () {
+              $("#modelModal").modal('toggle');
+          });
+          $("#ModelSubmitId").click(function () {
+              $("#modelModal").modal('toggle');
+          });
+      });
+      $(document).ready(function () {
+          $("#createcurrency").click(function () {
+              $("#currencyModal").modal();
+          });
+          $("#CurrencyCancelId").click(function () {
+              $("#currencyModal").modal('toggle');
+          });
+          $("#CurrencySubmitId").click(function () {
+              $("#currencyModal").modal('toggle');
+          });
+      });
 </script>

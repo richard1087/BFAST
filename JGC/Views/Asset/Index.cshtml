@@ -1,10 +1,60 @@
 ﻿
-@model CORE.JGC.Models.Ms_Asset[]
+@model CORE.JGC.Models.MsAsset[]
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+    function fnExcelReport() {
+        var tab_text = "<table border='2px'><tr bgcolor='#87AFC6'>";
+        var textRange; var j = 0;
+        tab = document.getElementById('datatable'); // id of table
 
+        for (j = 0 ; j < tab.rows.length ; j++) {
+            tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
+            //tab_text=tab_text+"</tr>";
+        }
+
+        tab_text = tab_text + "</table>";
+
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf("MSIE ");
+
+        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+        {
+            txtArea1.document.open("txt/html", "replace");
+            txtArea1.document.write(tab_text);
+            txtArea1.document.close();
+            txtArea1.focus();
+            sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+        }
+        else                 //other browser not tested on IE 11
+            sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+
+        return (sa);
+    }
+</script>
+<script>
+    function AssetDetail(AssetCode) {
+        $.ajax({
+            url: '@Url.Action("AssetDetail", "Asset")',
+            type: 'post',
+            cache: false,
+            async: true,
+            data: { AssetCode: AssetCode },
+            success: function (response) {
+                window.location.href = "@Url.Action("Details", "Asset")";
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $(".modal-body #peringatan1").text("Asset Detail Error..");
+                $('#btncaution').click(function (e) {
+                    $('#Alert1').modal('hide');
+                })
+                $("#Alert1").modal();
+            }
+        });
+    }
+</script>
 <div class="right_col" role="main">
     <div class="">
         <div class="row">
@@ -24,64 +74,41 @@
                         <p class="text-muted font-13 m-b-30">
                             <div class="mgbtm20">
                                 <a href="/asset/create" class="btn btn-success btn-cust">Create New</a>
-                                <button type="button" class="btn btn-success btn-cust"><i class="fa fa-download icon-white"></i> Export to Excel</button>
-                                <!--
-                                <div class="btn-group top-2">
-                                    <button data-toggle="dropdown" class="btn btn-success btn-cust dropdown-toggle" type="button" aria-expanded="false">
-                                        <i class="fa fa-download icon-white"></i> Export to Excel
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul role="menu" class="dropdown-menu">
-                                        <li><a href="#">CSV</a></li>
-                                        <li><a href="#">MS-Excel</a></li>
-                                        <li><a href="#">MS- WORD</a></li>
-                                        <li><a href="#">TXT</a></li>
-                                        <li><a href="#">JSON</a></li>
-                                        <li><a href="#">XML</a></li>
-                                        <li><a href="#">PDF</a></li>
-                                    </ul>
-                                </div>  -->
-                                <!--<div class="floatright mgl25">
-                                    <button type="submit" class="btn btn-success btn-cust floatright top-2">Go</button>
-                                    <div class="btn-group floatright mgr10">
-                                        <select id="heard" class="form-control hgt33" required>
-                                            <option value="">Choose..</option>
-                                            <option value="edit">Edit</option>
-                                            <option value="generatelabel">Generate Labels</option>
-                                        </select>
-                                    </div>
-                                </div>-->
+                                <button type="button" class="btn btn-success btn-cust" onclick="fnExcelReport();"><i class="fa fa-download icon-white"></i> Export to Excel</button>
+                                <iframe id="txtArea1" style="display:none"></iframe>
                             </div>
                         </p>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
-                                    <th>Asset Photo</th>
                                     <th>Asset Tag ID</th>
                                     <th>Asset Name</th>
                                     <th>Brand</th>
+                                    <th>Site</th>
+                                    <th>Location</th>
+                                    <th>Floor</th>
+                                    <th>Supplier</th>
                                     <th>Purchase Date</th>
                                     <th>Purchase Price</th>
                                     <th>Status</th>
-                                    <th style="width:4%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td><input type="checkbox" class="checks"></td>
-                                        <td align="center"><img src='data:image/jpeg;base64,@Html.DisplayFor(modelItem => item.Photo)' /></td>
-                                        <td><a href="#" id="assetmodel">@Html.DisplayFor(modelItem => item.AssetCode)</a></td>
+
+                                        <td><a id="assetmodel" onclick="AssetDetail('@Html.DisplayFor(modelItem => item.AssetCode)')">@Html.DisplayFor(modelItem => item.AssetCode)</a></td>
                                         <td><a href="#">@Html.DisplayFor(modelItem => item.AssetName)</a></td>
                                         <td><a href="#">@Html.DisplayFor(modelItem => item.AssetBrandCode)</a></td>
+                                        <td><a href="#">@Html.DisplayFor(modelItem => item.SiteName)</a></td>
+                                        <td><a href="#">@Html.DisplayFor(modelItem => item.LocationName)</a></td>
+                                        <td><a href="#">@Html.DisplayFor(modelItem => item.Floor)</a></td>
+                                        <td><a href="#">@Html.DisplayFor(modelItem => item.SupplierCode)</a></td>
                                         <td><a href="#">@Html.DisplayFor(modelItem => item.PurchaseDate)</a></td>
                                         <td><a href="#">@Html.DisplayFor(modelItem => item.PurchasePrice)</a></td>
                                         <td><a href="#">@Html.DisplayFor(modelItem => item.bStatus)</a></td>
-                                        <td class="txtcenter">
-                                            <a href="/asset/details" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                                        </td>
+                                        
                                     </tr>
                                 }
 

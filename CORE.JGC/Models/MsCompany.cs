@@ -16,8 +16,11 @@ namespace CORE.JGC.Models
         public string Province { get; set; }
         public string PostalCode { get; set; }
         public string Telephone { get; set; }
-        public bool bActive { get; set; }
+        public string PhotoLogo { get; set; }
+        public string Aktif { get; set; }
+        public bool? bActive { get; set; }
         public string Iby { get; set; }
+        public string status { get; set; }
         public DateTime Ion { get; set; }
         public string Uby { get; set; }
         public DateTime Uon { get; set; }

@@ -1754,26 +1754,38 @@ if (typeof NProgress != 'undefined') {
 			
             $('#single_cal2').daterangepicker({
 			  singleDatePicker: true,
-			  singleClasses: "picker_2"
+			  singleClasses: "picker_2",
+               locale: {
+                  format: 'DD/MM/YYYY'
+            }
 			}, function(start, end, label) {
 			  console.log(start.toISOString(), end.toISOString(), label);
 			});
 
 			$('#single_cal3').daterangepicker({
 			  singleDatePicker: true,
-			  singleClasses: "picker_3"
+			  singleClasses: "picker_3",
+			  locale: {
+			      format: 'DD/MM/YYYY'
+			  }
 			}, function(start, end, label) {
 			  console.log(start.toISOString(), end.toISOString(), label);
 			});
 			$('#single_cal4').daterangepicker({
 			  singleDatePicker: true,
-			  singleClasses: "picker_4"
+			  singleClasses: "picker_4",
+			  locale: {
+			      format: 'DD/MM/YYYY'
+			  }
 			}, function(start, end, label) {
 			  console.log(start.toISOString(), end.toISOString(), label);
 			});
             $('#single_cal5').daterangepicker({
 			  singleDatePicker: true,
-			  singleClasses: "picker_2"
+			  singleClasses: "picker_2",
+			  locale: {
+			      format: 'DD/MM/YYYY'
+			  }
 			}, function(start, end, label) {
 			  console.log(start.toISOString(), end.toISOString(), label);
 			});

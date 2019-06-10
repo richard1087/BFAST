@@ -1,4 +1,4 @@
-﻿
+﻿@model CORE.JGC.Models.MsAssetBrand[]
 @{
     ViewBag.Title = "Asset Brand";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,43 +7,133 @@
 <script type="text/javascript">
 
     function InputAssetBrand() {
-        var BrandId = document.getElementById("BrandId").value;
+        var BrandCodeId = document.getElementById("BrandCodeId").value;
         var BrandNameId = document.getElementById("BrandNameId").value;
 
-        if (BrandId == "") {
-            $(".modal-body #peringatan3").text("Brand harus diisi");
+        if (BrandCodeId == "") {
+            $(".modal-body #peringatan3").text("Brand Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (BrandNameId == "") {
-            $(".modal-body #peringatan3").text("Brand Name harus diisi");
+            $(".modal-body #peringatan3").text("Brand Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         }
+        else {
+            $.ajax({
+                url: '@Url.Action("InsertAssetBrand", "Setup")',
+                type: 'post',
+                cache: false,
+                async: true,
+                data: {
+                    AssetBrandCodeId: BrandCodeId,
+                    AssetBrandNameId: BrandNameId
+                },
+                success: function (response) {
+                    if (response.success == true) {
+                        $(".modal-body #peringatan2").text(response.responseText);
+                        $('#btnok').click(function (e) {
+                            window.location.href = "@Url.Action("Assetbrand", "Setup")";
+                        })
+                        $("#Alert2").modal();
+                    } else {
+                        $(".modal-body #peringatan3").text(response.responseText);
+                        $('#btnerror').click(function (e) {
+                            $('#Alert3').modal('hide');
+                        })
+                        $("#Alert3").modal();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $(".modal-body #peringatan1").text("Please Wait...");
+                    $('#btncaution').click(function (e) {
+                        $('#Alert1').modal('hide');
+                    })
+                    $("#Alert1").modal();
+                }
+            });
+        }
     }
 
     function InputEditAssetBrand() {
-        var EditBrandId = document.getElementById("EditBrandId").value;
+        var NoID = document.getElementById("NoId").value;
+        var EditBrandCodeId = document.getElementById("EditBrandCodeId").value;
         var EditBrandNameId = document.getElementById("EditBrandNameId").value;
 
-        if (EditBrandId == "") {
-            $(".modal-body #peringatan3").text("Brand harus diisi");
+        if (EditBrandCodeId == "") {
+            $(".modal-body #peringatan3").text("Brand Code must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         } else if (EditBrandNameId == "") {
-            $(".modal-body #peringatan3").text("Brand Name harus diisi");
+            $(".modal-body #peringatan3").text("Brand Name must be filled");
             $('#btnerror').click(function (e) {
                 $('#Alert3').modal('hide');
             })
             $("#Alert3").modal();
         }
+        else {
+            $(".modal-body #peringatan4").text("Are You Sure Update Data: " + EditBrandCodeId + ' ( ' + EditBrandNameId + " ) ? ");
+            $('#btnyes').click(function (e) {
+                $('#Alert4').modal('hide');
+
+
+                $.ajax({
+                    url: '@Url.Action("UpdateAssetBrand", "Setup")',
+                    type: 'post',
+                    cache: false,
+                    async: true,
+                    data: {
+                        NoID: NoID,
+                        EditAssetBrandCodeId: EditBrandCodeId,
+                        EditAssetBrandNameId: EditBrandNameId
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+                            $(".modal-body #peringatan2").text(response.responseText);
+                            $('#btnok').click(function (e) {
+                                window.location.href = "@Url.Action("Assetbrand", "Setup")";
+                            })
+                            $("#Alert2").modal();
+                        } else {
+                            $(".modal-body #peringatan3").text(response.responseText);
+                            $('#btnerror').click(function (e) {
+                                $('#Alert3').modal('hide');
+                            })
+                            $("#Alert3").modal();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $(".modal-body #peringatan1").text("Please Wait...");
+                        $('#btncaution').click(function (e) {
+                            $('#Alert1').modal('hide');
+                        })
+                        $("#Alert1").modal();
+                    }
+                });
+            });
+            $('#btnno').click(function (e) {
+                $('#Alert4').modal('hide');
+            });
+            $("#Alert4").modal();
+        }
     }
 
+    function UpdateAssetBrandS(NoID, BrandCodeId, BrandNameId) {
+
+        $(".modal-body #EditBrandCodeId").val(BrandCodeId);
+        $(".modal-body #EditBrandNameId").val(BrandNameId);
+
+        $(".modal-body #NoID").val(NoID);
+
+        $("#editModal").modal();
+
+    }
 </script>
 
 <div class="right_col" role="main">
@@ -63,45 +153,30 @@
                     </div>
                     <div class="x_content">
 
-                        <!--<p class="headcontent">
-                            Add departments that own or house the particular assets.
-                            Make them as broad or as specific as you want. Departments can be 'Accounting', 'Marketing', or 'Executive'.
-                            Customize to your particular need.
-                        </p>-->
-
                         <div class="col-md-12 col-sm-12 col-xs-12 text-muted font-13 m-b-30 no-padding">
                             <div class="mgbtm20">
                                 <a href="#" id="tambahbrand" class="btn btn-success btn-cust">Add New Asset Brand</a>
                             </div>
                         </div>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable" class="table table-striped table-bordered bulk_action">
                             <thead>
                                 <tr>
-                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
                                     <th width="9%">Asset Brand</th>
                                     <th>Asset Brand Name</th>
-                                    <th style="width:9%;"></th>
+                                    <th style="width:2%;"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach (var item in Model)
+                            {
                                 <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">ASUS</a></td>
-                                    <td><a href="#">ASUS</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.BrandCode)</a></td>
+                                    <td><a href="#">@Html.DisplayFor(modelItem => item.BrandName)</a></td>
                                     <td class="txtcenter">
-                                        <a href="#" id="EditBrandId" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <button id="editAssetBrandbutton" name="editAssetBrandbutton" type="button" class="btn btn-success" onclick="UpdateAssetBrandS('@Html.DisplayFor(modelItem => item.Id)','@Html.DisplayFor(modelItem => item.BrandCode)','@Html.DisplayFor(modelItem => item.BrandName)')"><span class="glyphicon glyphicon-edit"></span>&nbsp;</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox" id="check-all" class="checks"></td>
-                                    <td><a href="#">LG</a></td>
-                                    <td><a href="#">LG</a></td>
-                                    <td class="txtcenter">
-                                        <a href="#" id="EditBrandId" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
+                            }
                             </tbody>
                         </table>
                     </div>
@@ -132,22 +207,22 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Brand</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="BrandId" type="text" name="Brand" class="form-control col-md-10" placeholder="Brand" />
+                            <input id="BrandCodeId" type="text" name="BrandCodeId" class="form-control col-md-10" placeholder="Brand Code" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Brand Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="BrandNameId" type="text" name="NamaBrand" class="form-control col-md-10" placeholder="Brand Name" />
+                            <input id="BrandNameId" type="text" name="BrandNameId" class="form-control col-md-10" placeholder="Brand Name" />
                         </div>
                     </div>
 
                     <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
                         <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
-                            <button id="AddAssetId" type="button" class="btn btn-primary" onclick="InputAssetBrand(); return false;">Add</button>
-                            <button id="CancelAssetId" type="button" class="btn btn-default">Cancel</button>
+                            <button id="btnAddAssetId" type="button" class="btn btn-primary" onclick="InputAssetBrand(); return false;">Add</button>
+                            <button id="btnCancelAssetId" type="button" class="btn btn-default">Cancel</button>
                         </div>
                     </div>
 
@@ -180,22 +255,23 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Brand</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="EditBrandId" type="text" name="Brand" class="form-control col-md-10" value="Brand" placeholder="Brand" />
+                            <input id="NoId" type="hidden" name="NoId" value="" />
+                            <input id="EditBrandCodeId" type="text" name="EditBrandCodeId" class="form-control col-md-10" value="" placeholder="Brand Code" readonly />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Brand Name</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input id="EditBrandNameId" type="text" name="NamaBrand" class="form-control col-md-10" value="Brand Name" placeholder="Brand Name" />
+                            <input id="EditBrandNameId" type="text" name="EditBrandNameId" class="form-control col-md-10" value="" placeholder="Brand Name" />
                         </div>
                     </div>
 
                     <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
                         <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
-                            <button id="EditAssetId" type="button" class="btn btn-primary" onclick="InputEditAssetBrand(); return false;" >Edit</button>
-                            <button id="AssetCancelId" type="button" class="btn btn-default">Cancel</button>
+                            <button id="btnEditAssetId" type="button" class="btn btn-primary" onclick="InputEditAssetBrand(); return false;" >Edit</button>
+                            <button id="btnAssetCancelId" type="button" class="btn btn-default">Cancel</button>
                         </div>
                     </div>
 
@@ -218,19 +294,19 @@
           //$("#AddAssetId").click(function () {
           //    $("#addModal").modal('toggle');
           //});
-          $("#CancelAssetId").click(function () {
+          $("#btnCancelAssetId").click(function () {
               $("#addModal").modal('toggle');
+          });
+
+          $("#btnAssetCancelId").click(function () {
+              $("#editModal").modal('toggle');
           });
 
           $("#EditBrandId").click(function () {
               $("#editModal").modal();
           });
-          //$("#EditAssetId").click(function () {
-          //    $("#editModal").modal('toggle');
-          //});
-          $("#AssetCancelId").click(function () {
-              $("#editModal").modal('toggle');
-          });
+
+          
       });
 
       $("#check-all").click(function () {
